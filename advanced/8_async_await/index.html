@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async / Await</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="section">
+      <a class="back-button" href="/advanced/advanced.html">
+        < Back</a> <h1>Async/Await</h1>
+          <p class="caption">Funciones asíncronas con Async/Await</p>
+          <hr class="separator">
+
+          <p><code>async/await</code> es una sintáxis más cómoda para escribir funciones asíncronas encadenadas. Si
+            tenemos muchas tareas asíncronas relacionadas, es muy posible caer en una pirámide masiva de llamadas con
+            <strong>promesas</strong>. Así es como <code>async</code> permite denotar de manera sencilla que una función
+            devolverá una promesa.</p>
+          <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">regularFunc</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+<span class="hljs-built_in">console</span>.log(regularFunc());
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncFunc</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+<span class="hljs-built_in">console</span>.log(asyncFunc());
+</code></pre>
+          <p>Esta promesa se podría resolver como ya hemos visto tradicioanlemnte, pero hay otra palabra reservada,
+            <code>await</code> que permite indicar al interprete que espere a que termine la promesa para desenvolver su
+            valor, sin necesidad del <code>then</code> y <code>catch</code> **aunque es necesario ejecutarlo dentro de
+            una función asíncrona.</p>
+          <pre><code class="lang-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncFuncAwait</span>(<span class="hljs-params"></span>) </span>{
+
+  <span class="hljs-keyword">let</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> resolve(<span class="hljs-string">"1. Async/Await --&gt; done!"</span>), <span class="hljs-number">1000</span>)
+  });
+
+  <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> promise; <span class="hljs-comment">// wait until the promise resolves (*)</span>
+
+  <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// "done!"</span>
+}
+
+asyncFuncAwait();
+</code></pre>
+          <p>La función asíncrona se parará cuando encuentre el <code>await</code> y reanudará su ejecución una vez se
+            resuelva la promesa. Es una forma de <strong>sintactic sugar</strong> que mejora la legibilidad con respecto
+            a `promise.then``</p>
+          <h2 id="sint-xis">Sintáxis</h2>
+          <p>Ya hemos visto más o menos como se declara, ahora vamos a mostrar algún ejemplo real.</p>
+          <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> randomNumber = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>);
+};
+
+<span class="hljs-keyword">var</span> login = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, rejected</span>) </span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c2. Creación función"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+      <span class="hljs-keyword">if</span> (randomNumber() !== <span class="hljs-number">0</span>) {
+        resolve(<span class="hljs-string">"Logged"</span>);
+      } <span class="hljs-keyword">else</span> {
+        rejected(<span class="hljs-string">"Error: invalid username or password"</span>);
+      }
+    }, <span class="hljs-number">100</span>);
+  });
+};
+
+
+<span class="hljs-keyword">let</span> req = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">let</span> response = <span class="hljs-keyword">await</span> login();
+    <span class="hljs-built_in">console</span>.log(response);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I'm in exeception of async"</span>);
+    <span class="hljs-built_in">console</span>.log(err);
+  }
+};
+
+req();
+</code></pre>
+          <h3 id="paso-de-argumentos">Paso de argumentos</h3>
+          <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> loginWitUsername = <span class="hljs-function">(<span class="hljs-params">username, password</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, rejected</span>) </span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-keyword">if</span> (username === <span class="hljs-string">"lucferbux"</span> &amp;&amp; password === <span class="hljs-string">"patata"</span>) {
+        resolve(<span class="hljs-string">"User logged in"</span>);
+      } <span class="hljs-keyword">else</span> {
+        rejected(<span class="hljs-string">"Error: invalid username or password"</span>);
+      }
+    }, <span class="hljs-number">200</span>);
+  });
+};
+
+<span class="hljs-keyword">let</span> reqWithCredentials = <span class="hljs-keyword">async</span> (username, password) =&gt; {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">let</span> response = <span class="hljs-keyword">await</span> loginWitUsername(username, password);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Función con parámteros"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+        <span class="hljs-built_in">console</span>.log(response);
+    } <span class="hljs-keyword">catch</span>(err) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Función con parámteros"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I'm in exception of async"</span>);
+        <span class="hljs-built_in">console</span>.log(err);
+    }
+}
+
+reqWithCredentials(<span class="hljs-string">"lucferbux"</span>, <span class="hljs-string">"patata"</span>);
+</code></pre>
+
+
+          <hr class="code-separator">
+
+          <h2 id="arrow">Consola JavaScript</h2>
+          <p class="folder">/advanced/9_asycn_await/index.js</p>
+          <pre>
+<code class="language-javascript">// Async Await
+
+// 1. Async vs regular
+
+function regularFunc() {
+  return 1;
+}
+console.log(regularFunc());
+
+async function asyncFunc() {
+  return 1;
+}
+console.log(asyncFunc());
+
+async function asyncFuncAwait() {
+
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("1. Async/Await --> done!"), 80)
+  });
+
+  let result = await promise; // wait until the promise resolves (*)
+
+  console.log(result); // "done!"
+}
+
+asyncFuncAwait();
+
+// 2. Async await es una evolución de las promesas, syntactic sugar
+
+let randomNumber = () => {
+  return Math.floor(Math.random() * 10);
+};
+
+var login = () => {
+  return new Promise(function (resolve, rejected) {
+    setTimeout(() => {
+      console.log("%c2. Creación función", 'color: #229179; font-size: 16px;');
+      if (randomNumber() !== 0) {
+        resolve("Logged");
+      } else {
+        rejected("Error: invalid username or password");
+      }
+    }, 100);
+  });
+};
+
+
+let req = async () => {
+  try {
+    let response = await login();
+    console.log(response);
+  } catch (err) {
+    console.log("I'm in exeception of async");
+    console.log(err);
+  }
+};
+
+req();
+
+// 3. Function with paramteres
+
+
+console.log("Run before the promise");
+
+var loginWitUsername = (username, password) => {
+  return new Promise(function (resolve, rejected) {
+    setTimeout(() => {
+      if (username === "lucferbux" && password === "patata") {
+        resolve("User logged in");
+      } else {
+        rejected("Error: invalid username or password");
+      }
+    }, 200);
+  });
+};
+
+let reqWithCredentials = async (username, password) => {
+    try {
+        let response = await loginWitUsername(username, password);
+        console.log("%c3. Función con parámteros", 'color: #229179; font-size: 16px;');
+        console.log(response);
+    } catch(err) {
+        console.log("%c3. Función con parámteros", 'color: #229179; font-size: 16px;');
+        console.log("I'm in exception of async");
+        console.log(err);
+    }
+}
+
+reqWithCredentials("lucferbux", "patata");</code>
+</pre>
+
+    </div>
+  </div>
+  <script src="../../prism.js"></script>
+  <script src="index.js">
+  </script>
+</body>
+
+</html>

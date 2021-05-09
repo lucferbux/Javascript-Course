@@ -247,16 +247,39 @@ strong {
     opacity: 0.6;
 }
 
+.folder {
+    opacity: 0.6;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.folder::before {
+    content:"📂";
+    margin-right: 10px; 
+}
+
+.reference {
+    font-size: 18px;
+    line-height: 50px;
+}
+
+.reference::before {
+    content:"🔗";
+    margin-right: 10px; 
+}
+
+
 .container {
     display: flex;
     justify-content: center;
 }
 
 .section {
-    max-width: 680px;
+    max-width: 780px;
     width: 100%;
     margin: 0 64px;
     padding-bottom: 40px;
+    overflow-x: auto;
 }
 
 .back-button {
@@ -264,9 +287,40 @@ strong {
     margin-top: 20px;
 }
 
+.custom-button {
+    background-color: #3913B8;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    border-style: none;
+}
+
+.button-cancel {
+    background-color: #b81313;
+}
+
 .container-image {
     width: 100%;
     margin: 30px 0px;
+}
+
+.container-image-vertical {
+    width: 30%;
+    margin: 30px auto;
+    text-align: center;
+    display: block;
+}
+
+.basic-image {
+    width: 100%;
+}
+
+.image-subheader {
+    text-align: center;
+    width: 100%;
+    top: -20px;
+    display: block;
+    position: relative;
 }
 
 .table-content {
@@ -322,6 +376,11 @@ strong {
     .code-background {
         background-color: #201e24;
         
+    }
+
+    .custom-button {
+        background-color: #ad92fd;
+        color: white;
     }
 
     pre {

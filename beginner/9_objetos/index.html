@@ -1,15 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Dato</title>
+    <title>Objetos</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
 </head>
+
 <body>
-    <h1>Tipos de Dato</h1>
-    <script src="../../prism.js"></script> 
-    <script src="index.js">
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> <h1>Objetos</h1>
+                    <p class="caption">Objetos y prototipos</p>
+                    <hr class="separator">
+
+                    <p>Los objetos son otro tipo de dato que ya mencionamos en <a
+                            href="/beginner/4_tipos_datos/index.html">la sección 4</a>. A diferencia de los tipos
+                        primitivos, un objeto puede almacenar colecciones de datos con índices y entidades más
+                        complejas.</p>
+                    <p>Los objetos en JavaScript derivan un poco de otros lenguajes de programación, al ser un lenguaje
+                        <strong>basado en prototípos</strong> y no puramente orientado a objetos, en un momento verémos
+                        que significa esto.</p>
+                    <h2 id="definici-n">Definición</h2>
+                    <p>Un objeto se declara mediante parénteis <code>{}</code>, si hacemos una declaración literal, o
+                        con el constructor <code>Object</code>. Los objetos almacenan propiedades, que son una tupla de
+                        <strong>clave: valor</strong>, donde la clave es una <strong>cadena</strong> o string y el valor
+                        puede ser <strong>cualquier otro tipo</strong>.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Declaring objects</span>
+<span class="hljs-keyword">let</span> teacher = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();
+<span class="hljs-keyword">let</span> user = {};
+<span class="hljs-keyword">let</span> me = {<span class="hljs-attr">name</span>: <span class="hljs-string">"Lucas"</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">27</span>};
+</code></pre>
+                    <h2 id="propiedades">Propiedades</h2>
+                    <p>Como se puede observar, se puede crear un objeto con una declaración literal añadiendo
+                        inmediatamente propiedades, estas propiedades almacenaran un valor y pueden ser accedidas
+                        mediante la sintáxis `object.property``</p>
+                    <img class="container-image" src="/meta/0_14_objects.png" alt="Objeto en JavaScript">
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Accesing properties</span>
+console.<span class="hljs-built_in">log</span>(me.<span class="hljs-built_in">name</span>);
+console.<span class="hljs-built_in">log</span>(me.age);
+</code></pre>
+                    <p>Para crear una nueva propiedad en el objeto, solo necesitamos hacer la llamada al objeto y añadir
+                        el valor con la propiedad.</p>
+                    <pre><code class="lang-javascript">// Creating properties
+me.profession = <span class="hljs-string">"Full Stack"</span><span class="hljs-comment">;</span>
+console.log(me)<span class="hljs-comment">;</span>
+</code></pre>
+                    <p>Como podéis ver, las propiedades pueden ser de múltiples tipos y como no hay determinadas
+                        operaciones para su acceso, creación (como hemos visto) y eliminación.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Deleting properties</span>
+<span class="hljs-keyword">delete</span> me.profession;
+</code></pre>
+                    <p>Además de esto, las propiedades pueden ser una combinación de palabras, aunque personalmente no
+                        recomiendo su uso porque puede derivar en varios problemas.</p>
+                    <pre><code class="lang-javascript">// multiword <span class="hljs-built_in">properties</span>
+
+<span class="hljs-built_in">let</span> multiword = {
+    <span class="hljs-string">"new variable"</span>: <span class="hljs-string">"Hello world"</span>
+}
+
+// multiword.<span class="hljs-built_in">new</span> variable // Access <span class="hljs-built_in">error</span>
+console.<span class="hljs-built_in">log</span>(multiword[<span class="hljs-string">"new variable"</span>]);
+
+multiword[<span class="hljs-string">"other variable"</span>] = <span class="hljs-string">"I'm Lucas"</span>;
+
+console.<span class="hljs-built_in">log</span>(multiword);
+</code></pre>
+                    <h2 id="orientaci-n-a-prototipos">Orientación a Prototipos</h2>
+                    <p>Como hemos comentado antes, JavaScript es un <strong>lenguaje orientado a prototipos</strong>.
+                        Esto significa que las propiedades y métodos del objeto pueden ser compartidos a través de
+                        objetos generalizados que tienen la habilidad de ser clonados y extendidos.</p>
+                    <p>Se diferencia de otros <strong>lenguajes basados en clases</strong> en que las clases no son los
+                        planos (blueprints) que definen la construcción de objetos, si no que un objeto se define, y
+                        puede extender a otros objetos a través de sus propiedades.</p>
+                    <img class="container-image-vertical" src="/meta/0_15_inheritance.png" alt="Herencia Javascript">
+                    <p>Hablando más claro, en una <strong>herencia clásica</strong>, un programador escribe una clase,
+                        que define un objeto. Múltiples objetos pueden ser instanciados por la misma clase, así tienes
+                        código definido una sola veez que describe diferentes objetos en un programa. Luego las clases
+                        pueden organizarse en jerarquías para la reutilización de código. </p>
+                    <p>En la <strong>herencia por prototipado</strong>, los objetos <strong>heredan
+                            directamente</strong> de otros objetos. Toda la abstracción de las clases desaparece. La
+                        reutilización de código y la jerarquía se consigue a través de un enlace de los objetos
+                        extendidos. Cuando pedimos una propiedad en un objeto, irá siguiendo esta jerarquía hacia arriba
+                        hasta dar con el objeto que definió esa propiedad en primera instancia.</p>
+                    <p>Podremos obtener los prototipos de un objeto mediante el método `getPrototypeOf()``</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Get properties from object</span>
+console.<span class="hljs-built_in">log</span>(me.getPrototypeOf());
+console.<span class="hljs-built_in">log</span>(me.__proto__)
+</code></pre>
+                    <p>Si queremos, podremos heredar las propiedades de un objeto a través de otro.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Object inheritance</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"+++++ creating vehicle +++++++++"</span>);
+
+<span class="hljs-keyword">let</span> vehicle = {
+    <span class="hljs-attr">tires</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">start</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Starting engine..."</span>);
+        console.log(vehicle.tires);
+    }
+}
+
+vehicle.start();
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"+++++ creating car +++++++++"</span>);
+
+<span class="hljs-keyword">let</span> car = <span class="hljs-built_in">Object</span>.create(vehicle);
+
+car.start();
+
+car.stop = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Stop the engine..."</span>);
+}
+
+<span class="hljs-built_in">console</span>.log(vehicle);
+<span class="hljs-built_in">console</span>.log(car);
+</code></pre>
+                    <p>En la sección avanzada veremos qué son las clases en realidad en Javascript y como funcionan en
+                        profundidad, ya que puede crear bastante confusión si se cuenta con conocimientos previos en
+                        otros lenguajes de programación.</p>
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/beginner/9_objetos/index.js</p>
+                    <pre>
+<code class="language-javascript">//Objetos
+
+// Definición
+
+let teacher = new Object();
+let user = {};
+let me = {name: "Lucas", age: 27};
+
+console.log(teacher);
+console.log(user);
+console.log(me);
+
+// Propiedades
+
+// Accesing properties
+console.log(me.name);
+console.log(me.age);
+
+// Creating properties
+me.profession = "Full Stack";
+console.log(me);
+
+// Deleting properties
+delete me.profession;
+
+console.log(me);
+
+// multiword properties
+
+let multiword = {
+    "new variable": "Hello world"
+}
+
+// multiword.new variable // Access error
+console.log(multiword["new variable"]);
+
+multiword["other variable"] = "I'm Lucas";
+
+console.log(multiword);
+
+// Orientación a prototipos
+
+// Object inheritance
+console.log("+++++ creating vehicle +++++++++");
+
+let vehicle = {
+    tires: 4,
+    start: function() {
+        console.log("Starting engine...");
+        console.log(vehicle.tires);
+    }
+}
+
+vehicle.start();
+
+console.log("+++++ creating car +++++++++");
+
+let car = Object.create(vehicle);
+
+car.start();
+
+car.stop = function() {
+    console.log("Stop the engine...");
+}
+
+console.log(vehicle);
+console.log(car);</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script type="module" src="index.js">
     </script>
 </body>
+
 </html>

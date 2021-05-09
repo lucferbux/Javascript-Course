@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">
+                < Back</a> <h1>This</h1>
+                    <p class="caption">Funcionamiento de this en JavaScript</p>
+                    <hr class="separator">
+
+                    <p>Si tenéis experiencia previa en programación, os podrá sonar la plabra reservada
+                        <code>this</code>. En Java, C++, Kotlin tiene la misma sintáxis que en JavaScript, en otros
+                        lenguajes como Python o Swift, este mismo concepto se representa con <code>self</code>. En todos
+                        estos programas la palabra reservada <code>this</code>representa la instancia del objeto en
+                        ejecución, y puede referenciarse a lo largo de la definición de una clase.</p>
+                        <br>
+                    <p>En JavaScript, <code>this</code> <strong>funciona un poco diferente</strong>, en parte porque
+                        está <strong>orientado a prototipos</strong> en vez de <strong>orientado a clases</strong>.
+                        Aquí, <code>this</code> no solo se utiliza en objetos, puede utilizarse tanto en los <a
+                            href="/advanced/2_global_namespace/index.html">contextos globales y de función</a> y puede
+                        variar dependiendo de si se ejecuta en podo estricto o modo no estricto.</p>
+                        <br>
+                    <p>Dependiendo de donde se invoque, puede referirse a los siguientes casos:</p>
+                    <ul>
+                        <li>Al ejecutarlo en el programa principal, se refiere al <strong>objeto global</strong> (en un
+                            navegador será window).</li>
+                    </ul>
+                    <pre><code class="lang-javascript">
+<span class="hljs-comment">// Global Context</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> === <span class="hljs-built_in">window</span>);
+
+<span class="hljs-keyword">var</span> name = <span class="hljs-string">"Lucas"</span>;
+
+<span class="hljs-keyword">this</span>.surname = <span class="hljs-string">"Fernandez"</span>;
+</code></pre>
+                    <ul>
+                        <li>En una función, <code>this</code> se refiere al <strong>objeto global</strong>.</li>
+                    </ul>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+
+<span class="hljs-comment">// En un navegador:</span>
+f1() === <span class="hljs-built_in">window</span>; <span class="hljs-comment">// true</span>
+</code></pre>
+                    <ul>
+                        <li>En una función en <strong>modo estricto</strong>, <code>this</code> es
+                            <code>undefined</code>.</li>
+                    </ul>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>) </span>{
+<span class="hljs-meta">  'use strict'</span>; <span class="hljs-comment">// see strict mode</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}
+
+f2() === <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// true</span>
+</code></pre>
+                    <ul>
+                        <li>En un método, <code>this</code> se refiere al <strong>objeto propietario</strong>.</li>
+                    </ul>
+                    <pre><code class="lang-javascript">let person = {
+    <span class="hljs-built_in">name</span>: <span class="hljs-string">"Lucas Fernandez"</span>,
+    greeting() {
+        console.<span class="hljs-built_in">log</span>(`Hello, <span class="hljs-keyword">my</span> <span class="hljs-built_in">name</span> <span class="hljs-keyword">is</span> ${this.<span class="hljs-built_in">name</span>}`)
+    }
+}
+
+person.greeting();
+</code></pre>
+                    <ul>
+                        <li>En un método con <strong>arrow function</strong>, <code>this</code> se refiere al contexto
+                            de la función.</li>
+                    </ul>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> student = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Pepe Navarro"</span>,
+    <span class="hljs-attr">greeting</span>:<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Hello, my name is <span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span>`</span>)
+    }
+}
+
+student.greeting();
+</code></pre>
+                    <ul>
+                        <li>En un evento, <code>this</code> se refiere al <strong>elemento que recive el
+                                evento</strong>.</li>
+                    </ul>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionButtonReceiver</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Button pressed with-&gt;"</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
+}
+</code></pre>
+                    <ul>
+                        <li>Métodos como <code>call()</code>, <code>bind()</code> o <code>apply()</code>, modifican el
+                            valor de <code>this</code> al objeto que enlazan.</li>
+                    </ul>
+<pre><code class="language-javascript">// Call
+// Podemos usar call para llamar a una función añadiendo el contexto con algún objeto (y el resto de parámetros)
+
+var myObj = {
+    num: 2
+}
+
+var addNumbers = function(num1, num2) {
+    return this.num + num1 + num2
+}
+
+console.log(addNumbers());
+
+
+console.log(addNumbers.call(myObj, 1, 2));
+
+
+
+// Apply
+// El mismo concepto que call pero pasando los parámetros como arrays
+
+let params = [1, 2]
+
+console.log(addNumbers.apply(myObj, params));
+
+
+// Bind
+
+// Devuelve una función con el binding entre el objeto y la función
+// Se usa por ejemplo para tener contexto del objeto en un callback
+
+var otherObj = {
+    num1: 5,
+    num2: 4
+}
+
+var otherFunc = function() {
+    return this.num1 + this.num2;
+}
+
+var returnedFunc = otherFunc.bind(otherObj);
+
+console.log(returnedFunc());</code></pre>
+
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/advanced/1_this/index.js</p>
+                    <button class="custom-button" onclick="actionButtonReceiver(this)">Ejecutar Call Stack</button>
+                    <pre>
+<code class="language-javascript">// This en Javascript
+
+// Global Context
+console.log(this === window);
+
+var name = "Lucas";
+
+this.surname = "Fernandez";
+
+
+// Función
+function f1() {
+    return this;
+    }
+    
+    // En un navegador:
+    f1() === window; // true
+
+
+// Función Modo Estricto
+function f2() {
+    'use strict'; // see strict mode
+    return this;
+}
+    
+f2() === undefined; // true
+
+
+// Método
+let person = {
+    name: "Lucas Fernandez",
+    greeting() {
+        console.log(`Hello, my name is ${this.name}`)
+    }
+}
+
+person.greeting();
+
+
+
+// Método Arrow Function
+let student = {
+    name: "Pepe Navarro",
+    greeting:() => {
+        console.log(`Hello, my name is ${this.name}`)
+    }
+}
+
+student.greeting();
+
+
+// Evento
+function actionButtonReceiver() {
+    console.log("Button pressed with->");
+    console.log(this);
+}
+
+// Call
+// Podemos usar call para llamar a una función añadiendo el contexto con algún objeto (y el resto de parámetros)
+
+var myObj = {
+    num: 2
+}
+
+var addNumbers = function(num1, num2) {
+    return this.num + num1 + num2
+}
+
+console.log(addNumbers());
+
+
+console.log(addNumbers.call(myObj, 1, 2));
+
+
+
+// Apply
+// El mismo concepto que call pero pasando los parámetros como arrays
+
+let params = [1, 2]
+
+console.log(addNumbers.apply(myObj, params));
+
+
+// Bind
+
+// Devuelve una función con el binding entre el objeto y la función
+// Se usa por ejemplo para tener contexto del objeto en un callback
+
+var otherObj = {
+    num1: 5,
+    num2: 4
+}
+
+var otherFunc = function() {
+    return this.num1 + this.num2;
+}
+
+var returnedFunc = otherFunc.bind(otherObj);
+
+console.log(returnedFunc());</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

@@ -14,30 +14,188 @@
     <div class="container">
         <div class="section">
             <a class="back-button" href="/advanced/advanced.html">
-                < Back</a> <h1>Objetos en Javascript</h1>
+                < Back</a> <h1>Objetos en JavaScript</h1>
                     <p class="caption">Creación de objetos en JavaScript</p>
                     <hr class="separator">
 
-                    <h2 id="lenguaje-prototipado">Lenguaje Prototipado</h2>
-                    <p>Javascript es un lenguaje orientado a objetos basado en la herencia de prototipos.</p>
-                    <p>En la <strong>herencia clásica</strong>, el programador escribe una clase, que define a un
-                        objeto. Múltiples objeots pueden instanciarse de la clase, así que tienes código en un sitio que
-                        describe múltiples objetos en el programa. Las clases pueden organizarse en una categoría.</p>
-                    <p>Dentro de la <strong>herencia prototipada</strong>, los objetos <strong>heredan
-                            directamente</strong> de otros objeots. Se elimina el concepto de clase, si quieres un
-                        objeto, simplemente escribe un objeto.
-                        Se permite la reusabilidad, por lo que los objetos pueden estar relacionados en una jerarquía.
-                        En Javascript, todo objeto tiene un link con otro objeto padre. Así si se pide una propiedad,
-                        Javascript irá preguntando a todos los padres hasta que dé con esa propiedad.</p>
+                    <p>En la <a href="/beginner/9_objetos/index.html">sesión pasada</a> hablábamos de que los objetos en
+                        JavaScript difieren de objetos en otros lenguajes de programación. Esto es debido a que
+                        JavaScript es un <strong>Lenguaje Orientado a Prototipos</strong>. En esta sección veremos que
+                        la creación de objetos difiere de otros lenguajes y como el concepto de <strong>clases</strong>
+                        introducido en ES6 no es lo que puede parecer al principio.</p>
+                    <h2 id="funciones-constructoras">Funciones Constructoras</h2>
+                    <p>Las <strong>constructer functions</strong> o funciones constructoras son funciones cuyo fin es
+                        construir nuevos objeots. La palabra reservada <code>new</code> se utiliza como operador para
+                        crear nuevas instancias basadas en una función constructora. Ya hemos visto algún constructor
+                        previamente como <code>new Array()</code> o <code>new Date()</code>, pero podemos crear nuestras
+                        funcioens para objetos personalizados.</p>
+                        <br>
+                    <p>Una <strong>función constructora</strong> no es más que una función regular que se convierte en
+                        constructor cuando se declara con la palabra <code>new</code>.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>)</span>{
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+}
+
+<span class="hljs-keyword">let</span> person1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Lucas"</span>, <span class="hljs-number">27</span>);
+<span class="hljs-built_in">console</span>.log(person1);
+</code></pre>
+                    <p>Podemos añadir ahora un método a este objeto accediendo al <code>prototype</code> de la
+                        <strong>función constructora</strong> y declarando un nuevo valor.</p>
+                    <pre><code class="lang-javascript">Person.prototype.info = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Hi I'm <span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> and I'm <span class="hljs-subst">${<span class="hljs-keyword">this</span>.age}</span>`</span>);
+}
+
+person1.info();
+</code></pre>
+                    <p>Como podéis ver es posible crear objetos mediante <strong>funciones constructoras</strong> aunque
+                        es un poco engorroso el añadir nuevos métodos o extender las clases, es por ello que en
+                        <strong>ES6</strong> se introdujeron las <strong>clases</strong>.</p>
+                    <h2 id="clases">Clases</h2>
+                    <p>Al final las <strong>Clases</strong> presentadas en ES6 no son clases como tal. Al menos como
+                        pudieran parecer en otros lenguajes. Las clases son &quot;funciones especiales&quot; que
+                        encapsulan datos. Estas clases están construidas en base a <strong>prototipos</strong> y tienen
+                        dos componentes sintácticos: <strong>class expression</strong> y <strong>class
+                            declaration</strong>, con los cuales pueden declararse.</p>
+                    <h3 id="class-declaration">Class declaration</h3>
+                    <p>Una forma de definir una clase es mediante las <strong>declaraciones de clase</strong>. Para ello
+                        se usa la palabra reservada <code>class</code> con el nombre de la función. Estas declaraciones
+                        se diferencian de las <strong>function declarations</strong> en el hoisting, es decir, si se
+                        intentan referenciar antes de declararse Javascript lanzará un error.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Class delcaration</span>
+
+<span class="hljs-comment">// const error_student = new Student("Pepe", 23); // Uncomment this to throw a ReferenceError for hoistin.</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> </span>{
+    <span class="hljs-keyword">constructor</span>(name, age) {
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.age = age;
+    }
+
+    displayInfo() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Hello my name is <span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> and I'm <span class="hljs-subst">${<span class="hljs-keyword">this</span>.age}</span>`</span>);
+    }
+}
+
+<span class="hljs-keyword">const</span> first_student = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">"Pedro"</span>, <span class="hljs-number">22</span>);
+first_student.displayInfo();
+</code></pre>
+                    <h3 id="class-expression">Class expression</h3>
+                    <p>La segunda forma de definir una función es mediante las <strong>expresiones de clase</strong>.
+                        Estas definiciones pueden realizarse con o sin nombre, y además este nombre es local al cuerpo
+                        de la clase.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Class expression</span>
+
+<span class="hljs-comment">// unnamed</span>
+
+<span class="hljs-keyword">let</span> NewStudent = <span class="hljs-class"><span class="hljs-keyword">class</span> </span>{
+    <span class="hljs-keyword">constructor</span>(name, age) {
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.age = age;
+    }
+
+    displayInfo() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Hello my name is <span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> and I'm <span class="hljs-subst">${<span class="hljs-keyword">this</span>.age}</span>`</span>);
+    }
+}
+
+<span class="hljs-built_in">console</span>.log(NewStudent.name);
+
+<span class="hljs-comment">// named</span>
+
+<span class="hljs-keyword">let</span> NewPerson = <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-keyword">constructor</span>(name, age) {
+        <span class="hljs-keyword">this</span>.name = name;
+        <span class="hljs-keyword">this</span>.age = age;
+    }
+
+    displayInfo() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Hello my name is <span class="hljs-subst">${<span class="hljs-keyword">this</span>.name}</span> and I'm <span class="hljs-subst">${<span class="hljs-keyword">this</span>.age}</span>`</span>);
+    }
+}
+
+<span class="hljs-built_in">console</span>.log(NewPerson.name);
+</code></pre>
+                    <h3 id="cuerpo-de-la-clase">Cuerpo de la clase</h3>
+                    <p>El cuerpo de la clase es la parte entre los corchetes <code>{}</code>. Aquí se pueden definir el
+                        constructor, propiedades y métodos.</p>
+                    <p>El <strong>constructor</strong> es un método especial para crear e inicializar los objetos
+                        declarados con <code>class</code>. Solo <strong>puede haber un constructor</strong> dentro de
+                        una clase. Un constructor puede usar <code>super</code> para accceder a la clase padre.</p>
+                    <p>Los <strong>métodos</strong> son funciones dentro de las clases que pueden funcionar como acceso
+                        de atributos, modificadores, generadores...</p>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">class</span> Cat {
+    <span class="hljs-keyword">constructor</span>(name, age) {
+        <span class="hljs-keyword">this</span>._name = name;
+        <span class="hljs-keyword">this</span>._age = age;
+    }
+
+    displayInfo() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`miau miau miau miau`</span>);
+    }
+
+    <span class="hljs-keyword">get</span> name() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._name.toUpperCase();
+    }
+
+    <span class="hljs-keyword">set</span> name(newName) {
+        <span class="hljs-keyword">this</span>._name = newName;
+    }
+}
+
+<span class="hljs-keyword">let</span> snowball = <span class="hljs-keyword">new</span> Cat(<span class="hljs-string">"Snowball"</span>, <span class="hljs-number">7</span>);
+<span class="hljs-built_in">console</span>.log(snowball.name);
+snowball.name = <span class="hljs-string">"Snowball II"</span>;
+<span class="hljs-built_in">console</span>.log(snowball.name);
+</code></pre>
+                    <h3 id="herencia">Herencia</h3>
+                    <p>Es posible crear una relación de herencia entre objetos mediante la palabra reservada
+                        <code>extend</code>. Funciona igual que como lo vimos en la <a
+                            href="/beginner/9_objetos/index.html">sección anterior</a>, al final es una abstracción de
+                        las funciones, pero acaba siendo prototipos heredados.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vehicle</span> </span>{
+    <span class="hljs-keyword">constructor</span>(tires, plate) {
+        <span class="hljs-keyword">this</span>._tires = tires;
+        <span class="hljs-keyword">this</span>._plate = plate;
+    };
+
+    start() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Starting the engine..."</span>);
+    }
+
+    info() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.constructor.name}</span> with plate: <span class="hljs-subst">${<span class="hljs-keyword">this</span>._plate}</span>`</span>)
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span></span>{
+    <span class="hljs-keyword">constructor</span>(plate) {
+        <span class="hljs-keyword">super</span>(<span class="hljs-number">4</span>, plate);
+    }
+
+    turnRadio() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Tunning the radio"</span>);
+    }
+}
+
+<span class="hljs-keyword">let</span> opel = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">"234lk"</span>);
+
+opel.info();
+opel.turnRadio();
+</code></pre>
+                    <p>Hay muchísimas más propiedades de las clases en JavaScript, <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">aquí</a>
+                        podéis ver una recopilación de todas las características que posee.</p>
+
 
                     <hr class="code-separator">
 
-                    <h2 id="arrow">Consola Javascript</h2>
-                    <p class="caption">/advanced/5_creacion_objetos/index.js</p>
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/advanced/5_creacion_objetos/index.js</p>
                     <pre>
-<code class="language-javascript">console.log("Object Creation");
+<code class="language-javascript">// Classes and Object creation
 
-// En javascript, un objeto puede ser una función heredada
+// 1. Funciones constructoras
 
 var person = function(name, age) {
     this.name = name;
@@ -51,19 +209,146 @@ var maria = new person("Maria", 27);
 console.log(lucas);
 console.log(maria);
 
-// Todos los objetos están relacionados con sus padres
-
-var lucas_extended = {
-    height: 180,
-    ...lucas
+// with name
+function Person(name, age){
+    this.name = name;
+    this.age = age;
 }
 
-console.log(lucas_extended);</code>
+let person1 = new Person("Lucas", 27);
+console.log(person1);
+
+// Adding methods
+Person.prototype.info = function() {
+    console.log(`Hi I'm ${this.name} and I'm ${this.age}`);
+}
+
+person1.info();
+
+
+// Extension
+
+let person_extended = {
+    height: 180,
+    ...person1
+}
+
+console.log(person_extended);
+
+// 2. Clases
+
+// Class delcaration
+
+// const error_student = new Student("Pepe", 23); // Uncomment this to throw a ReferenceError for hoistin.
+
+class Student {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    displayInfo() {
+        console.log(`Hello my name is ${this.name} and I'm ${this.age}`);
+    }
+}
+
+const first_student = new Student("Pedro", 22);
+first_student.displayInfo();
+
+// Class expression
+
+// unnamed
+
+let NewStudent = class {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    displayInfo() {
+        console.log(`Hello my name is ${this.name} and I'm ${this.age}`);
+    }
+}
+
+console.log(NewStudent.name);
+
+// named
+
+let NewPerson = class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    displayInfo() {
+        console.log(`Hello my name is ${this.name} and I'm ${this.age}`);
+    }
+}
+
+console.log(NewPerson.name);
+
+// New Class
+
+class Cat {
+    constructor(name, age) {
+        this._name = name;
+        this._age = age;
+    }
+
+    displayInfo() {
+        console.log(`miau miau miau miau`);
+    }
+
+    get name() {
+        return this._name.toUpperCase();
+    }
+
+    set name(newName) {
+        this._name = newName;
+    }
+}
+
+let snowball = new Cat("Snowball", 7);
+console.log(snowball.name);
+snowball.name = "Snowball II";
+console.log(snowball.name);
+
+// Inheritance
+
+class Vehicle {
+    constructor(tires, plate) {
+        this._tires = tires;
+        this._plate = plate;
+    };
+
+    start() {
+        console.log("Starting the engine...");
+    }
+
+    info() {
+        console.log(`${this.constructor.name} with plate: ${this._plate}`)
+    }
+}
+
+class Car extends Vehicle{
+    constructor(plate) {
+        super(4, plate);
+    }
+
+    turnRadio() {
+        console.log("Tunning the radio");
+    }
+}
+
+let opel = new Car("234lk");
+
+opel.info();
+opel.turnRadio();</code>
 </pre>
 
         </div>
     </div>
-    <script src="../../prism.js"></script> 
+    <script src="../../prism.js"></script>
     <script src="index.js">
     </script>
 </body>

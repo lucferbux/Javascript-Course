@@ -1,1 +1,45 @@
-console.log("Hello World");
+console.log("%cBucles", 'color: #3913B8; font-size: 20px;');
+
+console.log("%c1. For", 'color: #229179; font-size: 16px;');
+
+for (let i = 0; i < 10; i++) {
+    if (i%2 == 0) {
+      console.log("Es par")
+    } else {
+        console.log("No es par")
+    }
+}
+
+console.log("%c1.1 For In", 'color: #229179; font-size: 16px;');
+
+const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}
+
+
+console.log("%c2. While", 'color: #229179; font-size: 16px;');
+
+let n = 0;
+let x = 0;
+while (n < 3) {
+  n++;
+  x += n;
+  console.log(x);
+}
+
+// Bucle infinito cuidado ya que la n vale 2
+// while (n > 2) {
+//     n++;
+//     x += n;
+//     console.log(x);
+//   }
+
+console.log("%c3. While Do", 'color: #229179; font-size: 16px;');
+
+let i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < 5);

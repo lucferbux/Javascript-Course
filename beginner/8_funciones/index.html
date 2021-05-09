@@ -1,15 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Dato</title>
+    <title>Funciones</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
 </head>
+
 <body>
-    <h1>Tipos de Dato</h1>
-    <script src="../../prism.js"></script> 
-    <script src="index.js">
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> <h1>Funciones</h1>
+                    <p class="caption">Funciones clásicas en JavaScript</p>
+                    <hr class="separator">
+
+                    <p>Las funciones son uno de los elementos más importantes en casi cualquier lenguaje de
+                        programación. Una función permite <strong>definir una serie de acciones que pueden reutilizarse
+                            a lo largo del código</strong>. Esto es debido a que una función puede llamarse cuantas
+                        veces se quiera a lo largo de un programa.</p>
+                    <p>Ya hemos visto varias funciones a lo largo del curso como <code>console.log()</code>,
+                        <code>alert()</code> o <code>prompt()</code>. Al final estas funciones están definidas en algún
+                        lugar y podemos llamarlas cuando las necesitamos.</p>
+                    <h2 id="definici-n">Definición</h2>
+                    <p>Una función se declara con la palabra reservada <code>function</code> seguida de lo siguiente:
+                    </p>
+                    <ol>
+                        <li>El nombre de la función.</li>
+                        <li>Una lista de parámetros de la función, acotados por paréntesis y separados por comas.</li>
+                        <li>El cuerpo de la función, acotado por llaves <code>{ ... }</code> con la posibilidad de
+                            retorno de un valor con <code>return</code></li>
+                    </ol>
+                    <pre><code class="lang-pseudocode"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span><span class="hljs-params">(parameter1, parameter2)</span> </span>{
+    ...body...
+}
+</code></pre>
+                    <p>En JavaScript sería algo parecido a esto:</p>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span></span> square(<span class="hljs-keyword">number</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">number</span> * <span class="hljs-keyword">number</span>
+}
+</code></pre>
+                    <h2 id="function-expressions">Function expressions</h2>
+                    <p>Además de la forma mencionada arriba, las funciones se pueden crear mediante una <strong>function
+                            expression</strong>. Estas funciones <strong>pueden ser anónimas</strong>, no tener un
+                        nombre, pero poder asignarse a variables. Este método es muy útil para pasar unfiones como
+                        argumentos.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Function expression</span>
+<span class="hljs-keyword">const</span> square = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">number</span>) </span>{ <span class="hljs-keyword">return</span> number * number }
+<span class="hljs-keyword">var</span> x = square(<span class="hljs-number">4</span>) <span class="hljs-comment">// x gets the value 16</span>
+
+<span class="hljs-comment">// Function as a parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">map</span>(<span class="hljs-params">f, a</span>) </span>{
+  <span class="hljs-keyword">let</span> result = []; <span class="hljs-comment">// Create a new Array</span>
+  <span class="hljs-keyword">let</span> i; <span class="hljs-comment">// Declare variable</span>
+  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i != a.length; i++)
+    result[i] = f(a[i]);
+  <span class="hljs-keyword">return</span> result;
+}
+<span class="hljs-keyword">const</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
+   <span class="hljs-keyword">return</span> x * x * x;
+}
+<span class="hljs-keyword">let</span> numbers = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>];
+<span class="hljs-keyword">let</span> cube = map(f,numbers);
+<span class="hljs-built_in">console</span>.log(cube);
+</code></pre>
+                    <h2 id="paso-por-valor-o-referencia">Paso por valor o referencia</h2>
+                    <p>Todos los parámetros <strong>de tipos no primitivos</strong> (objetos, arrays, funciones) en
+                        JavaScript se <strong>pasan por referencia</strong>. Esto significa que si cambias el valor
+                        dentro de una función también cambiará fuera de ella, y es un error muy común que se comete en
+                        programación.</p>
+                    <p>Visualmente se puede diferenciar el paso de parámetros de valor y de referencia con este gif:</p>
+                    <p><img class="container-image" src="https://www.mathwarehouse.com/programming/images/pass-by-reference-vs-pass-by-value-animation.gif"
+                            alt="Value vs referenc"></p>
+                    <p>Como podemos observar, al pasar por referencia, si cambiamos el valor interno en la función
+                        cambiará en la variable externa, en cambio si la cambiamos al pasar la variable por valor no
+                        cambia en la variable externa.</p>
+                    <p>Esto se puede ver también en código:</p>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeValue</span>(<span class="hljs-params">object1</span>) </span>{
+  object1.make = <span class="hljs-string">'Samsung'</span>;
+  object1.model = <span class="hljs-string">'Galaxy'</span>;
+}
+
+<span class="hljs-keyword">var</span> myPhone = {<span class="hljs-attr">make</span>: <span class="hljs-string">'Apple'</span>, <span class="hljs-attr">model</span>: <span class="hljs-string">'iPhone'</span>, <span class="hljs-attr">year</span>: <span class="hljs-number">2020</span>};
+<span class="hljs-keyword">var</span> x, y;
+
+x = myPhone.make; <span class="hljs-comment">// x gets the value "Apple"</span>
+<span class="hljs-built_in">console</span>.log(x);
+
+myFunc(myPhone);
+y = myPhone.make; <span class="hljs-comment">// y gets the value "Samsung"</span>
+<span class="hljs-built_in">console</span>.log(y);
+</code></pre>
+                    <h2 id="variables-locales-y-variables-globales">Variables Locales y Variables Globales</h2>
+                    <p>Una variable declarada en una función es solo visible dentro de esa función, pero dentro de las
+                        funciones se puede acceder a variables externas. Además, si se declara una variable interna de
+                        una función con el nombre de una variable externa, está <strong>hará sombra</strong> a la
+                        variable exterior.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> outerVariable = <span class="hljs-string">"I'm an outer variable"</span>;
+<span class="hljs-keyword">let</span> otherVariable = <span class="hljs-string">"I'm other outer variable"</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayMessage</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> innerVariable = <span class="hljs-string">"I'm an inner variable"</span>;
+
+    <span class="hljs-built_in">console</span>.log(innverVariable);
+    <span class="hljs-built_in">console</span>.log(outerVariable);
+
+    <span class="hljs-keyword">let</span> otherVariable = <span class="hljs-string">"I'm defining an inner variable"</span>;
+    <span class="hljs-built_in">console</span>.log(otherVariable);
+}
+
+displayMessage();
+
+<span class="hljs-built_in">console</span>.log(innerVariable);
+</code></pre>
+                    <h2 id="par-metros">Parámetros</h2>
+                    <p>Podemos pasar cualquier dato arbitrario a nuestra función usando parámetros (también llamados
+                        argumentos de funciones). En ES6 se introdujeron dos nuevas formas de declarar parámetros:</p>
+                    <ul>
+                        <li><strong>Parámetros por defecto</strong> -&gt; Permiten declarar un valor por defecto por si
+                            no se pasa ningún valor en la llamada de la función.</li>
+                        <li><strong>Parámetros rest</strong> -&gt; Permite representar un número indefinido de
+                            parámetros.</li>
+                    </ul>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// normal parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiply</span><span class="hljs-params">(a, b)</span> </span>{
+  b = b ?? <span class="hljs-number">1</span>; <span class="hljs-comment">// Nullish operator</span>
+
+  <span class="hljs-keyword">return</span> a * b;
+}
+console.log(multiply(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 5</span>
+
+<span class="hljs-comment">// default parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiply</span><span class="hljs-params">(a, b = 1)</span> </span>{
+  <span class="hljs-keyword">return</span> a * b;
+}
+
+console.log(multiply(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 5</span>
+
+<span class="hljs-comment">// rest parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiply</span><span class="hljs-params">(multiplier, <span class="hljs-rest_arg">...theArgs</span>)</span> </span>{
+  <span class="hljs-keyword">return</span> theArgs.map(x =&gt; multiplier * x);
+}
+
+<span class="hljs-keyword">var</span> arr = multiply(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+console.log(arr); <span class="hljs-comment">// [2, 4, 6]</span>
+</code></pre>
+                    <h2 id="valores-de-retorno">Valores de retorno</h2>
+                    <p>Una función puede devolver un valor como resultado de su llamada. Ya lo hemos visto en la función
+                        anterior:</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// normal parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiply</span>(<span class="hljs-params">a, b</span>) </span>{
+  b = b ?? <span class="hljs-number">1</span>; <span class="hljs-comment">// Nullish operator</span>
+
+  <span class="hljs-keyword">return</span> a * b;
+}
+<span class="hljs-built_in">console</span>.log(multiply(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 5</span>
+</code></pre>
+                    <p>La palabra reservada <code>return</code> puede aparecer en cualquier punto de la función. En el
+                        momento que se ejecuta, la función para y el valor es devuelto en la llamada del código.
+                        Pero es posible que haya declarado <code>return</code> varias veces:</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// normal parameter</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiply</span>(<span class="hljs-params">a, b</span>) </span>{
+  <span class="hljs-keyword">if</span>(b !== <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-keyword">return</span> a * b;
+  } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
+}
+<span class="hljs-built_in">console</span>.log(multiply(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 0</span>
+</code></pre>
+                    <p>Es posible llamar a <code>return</code> sin devolver un valor, en ese caso se devuelve
+                        <code>undefined</code>:</p>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">returnNothing</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> }
+
+<span class="hljs-built_in">console</span>.log(returnNothing() === <span class="hljs-literal">undefined</span>);
+</code></pre>
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/beginner/8_funciones/index.js</p>
+                    <pre>
+<code class="language-javascript">// Funciones
+//Declaración
+console.log(functionDeclaration())
+
+// Function declaration -> Regular function, it will run at the start of the scope with hoisting
+
+function functionDeclaration() {
+    console.log("function declaration");
+};
+
+// Expression
+
+// Function expression -> Anonymous function assigned to a variable
+
+var functionExpression = function() {
+    console.log("function expression");
+}
+
+// Function as a parameter
+function map(f, a) {
+    let result = []; // Create a new Array
+    let i; // Declare variable
+    for (i = 0; i != a.length; i++)
+        result[i] = f(a[i]);
+    return result;
+    }
+    const f = function(x) {
+        return x * x * x;
+    }
+    let numbers = [0, 1, 2, 5, 10];
+    let cube = map(f,numbers);
+    console.log(cube);
+
+// Paso por valor y referencia
+
+function changeValue(object1) {
+    object1.make = 'Samsung';
+    object1.model = 'Galaxy';
+}
+
+var myPhone = {make: 'Apple', model: 'iPhone', year: 2020};
+var x, y;
+
+x = myPhone.make; // x gets the value "Apple"
+console.log(x);
+
+changeValue(myPhone);
+y = myPhone.make; // y gets the value "Samsung"
+console.log(y);
+
+// Variables locales y variables globales
+console.log("%c3. Variables locales y variables globales", 'color: #229179; font-size: 16px;');
+
+let outerVariable = "I'm an outer variable";
+let otherVariable = "I'm other outer variable";
+
+function displayMessage() {
+    let innerVariable = "I'm an inner variable";
+
+    console.log(innerVariable);
+    console.log(outerVariable);
+
+    let otherVariable = "I'm defining an inner variable";
+    console.log(otherVariable);
+}
+
+displayMessage();
+
+console.log(innerVariable);
+
+// Parámetros
+
+// normal parameter
+function multiply(a, b) {
+    b = b ?? 1; // Nullish operator
+
+    return a * b;
+}
+console.log(multiply(5)); // 5
+    
+// default parameter
+function multiplyDefault(a, b = 1) {
+    return a * b;
+}
+
+console.log(multiplyDefault(5)); // 5
+    
+// rest parameter
+function multiplyRest(multiplier, ...theArgs) {
+    return theArgs.map(x => multiplier * x);
+}
+
+var arr = multiplyRest(2, 1, 2, 3);
+console.log(arr); // [2, 4, 6]
+
+// Valores de retorno
+
+// normal parameter
+function multiplyReturn(a, b) {
+    if(b !== undefined) {
+        return a * b;
+    } else {
+        return 0;
+    }
+}
+console.log(multiplyReturn(5)); // 0
+
+// return
+function returnNothing() { return }
+
+console.log(returnNothing() === undefined);
+}</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script type="module" src="index.js">
     </script>
 </body>
+
 </html>

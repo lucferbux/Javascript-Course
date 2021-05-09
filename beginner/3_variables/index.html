@@ -13,79 +13,245 @@
 <body>
     <div class="container">
         <div class="section">
-            <a class="back-button" href="/beginner/beginner.html">< Back</a> 
-                    <h1>Variables</h1>
-                    <p class="caption">Variables en Javascript</p>
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> <h1>Variables</h1>
+                    <p class="caption">Variables en JavaScript</p>
                     <hr class="separator">
 
-                    <p>Una variable es una contenedor para almacenar valores. Tradicionalmente esto se ha hecho con la palabra reservada <code class="code-background">var</code>, pero ES6 introdujo dos nuevas palabras, <code class="code-background">const</code> y <code class="code-background">let</code>.</p>
-                    <h2 id="var">Var</h2>
-                    <p>Antes de que existiese ES6 era la declaración por defecto. Tiene ciertas características que lo hacen un poco peculiar y no recomendable.</p>
-                    <h3 id="scope">Scope</h3>
-                    <p>El scope significa donde pueden ser utilizadas estas variables. <code class="code-background">var</code> tiene un scope <strong>global</strong> o de <strong>funcion</strong>. El scrope global es cuando <code class="code-background">var</code> es asignado fuera de un bloque de función, mientras que tiene un scope de función cuando está definido dentro.</p>
-                    <h3 id="hoisting">Hoisting</h3>
-                    <p>Otra de las características que tiene var es <strong>hoisting</strong>, un mecanismo de JavaScript donde las variables y declaraciones se mueven al inicio del scope de su declaración. Eso significa que da igual donde creemos la variable, estará disponible al inicio de ese bloque.</p>
-                    <h3 id="problemas">Problemas</h3>
-                    <p>Por el scope de var, si hacemos una segunda declaración pisará a la función de encima.</p>
-                    <h2 id="let">Let</h2>
-                    <p>Introducido en ES6, es un reemplazo moderno de var. Solventa los errores que hemos comentado.</p>
-                    <h3 id="scope">Scope</h3>
-                    <p><code class="code-background">let</code> está limitado en su bloque de scope {}. Así que una variable declarada en un bloque con let solo existiraé en ese bloque.</p>
-                    <h3 id="re-asignacion-pero-no-re-declaraci-n">Re-asignacion pero no Re-declaración</h3>
-                    <p><code class="code-background">let</code> no puede ser redeclarado dentro de su scope, no como var.</p>
-                    <pre><code class="language-javascript"> 
-let greeting = "say Hi";
-let greeting = "say Hello instead"; // error: Identifier 'greeting' has already been declared   
-                    </code></pre>
-                    
-                    <h3 id="hoisting">Hoisting</h3>
-                    <p>Como var, let se inicializa al principio del código, pero no se le asigna <code class="code-background">undefined</code>.</p>
-                    <h2 id="const">Const</h1>
+                    <p>Una variable es una contenedor para almacenar valores. Tradicionalmente esto se ha hecho con la
+                        palabra reservada <code>var</code>, pero ES6 introdujo dos nuevas palabras reservadas,
+                        <code>const</code> y <code>let</code>.</p>
+                    <p>El siguiente código muestra como crear una nueva variable:</p>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> <span class="hljs-keyword">variable</span>;
+</code></pre>
+                    <p>Una variable puede almacenar valores, para ello usamos el operador de asignación <code>=</code>:
+                    </p>
+                    <pre><code class="lang-javascript">let firstVariable<span class="hljs-comment">;</span>
+<span class="hljs-attribute">firstVariable</span> = <span class="hljs-string">"Hola mundo"</span><span class="hljs-comment">;</span>
+console.log(firstVariable)<span class="hljs-comment">;</span>
+</code></pre>
+                    <p>En el ejemplo anterior, la cadena se almacena en un espacio de memoria apuntando a la variable
+                        <code>firstVariable</code>, así, podremos acceder a este valor siempre que referenciemos a la
+                        variable.</p>
+                        <br>
+                    <p>Hay muchas formas de declarar una variable, podemos hacer la declaración y asignación en la misma
+                        linea, declarar múltiples variables a la vez (aunque no es muy recomendable), usando el estilo
+                        &quot;comma-first&quot;...</p>
+                    <pre><code class="lang-javascript">// declaración y asignacion
+<span class="hljs-keyword">let</span> <span class="hljs-attr">firstVariable</span> = <span class="hljs-string">"Hola mundo"</span>;
 
-                    
+// declaración en una misma linea
+<span class="hljs-keyword">let</span> <span class="hljs-attr">nombre</span> = 'Lucas', <span class="hljs-attr">apellido</span> = 'Fernandez', <span class="hljs-attr">edad</span> = <span class="hljs-number">27</span>;
+
+// declaración <span class="hljs-string">"coma first"</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">nombre</span> = 'Lucas'
+    , <span class="hljs-attr">apellido</span> = 'Fernandez'
+    , <span class="hljs-attr">edad</span> = <span class="hljs-number">27</span>;
+</code></pre>
+                    <p>Todas estas formas hacen teóricamente lo mismo, el uso de cada uno de estos estilos dependerá de
+                        la <strong>guía de estilos</strong> a seguir del proyecto.</p>
+                    <h2 id="declaraci-n-de-variables">Declaración de variables</h2>
+                    <p>Hay dos limitaciones importantes en la decalración de Variables en JavaScript:</p>
+                    <ol>
+                        <li>El nombre solo puede tener letras, dígitos o los símbolos <code>$</code> o <code>_</code>.
+                        </li>
+                        <li>El primer caracter no puede ser un dígito.</li>
+                    </ol>
+                    <p>Además, JavaScript usa CamelCase en la declaración de variables, así, aunque algunos nombres
+                        estén permitidos, no son recomendados por la guía de estilos.</p>
+                    <p>Así tendríamos estos ejemplos válidos y no válidos:</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Variables válidas</span>
+
+<span class="hljs-keyword">let</span> variableCamelCase;
+<span class="hljs-keyword">let</span> variable123;
+
+<span class="hljs-keyword">let</span> $ = <span class="hljs-number">1</span>; <span class="hljs-comment">// También es válido declarar $</span>
+<span class="hljs-keyword">let</span> _ = <span class="hljs-number">1</span>; <span class="hljs-comment">// Igual que si declaras como variable _</span>
+console.<span class="hljs-keyword">log</span>($ + _); <span class="hljs-comment">// Se podrá hacer esta suma</span>
+
+<span class="hljs-comment">// Variables NO válidas</span>
+<span class="hljs-keyword">let</span> <span class="hljs-built_in">variable</span><span class="hljs-params">-invalida</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-number">3</span>mendamenteInvalido;
+
+<span class="hljs-comment">// Variables válidas pero no recomendadas</span>
+
+<span class="hljs-keyword">let</span> snake_case;
+<span class="hljs-keyword">let</span> allnamesinsmallcase;
+</code></pre>
+                    <p>Ahora vamos a hablar de las diferencias entre <strong>var</strong>, <strong>let</strong> y
+                        <strong>const</strong> ya que a primera vista parece que sirven para lo mismo, pero hay ciertos
+                        detalles que las hacen completamente diferentes.</p>
+                    <h2 id="var-vs-let">Var vs Let</h2>
+                    <p><code>var</code> y <code>let</code> son las dos palabras reservadas en JavaScript para declarar
+                        variables. <code>let</code> se introdujo en <strong>ES6</strong> para resolver varios de las
+                        confusiones que <code>var</code> generaba con su comportamiento, que derivaban en muchos bugs.
+                    </p>
+                    <h3 id="reglas-de-scope">Reglas de Scope</h3>
+                    <p>La mayor diferencia tiene que ver con las <strong>reglas de scope</strong>, ya veremos más
+                        adelante en profundidad el concepto de Scope, básicamente es el entorno encapsulado en que se
+                        ejecuta un trozo de código. Las variables declaradas con <code>var</code> están delimitadas al
+                        <strong>cuerpo de la función</strong> (function scope) mientras que <code>let</code>está
+                        delimitado al bloque que le rodea, marcado por <code>{ }</code> (block scope)</p>
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scope_rules</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> hello = <span class="hljs-string">"Hello"</span>;
+    <span class="hljs-keyword">let</span> world = <span class="hljs-string">"World"</span>;
+
+    <span class="hljs-built_in">console</span>.log(hello, world); <span class="hljs-comment">// Hello World</span>
+
+    {
+      <span class="hljs-keyword">var</span> name = <span class="hljs-string">"Lucas"</span>
+      <span class="hljs-keyword">let</span> surname = <span class="hljs-string">"Fernandez"</span>;
+      <span class="hljs-built_in">console</span>.log(name, surname); <span class="hljs-comment">// Lucas Fernandez</span>
+    }
+
+    <span class="hljs-built_in">console</span>.log(name); <span class="hljs-comment">// Lucas</span>
+    <span class="hljs-comment">//console.log(surname); // ReferenceError</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Reference Error"</span>);
+}
+
+scope_rules()
+</code></pre>
+                    <h3 id="hoisting">Hoisting</h3>
+                    <p>Hoisting es uno de los términos más confusos en JavaScript, básicamente ya hemos hablado de que
+                        JavaScript es un lenguaje interpretado que recorre línea por línea y ejecuta lo que va
+                        encontrando, pero la realidad es que recorre línea por línea <strong>dos veces</strong> el
+                        programa, una para reservar variables y otras cosas, y la segunda para ejecutar el código.
+                        <strong>Hoisting</strong> es el proceso de reservar espacio de memoria para variables y
+                        funciones.</p>
+                        <br>
+                    <p>En JavaScript, <code>var</code> hace que la variable esté <code>hoisted</code> (inizializada
+                        antes de ser declarada con <code>undefined</code>) mientras que <code>let</code> lanzará un
+                        <strong>ReferenceError</strong> si se llama antes de ser declarado</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// hoisted</span>
+<span class="hljs-built_in">console</span>.log(hoisted);
+<span class="hljs-keyword">var</span> hoisted = <span class="hljs-string">"hoisted"</span>;
+<span class="hljs-built_in">console</span>.log(hoisted)
+
+<span class="hljs-comment">// not hoisted</span>
+<span class="hljs-comment">//console.log(notHoisted); ReferenceError</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Reference Error"</span>);
+<span class="hljs-keyword">let</span> notHoisted = <span class="hljs-string">"not hoisted"</span>;
+<span class="hljs-built_in">console</span>.log(notHoisted);
+</code></pre>
+                    <h3 id="propiedad-global">Propiedad Global</h3>
+                    <p>En el <a href="/advanced/2_global_namespace/index.html">contexto global</a> <code>var</code>
+                        creará una propiedad en el objeto global mientras que <code>let</code> no.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> globalVar = <span class="hljs-string">"Global"</span>;
+<span class="hljs-keyword">let</span> notGlobalVar = <span class="hljs-string">"Not global"</span>;
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.globalVar);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.notglobalVar);
+</code></pre>
+                    <h3 id="re-declaraci-n">Re-Declaración</h3>
+                    <p>En <strong>modo estricto</strong> <code>var</code> permite re-declara variables mientras que
+                        <code>let</code> lanzará un <strong>SintaxError</strong></p>
+                    <pre><code class="lang-javascript"><span class="hljs-meta">'use strict'</span>;
+<span class="hljs-keyword">var</span> redeclare = <span class="hljs-string">"hello"</span>;
+<span class="hljs-keyword">var</span> redeclare = <span class="hljs-string">"world"</span>; 
+
+<span class="hljs-keyword">let</span> notRedeclare = <span class="hljs-string">"hello"</span>; 
+<span class="hljs-comment">//let notRedeclare = "bar2"; </span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Sintax Error"</span>);
+</code></pre>
+                    <h2 id="const">Const</h2>
+                    <p>Las constantes son variables que no pueden cambiar de valor al ser asignadas. Este tipo de
+                        declaración es muy útil cuando el valor asignado no debería ser cambiado en ninguna
+                        circunstancia en tiempo de ejecución, como por ejemplo constantes matemáticas, colores u otros
+                        valores fijos.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> <span class="hljs-built_in">PI</span> = <span class="hljs-number">3.14</span>;
+<span class="hljs-keyword">const</span> COLOR_BLUE = <span class="hljs-string">"00F"</span>;
+<span class="hljs-keyword">const</span> COUNTRY_CODE_SPAIN = <span class="hljs-string">"ES"</span>;
+</code></pre>
+                    <h2 id="gu-a-de-estilos">Guía de estilos</h2>
+                    <p>Pese a que las variables en JavaScript sigan el estilo de CamelCase, está muy extendido el uso de
+                        mayúsuclas para declarar constantes, usando la barra baja para separar palabras</p>
+
+
                     <hr class="code-separator">
 
-                    <h2 id="arrow">Consola Javascript</h2>
-                    <p class="caption">/beginner/2_separation_concerns/index.js</p>
-<pre>
-<code class="language-javascript">    
-console.log("Variables");
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/beginner/2_separation_concerns/index.js</p>
+                    <pre>
+<code class="language-javascript">//Variables
 
-console.log("-------- var ---------");
-// hoisting, variable is defined but not asigned, so undefined
-console.log(greeter);
+// Declaración
 
-var greeter = "hey hi";
+var firstVar = "Hello World";
+let secondVar = "I 'm Lucas";
+const ID_PERSON = "28934289D";
 
-// variable now defined
-console.log(greeter);
+console.log(firstVar);
+console.log(secondVar);
+console.log(ID_PERSON);
 
-var times = 4;
+// declaración en una misma linea
+let nombre = 'Lucas', apellido = 'Fernandez', edad = 27;
 
-if (times > 3) {
-    // overriding variable within the scope
-    var greeter = "say Hello instead"; 
+// declaración "coma first"
+let nombre2 = 'Lucas'
+    , apellido2 = 'Fernandez'
+    , edad2 = 27; 
+
+
+// Var vs Let
+
+// Scope Rules
+
+function scope_rules() {
+    var hello = "Hello";
+    let world = "World";
+    
+    console.log(hello, world); // Hello World
+    
+    {
+        var name = "Lucas"
+        let surname = "Fernandez";
+        console.log(name, surname); // Lucas Fernandez
+    }
+    
+    console.log(name); // Lucas
+    //console.log(surname); // ReferenceError
+    console.log("Reference Error");
 }
 
-console.log(greeter) // "say Hello instead"
+scope_rules()
 
+// Hoisting
 
-console.log("-------- let -------------");
+// hoisted
+console.log(hoisted);
+var hoisted = "hoisted";
+console.log(hoisted)
 
-let greeting = "say Hi";
-if (true) {
-    let greeting = "say Hello instead";
-    console.log(greeting); // "say Hello instead"
-}
-console.log(greeting); // "say Hi"
+// not hoisted
+//console.log(notHoisted); ReferenceError
+console.log("Reference Error");
+let notHoisted = "not hoisted";
+console.log(notHoisted);
 
-</code>
+// Propiedad Global
+
+var globalVar = "Global";
+let notGlobalVar = "Not global";
+
+console.log(window.globalVar);
+console.log(window.notglobalVar);
+
+// Redeclaración
+
+var redeclare = "hello";
+var redeclare = "world"; 
+console.log(redeclare);
+
+let notRedeclare = "hello"; 
+//let notRedeclare = "bar2"; 
+console.log("Sintax Error");</code>
 </pre>
 
         </div>
     </div>
-    <script src="../../prism.js"></script> 
-    <script type="module" src="index.js">
+    <script src="../../prism.js"></script>
+    <script src="index.js">
     </script>
 </body>
 

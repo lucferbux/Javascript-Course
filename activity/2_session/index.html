@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Sesión 2</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/activity/activity.html">
+                < Back</a> <h1>Actividad 2</h1>
+                    <p class="caption">Actividades Sesión Avanzada</p>
+                    <hr class="separator">
+
+                    <h2 id="ejercicio-1">Ejercicio 1</h2>
+                    <ul>
+                        <li>Escribe un programa que tome como entrada un objeto y devuelva una lista con sus
+                            propiedades. Solo puede tener como entrada un objeto y el tipo de vuelta tiene que ser un
+                            array.</li>
+                    </ul>
+                    <pre><code class="lang-javascript"><span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">person</span> {
+    <span class="hljs-attribute">name</span>: “Lucas”,
+    <span class="hljs-attribute">age</span>: <span class="hljs-number">27</span>,
+    <span class="hljs-attribute">profession</span>:”Developer",
+}
+<span class="hljs-comment">// return -&gt; [name, age, profession]</span>
+</code></pre>
+                    <h2 id="ejercicio-2">Ejercicio 2</h2>
+                    <ul>
+                        <li>Enumera los distintos valores que puede tener “this” y pon un ejemplo de cada uno.</li>
+                    </ul>
+                    <h2 id="ejercicio-3">Ejercicio 3</h2>
+                    <ul>
+                        <li>Escribe una arrow function (ES6 function) que tome como parámetro una cadena y la devuelva
+                            invertida. Ej &quot;Hola mundo&quot; quedaría &quot;odnum aloH&quot;</li>
+                    </ul>
+                    <h2 id="ejercicio-4">Ejercicio 4</h2>
+                    <ul>
+                        <li>Crea una clase con el formato ES6. Esta clase va a tener dos atributos, <em>username</em> y
+                            <em>password</em> y un método <em>login()</em> que compruebe que username tiene el valor
+                            <strong>admin</strong> y password el valor <strong>passwd</strong> y en caso positivo, lance
+                            una alerta diciendo que el usuario esté logeado, en caso contrario, que diga que el usuario
+                            o la contraseña son incorrectas. Siendo que:</li>
+                    </ul>
+                    <pre><code class="lang-javascript">let login = new Login(“admin”, “passwd”) // alert -&gt; <span class="hljs-keyword">User</span> <span class="hljs-title">logged</span> <span class="hljs-keyword">in</span>
+let logbad = new Login(“pepe”, “bad”) // alert -&gt; <span class="hljs-keyword">User</span> <span class="hljs-title">or</span> passwd incorrect
+</code></pre>
+                    <h2 id="ejercicio-5">Ejercicio 5</h2>
+                    <p>En este ejercicio os voy a hacer mirar un poco de documentación extra. Y vamos a utilizar el
+                        fichero que se encuentra en <code>activity/2_session/index.html</code>:</p>
+                    <ul>
+                        <li>Crea dos <em>clickListener</em>, para los botones con id <strong>loginSuccess</strong> y
+                            <strong>loginFailure</strong>. En el primero crearemos un objeto login que sea correcto y
+                            llamaremos a la función para que de el resultado correcto. En el segundo crearemos un objeto
+                            login con parámetros incorrectos y llamaremos a login para que falle. Para ello consulta los
+                            siguientes documentos.</li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById">Get DOM
+                                element</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event">Click
+                                Listener</a></li>
+                    </ul>
+                    <h2 id="ejercicio-6">Ejercicio 6</h2>
+                    <p>En este ejercicio vamos a añadir asincronía al resto de botones:</p>
+                    <ul>
+                        <li>
+                            <p>Crea dos <em>clickListener</em>, para los botones con id
+                                <strong>loginSuccessAsync</strong> y <strong>loginFailureAsync</strong>. En el primero
+                                llamaremos a la función <code>loginWitUsername</code> para que de el resultado correcto.
+                                En el segundo llamaremos a la función con parámetros incorrectos. Os dejo un par de
+                                pistas para resolver el ejercicio.</p>
+                        </li>
+                        <li>
+                            <p>Primero, <code>addEventListener(&#39;click&#39;, () =&gt; {})</code> no acepta asincronía
+                                ya que es una <strong>función síncrona</strong>. Pero es posible sustituir el segundo
+                                argumento <code>() =&gt; {}</code> que es una función, por una función asíncrona (solo
+                                habría que añadir una palabra reservada).</p>
+                        </li>
+                        <li>
+                            <p><code>loginWithUsername</code> devuelve una promesa, que lanza una excepción si falla,
+                                por lo que <strong>habría que atrapar esa excepción para que nuestro programa no
+                                    falle</strong>.</p>
+                        </li>
+                    </ul>
+
+
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/activity/2_session/index.js</p>
+                    <button class="custom-button" id="loginSuccess">Login</button>
+                    <button class="custom-button button-cancel" id="loginFailure">Error</button>
+                    <button class="custom-button" id="loginSuccessAsync">Login Async</button>
+                    <button class="custom-button button-cancel" id="loginFailureAsync">Error Async</button>
+                    <pre>
+<code class="language-javascript">// Ejercicio 1
+
+// Ejercicio 2
+
+// Ejercicio 3
+
+// Ejercicio 4
+
+// Ejercicio 5
+
+// Ejercicio 6
+
+let loginWitUsername = (username, password) => {
+    return new Promise(function (resolve, rejected) {
+        setTimeout(() => {
+        if (username === "admin" && password === "passwd") {
+            resolve("User logged in");
+        } else {
+            rejected("Error: invalid username or password");
+        }
+        }, 200);
+    });
+};</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

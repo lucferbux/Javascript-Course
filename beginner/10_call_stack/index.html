@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interprete, Call Stack & Event Loop</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> <h1>Motor, Call Stack y Event Loop</h1>
+                    <p class="caption">¿Cómo funciona JavaScript por dentro?</p>
+                    <hr>
+
+                    <img class="container-image" src="/meta/0_10_callstack.png" alt="Call Stack">
+                    <p>JavaScript es un lenguaje de programación mono-hilo, no bloqueante, asíncrono y concurrente. Al
+                        decir esto muchos os habréis quedado igual que estábais, es por eso que vamos a repasar cada uno
+                        de los conceptos:</p>
+                    <ol>
+                        <li>
+                            <p><strong>Mono-hilo:</strong> Significa que usa un solo hilo para ejecutar las tareas.
+                                Pensad en un restaurante, puede tener un solo camarero para tomar la comanda y repartir
+                                la comida (mono-hilo) o varios camareros (multi-hilo), JavaScript solo tendría un hilo,
+                                por lo que va procesando los eventos <strong>de uno a uno</strong>.</p>
+                        </li>
+                        <li>
+                            <p><strong>No bloqueante:</strong> Las tareas pueden dejar paso a otras tareas para no
+                                bloquear la ejecución. Siguiendo la analogía de un camarero, si en la mesa 1 le han dado
+                                la comanda, este la transmite al chef, y en vez de esperar a que se cocine y devolverlo
+                                a la mesa 1, podrá ir a las demás mesas pidiendo las comandas hasta que el chef le
+                                indique que la comida está preparada.</p>
+                        </li>
+                        <li>
+                            <p><strong>Asíncrono:</strong> Introduce un concepto llamado callbacks que permite que una
+                                tarea se ejecute en segundo plano y vuelva a llamar a evento una vez que esté preparado.
+                                Al hacerlo, se añadirá en la cola de llamadas y esperará su turno de ejecución,
+                                <strong>NO se ejecuta inmediatamente ya que todos los evnetos tienen que esperar su
+                                    turno de ejecución</strong></p>
+                        </li>
+                    </ol>
+                    <pre><code class="lang-javascript">    <span class="hljs-keyword">let</span> <span class="hljs-attr">comanda1</span> = tomarComanda(mesa1);
+    chef.prepararComida(comanda, <span class="hljs-attr">plato</span> =&gt; realizarPedido(plato));
+    <span class="hljs-keyword">let</span> <span class="hljs-attr">comanda2</span> = tomarComanda(mesa2);
+</code></pre>
+                    <img class="container-image" src="/meta/0_11_asynchronous_callback.png" alt="Asynchronous">
+                    <ol>
+                        <li><strong>Concurrente:</strong> JavaScript <strong>solo puede hacer una cosa a la
+                                vez</strong>, pero no así el navegador, es por eso por lo que hablábamos de las
+                            <strong>WebAPIs</strong>, (en Node serían las llamadas al sistema). No todas las ejecuciones
+                            pasan por el <strong>Call Stack</strong>, es por ello que existe la Task Queue (o Callback
+                            Queue), donde se almacenarán las llamadas de ejecuciones de las <strong>WebAPIs</strong> y
+                            el <strong>Event Loop</strong> que su tarea será</li>
+                    </ol>
+                    <img class="container-image" src="/meta/0_12_event_loop.gif" alt="Event Loop">
+                    <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ" class="image-subheader">JSConf EU</a>
+                    <h2 id="motor-y-runtime">Motor y Runtime</h2>
+                    <p>El <strong>JavaScript runtime</strong> se refiere donde está ejecutandose JavaScript en cada
+                        momento, esto lo acabamos de hablar, si estamos ejecutando JavaScript en un navegador chrome, <a
+                            href="https://v8.dev/">v8</a> será el motor que ejecute JavaScript, si es en Safari, será <a
+                            href="https://developer.apple.com/documentation/javascriptcore">Chakra</a> y así con los
+                        distintos navegadores. Si por el contrario estamos utilizando <a
+                            href="https://nodejs.org/en/">Node</a>, como bien indica en su página principal,
+                        ejecutaremos el motor <strong>v8</strong> esta vez fuera del navegador, con sus propias <a
+                            href="https://nodejs.org/docs/latest-v15.x/api/">APIs</a>.</p>
+                            <br>
+                    <p>Ya hemos hablado un poco de la terminología de JavaScript, pero vamos a volver a enumerar los
+                        elementos que componen su stack de ejecución para asegurar que hemos entendido su funcionamiento
+                    </p>
+                    <h3 id="memory-heap">Memory Heap</h3>
+                    <p>Parte de la memoria donde se almacenan las variables y sus valores. Ya hablamos de esto en el <a
+                            href="/beginner/3_variables/index.html">apartado anterior</a>.</p>
+                    <h3 id="call-stack">Call Stack</h3>
+                    <p>Mecanísmo del interprete de JavaScript que mantiene el orden de ejecución y va llamando a las
+                        diferentes funciones en cola. El funcionamiento sería el siguiente:</p>
+                    <ul>
+                        <li>Cuando un script llama a una función, el interprete lo añade al <strong>call stack</strong>
+                            y empieza a ejecutar la función.</li>
+                        <li>Cualquier llamada que se haga dentro de esta función (otros métodos, otras funciones), se
+                            irá añadiendo al call stack con una estrategia FIFO.</li>
+                        <li>Cuando la función terina de ejecutarse, el interprete la elimina del stack y reauna la
+                            ejeución donde lo había dejado dentro del script.</li>
+                        <li>Si el stack sobrepasa la memoria que tenía asignada (por ejemplo cuando se hacen llamadas
+                            recursivas infinitas), se produce un <strong>stack overflow</strong>
+                        </li>
+                    </ul>
+                    <h3 id="web-api">Web Api</h3>
+                    <p>Funcionalidad que aporta el navegador para realizar determinadas tareas como eventos DOM,
+                        peticiones http, <em>setTimeout</em>...</p>
+                    <h3 id="callback-queue-task-queue">Callback Queue / Task Queue</h3>
+                    <p>Pila donde se almacenarán las llamadas de callback de las funciones implementadas por el
+                        <strong>web api</strong>. Es similar al call stack pero para estas funciones especiales.</p>
+                    <h3 id="event-loop">Event Loop</h3>
+                    <p>Su trabajo principal es mirar tanto al <strong>call stack</strong> y al <strong>task
+                            queue</strong> y poner las funciones del <strong>task queue</strong> en el <strong>call
+                            stack</strong> cuando este está vacío.</p>
+
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/beginner/10_call_stack/index.js</p>
+
+                    <button class="custom-button" onclick="printSquare(4)">Ejecutar Call Stack</button>
+                    <button class="custom-button" onclick="eventLopp()">Ejecutar Event Loop</button>
+                    <pre>
+<code class="language-javascript">//Call Stack event
+function multiply(a, b) {
+    return a * b;
+}
+
+function square(n) {
+    return multiply(n, n);
+}
+
+function printSquare(n) {
+    var squared = square(n);
+    console.log(squared);
+}
+
+// Event loop
+function eventLopp() {
+    console.log("Hi");
+
+    setTimeout(function cb() {
+        console.log("there");
+    }, 5000);
+
+    console.log("World");
+}</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

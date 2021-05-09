@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIFE</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">
+                < Back</a> <h1>IIFE</h1>
+                    <p class="caption">Immediately Invoked Function Expression</p>
+                    <hr class="separator">
+
+
+                    <p>Las Expresiones de funciones inmediatamente invocadas son <strong>funciones JavaScript</strong>
+                        que se ejecutan nada más ser definidas.</p>
+                    <p>Es un patrón de diseño conocido como <a
+                            href="https://developer.mozilla.org/en-US/docs/Glossary/Self-Executing_Anonymous_Function">Funciones
+                            Anónimas Auto-Ejectuadas</a> que consiste en dos partes:</p>
+                    <ol>
+                        <li>La primera parte es una función anónima encerrada en el <code class="code-background">Operador de agrupación
+                                ()</code>. Esto previene el acceso de variables dentro del IIFE y tampoco
+                            &quot;ensucian&quot; el scope global.</li>
+                        <li>La segunda parte crea la función inmediatamente invocada con el comando <code class="code-background">()</code> con
+                            el que JavaScript directamente interpretará la función.</li>
+                    </ol>
+                    <p>Al hacer esto, podemos crear nuevas variables sin que colisionen con el scope original.</p>
+                    <p><strong>Es una buena práctica agrupar una aplicación JavaScript en IIFE</strong></p>
+
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/advanced/4_IIFE/index.js</p>
+<pre>
+<code class="language-javascript">console.log("IIFE");
+
+// Primera variante de IIFE
+(function() {
+    alert("Estás usando IIFE")
+}());
+
+// Segunda variante de IIFE
+(function() {
+    console.log("Estas usando IIFE")
+})();
+
+// Comprobar el scope de IIFE
+(function() {
+    var newName = "Lucas";
+    console.log(newName);
+}());
+
+(function() {
+    var newName = "Maria";
+    console.log(newName);
+}());
+
+console.log(window.newName);</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

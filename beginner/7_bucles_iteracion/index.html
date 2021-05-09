@@ -1,15 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Dato</title>
+    <title>Bucles e iteración</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
 </head>
+
 <body>
-    <h1>Tipos de Dato</h1>
-    <script src="../../prism.js"></script> 
-    <script src="index.js">
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> <h1>Bucles e Iteración</h1>
+                    <p class="caption">Repetición en JavaScript</p>
+                    <hr class="separator">
+
+                    <p>Hay situaciones en las que es necesario que un bloque de instrucciones se ejecute una cantidad
+                        determinada de veces, bien sea para iterar entre múltiples elementos, crear nuevas secuencias...
+                    </p>
+                    <p>Para eso existen declaraciones de bucle. En JavaScript existen varios mecanísmos para implementar
+                        la repetición de código, variando donde se coloca la evaluación.</p>
+                    <img class="container-image" src="/meta/0_13_loops.png" alt="Example of Loops">
+                    <h2 id="for">For</h2>
+                    <p>El bucle <strong>for</strong> es muy parecido a los bucles en <strong>C</strong> o
+                        <strong>Java</strong>. Un bucle for se repite hasta que se alcanza una evaluación en
+                        <strong>false</strong>. La sintaxis principal es:</p>
+                    <pre><code class="lang-pseudocode">for (<span class="hljs-string">[initialExpression]</span>; <span class="hljs-string">[conditionExpression]</span>; <span class="hljs-string">[incrementExpression]</span>)
+  statement
+</code></pre>
+                    <p>El flujo que sigue es el siguiente:</p>
+                    <ol>
+                        <li>La expresión inicial <strong>initialExpression</strong> se ejecuta si existe. Esta expresión
+                            inicia un contador, además esta expresión puede declarar variables.</li>
+                        <li>La expresión <strong>conditionExpression</strong> es evaluada, si el valor es
+                            <strong>true</strong> se ejecuta el bloque de código, si no, el bucle termina.</li>
+                        <li>El bloque <strong>statement</strong> se ejecuta.</li>
+                        <li>Si existe, se ejecuta <strong>incrementedExpression</strong></li>
+                        <li>Se vuelve al <strong>paso 2</strong></li>
+                    </ol>
+<pre><code class="lang-javascript">for (let i = 0; i < 10; i++) {
+    if (i%2 == 0) {
+      console.log("Es par")
+    } else {
+        console.log("No es par")
+    }
+}</code></pre>
+                    <h3 id="for-in">For In</h3>
+                    <p>Existe otro tipo de bucle que itera sobre una propiedad enumerable o las claves de un objetos,
+                        esta sintáxis es muy util para recorrer iterables.</p>
+                    
+<pre><code class="lang-javascript">const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+    console.log(`${property}: ${object[property]}`);
+}</code></pre>
+                    <h2 id="while">While</h2>
+                    <p>Mediante el bucle <strong>while</strong> podemos repetir un conjunto d einstrucciones mientras se
+                        cumpla una condición, la sintaxis es muy sencilla:</p>
+                    <pre><code class="lang-pseudocode"><span class="hljs-keyword">while</span> <span class="hljs-comment">(condition)</span>
+  stateme<span class="hljs-symbol">nt</span>
+</code></pre>
+                    <p>En el momento en que la condición es <strong>false</strong> el bucle se interrumpe dejando de
+                        ejecutar la instrucción.</p>
+                    <p><strong>Hay que tener mucho cuidado de no crear bucles infinitos si se está creando un
+                            contador</strong></p>
+                    
+<pre><code class="lang-javascript">let n = 0;
+let x = 0;
+while (n < 3) {
+    n++;
+    x += n;
+    console.log(x);
+}
+
+// Bucle infinito cuidado ya que la n vale 2
+while (n > 2) {
+    n++;
+    x += n;
+    console.log(x);
+}
+</code></pre>
+                    <h2 id="do-while">Do...While</h2>
+                    <p>El bucle <strong>do..while</strong> es parecido al anterior, solo que primero ejecuta el código y
+                        luego evalua la condición. Es muy útil si queremos asegurarnos de que la expresión se ejecute al
+                        menos una vez.</p>
+                    <pre><code class="lang-pseudocode"><span class="hljs-keyword">do</span>
+  <span class="hljs-keyword">statement</span>
+<span class="hljs-keyword">while</span> (condition);
+</code></pre>
+
+
+<pre><code class="lang-javascript">let i = 0;
+do {
+    i += 1;
+    console.log(i);
+} while (i < 5);
+</code></pre>
+
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/beginner/7_bucles_iteracion/index.js</p>
+                    <pre>
+<code class="language-javascript">//Bucles
+
+// For
+
+for (let i = 0; i < 10; i++) {
+    if (i%2 == 0) {
+        console.log("Es par")
+    } else {
+        console.log("No es par")
+    }
+}
+
+// For In
+
+const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+    console.log(`${property}: ${object[property]}`);
+}
+
+
+// While
+
+let n = 0;
+let x = 0;
+while (n < 3) {
+    n++;
+    x += n;
+    console.log(x);
+}
+
+// Bucle infinito cuidado ya que la n vale 2
+// while (n > 2) {
+//     n++;
+//     x += n;
+//     console.log(x);
+//   }
+
+// While In
+
+let i = 0;
+do {
+    i += 1;
+    console.log(i);
+} while (i < 5);
+
+</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script type="module" src="index.js">
     </script>
 </body>
+
 </html>

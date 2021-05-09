@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">
+                < Back</a> <h1>Callback</h1>
+                    <p class="caption">Asincronía en JavaScript</p>
+                    <hr class="separator">
+
+                    <p>Como ya hablamos en su momento en el apartado de <a
+                            href="/beginner/10_call_stack/README.md">motor, call stack y event loop</a>, JavaScript es
+                        un lenguaje de programación mono-hilo. En su momento pusimos el ejemplo del camarero que podía
+                        mandar la comanda a cocina y mientras se preparaba, seguir tomando notas hasta que el cocinero
+                        le llamase con la comida.</p>
+                        <br>
+                    <p>Básicamente <strong>callback</strong> es un afunción que se ejecuta <strong>después</strong> de
+                        que otra función se haya ejecutado, y permite introducir el concepto de asincronía.</p>
+                        <br>
+                    <p>Los <strong>callbacks</strong> son muy necesarios debido a que las tareas no deben ser
+                        bloqueantes. Si mandáramos una petición de acceso a un servidor, <strong>nuestro programa no
+                            debería quedarse bloqueado esperando la respuesta</strong>, tiene que ser responsivo,
+                        pudiendo seguir ejecutando tareas y poder reaccionar cuando la respuesta del servidor estuviese
+                        disponible.</p>
+                    <h2 id="sint-xis">Sintáxis</h2>
+                    <p>Un callback al final es una función que llama a otra función, por lo que tendremos que declarar
+                        una función que tome otra función como argumento.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-regexp">//</span> Callback Function
+let myCallback = <span class="hljs-function"><span class="hljs-params">(callback)</span> =&gt;</span> {
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        callback(<span class="hljs-string">"1. Callback function ---&gt; logged"</span>);
+    }, <span class="hljs-number">100</span>);
+};
+
+let logUser = <span class="hljs-function"><span class="hljs-params">(response)</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(response);
+};
+
+myCallback(logUser);
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This is going to print before..."</span>);
+</code></pre>
+                    <h3 id="paso-de-argumentos">Paso de argumentos</h3>
+                    <p>Podemos incluir argumentos en nuestro callback si modificamos un poco la función.</p>
+                    <pre><code class="lang-javascript">// Callback Function with arguments
+let logError = <span class="hljs-function"><span class="hljs-params">(<span class="hljs-built_in">error</span>)</span> =&gt;</span> {
+    console.log(<span class="hljs-built_in">error</span>);
+}
+
+let loggingCallback = <span class="hljs-function"><span class="hljs-params">(login, response, <span class="hljs-built_in">error</span>)</span> =&gt;</span> {
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span>(login === <span class="hljs-string">"lucferbux"</span>) {
+            response(<span class="hljs-string">"2. Callback with parameters --&gt; User logged"</span>)
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">error</span>(<span class="hljs-string">"error, username invalid"</span>)
+        }
+    }, <span class="hljs-number">100</span>);
+}
+
+loggingCallback(<span class="hljs-string">"lucferbux"</span>, logUser, logError);
+
+console.log(<span class="hljs-string">"This is going to print before too..."</span>);
+</code></pre>
+
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/advanced/6_callback/index.js</p>
+                    <pre>
+<code class="language-javascript">// Callback
+
+let myCallback = (callback) => {
+    setTimeout(() => {
+        callback("1. Callback function ---> logged");
+    }, 100);
+};
+
+let logUser = (response) => {
+    console.log(response);
+};
+
+myCallback(logUser);
+
+console.log("This is going to print before...");
+
+
+// 2. Passing arguments
+
+// Having an error
+let logError = (error) => {
+    console.log(error);
+}
+
+let loggingCallback = (login, response, error) => {
+    setTimeout(() => {
+        if(login === "lucferbux") {
+            response("2. Callback with parameters --> User logged")
+        } else {
+            error("error, username invalid")
+        }
+    }, 100);
+}
+
+loggingCallback("lucferbux", logUser, logError);
+
+
+console.log("This is going to print before too...");</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

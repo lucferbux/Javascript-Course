@@ -1,39 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Namespace</title>
+    <title>Namespace</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
 </head>
+
 <body>
     <div class="container">
         <div class="section">
-            <a class="back-button" href="/advanced/advanced.html">< Back</a>
-            <h1>Global Namespace</h1>
-            <p class="caption">Funcionamiento del Scope en Javascript</p>
-            <hr class="separator">
-            <p>El Scope en Javascript funciona.... </p>
-            
+            <a class="back-button" href="/advanced/advanced.html">
+                < Back</a> <h1>Namespace</h1>
+                    <p class="caption">Funcionamiento del Scope en JavaScript</p>
+                    <hr class="separator">
 
-            <hr class="code-separator">
-            
-            <h2 id="arrow">Consola Javascript</h2>
-            <p class="caption">/advanced/2_global_namespace/index.js</p>
-<pre>
-<code class="language-javascript">console.log("Global Namespace");
+                    <p><strong>Namespace</strong> es el término que se refiere al paradigma de programación que
+                        proporciona <strong>scope</strong> o alcance a los identificadores (palabras reservadas de
+                        variables, funciones, tipos...), para prevenir colisiones entre ellos. Un ejemplo muy claro es
+                        cuando declaramos una variable en el cuerpo principal de ejecución y declaramos otra variable
+                        con el mismo nombre dentro de una función.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> name = <span class="hljs-string">"Lucas"</span>;
 
-// Default root namespace in a browser is window
+<span class="hljs-built_in">console</span>.log(name);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayNewName</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> name = <span class="hljs-string">"Ricardo"</span>;
+    <span class="hljs-built_in">console</span>.log(name);
+}
+
+displayNewName();
+</code></pre>
+                    <h2 id="global-namespace">Global Namespace</h2>
+                    <p>En JavaScript, el <strong>Namespace Global</strong> representa el bloque global de ejecución. Si
+                        estamos ejecutando el programa dentro de un navegador, el <strong>scope global</strong> será
+                        <code>window</code>. Por otro lado, en <strong>nodeJS</strong> el <strong>scope global</strong>
+                        será el módulo en ejecución.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span> === <span class="hljs-keyword">this</span>); <span class="hljs-regexp">//</span> Equal <span class="hljs-keyword">in</span> browse
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
+</code></pre>
+                    <h2 id="declaraci-n-de-variables">Declaración de variables</h2>
+                    <p>Cada variable, al declararse en un scope, quedará visible para sus miembros y descendientes. como
+                        hemos comentado en el <a href="/beginner/3_variables/index.html">módulo 3</a> <code>var</code>
+                        añade la variable al scope global si se encuentra en este entorno, es por ello que podemos
+                        demostrar fácilemente la visibilidad de las declaraciones.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Global Scope</span>
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Variable</span> = <span class="hljs-string">"Hello World"</span>;
+console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">Variable</span>);
+
+<span class="hljs-comment">// Function Scope</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myScope</span></span>() {
+    <span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Name</span> = <span class="hljs-string">"Lucas"</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span><span class="hljs-type">Name</span>
+}
+
+console.log(myScope())
+console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">Name</span>); <span class="hljs-comment">//should be undefined</span>
+
+<span class="hljs-comment">// Global Scope</span>
+console.log(<span class="hljs-string">"%c5. Creating new variable"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Name</span> = <span class="hljs-string">"Lucas Fernandez"</span>;
+console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">Name</span>); <span class="hljs-comment">//should be Lucas Fernandez</span>
+</code></pre>
+
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/advanced/2_global_namespace/index.js</p>
+                    <pre>
+<code class="language-javascript">// Namespace
+
+// 1. Namespace in Javascript
+let name = "Lucas";
+
+console.log(name);
+
+function displayNewName() {
+    let name = "Ricardo";
+    console.log(name);
+}
+
+displayNewName();
+
+// 2. Default root namespace in a browser is window
 console.log(window);
+console.log(window === this); // Equal in browse
+console.log(this);
 
-// Each variable declared is attached in the window
+// 3. Each variable declared is attached in the window
 var newVariable = "Hello World";
 console.log(window.newVariable);
 
-// The way to avoid collision is create variables in it's own scope (functions...)
-
+// 4. The way to avoid collision is create variables in it's own scope (functions...)
 function myScope() {
     var newName = "Lucas"
     return newName
@@ -42,15 +105,16 @@ function myScope() {
 console.log(myScope())
 console.log(window.newName); //should be undefined
 
-// Creating this variable should change that
+// 5.Creating this variable should change that
 var newName = "Lucas Fernandez";
 console.log(window.newName); //should be Lucas Fernandez</code>
 </pre>
 
         </div>
     </div>
-    <script src="../../prism.js"></script> 
+    <script src="../../prism.js"></script>
     <script src="index.js">
     </script>
 </body>
+
 </html>

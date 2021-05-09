@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> <h1>Operadores</h1>
+                    <p class="caption">Operaciones en JavaScript</p>
+                    <hr class="separator">
+
+                    <p>Antes de enumerar los distintos operadores, hay cierta terminilogía que debemos cubrir:</p>
+                    <ul>
+                        <li>
+                            <p>Un <strong>operando</strong> es el elemento al que los operadores se aplican. Por ejemplo
+                                en una suma <code>2 + 3</code>, el operador de la izquierda es <code>2</code>, el de la
+                                derecha es <code>3</code> y el operador es <code>+</code></p>
+                        </li>
+                        <li>
+                            <p>Un <strong>operador</strong> es unario si tiene un solo operador, como por ejemplo la
+                                negación <code>-3</code> mientras que es binario si tiene dos operandos, <code>2
+                                    3</code>.</p>
+                        </li>
+                        <li>
+                            <p>La <strong>precedencia</strong> de operadores indica el orden de operación. Si en una
+                                misma linea de ejecución encontramos diferentes operadores y palabras reservadas,
+                                JavaScript los ejecutará en el orden indicado en <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">esta
+                                    lista</a>.</p>
+                        </li>
+                    </ul>
+                    <h2 id="operadores-aritm-ticos">Operadores Aritméticos</h2>
+                    <p>Los operadores aritméticos modifcian el valor de una variable. Siguen el orden de precedencia
+                        antes mencionado.</p>
+<pre><code class="lang-javascript">// Operadores Aritméticos
+let a = 30;
+let b = 50;
+
+// Addition
+let add = a + b;
+console.log(`add: ${add}`)
+
+// Subtraction
+let sub = a - b
+console.log(`sub: ${sub}`)
+
+// Multiplication
+let mul = a * b
+console.log(`mul: ${mul}`)
+
+// Division
+let div = a / b
+console.log(`div: ${div}`)
+
+// Module
+let modd = b % a
+console.log(`modd: ${modd}`)
+
+// Exponent
+let exp = a**b
+console.log(`exp: ${exp}`)</code></pre>
+                    <h2 id="operadores-de-comparaci-n">Operadores de Comparación</h2>
+                    <p>Comparan valores de ambos lados de la operación y deciden la relación entre ambos.</p>
+<pre><code class="lang-javascript">// Operadores de Comparación
+a = 30;
+b = 50;
+
+// Equality
+let eq = a == b;
+console.log(`eq: ${eq}`);
+
+// Inequality
+let ieq = a != b;
+console.log(`ieq: ${ieq}`);
+
+// Greater
+let gt = a > b;
+console.log(`gt: ${gt}`);
+
+// Less
+let ls = a < b;
+console.log(`ls: ${ls}`);
+
+// Greater or equal
+let gteq = a >= b;
+console.log(`gteq: ${gteq}`);
+
+// Less or equal
+let lseq = a <= b;
+console.log(`lseq: ${lseq}`);
+
+console.log(30 > 30);
+console.log(30 >= 30);</code></pre>
+
+                    <h2 id="operadores-de-asignaci-n">Operadores de Asignación</h2>
+                    <p>Ya hemos visto varias veces estos operadores al declarar variables, aquí vamos a ver algunas de
+                        sus propiedades.</p>
+<pre><code class="lang-javascript">// Operadores de Asignación
+a = 30;
+b = 50;
+
+// Assignment (=)
+let c = a + b;
+console.log(c);
+
+// Addition with assignment
+c = 60;
+c += a;
+console.log(c);
+
+// Subtraction with assignment
+c = 60;
+c -= a;
+console.log(c);
+
+// Multiplication with assignment
+c = 60;
+c *= a;
+console.log(c);
+
+// Division with assignment
+c = 60;
+c /= a;
+console.log(c);</code></pre>
+                    <h2 id="operadores-l-gicos">Operadores Lógicos</h2>
+                    <p>Estos operadores son utilizados dentro de los controles de flujo que veremos en la siguiente
+                        sección. Todos devuelven un tipo lógico (true or false) cuando se realiza la operación.</p>
+<pre><code class="lang-javascript">// Operadores Lógicos
+a = 30;
+b = 50;
+c = [20, 30, 70, 80];
+let at = true;
+let bf = false;
+
+// AND operator
+console.log(at && bf);
+
+// OR operator
+console.log(at || bf);
+
+// NOT operator
+console.log(!at);
+
+console.log("------------")
+
+// Membership
+console.log(a in c);</code></pre>
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/beginner/5_operadores/index.js</p>
+                    <pre>
+<code class="language-javascript">// Operadores Aritméticos
+console.log("%cOperadores Aritméticos", 'color: //229179; font-size: 16px;');
+let a = 30;
+let b = 50;
+
+// Addition
+let add = a + b;
+console.log(`add: ${add}`);
+
+// Subtraction
+let sub = a - b;
+console.log(`sub: ${sub}`);
+
+// Multiplication
+let mul = a * b;
+console.log(`mul: ${mul}`);
+
+// Division
+let div = a / b;
+console.log(`div: ${div}`);
+
+// Module
+let modd = b % a;
+console.log(`modd: ${modd}`);
+
+// Exponent
+let exp = a**b;
+console.log(`exp: ${exp}`);
+
+
+// Operadores de Comparación
+console.log("%cOperadores de Compraración", 'color: //229179; font-size: 16px;');
+// Ejemplos de operadores de comparación
+a = 30;
+b = 50;
+
+// Equality
+let eq = a == b;
+console.log(`eq: ${eq}`);
+
+// Inequality
+let ieq = a != b;
+console.log(`ieq: ${ieq}`);
+
+// Greater
+let gt = a > b;
+console.log(`gt: ${gt}`);
+
+// Less
+let ls = a < b;
+console.log(`ls: ${ls}`);
+
+// Greater or equal
+let gteq = a >= b;
+console.log(`gteq: ${gteq}`);
+
+// Less or equal
+let lseq = a <= b;
+console.log(`lseq: ${lseq}`);
+
+console.log(30 > 30);
+console.log(30 >= 30);
+
+
+// Operadores de Asignación
+console.log("%cOperadores de Asignación", 'color: //229179; font-size: 16px;');
+// Ejemplos de operadores de asignación
+a = 30;
+b = 50;
+
+// Assignment (=)
+let c = a + b;
+console.log(c);
+
+// Addition with assignment
+c = 60;
+c += a;
+console.log(c);
+
+// Subtraction with assignment
+c = 60;
+c -= a;
+console.log(c);
+
+// Multiplication with assignment
+c = 60;
+c *= a;
+console.log(c);
+
+// Division with assignment
+c = 60;
+c /= a;
+console.log(c);
+
+// Operadores Lógicos, de Identidad y Pretenencia
+console.log("%cOperadores Lógicos, de Identidad y Pretenencia", 'color: //229179; font-size: 16px;');
+a = 30;
+b = 50;
+c = [20, 30, 70, 80];
+let at = true;
+let bf = false;
+
+// AND operator
+console.log(at && bf);
+
+// OR operator
+console.log(at || bf);
+
+// NOT operator
+console.log(!at);
+
+console.log("------------")
+
+// Membership
+console.log(a in c);</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script type="module" src="index.js">
+    </script>
+</body>
+
+</html>

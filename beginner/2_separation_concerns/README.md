@@ -2,7 +2,7 @@
 
 ## 1. Separación de Preocupaciones
 
-1. Ahora el tag `<script>` tiene un atributo llamado **src**. Esto indica el fichero que cargará con el código Javascript.
+1. Ahora el tag `<script>` tiene un atributo llamado **src**. Esto indica el fichero que cargará con el código JavaScript.
 2. Separar diferentes archivos permite llevar a cabo la [Separación de Preocupaciones](https://en.wikipedia.org/wiki/Separation_of_concerns) muy importante en el mundo del desarrollo.
 
 ## 2. Módulos

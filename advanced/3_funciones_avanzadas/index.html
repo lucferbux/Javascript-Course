@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Functions</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="section">
+      <a class="back-button" href="/advanced/advanced.html">
+        < Back</a> <h1>Funciones Avanzadas</h1>
+          <p class="caption">Funciones en ES6</p>
+          <hr class="separator">
+
+          <p>Siguiendo con lo visto en <a href="/beginner/8_functiones/index.html">el módulo de funciones</a>, vamos a
+            mostrar algunas características bastante peculiares de las funciones tradicionales antes de pasar a los
+            cambios introducidos en <strong>ES6</strong>.</p>
+          <h2 id="conceptos">Conceptos</h2>
+          <h3 id="recursion">Recursion</h3>
+          <p>La <strong>recursión</strong> es un patrón de programación que permite la resolución de una tarea mediante
+            la llamada recursiva de una misma función.</p>
+          <pre><code class="lang-javascript"><span class="hljs-function">function <span class="hljs-title">cuadrado</span>(<span class="hljs-params"><span class="hljs-keyword">base</span>, exponente</span>) </span>{
+  <span class="hljs-keyword">if</span>(exponente == <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">base</span>;
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">base</span> * cuadrado(<span class="hljs-keyword">base</span>, exponente - <span class="hljs-number">1</span>)
+  }
+}
+
+console.log(cuadrado(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>));
+</code></pre>
+          <h3 id="closure">Closure</h3>
+          <p>Un <strong>closure</strong> es una función que recuerda sus valores declarados y que puede acceder a ellos
+            después de su ejecución. <strong>Esto no es posible en muchos lenguajes</strong> ya que las variables solo
+            estarán disponibles el tiempo de vida de ejecución de la función.</p>
+          <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">closureFunc</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> name = <span class="hljs-string">"Lucas"</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayName</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(name);
+  }
+  <span class="hljs-keyword">return</span> displayName;
+}
+
+<span class="hljs-keyword">let</span> newFunc = closureFunc();
+newFunc();
+</code></pre>
+          <h3 id="rest-parameter-y-spread-operator">Rest Parameter y Spread Operator</h3>
+          <p>Muchas funciones en JavaScript soportan un número arbitrario de funciones, es posible indicar en una
+            función (a partir de <strong>ES6</strong>) un número indeterminado de parámetros mediante el <strong>rest
+              parameter</strong>.</p>
+          <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumAllNumbers</span><span class="hljs-params">(<span class="hljs-rest_arg">...numbers</span>)</span> </span>{
+  let sum = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span>(let i of numbers) {
+    sum+=i;
+  } 
+  <span class="hljs-keyword">return</span> sum;
+}
+console.log(sumAllNumbers(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>));
+console.log(sumAllNumbers(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+</code></pre>
+          <p>Por otro lado podemos usar el <strong>spread operator</strong> para expandir iterables (entre otras cosas)
+            y poder usarlo como parámetros de una función.</p>
+          <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> arr2 = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
+<span class="hljs-keyword">let</span> sumArr = [...arr1, ...arr2];
+console.log(sumArr);
+console.log(sumAllNumbers(...sumArr));
+</code></pre>
+          <h2 id="arrow-function-es6">Arrow Function ES6</h2>
+          <p>Ahora vamos a hablar de las <strong>arrow functions</strong> presentes desde <strong>ES6</strong>. Es una
+            sintáxis mucho más clara que además simplifica la forma en la que las funciones se comportan, asimilándolo a
+            otros lenguajes de programación. Vamos a ver sus características comparándolo con funciones tradicionales.
+          </p>
+          <h3 id="1-sintaxis">1. Sintaxis</h3>
+          <pre><code class="lang-javascript"><span class="hljs-comment">// ES5</span>
+<span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x, y</span>) </span>{
+  <span class="hljs-keyword">return</span> x + y;
+};
+<span class="hljs-comment">// ES6</span>
+<span class="hljs-keyword">let</span> add = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> { <span class="hljs-keyword">return</span> x + y };
+</code></pre>
+          <p>Permite aplicar y reducir las lineas de código de la función hasta llegar a la mínima expresión.</p>
+          <pre><code class="lang-javascript">let add = <span class="hljs-function"><span class="hljs-params">(x, y)</span> =&gt;</span> x + y
+</code></pre>
+          <p>Además, permite incluso eliminar paréntesis si solo hay un argumento, o directamente no incluir argumentos.
+          </p>
+          <pre><code class="lang-javascript"><span class="hljs-comment">// One argument</span>
+<span class="hljs-keyword">let</span> squareNum = <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x * x;
+
+<span class="hljs-comment">// No argument</span>
+<span class="hljs-keyword">let</span> helloWorld = <span class="hljs-function"><span class="hljs-params">_</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello World"</span>);
+</code></pre>
+          <h3 id="2-binding-de-argumentos">2. Binding de argumentos</h3>
+          <p>Las <strong>arrow functions</strong> no tienen <strong>argument binding</strong>. En el caso de las
+            funciones tradicionales se puede acceder al atributo <code>arguments</code> mientras que en arrow functions
+            no:</p>
+          <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> oldFunc = {
+  showArgs() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>);
+  }
+};
+oldFunc.showArgs(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+
+
+<span class="hljs-keyword">let</span> myFunc = {  
+  <span class="hljs-attr">showArgs</span> : <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { 
+  <span class="hljs-built_in">console</span>.log(...arguments); 
+ } 
+}; 
+<span class="hljs-comment">//myFunc.showArgs(1, 2, 3, 4); // ReferenceError</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"ReferenceError"</span>);
+</code></pre>
+          <h3 id="3-uso-de-this-">3. Uso de &quot;this&quot;</h3>
+          <p>Las <strong>arrow functions</strong> no hacen uso de this externo, no funciona el binding, mientras que en
+            las funciones tradicionales sí.</p>
+          <pre><code class="lang-javascript">let person = {
+  name: <span class="hljs-string">"Lucas Fernandez"</span>,
+  thisInArrow: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"My name (arrow) is "</span> + <span class="hljs-keyword">this</span>.name); <span class="hljs-regexp">//</span> <span class="hljs-literal">no</span> <span class="hljs-string">'this'</span> binding here
+  },
+  thisInArrowPassingelement: <span class="hljs-function"><span class="hljs-params">(nameBind)</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"My name (arrow) is "</span> + nameBind); <span class="hljs-regexp">//</span> <span class="hljs-literal">no</span> <span class="hljs-string">'this'</span> binding here
+  },
+  thisInRegular() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"My name is "</span> + <span class="hljs-keyword">this</span>.name); <span class="hljs-regexp">//</span> <span class="hljs-string">'this'</span> binding works here
+  },
+};
+person.thisInArrow();
+person.thisInArrowPassingelement(person.name);
+person.thisInRegular();
+</code></pre>
+          <h3 id="4-palabra-reservada-new-">4. Palabra reservada &quot;new&quot;</h3>
+          <p>Las funciones tradicionales son <strong>callables()</strong> adn <strong>constructible()</strong>. Mientras
+            que las arrow functions solo <strong>callables()</strong>. Esto significa que mientras que podemos declarar
+            una nueva función tradicional con <code>new</code> una arrow function lanzará un error.</p>
+          <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x, y</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(x + y);
+}
+
+<span class="hljs-keyword">new</span> add(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+
+<span class="hljs-keyword">let</span> addArrow: <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(x + y);
+}
+
+<span class="hljs-comment">//new addArrow(2, 3);</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"SyntaxError"</span>);
+</code></pre>
+          <h2 id="5-duplicaci-n-par-metros">5. Duplicación parámetros</h2>
+          <p>Las funciones tradicionales permiten duplicar nombre de parámetros mientras que las arrow function no.</p>
+          <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sameParameter</span><span class="hljs-params">(x, x)</span> </span>{
+
+}
+
+<span class="hljs-comment">// (x, x) =&gt; {} // SyntaxError</span>
+</code></pre>
+
+
+
+          <hr class="code-separator">
+
+          <h2 id="arrow">Consola JavaScript</h2>
+          <p class="folder">/advanced/3_funciones_avanzadas/index.js</p>
+          <pre>
+<code class="language-javascript">// Funciones Avanzadas
+
+// Recursión
+function cuadrado(base, exponente) {
+  if(exponente == 1) {
+    return base;
+  } else {
+    return base * cuadrado(base, exponente - 1)
+  }
+}
+
+console.log(cuadrado(2, 5));
+
+// Closure
+function closureFunc() {
+  let name = "Lucas";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+
+let newFunc = closureFunc();
+newFunc();
+
+// Rest Paramter
+function sumAllNumbers(...numbers) {
+  let sum = 0;
+  for(let i of numbers) {
+    sum+=i;
+  } 
+  return sum;
+}
+console.log(sumAllNumbers(2, 3, 4, 5));
+console.log(sumAllNumbers(1, 1, 1, 1));
+
+// Spread operator
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let sumArr = [...arr1, ...arr2];
+console.log(sumArr);
+console.log(sumAllNumbers(...sumArr));
+
+
+// Arrow Function
+
+
+// Declaration
+
+var add = function(x, y) {
+  return x + y;
+};
+// ES6
+let addShort = (x, y) => { return x + y };
+console.log(addShort(1, 2));
+
+let addShorter = (x, y) => x + y 
+console.log(addShorter(1, 2));
+
+// One argument
+let squareNum = x => x * x;
+console.log(squareNum(2));
+
+// No argument
+let helloWorld = _ => console.log("Hello World");
+helloWorld();
+
+// Binding
+
+let oldFunc = {
+  showArgs() {
+    console.log(arguments);
+  }
+};
+oldFunc.showArgs(1, 2, 3, 4)
+
+
+let myFunc = {  
+  showArgs : () => { 
+  console.log(...arguments); 
+  } 
+}; 
+//myFunc.showArgs(1, 2, 3, 4); // ReferenceError
+console.log("ReferenceError");
+
+// This
+
+let person = {
+  name: "Lucas Fernandez",
+  thisInArrow: () => {
+    console.log("My name (arrow) is " + this.name); // no 'this' binding here
+  },
+  thisInArrowPassingelement: (nameBind) => {
+    console.log("My name (arrow) is " + nameBind); // no 'this' binding here
+  },
+  thisInRegular() {
+    console.log("My name is " + this.name); // 'this' binding works here
+  },
+};
+person.thisInArrow();
+person.thisInArrowPassingelement(person.name);
+person.thisInRegular();
+
+// New
+
+function add(x, y) {
+  console.log(x + y);
+}
+
+new add(2, 3);
+
+let addArrow = (x, y) => {
+  console.log(x + y);
+};
+
+//new addArrow(2, 3);
+console.log("SyntaxError");</code>
+</pre>
+
+    </div>
+  </div>
+  <script src="../../prism.js"></script>
+  <script src="index.js">
+  </script>
+</body>
+
+</html>

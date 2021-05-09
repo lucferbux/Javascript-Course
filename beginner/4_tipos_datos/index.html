@@ -1,15 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tipos de Dato</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
 </head>
+
 <body>
-    <h1>Tipos de Dato</h1>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">< Back</a> 
+                    <h1>Tipos de Datos</h1>
+                    <p class="caption">Clasificación de tipos en JavaScript</p>
+                    <hr class="separator">
+
+                    <h2 id="introducci-n">Introducción</h2>
+<p>JavaScript tiene dos tipos de variables: tipos primitivos y tipos por referencia.
+Cada vez que se crea una variable, se reserva un determinado tamaño de memoria. Además, cuando una variable se copia, su valor en memoria también es copiado.
+Al pasar una variable a una función, también crea una copia de la variable</p>
+<h2 id="tipos-primitivos">Tipos primitivos</h2>
+<p>Javasript tiene 6 timpos de datos primitivos: <code>string, number, undefined, null, boolean y symbol</code>. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. <strong>Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor</strong>.</p>
+<h3 id="boolean">Boolean</h3>
+<p>El tipo <b>booleano</b> representa una entidad logica que puede tener dos valores: <code>true</code> y <code>false</code>. Al definir una variable, si el valor es omitido o es <code>0</code>, <code>-0</code>, <code>null</code>, <code>NaN</code>, <code>undefined</code> o una cadena vacía (<code>&quot;&quot;</code>), la variable tiene un valor de <code>false</code>. En el resto de casos tendra un valor de <code>true</code>.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Referencia</a>
+<pre>
+<code class="language-javascript">// Boolean
+let boolVal = true;</code>
+</pre>
+<h3 id="null">Null</h3>
+<p>El tipo <code>null</code> tiene exactamente un valor: <code>null</code>. Representa la noexistencia o invalidez de una dirección de memoria u objeto. Normalmente es utilizado en variables de referencia aunque en JavaScript su uso principal es primitivo.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Glossary/Null">Referencia</a>
+<pre>
+<code class="language-javascript">// Null
+let nullVal = null;</code>
+</pre>
+<h3 id="undefined">Undefined</h3>
+<p>Una variable que no ha sido assignada con un valor tiene el valor de <code>undefined</code>. No hay que confundirlo con <code>null</code>.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Glossary/undefined">Referencia</a>
+<pre>
+<code class="language-javascript">// Undefined
+let undefinedVal = undefined;</code>
+</pre>
+<h3 id="number">Number</h3>
+<p>ECMAScript tiene dos tipos de número: <code>number</code> y <code>bigint</code>. El tipo número tiene una precisión de 64 bits, que varía de entre -(2^53 − 1) y 2^53 − 1. Además los valores representados con coa flotante tienen tres valores simbólicos: <code>+Infinity</code>, <code>-Infinity</code> y <code>NaN</code> (Not a Number).</p>
+<p>El tipo <strong>BigInt</strong> es un primitivo numérico que puede representar enteros con una precisión arbitraria. Por lo tanto pueden representar números muy grandes que de otra forma <code>number</code>no podría.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Referencia</a>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">Referencia Big Int</a>
+<pre>
+<code class="language-javascript">// Number
+let numberVal = 10;
+let numBigIntVal = BigInt(9007199254740991);</code>
+</pre>
+<h3 id="string">String</h3>
+<p>String se utiliza para representar información textual. Es un conjunto de &quot;elemento&quot; de 16 bits sin símbolo. Cada elemento en el tipo <strong>String</strong> ocupa una posición. <strong>El primer elemento es el <code>0</code> y no el <code>1</code></strong> dentro del índice.</p>
+<p><strong>A diferencia de otros lenguajes como Python o C, las cadenas en JavaScript son inmutables</strong>. Esto significa que una vez creadas no se pueden modificar. Aún así, si pueden crearse otras cadenas y asignarse a la misma variable con operaciones como `String.substr()``</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Referencia</a>
+<pre>
+<code class="language-javascript">//String
+let stringVal = "Hello";
+console.log(stringVal);</code>
+</pre>
+<h3 id="symbol">Symbol</h3>
+<p>Un símbolo es un tipo primitivo que puede ser usado como la clave de una propiedad de objeto. En alguno slenguajes de programación se llaman <strong>átomos</strong>.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Glossary/Symbol">Referencia</a>
+<pre>
+<code class="language-javascript">// Symbol
+let symVal = Symbol();</code>
+</pre>
+<h2 id="tipos-por-referencia">Tipos por referencia</h2>
+<p>Por otro lado, hay un tipo compuesto o <code>objeto</code>. Estos objetos almacenan una referencia a un espacio de memoria donde se almacena el valor. Esto permite modificar el valor a lo largo del tiempo y almacenar distintos valores al mismo tiempo.</p>
+
+<h3 id="objetos">Objetos</h3>
+<p>Un objeto es un valor en memoria referenciado por un identificador. En JavaScript los objetos se conocen como una colección de propiedades. JavaScript es un lenguaje orientado a prototipo, donde los objetos almacenan propiedades, que pueden ser añadidas o eliminadas.</p>
+<p>Estas propiedades pueden ser valores de cualquier tipo, incluido otros objetos, lo que permite construir estructuras de datos complejas.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Referencia</a>
+<pre>
+<code class="language-javascript">// Object
+let emptyObject = {};
+let filledObject = {"name": "lucas", "surname": "fernandez"};</code>
+</pre>
+
+<h3 id="arrays">Arrays</h3>
+<p>Los <code>arrays</code>son objetos donde hay una relación entre las propiedades de clave entera y la <strong>longitod</strong> de lla propiedad. Además, hereda del objeto <code>Array.prototype</code> que añade métodos para manipular datos con índice como <code>indexOf</code> o <code>push</code>.</p>
+<p>Además de arrays hay otras colecciones con clave que han sido añadidas en ES6, como <code>set</code> y <code>weakset</code> que representan sets y <code>Map</code> y <code>weakmap</code> que representan mapas de valores.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Referencia</a>
+<pre>
+<code class="language-javascript">// Array
+    let filledArray = ["one", "two", "three"];</code>
+</pre>
+
+<h3 id="funciones">Funciones</h3>
+<p>Más adelante veremos funciones en profundidad, básicamente el tipo de <code>function</code> permite almacenar funciones en variales, debido a que el constructor de las <strong>funciones</strong> deriva del constructor de <code>Object</code>.</p>
+<a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Referencia</a>
+<pre>
+<code class="language-javascript">// Function
+let funVale = function() {
+    return "Hello World";
+}</code>
+</pre>
+                    
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola JavaScript</h2>
+                    <p class="folder">/beginner/4_tipos_datos/index.js</p>
+<pre>
+<code class="language-javascript">console.log("Data types");
+
+// Primitive types
+let boolVal = true;
+console.log(boolVal);
+let nullVal = null;
+console.log(nullVal);
+let undefinedVal = undefined;
+console.log(undefinedVal);
+let numberVal = 10;
+console.log(numberVal);
+let stringVal = "Hello";
+console.log(stringVal);
+let symVal = Symbol();
+console.log(symVal);
+
+
+// Reference types
+let emptyObject = {};
+let filledObject = {"name": "lucas", "surname": "fernandez"};
+console.log(emptyObject);
+console.log(filledObject);
+
+let filledArray = ["one", "two", "three"];
+console.log(filledArray);
+
+let funVale = function() {
+    return "Hello World";
+}
+console.log(funVale());
+
+// Dynamic data types (could change)
+let foo = 42;    // foo is now a number
+foo     = 'bar'; // foo is now a string
+foo     = true;  // foo is now a boolean
+
+// Copying primitive
+var a = 13         // assign `13` to `a`
+var b = a          // copy the value of `a` to `b`
+b = 37             // assign `37` to `b`
+console.log(a)     // => 13
+
+// Copying a reference
+var a = { c: 13 }  // assign the reference of a new object to `a`
+var b = a          // copy the reference of the object inside `a` to new variable `b`
+b.c = 37           // modify the contents of the object `b` refers to
+console.log(a)     // => { c: 37 }</code>
+</pre>
+
+        </div>
+    </div>
     <script src="../../prism.js"></script> 
-    <script src="index.js">
+    <script type="module" src="index.js">
     </script>
 </body>
+
 </html>

@@ -247,6 +247,26 @@ strong {
     opacity: 0.6;
 }
 
+.folder {
+    opacity: 0.6;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+
+.folder {
+    opacity: 0.6;
+    font-size: 18px;
+
+    margin-bottom: 20px;
+}
+
+.folder::before {
+    content:"📂";
+    margin-right: 10px;
+    
+}
+
 .container {
     display: flex;
     justify-content: center;

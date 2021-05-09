@@ -284,6 +284,14 @@ strong {
     margin-top: 20px;
 }
 
+.custom-button {
+    background-color: #3913B8;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    border-style: none;
+}
+
 .container-image {
     width: 100%;
     margin: 30px 0px;
@@ -342,6 +350,11 @@ strong {
     .code-background {
         background-color: #201e24;
         
+    }
+
+    .custom-button {
+        background-color: #ad92fd;
+        color: white;
     }
 
     pre {

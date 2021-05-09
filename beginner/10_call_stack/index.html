@@ -14,25 +14,39 @@
     <div class="container">
         <div class="section">
             <a class="back-button" href="/beginner/beginner.html">< Back</a> 
-                    <h1>Interprete, Call Stack y Event Loop</h1>
+                    <h1>Motor, Call Stack y Event Loop</h1>
                     <p class="caption">¿Cómo funciona Javascript por dentro?</p>
                     <hr class="separator">
+
+                    <img class="container-image" src="/meta/0_10_callstack.png" alt="Header Image">
 
                     <hr class="code-separator">
 
                     <h2 id="arrow">Consola Javascript</h2>
                     <p class="folder">/beginner/10_call_stack/index.js</p>
+
+                    <button class="custom-button" onclick="printSquare(4)">Ejecutar código</button>
 <pre>
 <code class="language-javascript">
+function multiply(a, b) {
+    return a * b;
+}
 
+function square(n) {
+    return multiply(n, n);
+}
 
+function printSquare(n) {
+    var squared = square(n);
+    console.log(squared);
+}
 </code>
 </pre>
 
         </div>
     </div>
     <script src="../../prism.js"></script> 
-    <script type="module" src="index.js">
+    <script src="index.js">
     </script>
 </body>
 

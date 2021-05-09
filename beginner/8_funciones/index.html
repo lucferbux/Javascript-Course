@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Dato</title>
+    <title>Funciones</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
 </head>
+
 <body>
-    <h1>Tipos de Dato</h1>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">< Back</a> 
+                    <h1>Funciones</h1>
+                    <p class="caption">Funciones clásicas en Javascript</p>
+                    <hr class="separator">
+                    
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola Javascript</h2>
+                    <p class="folder">/beginner/8_funciones/index.js</p>
+<pre>
+<code class="language-javascript">    
+
+console.log("Hello World");
+
+console.log(functionDeclaration())
+
+// Function declaration -> Regular function, it will run at the start of the scope with hoisting
+
+function functionDeclaration() {
+    console.log("function declaration");
+};
+
+// Function expression -> Anonymous function assigned to a variable
+
+var functionExpression = function() {
+    console.log("function expression");
+}
+
+</code>
+</pre>
+
+        </div>
+    </div>
     <script src="../../prism.js"></script> 
-    <script src="index.js">
+    <script type="module" src="index.js">
     </script>
 </body>
+
 </html>

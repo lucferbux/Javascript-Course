@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">< Back</a>
+            <h1>Funciones Avanzadas</h1>
+            <p class="caption">Funcionalidades avanzadas dentro de funciones</p>
+            <hr class="separator">
+            <p>Javascript cuenta con </p>
+            <h2 id="arrow">Arrow Function vs Normal Function</h2>
+
+            <h3 id="sintaxis">1. Sintaxis</h3>
+<pre>
+<code class="language-javascript">// ES5
+var add = function(x, y) {
+    return x + y;
+};
+// ES6
+let add = (x, y) => { return x + y };</code>
+</pre>
+
+            <p>Permite aplicar y reducir las lineas de código de la función hasta llegar a la mínima xpressión.</p>
+
+            <h3 id="binding">2. Binding de argumentos</h3>
+
+            <p>Las <strong>arrow functions</strong> no tienen <strong>argument binding</strong>. En el caso de las funciones tradicionales se puede acceder al atributo `arguments` mientras que en arrow functions no:</p>
+
+<pre>
+<code class="language-javascript">let myFunc = {  
+  showArgs : () => { 
+  console.log(...arguments); 
+  } 
+}; 
+myFunc.showArgs(1, 2, 3, 4); // ERROR</code>
+</pre>
+
+            <h3 id="this">3. Uso de this</h3>
+
+            <p>Las <strong>arrow functions</strong> no hacen uso de this externo, no funciona el binding, mientras que en las funciones tradicionales sí.</p>
+
+            <h3 id="keyword">4. Funcionalidad</h3>
+
+            <p>Las funciones tradicionales son <strong>callables()</strong> adn <strong>constructible()</strong>. Minetras que las arrow functions solo <strong>callables()</strong></p>
+
+            <hr class="code-separator">
+            
+            <h2 id="arrow">Consola Javascript</h2>
+            <p class="caption">/advanced/1_funciones_avanzadas/index.js</p>
+<pre>
+<code class="language-javascript">console.log("Funciones Avanzadas");
+
+// Función simple
+
+function sayHello(name) {
+  return `Hello ${name}`;
+}
+
+console.log(sayHello("Lucas"));
+
+// Función anónima
+
+var sayHelloVar = function (name) {
+  return `Hello ${name} anonymously`;
+};
+
+console.log(sayHelloVar("Lucas"));
+
+// ES6 Arrow Function -> This works different
+
+sayHelloModern = (name) => {
+  return `Hello ${name} modenr`;
+};
+
+console.log(sayHelloModern("Lucas"));
+
+// This keyword
+
+let person = {
+  name: "Lucas Fernandez",
+  thisInArrow: () => {
+    console.log("My name (arrow) is " + this.name); // no 'this' binding here
+  },
+  thisInArrowPassingelement: (nameBind) => {
+    console.log("My name (arrow) is " + nameBind); // no 'this' binding here
+  },
+  thisInRegular() {
+    console.log("My name is " + this.name); // 'this' binding works here
+  },
+};
+person.thisInArrow();
+person.thisInArrowPassingelement(person.name);
+person.thisInRegular();
+
+
+// const profile = {
+//     firstName: '',
+//     lastName: '',
+//     setName: function(name) {
+//         console.log(this.firstName);
+//         let splitName= function(n) {
+//             // this will get the global this so it will attach the global context
+//             console.log(this);
+//             let nameArray = n.split(' ');
+//             this.firstName = nameArray[0];
+//             this.lastName = nameArray[1];
+//         }
+//         splitName(name);
+//     }
+// }
+
+// profile.setName('john doe');
+
+
+const profile = {
+    firstName: '',
+    lastName: '',
+    setName: function(name) {
+        console.log(this.firstName);
+        let splitName = (n) => {
+            // As an arrow function, it binds the context of the object
+            console.log(this);
+            let nameArray = n.split(' ');
+            this.firstName = nameArray[0];
+            this.lastName = nameArray[1];
+        }
+        splitName(name);
+    }
+}
+
+profile.setName('john doe');
+console.log(profile.firstName);</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script src="index.js">
+    </script>
+</body>
+</html>

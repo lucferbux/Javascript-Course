@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipos</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">< Back</a> 
+                    <h1>Prototipos</h1>
+                    <p class="caption">Propiedades de los prototipos</p>
+                    <hr class="separator">
+
+                    <p>Toods los objetos JavaScript heredan propiedades y métodos de un prototipo. Una vez creado un objeto con sus constructores no se puede ampliar la definicón.</p>
+                    <p>Todos los objetos en Javascript heredan de un prototipo:</p>
+                    <ul>
+                    <li>El objeto Date hereda de Date.prototype</li>
+                    <li>El objeto Array hereda de Array.prototype</li>
+                    <li>El objeto Person hereda de Person.prototype</li>
+                    </ul>
+                    <p>Así, en JavaScript, la propiedad <code class="code-background">prototipo</code> permite añadir nuevas propiedades a constructores.</p>
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola Javascript</h2>
+                    <p class="caption">/advanced/6_prototipos/index.js</p>
+                    <pre>
+<code class="language-javascript">console.log("Prototipos");
+
+// Creación de un objeto vacío
+
+var person = function() {}
+
+// Añadir nuevo atributo con "Object.prototype"
+
+person.prototype.name = 'n/a';
+person.prototype.age = 0;
+
+// Ahora al crear un nuevo objeto, estará vacío pero con dos atributos por defecto
+
+var janeDoe = new person();
+
+console.log(janeDoe);
+console.log(janeDoe.name);
+console.log(janeDoe.age);
+
+person.prototype.hello = function () {
+    return `Hello ${this.name}`;
+}
+
+console.log(janeDoe.hello());</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

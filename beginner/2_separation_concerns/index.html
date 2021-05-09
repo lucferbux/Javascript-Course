@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Steps</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">< Back</a> 
+                    <h1>Separación de Preocupaciones</h1>
+                    <p class="caption">Divisón de los ficheros en Desarrollo Web</p>
+                    <hr class="separator">
+
+                    <h2 id="1-separaci-n-de-preocupaciones">1. Separación de Preocupaciones</h2>
+                    <ol>
+                    <li>Ahora el tag <code class="code-background">&lt;script&gt;</code> tiene un atributo llamado <strong>src</strong>. Esto indica el fichero que cargará con el código Javascript.</li>
+                    <li>Separar diferentes archivos permite llevar a cabo la <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separación de Preocupaciones</a> muy importante en el mundo del desarrollo.</li>
+                    </ol>
+                    <h2 id="2-m-dulos">2. Módulos</h2>
+                    <p>Los módulos en javascript permiten separar los ficheros que contienen el código en trozos más pequeños. Gracias a mecanismos de importación y exportación es posible separar la lógica de las funcionalidades en ficheros más pequeños e importarlos donde fuese necesario. Las dos declaraciones más importantes son <code class="code-background">import</code>y <code class="code-background">export</code>.</p>
+                    <p>Los módulos son evaluados nada más improtarse, por lo que el código que no esté contenido se ejecutará nada más importarse el fichero.</p>
+                    <p>En los módulos, el comando <code class="code-background">this</code> es indefinido, por lo que será necesario hacer operaciones de bind para ejecutar window.</p>
+            
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola Javascript</h2>
+                    <p class="caption">/beginner/2_separation_concerns/index.js</p>
+<pre>
+<code class="language-javascript">
+---- index.js --- 
+
+console.log("Separation of concerns");
+import {externalExecution} from "./additional.js";
+
+externalExecution();
+
+
+----- additional.js ------
+
+// 1. Ejecución de un módulo
+console.log("%c1. Ejecución de un Módulo", 'color: #229179; font-size: 16px;');
+
+function externalExecution() {
+    console.log("I'm being executed");
+}
+
+export { externalExecution };
+
+
+// Extra, window
+
+console.log("Window property");
+
+var test = function() {
+    return this === window;
+}
+
+console.log(test());
+
+
+var testBind = test.bind(window);
+
+console.log(testBind());
+
+</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script type="module" src="index.js">
+    </script>
+</body>
+
+</html>

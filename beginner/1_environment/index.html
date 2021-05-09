@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Steps</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">< Back</a> 
+                    <h1>Creación Entorno</h1>
+                    <p class="caption">Cómo preparar el entorno</p>
+                    <hr class="separator">
+
+                    <h2 id="1-consola-de-desarrollador">1. Consola de desarrollador</h2>
+                    <ol>
+                    <li>Abre Chrome.</li>
+                    <li>En la pantalla principal, pulsa el botón derecho y elige <em>Inspeccionar elemento</em> en el menú.</li>
+                    <li>Selecciona <em>Consola</em> en la pestaña.</li>
+                    <li>Copia y pega el siguiente código y mira qué pasa <code class="code-background">console.log(&#39;Hello World&#39;);</code></li>
+                    <li>Copia y pega el siguiente código y mira qué pasa <code class="code-background">alert(&#39;Hello World&#39;);</code></li>
+                    </ol>
+                    <h2 id="2-entorno">2. Entorno</h2>
+                    <ol>
+                    <li>Descarga Visual Studio Code</li>
+                    <li>Descarga e instala <a href="https://nodejs.org/en/">Node</a></li>
+                    <li>Descarga Live Server en las extensiones de Visual Studio Code.</li>
+                    <li>Selecciona el archivo <code class="code-background">index.html</code> con el botón derecho y pulsa <em>Abrir con Live Server</em></li>
+                    </ol>
+                    <h2 id="3-siguientes-pasos">3. Siguientes pasos</h2>
+                    <ol>
+                    <li>Modifica el código Javascript que se encuentra en el tag `<script></script>``.</li>
+                    <li>Escribe un código que pinte en pantalla un mensaje.</li>
+                    <li>Escribe un código que sume dos números y luego lo imprima en pantalla.</li>
+                    </ol>
+
+
+
+        </div>
+    </div>
+    <!-- Es una buena práctica poner el tag <script> al final del <body> en vez de en el <head>, esto se debe a que el HTML se carga desde arriba a abajo. 
+        El <head> se carga primero, por lo que puede causar algunos problemas:
+        
+            1. Si hay código que altera el <body> no habrá elementos HTML cargados, así que no podrá afectar.
+            2. Si tienes mucho javascript, puede afectar al tiempo de carga.
+    -->
+    <script>
+        // Comment
+        console.log("Hello World");
+    </script>
+</body>
+
+</html>

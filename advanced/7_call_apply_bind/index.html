@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call, Apply & Bind</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">< Back</a> 
+                    <h1>Call, Apply & Bind</h1>
+                    <p class="caption">Añadir contexto a funciones</p>
+                    <hr class="separator">
+
+                    <p>Estos tres métodos se usan para controlar la llamada de la función. <code class="code-background">call()</code> y <code class="code-background">apply()</code> aparecieron en ECMAScript 3 y <code class="code-background">bind()</code> en ESCMAScript 5.</p>
+                    <p>Se puede usar <code class="code-background">call() / apply()</code> para llamar a una función inmediatamente. <code class="code-background">bind()</code> devuelve una función que, una vez ejectutada, tiene el uso correcto de <strong>this</strong>.</p>
+                    <p>En javascript, las funciones</p>
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola Javascript</h2>
+                    <p class="caption">/advanced/7_call_apply_bind/index.js</p>
+                    <pre>
+<code class="language-javascript">console.log("Call, Apply & Bind");
+
+// Call
+console.log("Call");
+
+var myObj = {
+    num: 2
+}
+
+var addNumbers = function(num1, num2) {
+    return this.num + num1 + num2
+}
+
+console.log(addNumbers());
+
+// We can use call to invoke a function attaching the context with some object (and the rest of the parameters)
+console.log(addNumbers.call(myObj, 1, 2));
+
+
+// Apply
+// Same concept as call but passing the parameters as an array
+console.log("Apply");
+
+let params = [1, 2]
+
+console.log(addNumbers.apply(myObj, params));
+
+// Bind
+// Returns a new function with the binding between the object and the function
+// Is used for example to have the context of the object in a callback
+
+console.log("Bind");
+var otherObj = {
+    num1: 5,
+    num2: 4
+}
+
+var otherFunc = function() {
+    return this.num1 + this.num2;
+}
+
+var returnedFunc = otherFunc.bind(otherObj);
+
+console.log(returnedFunc());</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

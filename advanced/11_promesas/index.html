@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesas</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">< Back</a> 
+                    <h1>Promesas</h1>
+                    <p class="caption">Promesas, reject y resolve</p>
+                    <hr class="separator">
+
+                   
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola Javascript</h2>
+                    <p class="caption">/advanced/11_promesas/index.js</p>
+                    <pre>
+<code class="language-javascript">console.log("Promesas");
+
+// Las promesas tienen una función con dos parámetros, resolved y rejected
+
+let randomNumber = () => {
+    return Math.floor(Math.random() * 10);
+}
+
+
+var login = new Promise(function(resolve, rejected) {
+    setTimeout(() => {
+        if(randomNumber() !== 0) {
+            resolve('Logged');
+        } else {
+            rejected('Error: invalid username or password')
+        }
+    }, 100);
+})
+
+
+login
+    .then( (resolved) => {
+        console.log(resolved);
+    })
+    .catch( (rejected) => {
+        console.log(rejected);
+    })
+
+console.log("Run before the promise");</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

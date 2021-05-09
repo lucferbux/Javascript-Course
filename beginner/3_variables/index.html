@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">< Back</a> 
+                    <h1>Variables</h1>
+                    <p class="caption">Variables en Javascript</p>
+                    <hr class="separator">
+
+                    <p>Una variable es una contenedor para almacenar valores. Tradicionalmente esto se ha hecho con la palabra reservada <code class="code-background">var</code>, pero ES6 introdujo dos nuevas palabras, <code class="code-background">const</code> y <code class="code-background">let</code>.</p>
+                    <h2 id="var">Var</h2>
+                    <p>Antes de que existiese ES6 era la declaración por defecto. Tiene ciertas características que lo hacen un poco peculiar y no recomendable.</p>
+                    <h3 id="scope">Scope</h3>
+                    <p>El scope significa donde pueden ser utilizadas estas variables. <code class="code-background">var</code> tiene un scope <strong>global</strong> o de <strong>funcion</strong>. El scrope global es cuando <code class="code-background">var</code> es asignado fuera de un bloque de función, mientras que tiene un scope de función cuando está definido dentro.</p>
+                    <h3 id="hoisting">Hoisting</h3>
+                    <p>Otra de las características que tiene var es <strong>hoisting</strong>, un mecanismo de JavaScript donde las variables y declaraciones se mueven al inicio del scope de su declaración. Eso significa que da igual donde creemos la variable, estará disponible al inicio de ese bloque.</p>
+                    <h3 id="problemas">Problemas</h3>
+                    <p>Por el scope de var, si hacemos una segunda declaración pisará a la función de encima.</p>
+                    <h2 id="let">Let</h2>
+                    <p>Introducido en ES6, es un reemplazo moderno de var. Solventa los errores que hemos comentado.</p>
+                    <h3 id="scope">Scope</h3>
+                    <p><code class="code-background">let</code> está limitado en su bloque de scope {}. Así que una variable declarada en un bloque con let solo existiraé en ese bloque.</p>
+                    <h3 id="re-asignacion-pero-no-re-declaraci-n">Re-asignacion pero no Re-declaración</h3>
+                    <p><code class="code-background">let</code> no puede ser redeclarado dentro de su scope, no como var.</p>
+                    <pre><code class="language-javascript"> 
+let greeting = "say Hi";
+let greeting = "say Hello instead"; // error: Identifier 'greeting' has already been declared   
+                    </code></pre>
+                    
+                    <h3 id="hoisting">Hoisting</h3>
+                    <p>Como var, let se inicializa al principio del código, pero no se le asigna <code class="code-background">undefined</code>.</p>
+                    <h2 id="const">Const</h1>
+
+                    
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola Javascript</h2>
+                    <p class="caption">/beginner/2_separation_concerns/index.js</p>
+<pre>
+<code class="language-javascript">    
+console.log("Variables");
+
+console.log("-------- var ---------");
+// hoisting, variable is defined but not asigned, so undefined
+console.log(greeter);
+
+var greeter = "hey hi";
+
+// variable now defined
+console.log(greeter);
+
+var times = 4;
+
+if (times > 3) {
+    // overriding variable within the scope
+    var greeter = "say Hello instead"; 
+}
+
+console.log(greeter) // "say Hello instead"
+
+
+console.log("-------- let -------------");
+
+let greeting = "say Hi";
+if (true) {
+    let greeting = "say Hello instead";
+    console.log(greeting); // "say Hello instead"
+}
+console.log(greeting); // "say Hi"
+
+</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script type="module" src="index.js">
+    </script>
+</body>
+
+</html>

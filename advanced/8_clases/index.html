@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/advanced/advanced.html">< Back</a> 
+                    <h1>Clases</h1>
+                    <p class="caption">ES6 Clases en JavaScript</p>
+                    <hr class="separator">
+
+                    <p>Las Clases son un concepto de ES6 que funcionan como constructores</p>
+
+                    <hr class="code-separator">
+
+                    <h2 id="arrow">Consola Javascript</h2>
+                    <p class="caption">/advanced/8_clases/index.js</p>
+                    <pre>
+<code class="language-javascript">console.log("ES6 Classes");
+
+// ES 6 Classes
+
+class person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    hello() {
+        return `Hello ${this.name}`
+    }
+
+}
+
+var lucas = new person("Lucas", 26);
+
+console.log(lucas.hello());</code>
+</pre>
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script> 
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

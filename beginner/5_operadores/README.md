@@ -2,7 +2,7 @@
 
 Antes de enumerar los distintos operadores, hay cierta terminilogía que debemos cubrir:
 
-* Un **operando** es el elemento al que los operadores se aplican. Por ejemplo en una suma `2 + 3`, el operador de la izquierda es `2`, el de la derecha es `3` y el operador es `+`
+* Un **operando** es el elemento al que los operadores se aplican. Por ejemplo en una suma `2 + 3`, el operador de la izquierda es `2`, el de la derecha es `3` y el operando es `+`
 
 * Un **operador** es unario si tiene un solo operador, como por ejemplo la negación `-3` mientras que es binario si tiene dos operandos, `2  3 `.
 

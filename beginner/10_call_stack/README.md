@@ -31,7 +31,7 @@ Ya hemos hablado un poco de la terminología de JavaScript, pero vamos a volver 
 
 ### Memory Heap
 
-Parte de la memoria donde se almacenan las variables y sus valores. Ya hablamos de esto en el [apartado anterior](/beginner/3_variables/README.md).
+Parte de la memoria donde se almacenan las variables y sus valores. Vamos a hablar de esto en el [apartado siguiente](/beginner/3_variables/README.md).
 
 ### Call Stack
 

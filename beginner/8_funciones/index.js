@@ -70,7 +70,7 @@ function displayMessage() {
 
 displayMessage();
 
-console.log(innerVariable);
+// console.log(innerVariable); This will fail
 
 // Parámetros
 console.log("%c3. Parámetros", 'color: #229179; font-size: 16px;');

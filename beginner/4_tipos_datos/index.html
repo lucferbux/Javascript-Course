@@ -23,16 +23,16 @@
 Cada vez que se crea una variable, se reserva un determinado tamaño de memoria. Además, cuando una variable se copia, su valor en memoria también es copiado.
 Al pasar una variable a una función, también crea una copia de la variable</p>
 <h2 id="tipos-primitivos">Tipos primitivos</h2>
-<p>Javasript tiene 6 timpos de datos primitivos: <code>string, number, undefined, null, boolean y symbol</code>. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. <strong>Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor</strong>.</p>
+<p>Javasript tiene 6 tipos de datos primitivos: <code>string, number, undefined, null, boolean y symbol</code>. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. <strong>Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor</strong>.</p>
 <h3 id="boolean">Boolean</h3>
-<p>El tipo <b>booleano</b> representa una entidad logica que puede tener dos valores: <code>true</code> y <code>false</code>. Al definir una variable, si el valor es omitido o es <code>0</code>, <code>-0</code>, <code>null</code>, <code>NaN</code>, <code>undefined</code> o una cadena vacía (<code>&quot;&quot;</code>), la variable tiene un valor de <code>false</code>. En el resto de casos tendra un valor de <code>true</code>.</p>
+<p>El tipo <b>booleano</b> representa una entidad lógica que puede tener dos valores: <code>true</code> y <code>false</code>. Al definir una variable, si el valor es omitido o es <code>0</code>, <code>-0</code>, <code>null</code>, <code>NaN</code>, <code>undefined</code> o una cadena vacía (<code>&quot;&quot;</code>), la variable tiene un valor de <code>false</code>. En el resto de casos tendra un valor de <code>true</code>.</p>
 <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Referencia</a>
 <pre>
 <code class="language-javascript">// Boolean
 let boolVal = true;</code>
 </pre>
 <h3 id="null">Null</h3>
-<p>El tipo <code>null</code> tiene exactamente un valor: <code>null</code>. Representa la noexistencia o invalidez de una dirección de memoria u objeto. Normalmente es utilizado en variables de referencia aunque en JavaScript su uso principal es primitivo.</p>
+<p>El tipo <code>null</code> tiene exactamente un valor: <code>null</code>. Representa la no-existencia o invalidez de una dirección de memoria u objeto. Normalmente es utilizado en variables de referencia aunque en JavaScript su uso principal es primitivo.</p>
 <a class="reference" href="https://developer.mozilla.org/en-US/docs/Glossary/Null">Referencia</a>
 <pre>
 <code class="language-javascript">// Null
@@ -65,7 +65,7 @@ let stringVal = "Hello";
 console.log(stringVal);</code>
 </pre>
 <h3 id="symbol">Symbol</h3>
-<p>Un símbolo es un tipo primitivo que puede ser usado como la clave de una propiedad de objeto. En alguno slenguajes de programación se llaman <strong>átomos</strong>.</p>
+<p>Un símbolo es un tipo primitivo que puede ser usado como la clave de una propiedad de objeto. En algunos lenguajes de programación se llaman <strong>átomos</strong>.</p>
 <a class="reference" href="https://developer.mozilla.org/en-US/docs/Glossary/Symbol">Referencia</a>
 <pre>
 <code class="language-javascript">// Symbol

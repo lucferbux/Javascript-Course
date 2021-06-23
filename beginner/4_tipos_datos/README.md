@@ -8,19 +8,19 @@ Al pasar una variable a una función, también crea una copia de la variable
 
 ## Tipos primitivos
 
-Javasript tiene 6 timpos de datos primitivos: `string, number, undefined, null, boolean y symbol`. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. **Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor**.
+Javasript tiene 6 tipos de datos primitivos: `string, number, undefined, null, boolean y symbol`. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. **Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor**.
 
 ### Boolean
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
 
-El tipo `booleano` representa una entidad logica que puede tener dos valores: `true` y `false`. Al definir una variable, si el valor es omitido o es `0`, `-0`, `null`, `NaN`, `undefined` o una cadena vacía (`""`), la variable tiene un valor de `false`. En el resto de casos tendra un valor de `true`.
+El tipo `booleano` representa una entidad lógica que puede tener dos valores: `true` y `false`. Al definir una variable, si el valor es omitido o es `0`, `-0`, `null`, `NaN`, `undefined` o una cadena vacía (`""`), la variable tiene un valor de `false`. En el resto de casos tendra un valor de `true`.
 
 ### Null 
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Glossary/Null)
 
-El tipo `null` tiene exactamente un valor: `null`. Representa la noexistencia o invalidez de una dirección de memoria u objeto. Normalmente es utilizado en variables de referencia aunque en JavaScript su uso principal es primitivo.
+El tipo `null` tiene exactamente un valor: `null`. Representa la no-existencia o invalidez de una dirección de memoria u objeto. Normalmente es utilizado en variables de referencia aunque en JavaScript su uso principal es primitivo.
 
 ### Undefined
 
@@ -50,7 +50,7 @@ String se utiliza para representar información textual. Es un conjunto de "elem
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Glossary/Symbol)
 
-Un símbolo es un tipo primitivo que puede ser usado como la clave de una propiedad de objeto. En alguno slenguajes de programación se llaman **átomos**.
+Un símbolo es un tipo primitivo que puede ser usado como la clave de una propiedad de objeto. En algunos lenguajes de programación se llaman **átomos**.
 
 ## Tipos por referencia
 

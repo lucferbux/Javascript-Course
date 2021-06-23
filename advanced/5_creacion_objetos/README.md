@@ -4,7 +4,7 @@ En la [sesión pasada](/beginner/9_objetos/README.md) hablábamos de que los obj
 
 ## Funciones Constructoras
 
-Las **constructer functions** o funciones constructoras son funciones cuyo fin es construir nuevos objeots. La palabra reservada `new` se utiliza como operador para crear nuevas instancias basadas en una función constructora. Ya hemos visto algún constructor previamente como `new Array()` o `new Date()`, pero podemos crear nuestras funcioens para objetos personalizados.
+Las **constructer functions** o funciones constructoras son funciones cuyo fin es construir nuevos objeots. La palabra reservada `new` se utiliza como operador para crear nuevas instancias basadas en una función constructora. Ya hemos visto algún constructor previamente como `new Array()` o `new Date()`, pero podemos crear nuestras funciones para objetos personalizados.
 
 Una **función constructora** no es más que una función regular que se convierte en constructor cuando se declara con la palabra `new`.
 
@@ -62,7 +62,7 @@ Al final las **Clases** presentadas en ES6 no son clases como tal. Al menos como
 
 ### Class declaration
 
-Una forma de definir una clase es mediante las **declaraciones de clase**. Para ello se usa la palabra reservada `class` con el nombre de la función. Estas declaraciones se diferencian de las **function declarations** en el hoisting, es decir, si se intentan referenciar antes de declararse Javascript lanzará un error.
+Una forma de definir una clase es mediante las **declaraciones de clase**. Para ello se usa la palabra reservada `class` con el nombre de la función. Estas declaraciones se diferencian de las **function declarations** en el hoisting, es decir, si se intentan referenciar antes de declararse JavaScript lanzará un error.
 
 ```javascript
 // Class delcaration
@@ -126,7 +126,7 @@ console.log(NewPerson.name);
 
 El cuerpo de la clase es la parte entre los corchetes `{}`. Aquí se pueden definir el constructor, propiedades y métodos.
 
-El **constructor** es un método especial para crear e inicializar los objetos declarados con `class`. Solo **puede haber un constructor** dentro de una clase. Un constructor puede usar `super` para accceder a la clase padre.
+El **constructor** es un método especial para crear e inicializar los objetos declarados con `class`. Solo **puede haber un constructor** dentro de una clase. Un constructor puede usar `super` para acceder a la clase padre.
 
 Los **métodos** son funciones dentro de las clases que pueden funcionar como acceso de atributos, modificadores, generadores...
 

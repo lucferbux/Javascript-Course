@@ -2,7 +2,7 @@
 
 Hay situaciones en las que es necesario que un bloque de instrucciones se ejecute una cantidad determinada de veces, bien sea para iterar entre múltiples elementos, crear nuevas secuencias...
 
-Para eso existen declaraciones de bucle. En JavaScript existen varios mecanísmos para implementar la repetición de código, variando donde se coloca la evaluación.
+Para eso existen declaraciones de bucle. En JavaScript existen varios mecanismos para implementar la repetición de código, variando donde se coloca la evaluación.
 
 ![Example of Loops](/meta/0_13_loops.png)
 ## For
@@ -34,7 +34,7 @@ for (let i = 0; i < 10; i++) {
 
 ### For In
 
-Existe otro tipo de bucle que itera sobre una propiedad enumerable o las claves de un objetos, esta sintáxis es muy util para recorrer iterables.
+Existe otro tipo de bucle que itera sobre una propiedad enumerable o las claves de un objetos, esta sintaxis es muy útil para recorrer iterables.
 
 ```javascript
 const object = { a: 1, b: 2, c: 3 };
@@ -46,7 +46,7 @@ for (const property in object) {
 
 ## While
 
-Mediante el bucle **while** podemos repetir un conjunto d einstrucciones mientras se cumpla una condición, la sintaxis es muy sencilla:
+Mediante el bucle **while** podemos repetir un conjunto de instrucciones mientras se cumpla una condición, la sintaxis es muy sencilla:
 
 ```pseudocode
 while (condition)
@@ -76,7 +76,7 @@ while (n > 2) {
 
 ## Do...While
 
-El bucle **do..while** es parecido al anterior, solo que primero ejecuta el código y luego evalua la condición. Es muy útil si queremos asegurarnos de que la expresión se ejecute al menos una vez.
+El bucle **do..while** es parecido al anterior, solo que primero ejecuta el código y luego evalúa la condición. Es muy útil si queremos asegurarnos de que la expresión se ejecute al menos una vez.
 
 ```pseudocode
 do

@@ -66,7 +66,7 @@ console.log(sumAllNumbers(...sumArr));
 
 ## Arrow Function ES6
 
-Ahora vamos a hablar de las **arrow functions** presentes desde **ES6**. Es una sintáxis mucho más clara que además simplifica la forma en la que las funciones se comportan, asimilándolo a otros lenguajes de programación. Vamos a ver sus características comparándolo con funciones tradicionales.
+Ahora vamos a hablar de las **arrow functions** presentes desde **ES6**. Es una sintaxis mucho más clara que además simplifica la forma en la que las funciones se comportan, asimilándolo a otros lenguajes de programación. Vamos a ver sus características comparándolo con funciones tradicionales.
 
 ### 1. Sintaxis
 

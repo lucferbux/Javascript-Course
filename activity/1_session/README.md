@@ -2,7 +2,7 @@
 
 ## Ejercicio 1
 
-* Crea un [nuevo fork del proyecto del curso](https://github.com/lucferbux/Javascript-Course)
+* Crea un [nuevo fork del proyecto del curso](https://github.com/lucferbux/JavaScript-Course)
 * Crea un nuevo archivo llamado `aboutme.js`
 * Crea un script en ese fichero con tres variables (elige un nombre descriptivo para cada una). La primera almacenará tu nombre y apellidos, la segunda tu profesión y la tercera el puesto que querrías desempeñar o el que desempeñas actualmente.
 * Crea una nueva variable que almacene una cadena, que mediante [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) incluya esta frase con las variables: `Hola, me llamo [variable del nombre] y me dedico a [variable profresión]. Estoy cursando este Máster porque me gustaría trabajar en [variable del puesto]`
@@ -29,7 +29,7 @@ Se requiere un navegador con herramientas de desarrollador:
 
 ## Ejercicio 5
 
-* ¿Cuál es la diferencia entre ejecutar un fichero Javascript en un navegador web en formato `<script>` y en formato `<script type=”module”>`?.
+* ¿Cuál es la diferencia entre ejecutar un fichero JavaScript en un navegador web en formato `<script>` y en formato `<script type=”module”>`?.
 
 ## Ejercicio 6
 

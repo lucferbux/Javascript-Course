@@ -28,7 +28,7 @@ function square(number) {
 
 ## Function expressions
 
-Además de la forma mencionada arriba, las funciones se pueden crear mediante una **function expression**. Estas funciones **pueden ser anónimas**, no tener un nombre, pero poder asignarse a variables. Este método es muy útil para pasar unfiones como argumentos.
+Además de la forma mencionada arriba, las funciones se pueden crear mediante una **function expression**. Estas funciones **pueden ser anónimas**, no tener un nombre, pero poder asignarse a variables. Este método es muy útil para pasar funciones como argumentos.
 
 ```javascript
 // Function expression

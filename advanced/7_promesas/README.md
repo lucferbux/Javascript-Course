@@ -10,7 +10,7 @@ Las **promesas** pueden tener tres estados:
 
 Una operación pendiente puede o bien **completarse** o **rechazarse** con un error. Cuando ocurre cualquiera de las dos opciones, los operadores asociados por el método `then` de la promesa son ejecutados. Esto permite que no haya condiciones de carre333ra.
 
-## Sintáxis
+## Sintaxis
 
 Es muy sencillo crear nuevas promesas. También es normal crear **promesas encadenadas** para ir resolviendo distintas tareas asíncronamente, aunque puede dar lugar a **pirámides de la muerte**.
 

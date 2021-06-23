@@ -4,9 +4,9 @@ console.log("%c1. For", 'color: #229179; font-size: 16px;');
 
 for (let i = 0; i < 10; i++) {
     if (i%2 == 0) {
-      console.log("Es par")
+      console.log(`${i} Es par`)
     } else {
-        console.log("No es par")
+      console.log(`${i} No es par`)
     }
 }
 

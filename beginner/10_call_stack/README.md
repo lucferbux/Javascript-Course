@@ -3,7 +3,7 @@
 
 ![Call Stack](/meta/0_10_callstack.png)
 
-JavaScript es un lenguaje de programación mono-hilo, no bloqueante, asíncrono y concurrente. Al decir esto muchos os habréis quedado igual que estábais, es por eso que vamos a repasar cada uno de los conceptos:
+JavaScript es un lenguaje de programación mono-hilo, no bloqueante, asíncrono y concurrente. Al decir esto muchos os habréis quedado igual que estabais, es por eso que vamos a repasar cada uno de los conceptos:
 
 1. **Mono-hilo:** Significa que usa un solo hilo para ejecutar las tareas. Pensad en un restaurante, puede tener un solo camarero para tomar la comanda y repartir la comida (mono-hilo) o varios camareros (multi-hilo), JavaScript solo tendría un hilo, por lo que va procesando los eventos **de uno a uno**.
 
@@ -35,11 +35,11 @@ Parte de la memoria donde se almacenan las variables y sus valores. Vamos a habl
 
 ### Call Stack
 
-Mecanísmo del interprete de JavaScript que mantiene el orden de ejecución y va llamando a las diferentes funciones en cola. El funcionamiento sería el siguiente:
+Mecanismo del interprete de JavaScript que mantiene el orden de ejecución y va llamando a las diferentes funciones en cola. El funcionamiento sería el siguiente:
 
-* Cuando un script llama a una función, el interprete lo añade al **call stack** y empieza a ejecutar la función.
-* Cualquier llamada que se haga dentro de esta función (otros métodos, otras funciones), se irá añadiendo al call stack con una estrategia FIFO.
-* Cuando la función terina de ejecutarse, el interprete la elimina del stack y reauna la ejeución donde lo había dejado dentro del script.
+* Cuando un script llama a una función, el interprete lo añade al **Call Stack** y empieza a ejecutar la función.
+* Cualquier llamada que se haga dentro de esta función (otros métodos, otras funciones), se irá añadiendo al Call Stack con una estrategia FIFO.
+* Cuando la función terina de ejecutarse, el interprete la elimina del stack y reanuda la ejecución donde lo había dejado dentro del script.
 * Si el stack sobrepasa la memoria que tenía asignada (por ejemplo cuando se hacen llamadas recursivas infinitas), se produce un **stack overflow**
 ### Web Api
 
@@ -47,7 +47,7 @@ Funcionalidad que aporta el navegador para realizar determinadas tareas como eve
 
 ### Callback Queue / Task Queue
 
-Pila donde se almacenarán las llamadas de callback de las funciones implementadas por el **web api**. Es similar al call stack pero para estas funciones especiales.
+Pila donde se almacenarán las llamadas de callback de las funciones implementadas por el **web api**. Es similar al Call Stack pero para estas funciones especiales.
 ### Event Loop
 
-Su trabajo principal es mirar tanto al **call stack** y al **task queue** y poner las funciones del **task queue** en el **call stack** cuando este está vacío.
+Su trabajo principal es mirar tanto al **Call Stack** y al **task queue** y poner las funciones del **task queue** en el **Call Stack** cuando este está vacío.

@@ -1,6 +1,6 @@
 console.log("%cNamespace", 'color: #3913B8; font-size: 20px;');
 
-// 1. Namespace in Javascript
+// 1. Namespace in JavaScript
 console.log("%c1. Namespace", 'color: #229179; font-size: 16px;');
 let name = "Lucas";
 

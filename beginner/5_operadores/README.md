@@ -1,17 +1,17 @@
 # Operadores
 
-Antes de enumerar los distintos operadores, hay cierta terminilogía que debemos cubrir:
+Antes de enumerar los distintos operadores, hay cierta terminología que debemos cubrir:
 
 * Un **operando** es el elemento al que los operadores se aplican. Por ejemplo en una suma `2 + 3`, el operador de la izquierda es `2`, el de la derecha es `3` y el operando es `+`
 
-* Un **operador** es unario si tiene un solo operador, como por ejemplo la negación `-3` mientras que es binario si tiene dos operandos, `2  3 `.
+* Un **operador** es unario si tiene un solo operador, como por ejemplo la negación `-3` mientras que es binario si tiene dos operandos, `2 + 3`.
 
 * La **precedencia** de operadores indica el orden de operación. Si en una misma linea de ejecución encontramos diferentes operadores y palabras reservadas, JavaScript los ejecutará en el orden indicado en [esta lista](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table).
 
 
 ## Operadores Aritméticos
 
-Los operadores aritméticos modifcian el valor de una variable. Siguen el orden de precedencia antes mencionado.
+Los operadores aritméticos modifican el valor de una variable. Siguen el orden de precedencia antes mencionado.
 
 ```javascript
 // Operadores Aritméticos

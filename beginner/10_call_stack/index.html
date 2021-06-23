@@ -20,7 +20,7 @@
 
                     <img class="container-image" src="/meta/0_10_callstack.png" alt="Call Stack">
                     <p>JavaScript es un lenguaje de programación mono-hilo, no bloqueante, asíncrono y concurrente. Al
-                        decir esto muchos os habréis quedado igual que estábais, es por eso que vamos a repasar cada uno
+                        decir esto muchos os habréis quedado igual que estabais, es por eso que vamos a repasar cada uno
                         de los conceptos:</p>
                     <ol>
                         <li>
@@ -76,15 +76,15 @@
                     <p>Parte de la memoria donde se almacenan las variables y sus valores. Vamos a hablar de esto en el <a
                             href="/beginner/3_variables/index.html">apartado siguiente</a>.</p>
                     <h3 id="call-stack">Call Stack</h3>
-                    <p>Mecanísmo del interprete de JavaScript que mantiene el orden de ejecución y va llamando a las
+                    <p>Mecanismo del interprete de JavaScript que mantiene el orden de ejecución y va llamando a las
                         diferentes funciones en cola. El funcionamiento sería el siguiente:</p>
                     <ul>
-                        <li>Cuando un script llama a una función, el interprete lo añade al <strong>call stack</strong>
+                        <li>Cuando un script llama a una función, el interprete lo añade al <strong>Call Stack</strong>
                             y empieza a ejecutar la función.</li>
                         <li>Cualquier llamada que se haga dentro de esta función (otros métodos, otras funciones), se
-                            irá añadiendo al call stack con una estrategia FIFO.</li>
-                        <li>Cuando la función terina de ejecutarse, el interprete la elimina del stack y reauna la
-                            ejeución donde lo había dejado dentro del script.</li>
+                            irá añadiendo al Call Stack con una estrategia FIFO.</li>
+                        <li>Cuando la función terina de ejecutarse, el interprete la elimina del stack y reanuda la
+                            ejecución donde lo había dejado dentro del script.</li>
                         <li>Si el stack sobrepasa la memoria que tenía asignada (por ejemplo cuando se hacen llamadas
                             recursivas infinitas), se produce un <strong>stack overflow</strong>
                         </li>
@@ -94,9 +94,9 @@
                         peticiones http, <em>setTimeout</em>...</p>
                     <h3 id="callback-queue-task-queue">Callback Queue / Task Queue</h3>
                     <p>Pila donde se almacenarán las llamadas de callback de las funciones implementadas por el
-                        <strong>web api</strong>. Es similar al call stack pero para estas funciones especiales.</p>
+                        <strong>web api</strong>. Es similar al Call Stack pero para estas funciones especiales.</p>
                     <h3 id="event-loop">Event Loop</h3>
-                    <p>Su trabajo principal es mirar tanto al <strong>call stack</strong> y al <strong>task
+                    <p>Su trabajo principal es mirar tanto al <strong>Call Stack</strong> y al <strong>task
                             queue</strong> y poner las funciones del <strong>task queue</strong> en el <strong>call
                             stack</strong> cuando este está vacío.</p>
 

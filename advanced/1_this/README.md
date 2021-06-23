@@ -1,6 +1,6 @@
 # This
 
-Si tenéis experiencia previa en programación, os podrá sonar la plabra reservada `this`. En Java, C++, Kotlin tiene la misma sintáxis que en JavaScript, en otros lenguajes como Python o Swift, este mismo concepto se representa con `self`. En todos estos programas la palabra reservada `this`representa la instancia del objeto en ejecución, y puede referenciarse a lo largo de la definición de una clase.
+Si tenéis experiencia previa en programación, os podrá sonar la palabra reservada `this`. En Java, C++, Kotlin tiene la misma sintaxis que en JavaScript, en otros lenguajes como Python o Swift, este mismo concepto se representa con `self`. En todos estos programas la palabra reservada `this`representa la instancia del objeto en ejecución, y puede referenciarse a lo largo de la definición de una clase.
 
 En JavaScript, `this` **funciona un poco diferente**, en parte porque está **orientado a prototipos** en vez de **orientado a clases**. Aquí, `this` no solo se utiliza en objetos, puede utilizarse tanto en los [contextos globales y de función](/advanced/2_global_namespace/README.md) y puede variar dependiendo de si se ejecuta en podo estricto o modo no estricto.
 

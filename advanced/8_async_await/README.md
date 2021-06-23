@@ -1,6 +1,6 @@
 # Async/Await
 
-`async/await` es una sintáxis más cómoda para escribir funciones asíncronas encadenadas. Si tenemos muchas tareas asíncronas relacionadas, es muy posible caer en una pirámide masiva de llamadas con **promesas**. Así es como `async` permite denotar de manera sencilla que una función devolverá una promesa.
+`async/await` es una sintaxis más cómoda para escribir funciones asíncronas encadenadas. Si tenemos muchas tareas asíncronas relacionadas, es muy posible caer en una pirámide masiva de llamadas con **promesas**. Así es como `async` permite denotar de manera sencilla que una función devolverá una promesa.
 
 ```javascript
 function regularFunc() {
@@ -14,7 +14,7 @@ async function asyncFunc() {
 console.log(asyncFunc());
 ```
 
-Esta promesa se podría resolver como ya hemos visto tradicioanlemnte, pero hay otra palabra reservada, `await` que permite indicar al interprete que espere a que termine la promesa para desenvolver su valor, sin necesidad del `then` y `catch` **aunque es necesario ejecutarlo dentro de una función asíncrona.
+Esta promesa se podría resolver como ya hemos visto tradicionalmente, pero hay otra palabra reservada, `await` que permite indicar al interprete que espere a que termine la promesa para desenvolver su valor, sin necesidad del `then` y `catch` **aunque es necesario ejecutarlo dentro de una función asíncrona.
 
 ```javascript
 async function asyncFuncAwait() {
@@ -33,7 +33,7 @@ asyncFuncAwait();
 
 La función asíncrona se parará cuando encuentre el `await` y reanudará su ejecución una vez se resuelva la promesa. Es una forma de **sintactic sugar** que mejora la legibilidad con respecto a `promise.then``
 
-## Sintáxis
+## Sintaxis
 
 Ya hemos visto más o menos como se declara, ahora vamos a mostrar algún ejemplo real.
 

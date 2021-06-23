@@ -37,7 +37,7 @@ Todas estas formas hacen teóricamente lo mismo, el uso de cada uno de estos est
 
 ## Declaración de variables
 
-Hay dos limitaciones importantes en la decalración de Variables en JavaScript:
+Hay dos limitaciones importantes en la declaración de Variables en JavaScript:
 
  1. El nombre solo puede tener letras, dígitos o los símbolos `$` o `_`.
  2. El primer caracter no puede ser un dígito.
@@ -156,6 +156,6 @@ const COUNTRY_CODE_SPAIN = "ES";
 
 ## Guía de estilos
 
-Pese a que las variables en JavaScript sigan el estilo de CamelCase, está muy extendido el uso de mayúsuclas para declarar constantes, usando la barra baja para separar palabras
+Pese a que las variables en JavaScript sigan el estilo de CamelCase, está muy extendido el uso de mayusculas para declarar constantes, usando la barra baja para separar palabras
 
 

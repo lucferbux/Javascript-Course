@@ -2,11 +2,11 @@
 
 Los objetos son otro tipo de dato que ya mencionamos en [la sección 4](/beginner/4_tipos_dato/README.md). A diferencia de los tipos primitivos, un objeto puede almacenar colecciones de datos con índices y entidades más complejas.
 
-Los objetos en JavaScript se diferencian un poco de otros lenguajes de programación, al ser un lenguaje **basado en prototípos** y no puramente orientado a objetos, en un momento verémos que significa esto.
+Los objetos en JavaScript se diferencian un poco de otros lenguajes de programación, al ser un lenguaje **basado en prototípos** y no puramente orientado a objetos, en un momento veremos que significa esto.
 
 ## Definición
 
-Un objeto se declara mediante parénteis `{}`, si hacemos una declaración literal, o con el constructor `Object`. Los objetos almacenan propiedades, que son una tupla de **clave: valor**, donde la clave es una **cadena** o string y el valor puede ser **cualquier otro tipo**.
+Un objeto se declara mediante paréntesis `{}`, si hacemos una declaración literal, o con el constructor `Object`. Los objetos almacenan propiedades, que son una tupla de **clave: valor**, donde la clave es una **cadena** o string y el valor puede ser **cualquier otro tipo**.
 
 ```javascript
 // Declaring objects
@@ -17,7 +17,7 @@ let me = {name: "Lucas", age: 27};
 
 ## Propiedades
 
-Como se puede observar, se puede crear un objeto con una declaración literal añadiendo inmediatamente propiedades, estas propiedades almacenaran un valor y pueden ser accedidas mediante la sintáxis `object.property``
+Como se puede observar, se puede crear un objeto con una declaración literal añadiendo inmediatamente propiedades, estas propiedades almacenaran un valor y pueden ser accedidas mediante la sintaxis `object.property``
 
 ![Objeto en JavaScript](/meta/0_14_objects.png)
 
@@ -89,9 +89,9 @@ console.log(janeDoe.hello());
 
 Se diferencia de otros **lenguajes basados en clases** en que las clases no son los planos (blueprints) que definen la construcción de objetos, si no que un objeto se define, y puede extender a otros objetos a través de sus propiedades.
 
-![Herencia Javascript](/meta/0_15_inheritance.png)
+![Herencia JavaScript](/meta/0_15_inheritance.png)
 
-Hablando más claro, en una **herencia clásica**, un programador escribe una clase, que define un objeto. Múltiples objetos pueden ser instanciados por la misma clase, así tienes código definido una sola veez que describe diferentes objetos en un programa. Luego las clases pueden organizarse en jerarquías para la reutilización de código.  
+Hablando más claro, en una **herencia clásica**, un programador escribe una clase, que define un objeto. Múltiples objetos pueden ser instanciados por la misma clase, así tienes código definido una sola vez que describe diferentes objetos en un programa. Luego las clases pueden organizarse en jerarquías para la reutilización de código.  
 
 En la **herencia por prototipado**, los objetos **heredan directamente** de otros objetos. Toda la abstracción de las clases desaparece. La reutilización de código y la jerarquía se consigue a través de un enlace de los objetos extendidos. Cuando pedimos una propiedad en un objeto, irá siguiendo esta jerarquía hacia arriba hasta dar con el objeto que definió esa propiedad en primera instancia.
 
@@ -134,4 +134,4 @@ console.log(vehicle);
 console.log(car);
 ```
 
-En la sección avanzada veremos qué son las clases en realidad en Javascript y como funcionan en profundidad, ya que puede crear bastante confusión si se cuenta con conocimientos previos en otros lenguajes de programación.
+En la sección avanzada veremos qué son las clases en realidad en JavaScript y como funcionan en profundidad, ya que puede crear bastante confusión si se cuenta con conocimientos previos en otros lenguajes de programación.

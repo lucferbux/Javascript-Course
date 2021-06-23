@@ -10,7 +10,7 @@ JavaScript cuenta con dos tipos de sintaxis:
 
 ## Palabra reservada 'If'
 
-La palabra reservada `if(...)` evalua una condición entre parentesis, y si el resultado es `true`, ejecuta un trozo de código.
+La palabra reservada `if(...)` evalúauna condición entre parentesis, y si el resultado es `true`, ejecuta un trozo de código.
 
 ```javascript
 let counter = 5

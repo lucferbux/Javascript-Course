@@ -1,6 +1,6 @@
-# Typescript
+# TypeScript
 
-> Introducción a Typescript
+> Introducción a TypeScript
 
 ![Header Image](/meta/0_header_typescript.png)
 

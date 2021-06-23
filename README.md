@@ -1,6 +1,6 @@
 # Curso JavaScript
 
-> Introducción a conceptos de JavaScript Moderno y Typescript
+> Introducción a conceptos de JavaScript Moderno y TypeScript
 
 ![Header Image](/meta/0_header.png)
 

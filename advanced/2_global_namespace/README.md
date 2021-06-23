@@ -27,7 +27,7 @@ console.log(this);
 
 ## Declaración de variables
 
-Cada variable, al declararse en un scope, quedará visible para sus miembros y descendientes. como hemos comentado en el [módulo 3](/beginner/3_variables/README.md) `var` añade la variable al scope global si se encuentra en este entorno, es por ello que podemos demostrar fácilemente la visibilidad de las declaraciones.
+Cada variable, al declararse en un scope, quedará visible para sus miembros y descendientes. como hemos comentado en el [módulo 3](/beginner/3_variables/README.md) `var` añade la variable al scope global si se encuentra en este entorno, es por ello que podemos demostrar fácilmente la visibilidad de las declaraciones.
 
 ```javascript
 // Global Scope

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introducción - Typescript</title>
+    <title>Introducción - TypeScript</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
 </head>
@@ -13,13 +13,13 @@
 <body>
     <div class="container">
         <div class="section">
-            <a class="back-button" href="/advanced/advanced.html">
+            <a class="back-button" href="/typescript/typescript.html">
                 < Back</a> <h1>Introducción</h1>
-                    <p class="caption">Introducción a Typescript</p>
+                    <p class="caption">Introducción a TypeScript</p>
                     <hr class="separator">
 
                     <h2 id="introducci-n">Introducción</h2>
-                    <p>Typescript añade comprobación estática de código.</p>
+                    <p>TypeScript añade comprobación estática de código.</p>
                     <p>Javascript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el
                         problema es que puedes encontrate con muchos posibles puntos de conflicto:</p>
                     <ul>
@@ -72,7 +72,7 @@ console.<span class="hljs-built_in">log</span>(person.profession);
                         TypeScript, como el auto-completado, la auto-importación de módulos o la comprobación de tipos.
                     </p>
                     <h2 id="instalaci-n">Instalación</h2>
-                    <p>La instalación de Typescript es muy sencilla, solo es necesario tener <a
+                    <p>La instalación de TypeScript es muy sencilla, solo es necesario tener <a
                             href="https://nodejs.org/en/">Node</a> instalado en el sistema. Una vez hecho, solo hay que
                         ejecutar el siguiente comando:</p>
                     <pre><code class="lang-bash">&gt; npm <span class="hljs-keyword">install</span> -g typescript
@@ -103,13 +103,13 @@ console.<span class="hljs-built_in">log</span>(person.profession);
                         a variables, objetos y funciones de tipos, con los que se comprobará luego en tiempo de
                         compilación si el valor asignado corresponde con la definición inicial <strong>evitando así
                             potenciales errores en ejecución</strong>.</p>
-                    <pre><code class="lang-typescript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-keyword">string</span>;
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-keyword">string</span>;
 
 studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">// Compiler Error</span>
 </code></pre>
                     <p>También TypeScript tendrá tipado implícito, esto significa que si no se le añade un tipo pero sí
                         un valor en la declaración, TypeScript inferirá el valor y lo tipará automáticamente.</p>
-                    <pre><code class="lang-typescript">let studentName = <span class="hljs-string">"Pepe"</span><span class="hljs-comment">;</span>
+                    <pre><code class="lang-javascript">let studentName = <span class="hljs-string">"Pepe"</span><span class="hljs-comment">;</span>
 
 <span class="hljs-attribute">studentName</span> = <span class="hljs-number">23</span><span class="hljs-comment">; // Error</span>
 </code></pre>
@@ -119,7 +119,7 @@ studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">//
                         que los valores asignados a las variables deben de tener. Esto también se puede llamar <em>duck
                             typing</em> o <em>structural subtyping</em> y básicamente permite declarar
                         &quot;contratos&quot; con el resto de tu código o con código externo para seguir un modelo.</p>
-                    <pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> Person {
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Person {
     name: <span class="hljs-built_in">string</span>,
     age: <span class="hljs-built_in">number</span>
     displayName(): <span class="hljs-built_in">void</span>;
@@ -142,12 +142,12 @@ studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">//
                         potentes, como por ejemplo el <strong>autocompletado de objetos o variables</strong> (gracias a
                         la comprobación estática), el <strong>poder auto-importar de otros ficheros
                             automáticamente</strong> o el poder visualizar el tsdoc de un objeto o método comentado.</p>
-                    <p><img class="container-image" src="/meta/0_17_typescript_autocomplete.png" alt="Typescript Autocomplete"></p>
+                    <p><img class="container-image" src="/meta/0_17_typescript_autocomplete.png" alt="TypeScript Autocomplete"></p>
                     <h3 id="flexibilidad-en-la-comprobaci-n-de-tipos">Flexibilidad en la comprobación de tipos</h3>
                     <p>Hay momentos en los que, bien por compatibilidad con otras librerías, bien por la complejidad de
                         los tipos o por alguna otra razón, se quiere obviar los tipos o directamente escribir el código
                         en JavaScript. Esto es posible de distintas maneras.</p>
-                    <pre><code class="lang-typescript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-built_in">any</span> = <span class="hljs-string">"Pepe"</span>; <span class="hljs-comment">// Be careful, use with precaution</span>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-built_in">any</span> = <span class="hljs-string">"Pepe"</span>; <span class="hljs-comment">// Be careful, use with precaution</span>
 
 studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">// It will work great</span>
 </code></pre>
@@ -160,9 +160,7 @@ studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">//
         </div>
     </div>
     <script src="../../prism.js"></script>
-    <script type="module" src="index.js">
-
-    </script>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>

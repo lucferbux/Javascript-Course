@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Typescript añade comprobación estática de código.
+TypeScript añade comprobación estática de código.
 
 Javascript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el problema es que puedes encontrate con muchos posibles puntos de conflicto:
 
@@ -50,7 +50,7 @@ La razón que TypeScript detecte estos problemas es porque tiene un compilador p
 
 ## Instalación
 
-La instalación de Typescript es muy sencilla, solo es necesario tener [Node](https://nodejs.org/en/) instalado en el sistema. Una vez hecho, solo hay que ejecutar el siguiente comando:
+La instalación de TypeScript es muy sencilla, solo es necesario tener [Node](https://nodejs.org/en/) instalado en el sistema. Una vez hecho, solo hay que ejecutar el siguiente comando:
 
 ```bash
 > npm install -g typescript
@@ -75,6 +75,7 @@ Una de las grandes ventajas de TypeScript es que podemos compilar a la versión 
 > tsc --help # display all the info 
 > tsc index.ts -t ES5 # target TS5 code
 > tsc index.ts -t ES6 # target TS6 code
+> tsc async.ts # Converts ES6 async await to ES5
 ```
 
 Esto permite utilizar las últimas características de ES6 que vimos, como **arrow functions, optional chaining y nullish operator** pudiendo luego ejecutarlo en navegadores antiguos.
@@ -123,7 +124,7 @@ Esto permite por ejemplo tener un modelo bien definido para **comunicación rest
 
 En algunos IDEs como Visusal Studio Code, si descargamos la extensión de TypeScript (o en las versiones más modernas ya viene por defecto), podremos de disfrutar de algunas ventajas muy potentes, como por ejemplo el **autocompletado de objetos o variables** (gracias a la comprobación estática), el **poder auto-importar de otros ficheros automáticamente** o el poder visualizar el tsdoc de un objeto o método comentado.
 
-![Typescript Autocomplete](/meta/0_17_typescript_autocomplete.png)
+![TypeScript Autocomplete](/meta/0_17_typescript_autocomplete.png)
 
 
 ### Flexibilidad en la comprobación de tipos

@@ -38,4 +38,4 @@ El principal problema es la alta curva de aprendizaje que requiere esta herramie
 
 ## Projecto
 
-Tenemos un ejemplo de proyecto para practicar dentro de esta carpeta.
+Tenemos un [ejemplo de proyecto](https://github.com/lucferbux/TypescriptWeatherExample) para practicar con TypeScript.

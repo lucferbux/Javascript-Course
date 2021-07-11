@@ -47,7 +47,7 @@ class Student implements Person {
 
 
 const student: Person = new Student("Jose", 27);
-
+ 
 student.displayName();
 
 console.log(student.isAdult());

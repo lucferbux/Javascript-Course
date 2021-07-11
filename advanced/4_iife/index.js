@@ -3,7 +3,7 @@ console.log("%cImmediately Invoked Function Expression", 'color: #3913B8; font-s
 // 1. Primera variante de IIFE
 console.log("%c1. Primera variante de IIFE", 'color: #229179; font-size: 16px;');
 (function() {
-    console.log("1. Estás usando IIFE")
+    alert("1. Estás usando IIFE")
 }());
 
 // 2. Segunda variante de IIFE

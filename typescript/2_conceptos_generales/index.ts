@@ -1,11 +1,11 @@
-function talk(phrase: string) {
+function talkFunc(phrase: string) {
     console.log(phrase);
 }
 
-let student = [1, 2, 3];
+let phrase = [1, 2, 3];
 
-//talk(student); // TypeScript error
-talk("Hello world");
+//talkFunc(phrase); // TypeScript error
+talkFunc("Hello world");
 
 interface Person {
     name: string;
@@ -25,11 +25,11 @@ class Person {
         this.name = name;
     }
     speak(phrase: string = "Hello World") {
-        console.log(talk);
+        console.log(phrase);
     }
 }
 
-class Student extends Person {
+class StudentExtend extends Person {
     constructor(name: string) {
         super(name);
     }
@@ -49,7 +49,7 @@ class Teacher extends Person {
     }
 }
 
-let pepe = new Student("I'm learning TypeScript");
+let pepe = new StudentExtend("I'm learning TypeScript");
 let juan: Person = new Teacher("I'm teaching new feature");
 
 pepe.speak();
@@ -90,13 +90,14 @@ function padLeftUnion(value: string, padding: string | number) {
 }
 
 padLeftUnion("Hello world", "20");
-  //padLeftUnion("Hello world", boolean); // error as it's not an expected type
+//padLeftUnion("Hello world", boolean); // error as it's not an expected type
 
 
 // type alias
 type ID = number | string | boolean
 
 let myID: ID = "23789s";
+
 
 // type Assertions
 

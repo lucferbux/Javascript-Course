@@ -10,7 +10,7 @@ var person {
     age: 27,
     profession:”Developer",
 }
-// return -> [name, age, profession] 
+// return -> ["name", "age", "profession"] 
 ```
 
 ## Ejercicio 2

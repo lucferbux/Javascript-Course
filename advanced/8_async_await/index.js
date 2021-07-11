@@ -12,6 +12,8 @@ async function asyncFunc() {
 }
 console.log(asyncFunc());
 
+objetoSinDefinir.llamadaMetodo();
+
 async function asyncFuncAwait() {
 
   let promise = new Promise((resolve, reject) => {

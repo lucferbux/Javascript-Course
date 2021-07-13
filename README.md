@@ -6,7 +6,7 @@
 
 ## Instrucciones
 
-Sigue el orden de las carpetas para continuar con el contenido.
+Sigue el orden de las carpetas para continuar con el contenido. La página web se encuentra en [este enlace](https://javascript-course-threepoints.netlify.app/)
 
 ## Conceptos generales
 

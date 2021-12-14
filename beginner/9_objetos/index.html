@@ -119,15 +119,51 @@ car.stop = <span class="hljs-function"><span class="hljs-keyword">function</span
 <span class="hljs-built_in">console</span>.log(vehicle);
 <span class="hljs-built_in">console</span>.log(car);
 </code></pre>
-                    <p>En la sección avanzada veremos qué son las clases en realidad en JavaScript y como funcionan en
-                        profundidad, ya que puede crear bastante confusión si se cuenta con conocimientos previos en
-                        otros lenguajes de programación.</p>
+<p>En la sección avanzada veremos qué son las clases en realidad en JavaScript y como funcionan en
+profundidad, ya que puede crear bastante confusión si se cuenta con conocimientos previos en
+otros lenguajes de programación.</p>
 
-                    <hr class="code-separator">
+<h2 id="desestructuraci-n-de-objetos">Desestructuración de Objetos</h2>
+<p>No nos podemos ir de esta sección sin conocer el concepto de <strong>object destructuring</strong> en JavaScript, ya que será bastante común dentro de la importación de <strong>librerías y paquetes</strong>.</p>
+<p>Esta característica es muy útil y bastante popular, y básicamente permite acceder a <strong>propiedades de los objetos</strong> sin necesidad de llamarlos constantemente. Os pongo un ejemplo.</p>
+<pre><code class="lang-javascript"><span class="hljs-attribute">let person</span> = {
+    name: <span class="hljs-string">'Lucas'</span>,
+    age: 25,
+    nationality: <span class="hljs-string">'spanish'</span>
+};
+</code></pre>
+<p>Para acceder a las propiedades de este objeto, podemos crear unas nuevas variables y asignar las propiedades.</p>
+<pre><code class="lang-javascript"><span class="hljs-attribute">let nameNormal</span> = person.name;
+<span class="hljs-attribute">let nationalityNormal</span> = person,nationality;
+</code></pre>
+<p>Hast aquí bien, podemos acceder a las propiedades que queramos de una forma sencilla. Pero desde el punto de vista estructural, si necesitamos asignar <strong>n</strong> propiedades tendremos que repetir el proceso <strong>n</strong> veces. Es donde entra en juego la desestructuración de objetos.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// 1. Property to variable</span>
+<span class="hljs-keyword">const</span> { age } = person;
+console.<span class="hljs-built_in">log</span>(age);
 
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/beginner/9_objetos/index.js</p>
-                    <pre>
+<span class="hljs-comment">// 2. Multiple properties</span>
+<span class="hljs-keyword">const</span> { name, nationality } = person;
+console.<span class="hljs-built_in">log</span>(name);
+console.<span class="hljs-built_in">log</span>(nationality);
+
+<span class="hljs-comment">// 3. Wrong desttructuring</span>
+<span class="hljs-keyword">const</span> { invented } = person;
+console.<span class="hljs-built_in">log</span>(invented);
+
+<span class="hljs-comment">// 4. Default value</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-keyword">default</span> = <span class="hljs-string">"I have a value! "</span> } = person;
+
+<span class="hljs-comment">// 5. Alias</span>
+<span class="hljs-keyword">const</span> { age: agePerson } = person;
+console.<span class="hljs-built_in">log</span>(agePerson);
+</code></pre>
+
+
+<hr class="code-separator">
+
+<h2 id="arrow">Consola JavaScript</h2>
+<p class="folder">/beginner/9_objetos/index.js</p>
+<pre>
 <code class="language-javascript">//Objetos
 
 // Definición
@@ -194,7 +230,40 @@ car.stop = function() {
 }
 
 console.log(vehicle);
-console.log(car);</code>
+console.log(car);
+
+// Desestructuración de objetos
+let person = {
+    name: 'Lucas',
+    age: 25,
+    nationality: 'spanish'
+};
+console.log(person);
+
+let nameNormal = person.name;
+let nationalityNormal = person,nationality;
+console.log(nameNormal);
+console.log(nationalityNormal); 
+
+// 1. Property to variable
+const { age } = person;
+console.log(age);
+
+// 2. Multiple properties
+const { name, nationality } = person;
+console.log(name);
+console.log(nationality);
+
+// 3. Wrong desttructuring
+const { invented } = person;
+console.log(invented);
+
+// 4. Default value
+const { default = "I have a value! " } = person;
+
+// 5. Alias
+const { age: agePerson } = person;
+console.log(agePerson);</code>
 </pre>
 
         </div>

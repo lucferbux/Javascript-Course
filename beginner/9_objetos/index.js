@@ -92,3 +92,37 @@ car.stop = function() {
 
 console.log(vehicle);
 console.log(car);
+
+// Desestructuración de objetos
+console.log("%c3. Desestructuración de objetos ", 'color: #229179; font-size: 16px;');
+let person = {
+    name: 'Lucas',
+    age: 25,
+    nationality: 'spanish'
+};
+console.log(person);
+
+let nameNormal = person.name;
+let nationalityNormal = person,nationality;
+console.log(nameNormal);
+console.log(nationalityNormal); 
+
+// 1. Property to variable
+const { age } = person;
+console.log(age);
+
+// 2. Multiple properties
+const { name, nationality } = person;
+console.log(name);
+console.log(nationality);
+
+// 3. Wrong desttructuring
+const { invented } = person;
+console.log(invented);
+
+// 4. Default value
+const { default = "I have a value! " } = person;
+
+// 5. Alias
+const { age: agePerson } = person;
+console.log(agePerson);

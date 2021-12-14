@@ -96,7 +96,6 @@ Hablando más claro, en una **herencia clásica**, un programador escribe una cl
 En la **herencia por prototipado**, los objetos **heredan directamente** de otros objetos. Toda la abstracción de las clases desaparece. La reutilización de código y la jerarquía se consigue a través de un enlace de los objetos extendidos. Cuando pedimos una propiedad en un objeto, irá siguiendo esta jerarquía hacia arriba hasta dar con el objeto que definió esa propiedad en primera instancia.
 
 
-
 Podremos obtener los prototipos de un objeto mediante el método `getPrototypeOf()``
 
 ```javascript
@@ -135,3 +134,48 @@ console.log(car);
 ```
 
 En la sección avanzada veremos qué son las clases en realidad en JavaScript y como funcionan en profundidad, ya que puede crear bastante confusión si se cuenta con conocimientos previos en otros lenguajes de programación.
+
+## Desestructuración de Objetos
+
+No nos podemos ir de esta sección sin conocer el concepto de **object destructuring** en JavaScript, ya que será bastante común dentro de la importación de **librerías y paquetes**.
+
+Esta característica es muy útil y bastante popular, y básicamente permite acceder a **propiedades de los objetos** sin necesidad de llamarlos constantemente. Os pongo un ejemplo.
+
+```javascript
+let person = {
+    name: 'Lucas',
+    age: 25,
+    nationality: 'spanish'
+};
+```
+
+Para acceder a las propiedades de este objeto, podemos crear unas nuevas variables y asignar las propiedades.
+
+```javascript
+let nameNormal = person.name;
+let nationalityNormal = person,nationality;
+```
+
+Hast aquí bien, podemos acceder a las propiedades que queramos de una forma sencilla. Pero desde el punto de vista estructural, si necesitamos asignar **n** propiedades tendremos que repetir el proceso **n** veces. Es donde entra en juego la desestructuración de objetos.
+
+```javascript
+// 1. Property to variable
+const { age } = person;
+console.log(age);
+
+// 2. Multiple properties
+const { name, nationality } = person;
+console.log(name);
+console.log(nationality);
+
+// 3. Wrong desttructuring
+const { invented } = person;
+console.log(invented);
+
+// 4. Default value
+const { default = "I have a value! " } = person;
+
+// 5. Alias
+const { age: agePerson } = person;
+console.log(agePerson);
+```

@@ -10,7 +10,7 @@ Un objeto se declara mediante paréntesis `{}`, si hacemos una declaración lite
 
 ```javascript
 // Declaring objects
-let teacher = new Object();
+let student = new Object();
 let user = {};
 let me = {name: "Lucas", age: 27};
 ```
@@ -142,7 +142,7 @@ No nos podemos ir de esta sección sin conocer el concepto de **object destructu
 Esta característica es muy útil y bastante popular, y básicamente permite acceder a **propiedades de los objetos** sin necesidad de llamarlos constantemente. Os pongo un ejemplo.
 
 ```javascript
-let person = {
+let teacher = {
     name: 'Lucas',
     age: 25,
     nationality: 'spanish'
@@ -152,30 +152,27 @@ let person = {
 Para acceder a las propiedades de este objeto, podemos crear unas nuevas variables y asignar las propiedades.
 
 ```javascript
-let nameNormal = person.name;
-let nationalityNormal = person,nationality;
+let nameTeacher = teacher.name;
+let nationalityTeacher = teacher.nationality;
 ```
 
 Hast aquí bien, podemos acceder a las propiedades que queramos de una forma sencilla. Pero desde el punto de vista estructural, si necesitamos asignar **n** propiedades tendremos que repetir el proceso **n** veces. Es donde entra en juego la desestructuración de objetos.
 
 ```javascript
+console.log("%c3. Desestructuración de objetos ", 'color: #229179; font-size: 16px;');
+
 // 1. Property to variable
-const { age } = person;
-console.log(age);
+const { age } = teacher;
 
 // 2. Multiple properties
-const { name, nationality } = person;
-console.log(name);
-console.log(nationality);
+const { name, nationality } = teacher;
 
 // 3. Wrong desttructuring
-const { invented } = person;
-console.log(invented);
+const { invented } = teacher;
 
 // 4. Default value
-const { default = "I have a value! " } = person;
+const { other = "I have a value! " } = teacher;
 
 // 5. Alias
-const { age: agePerson } = person;
-console.log(agePerson);
+const { age: agePerson } = teacher;
 ```

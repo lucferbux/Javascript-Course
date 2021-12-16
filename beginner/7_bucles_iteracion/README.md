@@ -5,6 +5,7 @@ Hay situaciones en las que es necesario que un bloque de instrucciones se ejecut
 Para eso existen declaraciones de bucle. En JavaScript existen varios mecanismos para implementar la repetición de código, variando donde se coloca la evaluación.
 
 ![Example of Loops](/meta/0_13_loops.png)
+
 ## For
 
 El bucle **for** es muy parecido a los bucles en **C** o **Java**. Un bucle for se repite hasta que se alcanza una evaluación en **false**. La sintaxis principal es:
@@ -54,7 +55,6 @@ while (condition)
 ```
 
 En el momento en que la condición es **false** el bucle se interrumpe dejando de ejecutar la instrucción.
-
 **Hay que tener mucho cuidado de no crear bucles infinitos si se está creando un contador**
 
 ```javascript
@@ -91,4 +91,3 @@ do {
   console.log(i);
 } while (i < 5);
 ```
-

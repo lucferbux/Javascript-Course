@@ -16,7 +16,7 @@ Javasript tiene 6 tipos de datos primitivos: `string, number, undefined, null, b
 
 El tipo `booleano` representa una entidad lógica que puede tener dos valores: `true` y `false`. Al definir una variable, si el valor es omitido o es `0`, `-0`, `null`, `NaN`, `undefined` o una cadena vacía (`""`), la variable tiene un valor de `false`. En el resto de casos tendra un valor de `true`.
 
-### Null 
+### Null
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Glossary/Null)
 
@@ -68,7 +68,7 @@ Estas propiedades pueden ser valores de cualquier tipo, incluido otros objetos, 
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-Los `arrays`son objetos donde hay una relación entre las propiedades de clave entera y la **longitod** de lla propiedad. Además, hereda del objeto `Array.prototype` que añade métodos para manipular datos con índice como `indexOf` o `push`.
+Los `arrays` son objetos donde hay una relación entre las propiedades de clave entera y la **longitod** de lla propiedad. Además, hereda del objeto `Array.prototype` que añade métodos para manipular datos con índice como `indexOf` o `push`.
 
 Además de arrays hay otras colecciones con clave que han sido añadidas en ES6, como `set` y `weakset` que representan sets y `Map` y `weakmap` que representan mapas de valores.
 
@@ -77,8 +77,3 @@ Además de arrays hay otras colecciones con clave que han sido añadidas en ES6,
 * [Referencia](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
 Más adelante veremos funciones en profundidad, básicamente el tipo de `function` permite almacenar funciones en variales, debido a que el constructor de las **funciones** deriva del constructor de `Object`.
-
-
-
-
-

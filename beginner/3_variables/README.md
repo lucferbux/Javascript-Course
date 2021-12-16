@@ -154,8 +154,6 @@ const COLOR_BLUE = "00F";
 const COUNTRY_CODE_SPAIN = "ES";
 ```
 
-## Guía de estilos
+### Guía de estilos
 
 Pese a que las variables en JavaScript sigan el estilo de CamelCase, está muy extendido el uso de mayusculas para declarar constantes, usando la barra baja para separar palabras
-
-

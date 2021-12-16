@@ -7,7 +7,7 @@
 
 ## 2. Módulos
 
-Los módulos en javascript permiten separar los ficheros que contienen el código en trozos más pequeños. Gracias a mecanismos de importación y exportación es posible separar la lógica de las funcionalidades en ficheros más pequeños e importarlos donde fuese necesario. Las dos declaraciones más importantes son `import`y `export`.
+Los módulos en javascript permiten separar los ficheros que contienen el código en trozos más pequeños. Gracias a mecanismos de importación y exportación es posible separar la lógica de las funcionalidades en ficheros más pequeños e importarlos donde fuese necesario. Las dos declaraciones más importantes son `import` y `export`.
 
 Los módulos son evaluados nada más improtarse, por lo que el código que no esté contenido se ejecutará nada más importarse el fichero.
 

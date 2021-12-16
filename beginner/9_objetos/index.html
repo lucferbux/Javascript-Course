@@ -31,7 +31,7 @@
                         <strong>clave: valor</strong>, donde la clave es una <strong>cadena</strong> o string y el valor
                         puede ser <strong>cualquier otro tipo</strong>.</p>
                     <pre><code class="lang-javascript"><span class="hljs-comment">// Declaring objects</span>
-<span class="hljs-keyword">let</span> teacher = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();
+<span class="hljs-keyword">let</span> student = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();
 <span class="hljs-keyword">let</span> user = {};
 <span class="hljs-keyword">let</span> me = {<span class="hljs-attr">name</span>: <span class="hljs-string">"Lucas"</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">27</span>};
 </code></pre>
@@ -168,11 +168,11 @@ console.<span class="hljs-built_in">log</span>(agePerson);
 
 // Definición
 
-let teacher = new Object();
+let student = new Object();
 let user = {};
 let me = {name: "Lucas", age: 27};
 
-console.log(teacher);
+console.log(student);
 console.log(user);
 console.log(me);
 
@@ -233,36 +233,36 @@ console.log(vehicle);
 console.log(car);
 
 // Desestructuración de objetos
-let person = {
+let teacher = {
     name: 'Lucas',
     age: 25,
     nationality: 'spanish'
 };
 console.log(person);
 
-let nameNormal = person.name;
-let nationalityNormal = person,nationality;
-console.log(nameNormal);
-console.log(nationalityNormal); 
+let nameTeacher = teacher.name;
+let nationalityTeacher = teacher.nationality;
+console.log(nameTeacher);
+console.log(nationalityTeacher); 
 
 // 1. Property to variable
-const { age } = person;
+const { age } = teacher;
 console.log(age);
 
 // 2. Multiple properties
-const { name, nationality } = person;
+const { name, nationality } = teacher;
 console.log(name);
 console.log(nationality);
 
 // 3. Wrong desttructuring
-const { invented } = person;
+const { invented } = teacher;
 console.log(invented);
 
 // 4. Default value
-const { default = "I have a value! " } = person;
+const { other = "I have a value! " } = teacher;
 
 // 5. Alias
-const { age: agePerson } = person;
+const { age: agePerson } = teacher;
 console.log(agePerson);</code>
 </pre>
 

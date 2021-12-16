@@ -20,7 +20,7 @@ function printSquare(n) {
 
 
 
-function eventLopp() {
+function eventLoop() {
     // Event loop
     console.log("%c2. Event Loop", 'color: #229179; font-size: 16px;');
     console.log("Hi");

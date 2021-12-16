@@ -40,8 +40,19 @@ b = 50;
 let eq = a == b;
 console.log(`eq: ${eq}`);
 
+let eq = a == c;
+console.log(`eq: ${eq}`);
+
+// Equaylity + type
+let eq = a === c;
+console.log(`eq: ${eq}`);
+
+
 // Inequality
 let ieq = a != b;
+console.log(`ieq: ${ieq}`);
+
+let ieq = a != c;
 console.log(`ieq: ${ieq}`);
 
 // Greater

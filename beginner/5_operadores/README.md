@@ -8,7 +8,6 @@ Antes de enumerar los distintos operadores, hay cierta terminología que debemos
 
 * La **precedencia** de operadores indica el orden de operación. Si en una misma linea de ejecución encontramos diferentes operadores y palabras reservadas, JavaScript los ejecutará en el orden indicado en [esta lista](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table).
 
-
 ## Operadores Aritméticos
 
 Los operadores aritméticos modifican el valor de una variable. Siguen el orden de precedencia antes mencionado.
@@ -51,13 +50,24 @@ Comparan valores de ambos lados de la operación y deciden la relación entre am
 // Operadores de Comparación
 a = 30;
 b = 50;
+c = '30';
 
 // Equality
 let eq = a == b;
 console.log(`eq: ${eq}`);
 
+let eq = a == c;
+console.log(`eq: ${eq}`);
+
+// Equaylity + type
+let eq = a === c;
+console.log(`eq: ${eq}`);
+
 // Inequality
 let ieq = a != b;
+console.log(`ieq: ${ieq}`);
+
+let ieq = a != c;
 console.log(`ieq: ${ieq}`);
 
 // Greater

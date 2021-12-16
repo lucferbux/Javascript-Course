@@ -3,11 +3,11 @@ console.log("%cObjetos", 'color: #3913B8; font-size: 20px;');
 // Definición
 console.log("%c1. Definición", 'color: #229179; font-size: 16px;');
 
-let teacher = new Object();
+let student = new Object();
 let user = {};
 let me = {name: "Lucas", age: 27};
 
-console.log(teacher);
+console.log(student);
 console.log(user);
 console.log(me);
 
@@ -95,34 +95,34 @@ console.log(car);
 
 // Desestructuración de objetos
 console.log("%c3. Desestructuración de objetos ", 'color: #229179; font-size: 16px;');
-let person = {
+let teacher = {
     name: 'Lucas',
     age: 25,
     nationality: 'spanish'
 };
 console.log(person);
 
-let nameNormal = person.name;
-let nationalityNormal = person,nationality;
-console.log(nameNormal);
-console.log(nationalityNormal); 
+let nameTeacher = teacher.name;
+let nationalityTeacher = teacher.nationality;
+console.log(nameTeacher);
+console.log(nationalityTeacher); 
 
 // 1. Property to variable
-const { age } = person;
+const { age } = teacher;
 console.log(age);
 
 // 2. Multiple properties
-const { name, nationality } = person;
+const { name, nationality } = teacher;
 console.log(name);
 console.log(nationality);
 
 // 3. Wrong desttructuring
-const { invented } = person;
+const { invented } = teacher;
 console.log(invented);
 
 // 4. Default value
-const { default = "I have a value! " } = person;
+const { other = "I have a value! " } = teacher;
 
 // 5. Alias
-const { age: agePerson } = person;
+const { age: agePerson } = teacher;
 console.log(agePerson);

@@ -15,7 +15,6 @@ Se requiere un navegador con herramientas de desarrollador:
 
 * Abre el navegador seleccionado y dirígete a la sección de `Actividades/Actividad 1`.
 * Abre la sección de *Sources* en las herramientas web, dirígete al fichero aboutme.js que creaste en la sección anterior y añade unos cuantos breakpoints en el script que has creado.
-* Añade también un breakpoint en la importación de este fichero en `index.js`.
 * Añade un breakpoint más en `console.log(“Ej 1”)`.
 * ¿Qué se ejecuta antes, la llamada a `console.log()` o el contenido del fichero `aboutme.js`?
 

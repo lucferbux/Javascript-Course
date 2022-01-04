@@ -63,6 +63,7 @@ let student = {
     }
 }
 
+// This will be lucas as this.name references the global context and name is defined with Lucas
 student.greeting();
 ```
 

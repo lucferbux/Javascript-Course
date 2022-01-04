@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Sesión Extra</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/activity/activity.html">
+                < Back</a> <h1>Actividad Extra</h1>
+                    <p class="caption">Actividades TypeScript</p>
+                    <hr class="separator">
+
+                    <h2 id="sesi-n-extra-typescript">Sesión Extra: Typescript</h1>
+                        <p>Puedes realizar los ejercicios creando un nuevo proyecto que compile TypeScript o puedes
+                            utilizar <a href="https://www.typescriptlang.org/play">el playground de TypeScript</a>.
+                            Dentro de <em>index.ts</em> tenéis los resultados a los dos primeros ejercicios.</p>
+                        <h2 id="ejercicio-1">Ejercicio 1</h2>
+                        <ul>
+                            <li>Crea una interfaz &#39;Person&#39; que tenga como atributos &#39;name&#39;,
+                                &#39;age&#39; y &#39;profession&#39;. Ahora define una arrow function que tenga como
+                                parámetro esta interaz y que devuelva un array con sus propiedades, esta función tiene
+                                que tener tipado el parámetro de entrada y el return</li>
+                        </ul>
+<pre><code class="lang-javascript">// <span class="hljs-keyword">return</span> -&gt; [<span class="hljs-string">"name"</span>, <span class="hljs-string">"age"</span>, <span class="hljs-string">"profession"</span>]</code></pre>
+                        <h2 id="ejercicio-2">Ejercicio 2</h2>
+                        <p>Crea dos interfaces, una llamada <em>&#39;Car&#39;</em> y otra <em>&#39;Motorcycle&#39;</em>.
+                            La primera tendrá las propiedades tires (number), turnOnEngine() (función que devuelve void)
+                            y pressPedal() (funciónn que devuelve void).
+                            La segunda tendrá las propiedades tires (number), turnOnEngine() (función que devuelve void)
+                            y openThrottle() (funciónn que devuelve void).
+                            Escribe una función que acepte un parámetro que pueda ser Car o Motorcycle que, primero
+                            llame a turnOnEngine, y luego si es Car llame a pressPedal pero si es Motorcycle llame a
+                            openThrottle().
+                            Para la comprobación no valdrá typeof, necesitaremos hacer uso de <a
+                                href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates">type
+                                predicates</a></p>
+                        <h2 id="ejercicio-3">Ejercicio 3</h2>
+                        <p>En <a href="https://github.com/lucferbux/TypescriptWeatherExample">este repositorio</a> os
+                            dejo un ejemplo de proyecto TypeScript con Webpack, tal y como React usa dentro de su Core.
+                            La rama main contiene el ejercicio resuelto, para que podáis ver su lógica.
+                            En la rama main tenéis los ficheros incompletos, para implementar vuestra versión si queréis
+                            resolverlo por vuestra cuenta.
+                            Los pasos a seguir serían los siguientes:</p>
+                        <ol>
+                            <li>Hacer un fork del proyecto.</li>
+                            <li>Clonar el repositorio en vuestro ordenador.</li>
+                            <li>Hacer <em>checkout</em> a una nueva rama de <em>develop</em></li>
+                            <li>Desde la rama <em>develop</em>, empezar a implementar los cambios.</li>
+                        </ol>
+                        <p>Las características principales a implementar son todas aquellas que ya están realizadas en
+                            la rama <em>final</em>, que os puede servir por si os quedáis bloqueados con el desarrollo.
+                        </p>
+                        <p>Además de los cambios propuestos, hay muchas características que se podrían implementar:</p>
+                        <ul>
+                            <li>try/catch para las excepciones de código o sitios donde probablemente pueda fallar.</li>
+                            <li>elementos ui como un spinner para indicar que se está haciendo una petición.</li>
+                            <li>comportamientos ui como bloquear el botón de peticiones cuando se realice una petición.
+                            </li>
+                        </ul>
+                        <p>Y muchas más cosas, os animo a que mejoréis el código.</p>
+
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

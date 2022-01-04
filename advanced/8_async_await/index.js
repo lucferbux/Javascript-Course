@@ -12,7 +12,7 @@ async function asyncFunc() {
 }
 console.log(asyncFunc());
 
-objetoSinDefinir.llamadaMetodo();
+//objetoSinDefinir.llamadaMetodo();
 
 async function asyncFuncAwait() {
 

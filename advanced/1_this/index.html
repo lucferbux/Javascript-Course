@@ -165,11 +165,10 @@ this.surname = "Fernandez";
 
 // Función
 function f1() {
-    return this;
-    }
-    
-    // En un navegador:
-    f1() === window; // true
+  return this;
+}
+
+console.log(f1() === window); // true
 
 
 // Función Modo Estricto
@@ -178,7 +177,7 @@ function f2() {
     return this;
 }
     
-f2() === undefined; // true
+console.log(f2() === undefined);
 
 
 // Método
@@ -201,6 +200,7 @@ let student = {
     }
 }
 
+// This will be lucas as this.name references the global context and name is defined with Lucas
 student.greeting();
 
 

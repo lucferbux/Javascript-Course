@@ -29,9 +29,10 @@ Actualmente se pueden construir casi cualquier tipo de tecnología con JavaScrip
 
 JavaScript originalmente funcionaba dentro de los navegadores web. Todo navegador tiene lo que llamamos el Motor JavaScript o *JavaScript Engine*, que ejecuta el código.
 Aquí tenéis los mótores de los principales navegadores:
+
 * [Google Chrome V8](https://v8.dev)
 * [Mozilla SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey)
-* [Safari JavaScript Core/ Nitro ](https://developer.apple.com/documentation/javascriptcore)
+* [Safari JavaScript Core/ Nitro](https://developer.apple.com/documentation/javascriptcore)
 
 En 2008, [Ryan Dahl](https://en.wikipedia.org/wiki/Ryan_Dahl) cansado de las limitaciones de muchos Servidores Web, creó un entorno en C/C++ que contenía el motor V8 de Chrome y permitía la ejecución de **código en JavaScript fuera del navegador**.
 Esto permitió el uso de JavaScript para desarrollo de Backend, ampliando enormemente la popularidad del lenguaje.

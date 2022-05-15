@@ -43,11 +43,8 @@
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">number</span> * <span class="hljs-keyword">number</span>
 }
 </code></pre>
-                    <h2 id="function-expressions">Function expressions</h2>
-                    <p>Además de la forma mencionada arriba, las funciones se pueden crear mediante una <strong>function
-                            expression</strong>. Estas funciones <strong>pueden ser anónimas</strong>, no tener un
-                        nombre, pero poder asignarse a variables. Este método es muy útil para pasar funciones como
-                        argumentos.</p>
+<h2 id="function-expressions">Function expressions</h2>
+<p>Además de la forma mencionada arriba, las funciones se pueden crear mediante una <strong>function expression</strong>. Estas funciones <strong>pueden ser anónimas</strong>, no tener un nombre, pero poder asignarse a variables. Este método es muy útil para pasar funciones como argumentos. Así, la diferencia entre una <code>function expression</code> y una <code>function declaration</code>, es que estas últimas se declararán de manera normal y luego podrán ser llamadas invocando su definición mientras que las primeras necesitarán ser  asignadas a una variable para poder ser instanciadas.</p>
                     <pre><code class="lang-javascript"><span class="hljs-comment">// Function expression</span>
 <span class="hljs-keyword">const</span> square = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">number</span>) </span>{ <span class="hljs-keyword">return</span> number * number }
 <span class="hljs-keyword">var</span> x = square(<span class="hljs-number">4</span>) <span class="hljs-comment">// x gets the value 16</span>
@@ -178,6 +175,9 @@ console.log(arr); <span class="hljs-comment">// [2, 4, 6]</span>
 
 <span class="hljs-built_in">console</span>.log(returnNothing() === <span class="hljs-literal">undefined</span>);
 </code></pre>
+
+<h2 id="estilo">Estilo</h2>
+<p>Si queréis conocer las reglas de estilo para funciones, podéis dirigiros a la <a href="https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/JavaScript#functions_and_objects">guía de estilos de MDN</a>.</p>
 
                     <hr class="code-separator">
 

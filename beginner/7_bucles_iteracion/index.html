@@ -100,6 +100,50 @@ do {
 } while (i < 5);
 </code></pre>
 
+<h2 id="switch">Switch</h2>
+<p>Una sentencia <code>switch</code> puede sustituir a múltiples comprobaciones <code>if</code>. Ofrece una forma más descriptiva de comparar un valor con múltiples variantes.</p>
+<pre><code class="lang-pseudocode"><span class="hljs-keyword">switch</span> (<span class="hljs-keyword">condition</span>)
+ <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">break</span>
+ <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>
+  <span class="hljs-keyword">break</span>
+ <span class="hljs-keyword">default</span>
+</code></pre>
+<p>El funcionamiento es el siguiente, evaluará la condición que presentemos dentro de la <em>keyword</em> <code>switch</code> e irá comprobando con todos los casos de forma descendente hasta dar con el correcto o ejecutar el <code>default</code>.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> i = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">switch</span> (a) {
+  <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'Too small'</span> );
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'Exactly!'</span> );
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">'Too big'</span> );
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">default</span>:
+    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">"I don't know such values"</span> );
+}
+</code></pre>
+<p>Podremos además agrupar sentencias para realizar una misma acción en múltiples casos.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">switch</span>(navigator.language) {
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"en-US"</span>:
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"en-GB"</span>:
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"en-AU"</span>:
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">'Idioma inglés'</span>)<span class="hljs-comment">;</span>
+    <span class="hljs-built_in">break</span><span class="hljs-comment">;</span>
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"es-ES"</span>:
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"es-AR"</span>:
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"es-CL"</span>:
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"es-CO"</span>:
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"es-CR"</span>:
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"es-DO"</span>:
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">'Idioma español'</span>)<span class="hljs-comment">;</span>
+  <span class="hljs-keyword">default</span>:
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">'No se identificó idioma'</span>)
+}
+</code></pre>
+
 
                     <hr class="code-separator">
 
@@ -152,6 +196,23 @@ do {
     console.log(i);
 } while (i < 5);
 
+// Switch
+switch(navigator.language) {
+  case "en-US":
+  case "en-GB":
+  case "en-AU":
+    console.log('Idioma inglés');
+    break;
+  case "es-ES":
+  case "es-AR":
+  case "es-CL":
+  case "es-CO":
+  case "es-CR":
+  case "es-DO":
+    console.log('Idioma español');
+  default:
+    console.log('No se identificó idioma')
+}
 </code>
 </pre>
 

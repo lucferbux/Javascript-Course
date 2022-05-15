@@ -10,7 +10,7 @@ JavaScript cuenta con dos tipos de sintaxis:
 
 ## Palabra reservada 'If'
 
-La palabra reservada `if(...)` evalúauna condición entre parentesis, y si el resultado es `true`, ejecuta un trozo de código.
+La palabra reservada `if(...)` evalúa una condición entre paréntesis, y si el resultado es `true`, ejecuta un trozo de código.
 
 ```javascript
 let counter = 5
@@ -73,7 +73,7 @@ if (password == "patata") {
 console.log(login);
 ```
 
-Afortunadamente, exite una manera de realizar esta misma operación de una forma mucho más sencilla con el operador condicional **?**.
+Afortunadamente, existe una manera de realizar esta misma operación de una forma mucho más sencilla con el operador condicional **?**.
 
 ```javascript
 let loginShort = (password == "patata") ? true : false;

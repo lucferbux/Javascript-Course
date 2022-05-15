@@ -4,7 +4,7 @@
 
 TypeScript añade comprobación estática de código.
 
-Javascript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el problema es que puedes encontrate con muchos posibles puntos de conflicto:
+JavaScript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el problema es que puedes encontrate con muchos posibles puntos de conflicto:
 
 * Llamada a objetos que no existen
 

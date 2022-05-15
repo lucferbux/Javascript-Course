@@ -23,9 +23,9 @@
 Cada vez que se crea una variable, se reserva un determinado tamaño de memoria. Además, cuando una variable se copia, su valor en memoria también es copiado.
 Al pasar una variable a una función, también crea una copia de la variable</p>
 <h2 id="tipos-primitivos">Tipos primitivos</h2>
-<p>Javasript tiene 6 tipos de datos primitivos: <code>string, number, undefined, null, boolean y symbol</code>. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. <strong>Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor</strong>.</p>
+<p>JavaScript tiene 6 tipos de datos primitivos: <code>string, number, undefined, null, boolean y symbol</code>. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. <strong>Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor</strong>.</p>
 <h3 id="boolean">Boolean</h3>
-<p>El tipo <b>booleano</b> representa una entidad lógica que puede tener dos valores: <code>true</code> y <code>false</code>. Al definir una variable, si el valor es omitido o es <code>0</code>, <code>-0</code>, <code>null</code>, <code>NaN</code>, <code>undefined</code> o una cadena vacía (<code>&quot;&quot;</code>), la variable tiene un valor de <code>false</code>. En el resto de casos tendra un valor de <code>true</code>.</p>
+<p>El tipo <b>booleano</b> representa una entidad lógica que puede tener dos valores: <code>true</code> y <code>false</code>. Al definir una variable, si el valor es omitido o es <code>0</code>, <code>-0</code>, <code>null</code>, <code>NaN</code>, <code>undefined</code> o una cadena vacía (<code>&quot;&quot;</code>), la variable tiene un valor de <code>false</code>. En el resto de casos tendrá un valor de <code>true</code>.</p>
 <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Referencia</a>
 <pre>
 <code class="language-javascript">// Boolean
@@ -39,7 +39,7 @@ let boolVal = true;</code>
 let nullVal = null;</code>
 </pre>
 <h3 id="undefined">Undefined</h3>
-<p>Una variable que no ha sido assignada con un valor tiene el valor de <code>undefined</code>. No hay que confundirlo con <code>null</code>.</p>
+<p>Una variable que no ha sido asignada con un valor tiene el valor de <code>undefined</code>. No hay que confundirlo con <code>null</code>.</p>
 <a class="reference" href="https://developer.mozilla.org/en-US/docs/Glossary/undefined">Referencia</a>
 <pre>
 <code class="language-javascript">// Undefined
@@ -85,7 +85,7 @@ let filledObject = {"name": "lucas", "surname": "fernandez"};</code>
 </pre>
 
 <h3 id="arrays">Arrays</h3>
-<p>Los <code>arrays</code> son objetos donde hay una relación entre las propiedades de clave entera y la <strong>longitod</strong> de lla propiedad. Además, hereda del objeto <code>Array.prototype</code> que añade métodos para manipular datos con índice como <code>indexOf</code> o <code>push</code>.</p>
+<p>Los <code>arrays</code> son objetos donde hay una relación entre las propiedades de clave entera y la <strong>longitud</strong> de lla propiedad. Además, hereda del objeto <code>Array.prototype</code> que añade métodos para manipular datos con índice como <code>indexOf</code> o <code>push</code>.</p>
 <p>Además de arrays hay otras colecciones con clave que han sido añadidas en ES6, como <code>set</code> y <code>weakset</code> que representan sets y <code>Map</code> y <code>weakmap</code> que representan mapas de valores.</p>
 <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Referencia</a>
 <pre>
@@ -94,7 +94,7 @@ let filledObject = {"name": "lucas", "surname": "fernandez"};</code>
 </pre>
 
 <h3 id="funciones">Funciones</h3>
-<p>Más adelante veremos funciones en profundidad, básicamente el tipo de <code>function</code> permite almacenar funciones en variales, debido a que el constructor de las <strong>funciones</strong> deriva del constructor de <code>Object</code>.</p>
+<p>Más adelante veremos funciones en profundidad, básicamente el tipo de <code>function</code> permite almacenar funciones en variables, debido a que el constructor de las <strong>funciones</strong> deriva del constructor de <code>Object</code>.</p>
 <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Referencia</a>
 <pre>
 <code class="language-javascript">// Function

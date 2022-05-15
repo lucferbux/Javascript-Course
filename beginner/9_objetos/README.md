@@ -2,7 +2,7 @@
 
 Los objetos son otro tipo de dato que ya mencionamos en [la sección 4](/beginner/4_tipos_dato/README.md). A diferencia de los tipos primitivos, un objeto puede almacenar colecciones de datos con índices y entidades más complejas.
 
-Los objetos en JavaScript se diferencian un poco de otros lenguajes de programación, al ser un lenguaje **basado en prototípos** y no puramente orientado a objetos, en un momento veremos que significa esto.
+Los objetos en JavaScript se diferencian un poco de otros lenguajes de programación, al ser un lenguaje **basado en prototipos** y no puramente orientado a objetos, en un momento veremos que significa esto.
 
 ## Definición
 
@@ -22,7 +22,7 @@ Como se puede observar, se puede crear un objeto con una declaración literal a�
 ![Objeto en JavaScript](/meta/0_14_objects.png)
 
 ```javascript
-// Accesing properties
+// Accessing properties
 console.log(me.name);
 console.log(me.age);
 ```
@@ -94,7 +94,6 @@ Se diferencia de otros **lenguajes basados en clases** en que las clases no son 
 Hablando más claro, en una **herencia clásica**, un programador escribe una clase, que define un objeto. Múltiples objetos pueden ser instanciados por la misma clase, así tienes código definido una sola vez que describe diferentes objetos en un programa. Luego las clases pueden organizarse en jerarquías para la reutilización de código.  
 
 En la **herencia por prototipado**, los objetos **heredan directamente** de otros objetos. Toda la abstracción de las clases desaparece. La reutilización de código y la jerarquía se consigue a través de un enlace de los objetos extendidos. Cuando pedimos una propiedad en un objeto, irá siguiendo esta jerarquía hacia arriba hasta dar con el objeto que definió esa propiedad en primera instancia.
-
 
 Podremos obtener los prototipos de un objeto mediante el método `getPrototypeOf()``
 
@@ -176,3 +175,7 @@ const { other = "I have a value! " } = teacher;
 // 5. Alias
 const { age: agePerson } = teacher;
 ```
+
+## Estilo
+
+Para ampliar vuestros conocimientos sobre las guías de estilo de objetos en JavaScript, podéis dirigiros a la [guía de estilos de MDN](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/JavaScript#functions_and_objects).

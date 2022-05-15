@@ -8,13 +8,13 @@ Al pasar una variable a una función, también crea una copia de la variable
 
 ## Tipos primitivos
 
-Javasript tiene 6 tipos de datos primitivos: `string, number, undefined, null, boolean y symbol`. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. **Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor**.
+JavaScript tiene 6 tipos de datos primitivos: `string, number, undefined, null, boolean y symbol`. Estos datos solo pueden almacenar un valor en cada momento, por lo que son inmutables. **Solo se puede cambiar el valor de una variable que almacena un primitivo asignando un nuevo valor**.
 
 ### Boolean
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
 
-El tipo `booleano` representa una entidad lógica que puede tener dos valores: `true` y `false`. Al definir una variable, si el valor es omitido o es `0`, `-0`, `null`, `NaN`, `undefined` o una cadena vacía (`""`), la variable tiene un valor de `false`. En el resto de casos tendra un valor de `true`.
+El tipo `booleano` representa una entidad lógica que puede tener dos valores: `true` y `false`. Al definir una variable, si el valor es omitido o es `0`, `-0`, `null`, `NaN`, `undefined` o una cadena vacía (`""`), la variable tiene un valor de `false`. En el resto de casos tendrá un valor de `true`.
 
 ### Null
 
@@ -26,7 +26,7 @@ El tipo `null` tiene exactamente un valor: `null`. Representa la no-existencia o
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Glossary/undefined)
 
-Una variable que no ha sido assignada con un valor tiene el valor de `undefined`. No hay que confundirlo con `null`.
+Una variable que no ha sido asignada con un valor tiene el valor de `undefined`. No hay que confundirlo con `null`.
 
 ### Number
 
@@ -68,7 +68,7 @@ Estas propiedades pueden ser valores de cualquier tipo, incluido otros objetos, 
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-Los `arrays` son objetos donde hay una relación entre las propiedades de clave entera y la **longitod** de lla propiedad. Además, hereda del objeto `Array.prototype` que añade métodos para manipular datos con índice como `indexOf` o `push`.
+Los `arrays` son objetos donde hay una relación entre las propiedades de clave entera y la **longitud** de lla propiedad. Además, hereda del objeto `Array.prototype` que añade métodos para manipular datos con índice como `indexOf` o `push`.
 
 Además de arrays hay otras colecciones con clave que han sido añadidas en ES6, como `set` y `weakset` que representan sets y `Map` y `weakmap` que representan mapas de valores.
 
@@ -76,4 +76,4 @@ Además de arrays hay otras colecciones con clave que han sido añadidas en ES6,
 
 * [Referencia](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
-Más adelante veremos funciones en profundidad, básicamente el tipo de `function` permite almacenar funciones en variales, debido a que el constructor de las **funciones** deriva del constructor de `Object`.
+Más adelante veremos funciones en profundidad, básicamente el tipo de `function` permite almacenar funciones en variables, debido a que el constructor de las **funciones** deriva del constructor de `Object`.

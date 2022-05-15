@@ -91,3 +91,56 @@ do {
   console.log(i);
 } while (i < 5);
 ```
+
+## Switch
+
+Una sentencia `switch` puede sustituir a múltiples comprobaciones `if`. Ofrece una forma más descriptiva de comparar un valor con múltiples variantes.
+
+```pseudocode
+switch (condition)
+ case 1
+  break
+ case 2
+  break
+ default
+```
+
+El funcionamiento es el siguiente, evaluará la condición que presentemos dentro de la *keyword* `switch` e irá comprobando con todos los casos de forma descendente hasta dar con el correcto o ejecutar el `default`.
+
+```javascript
+let i = 3;
+switch (a) {
+  case 2:
+    console.log( 'Too small' );
+    break;
+  case 3:
+    console.log( 'Exactly!' );
+    break;
+  case 4:
+    console.log( 'Too big' );
+    break;
+  default:
+    console.log( "I don't know such values" );
+}
+```
+
+Podremos además agrupar sentencias para realizar una misma acción en múltiples casos.
+
+```javascript
+switch(navigator.language) {
+  case "en-US":
+  case "en-GB":
+  case "en-AU":
+    console.log('Idioma inglés');
+    break;
+  case "es-ES":
+  case "es-AR":
+  case "es-CL":
+  case "es-CO":
+  case "es-CR":
+  case "es-DO":
+    console.log('Idioma español');
+  default:
+    console.log('No se identificó idioma')
+}
+```

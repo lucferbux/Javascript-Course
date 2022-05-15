@@ -28,7 +28,7 @@ function square(number) {
 
 ## Function expressions
 
-Además de la forma mencionada arriba, las funciones se pueden crear mediante una **function expression**. Estas funciones **pueden ser anónimas**, no tener un nombre, pero poder asignarse a variables. Este método es muy útil para pasar funciones como argumentos.
+Además de la forma mencionada arriba, las funciones se pueden crear mediante una **function expression**. Estas funciones **pueden ser anónimas**, no tener un nombre, pero poder asignarse a variables. Este método es muy útil para pasar funciones como argumentos. Así, la diferencia entre una `function expression` y una `function declaration`, es que estas últimas se declararán de manera normal y luego podrán ser llamadas invocando su definición mientras que las primeras necesitarán ser  asignadas a una variable para poder ser instanciadas.
 
 ```javascript
 // Function expression
@@ -57,7 +57,7 @@ Todos los parámetros **de tipos no primitivos** (objetos, arrays, funciones) en
 
 Visualmente se puede diferenciar el paso de parámetros de valor y de referencia con este gif:
 
-![Value vs referenc](https://www.mathwarehouse.com/programming/images/pass-by-reference-vs-pass-by-value-animation.gif)
+![Value vs reference](https://www.mathwarehouse.com/programming/images/pass-by-reference-vs-pass-by-value-animation.gif)
 
 Como podemos observar, al pasar por referencia, si cambiamos el valor interno en la función cambiará en la variable externa, en cambio si la cambiamos al pasar la variable por valor no cambia en la variable externa.
 
@@ -171,3 +171,7 @@ function returnNothing() { return }
 
 console.log(returnNothing() === undefined);
 ```
+
+## Estilo
+
+Si queréis conocer las reglas de estilo para funciones, podéis dirigiros a la [guía de estilos de MDN](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/JavaScript#functions_and_objects).

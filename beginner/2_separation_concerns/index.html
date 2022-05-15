@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Steps</title>
+    <title>Estructura del código</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
 </head>
@@ -13,27 +13,68 @@
 <body>
     <div class="container">
         <div class="section">
-            <a class="back-button" href="/beginner/beginner.html">< Back</a> 
-                    <h1>Separación de Preocupaciones</h1>
-                    <p class="caption">Divisón de los ficheros en Desarrollo Web</p>
-                    <hr class="separator">
-
-                    <h2 id="1-separaci-n-de-preocupaciones">1. Separación de Preocupaciones</h2>
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> <h1 id="instrucciones">Estructura del código</h1>
+                    <h2 id="separaci-n-de-preocupaciones">Separación de Preocupaciones</h2>
+                    <p>A la hora de crear código, cuanto más aumenta la complejidad del proyecto, más aumenta las líneas
+                        de código del mismo. Es por ello que existen mecanísmos para asegurar que podemos organizar
+                        nuestro código de una manera lógica y concisa, para así evitar situaciones en las que el
+                        mantenimiento del código sea inabordable. Una de estas estrategias es separar nuestro código en
+                        múltiples ficheros, cada uno encargado de un set de funcionalidades específico. Esto es lo que
+                        llamamos <strong>separación de preocupaciones</strong>.</p>
                     <ol>
-                    <li>Ahora el tag <code>&lt;script&gt;</code> tiene un atributo llamado <strong>src</strong>. Esto indica el fichero que cargará con el código JavaScript.</li>
-                    <li>Separar diferentes archivos permite llevar a cabo la <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separación de Preocupaciones</a> muy importante en el mundo del desarrollo.</li>
+                        <li>Ahora el tag <code>&lt;script&gt;</code> tiene un atributo llamado <strong>src</strong>.
+                            Esto indica el fichero que cargará con el código JavaScript.</li>
+                        <li>Separar diferentes archivos permite llevar a cabo la <a
+                                href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separación de
+                                Preocupaciones</a> muy importante en el mundo del desarrollo.</li>
                     </ol>
-                    <h2 id="2-m-dulos">2. Módulos</h2>
-                    <p>Los módulos en javascript permiten separar los ficheros que contienen el código en trozos más pequeños. Gracias a mecanismos de importación y exportación es posible separar la lógica de las funcionalidades en ficheros más pequeños e importarlos donde fuese necesario. Las dos declaraciones más importantes son <code>import</code> y <code>export</code>.</p>
-                    <br>
-                    <p>Los módulos son evaluados nada más improtarse, por lo que el código que no esté contenido se ejecutará nada más importarse el fichero.</p>
-                    <p>En los módulos, el comando <code>this</code> es indefinido, por lo que será necesario hacer operaciones de bind para ejecutar window.</p>
-            
+                    <pre><code class="lang-html">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../prism.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"index.js"</span>&gt;</span><span class="undefined">
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+                    <h2 id="use-strict">Use Strict</h2>
+                    <p>Durante mucho tiempo JavaScript evolucionó sin problemas de compatibilidad, todos los cambios que se añadían no modificaban funcionamientos anteriores. Con la introducción de <strong>ECMASCript 5</strong>, algunos cambios empezaban a modificar la funcionalidad establecida de JavaScript. Para la seguridad del código antiguo, muchas de esas modificaciones están desactivadas por defecto. Para activarlas hay que añadir la directiva <code>use strict</code>.</p>
+                    <h2 id="m-dulos">Módulos</h2>
+                    <p>Los módulos en javascript permiten separar los ficheros que contienen el código en trozos más
+                        pequeños. Gracias a mecanismos de importación y exportación es posible separar la lógica de las
+                        funcionalidades en ficheros más pequeños e importarlos donde fuese necesario. Las dos
+                        declaraciones más importantes son <code>import</code> y <code>export</code>. Básicamente podemos
+                        decir que un módulo es un fichero de código.</p>
+                        <br>
+                    <p>Los módulos <strong>son evaluados nada más importarse</strong>, por lo que el código que no esté
+                        contenido se ejecutará nada más importarse el fichero. Además, lo smódulos siempre funcionan en
+                        modo <code>use strict</code></p>
+                        <br>    
+                    <p>En los módulos, el comando <code>this</code> es indefinido, esto es debido porque cada módulo
+                        tiene un <em>scope</em> de alto nivel (lo definiremos próximamente).</p>
+
+                    <h2 id="-anexo-debuggear-con-consola">(Anexo) Debuggear con consola</h2>
+                    <p>Vamos a comprobar si primero se ejecuta el código de módulo al importarse, para ello vamos a añadir algunos <em>breakpoints</em> a nuestro código y controlar la ejecución de nuestros scripts.</p>
+                    <ol>
+                    <li>Abrimos la consola de Chrome.</li>
+                    <li>Nos dirigímos a la sección de <em>&quot;Sources&quot;</em>.</li>
+                    <li>En la pestaña de navegación escogemos primero el fichero <code>index.js</code>.</li>
+                    <li>En la barra lateral izquierda, vamos pulsando en las lineas que queramos para añadir <em>breakpoints</em>.
+                    <img class="container-image" src="/meta/0_5_breakpoint.png" alt="Añadir breakpoint"></li>
+                    <li>Repetimos el proceso en <em>&quot;additional.js&quot;</em>.</li>
+                    <li>Al recargar la página la ejecución se dentendrá en el primer breakpoint, pulsando en el botón de <em>&quot;play&quot;</em> saltaremos al siguiente <em>breakpoint</em>.
+                    <img class="container-image" src="/meta/0_6_running.png" alt="Ejecutar debugger"></li>
+                    </ol>
+                        
+
                     <hr class="code-separator">
 
                     <h2 id="arrow">Consola JavaScript</h2>
                     <p class="folder">/beginner/2_separation_concerns/index.js</p>
-<pre>
+                    <pre>
 <code class="language-javascript">
 ---- index.js --- 
 
@@ -75,9 +116,9 @@ console.log(testBind());
 
         </div>
     </div>
-    <script src="../../prism.js"></script> 
-    
-    
+    <script src="../../prism.js"></script>
+
+
     <script type="module" src="index.js">
     </script>
 </body>

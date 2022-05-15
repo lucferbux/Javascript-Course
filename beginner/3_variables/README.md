@@ -21,7 +21,7 @@ En el ejemplo anterior, la cadena se almacena en un espacio de memoria apuntando
 Hay muchas formas de declarar una variable, podemos hacer la declaración y asignación en la misma linea, declarar múltiples variables a la vez (aunque no es muy recomendable), usando el estilo "comma-first"...
 
 ``` javascript
-// declaración y asignacion
+// declaración y asignación
 let firstVariable = "Hola mundo";
 
 // declaración en una misma linea
@@ -40,7 +40,7 @@ Todas estas formas hacen teóricamente lo mismo, el uso de cada uno de estos est
 Hay dos limitaciones importantes en la declaración de Variables en JavaScript:
 
  1. El nombre solo puede tener letras, dígitos o los símbolos `$` o `_`.
- 2. El primer caracter no puede ser un dígito.
+ 2. El primer carácter no puede ser un dígito.
 
 Además, JavaScript usa CamelCase en la declaración de variables, así, aunque algunos nombres estén permitidos, no son recomendados por la guía de estilos.
 
@@ -75,7 +75,7 @@ Ahora vamos a hablar de las diferencias entre **var**, **let** y **const** ya qu
 
 ### Reglas de Scope
 
-La mayor diferencia tiene que ver con las **reglas de scope**, ya veremos más adelante en profundidad el concepto de Scope, básicamente es el entorno encapsulado en que se ejecuta un trozo de código. Las variables declaradas con `var` están delimitadas al **cuerpo de la función** (function scope) mientras que `let`está delimitado al bloque que le rodea, marcado por `{ }` (block scope)
+La mayor diferencia tiene que ver con las **reglas de scope**, ya veremos más adelante en profundidad el concepto de Scope, básicamente es el entorno encapsulado en que se ejecuta un trozo de código. Las variables declaradas con `var` están delimitadas al **cuerpo de la función** (function scope) mientras que `let`está delimitado al bloque que le rodea, marcado por `{ }` (block scope).
 
 ```javascript
 function scope_rules() {
@@ -102,7 +102,7 @@ scope_rules()
 
 Hoisting es uno de los términos más confusos en JavaScript, básicamente ya hemos hablado de que JavaScript es un lenguaje interpretado que recorre línea por línea y ejecuta lo que va encontrando, pero la realidad es que recorre línea por línea **dos veces** el programa, una para reservar variables y otras cosas, y la segunda para ejecutar el código. **Hoisting** es el proceso de reservar espacio de memoria para variables y funciones.
 
-En JavaScript, `var` hace que la variable esté `hoisted` (inizializada antes de ser declarada con `undefined`) mientras que `let` lanzará un **ReferenceError** si se llama antes de ser declarado
+En JavaScript, `var` hace que la variable esté `hoisted` (inicializada antes de ser declarada con `undefined`) mientras que `let` lanzará un **ReferenceError** si se llama antes de ser declarado
 
 ```javascript
 // hoisted
@@ -131,7 +131,7 @@ console.log(window.notglobalVar);
 
 ### Re-Declaración
 
-En **modo estricto** `var` permite re-declara variables mientras que `let` lanzará un **SintaxError**
+En **modo estricto** `var` permite re-declara variables mientras que `let` lanzará un **SyntaxError**
 
 ```javascript
 'use strict';
@@ -140,7 +140,7 @@ var redeclare = "world";
 
 let notRedeclare = "hello"; 
 //let notRedeclare = "bar2"; 
-console.log("Sintax Error");
+console.log("Syntax Error");
 
 ```
 
@@ -156,4 +156,4 @@ const COUNTRY_CODE_SPAIN = "ES";
 
 ### Guía de estilos
 
-Pese a que las variables en JavaScript sigan el estilo de CamelCase, está muy extendido el uso de mayusculas para declarar constantes, usando la barra baja para separar palabras
+Pese a que las variables en JavaScript sigan el estilo de CamelCase, está muy extendido el uso de mayúsculas para declarar constantes, usando la barra baja para separar palabras. Podéis consultar el estilo de la declaración de variables en la [guía de estilos de MDN](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/JavaScript#variables).

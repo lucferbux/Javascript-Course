@@ -59,7 +59,7 @@ console.log(`eq: ${eq}`);
 let eq = a == c;
 console.log(`eq: ${eq}`);
 
-// Equaylity + type
+// Equality + type
 let eq = a === c;
 console.log(`eq: ${eq}`);
 

@@ -43,3 +43,21 @@ do {
   i += 1;
   console.log(i);
 } while (i < 5);
+
+console.log("%c4. Switch", 'color: #229179; font-size: 16px;');
+switch(navigator.language) {
+  case "en-US":
+  case "en-GB":
+  case "en-AU":
+    console.log('Idioma inglés');
+    break;
+  case "es-ES":
+  case "es-AR":
+  case "es-CL":
+  case "es-CO":
+  case "es-CR":
+  case "es-DO":
+    console.log('Idioma español');
+  default:
+    console.log('No se identificó idioma')
+}

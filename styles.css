@@ -225,14 +225,9 @@ code {
     overflow: visible;
     line-height: inherit;
     word-wrap: normal;
-    background-color: initial;
-    border: 0;
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-}
-
-.code-background {
-    background-color: #e5e9f3;
+    background-color: #d8dfee;
     padding: 0px 6px;
+    border: 0;
 }
 
 .code-separator {
@@ -373,10 +368,6 @@ strong {
     .table-content {
         background-color: #474250;
     }
-    .code-background {
-        background-color: #201e24;
-        
-    }
 
     .custom-button {
         background-color: #ad92fd;
@@ -389,6 +380,7 @@ strong {
 
     code {
         color: white;
+        background-color: #4e4c52;
     }
 
     ::marker {

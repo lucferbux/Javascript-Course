@@ -19,7 +19,13 @@ var person {
 
 ## Ejercicio 3
 
-* Escribe una arrow function (ES6 function) que tome como parámetro una cadena y la devuelva invertida. Ej "Hola mundo" quedaría "odnum aloH"
+* Crea una clase a la que llamaremos "InvertirCadena" con las siguientes propiedades:
+* Un atributo llamado `cadenaInvertir` que sea una cadena vacía.
+* Una función en formato **arrow function**, que tome el atributo `cadenaInvertir` e imprima en pantalla el resultado invertido. Ej "Hola mundo" quedaría "odnum aloH".
+* Si el parámetro de la cadena `cadenaInvertir` es vacío, lance un error (throw). Ej. "". throw error.
+* Ahora instancia la clase en un objeto que llamaremos `invertirCadena`.
+
+Ejecuta primero la función sin cambiar `cadenaInvertir`. ¿Cómo podemos hacer para que nuestro código no rompa al ejecutarse?. Ahora cambia el valor a `cadenaInvertir` y vuelve a llamar la función. ¿Cuál es el resultado?. Por último, intenta acceder al siguiente método `invertirCadena.nuevoMetodo()`. ¿Cómo podemos hacer para que no de un error?
 
 ## Ejercicio 4
 

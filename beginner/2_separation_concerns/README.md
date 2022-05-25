@@ -1,5 +1,7 @@
 # Estructura del código
 
+> Estructurar correctamente nuestro código JavaScript
+
 ## Separación de Preocupaciones
 
 A la hora de crear código, cuanto más aumenta la complejidad del proyecto, más aumenta las líneas de código del mismo. Es por ello que existen mecanísmos para asegurar que podemos organizar nuestro código de una manera lógica y concisa, para así evitar situaciones en las que el mantenimiento del código sea inabordable. Una de estas estrategias es separar nuestro código en múltiples ficheros, cada uno encargado de un set de funcionalidades específico. Esto es lo que llamamos **separación de preocupaciones**.

@@ -1,6 +1,6 @@
 # Introducción
 
-## Introducción
+## Overview
 
 TypeScript añade comprobación estática de código.
 

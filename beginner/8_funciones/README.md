@@ -1,5 +1,7 @@
 # Funciones
 
+> Funciones clásicas
+
 Las funciones son uno de los elementos más importantes en casi cualquier lenguaje de programación. Una función permite **definir una serie de acciones que pueden reutilizarse a lo largo del código**. Esto es debido a que una función puede llamarse cuantas veces se quiera a lo largo de un programa.
 
 Ya hemos visto varias funciones a lo largo del curso como `console.log()`, `alert()` o `prompt()`. Al final estas funciones están definidas en algún lugar y podemos llamarlas cuando las necesitamos.

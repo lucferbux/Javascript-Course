@@ -4,7 +4,7 @@ Siguiendo con lo visto en [el módulo de funciones](/beginner/8_functiones/READM
 
 ## Conceptos
 
-### Recursion
+### Recursión
 
 La **recursión** es un patrón de programación que permite la resolución de una tarea mediante la llamada recursiva de una misma función.
 
@@ -63,13 +63,11 @@ console.log(sumArr);
 console.log(sumAllNumbers(...sumArr));
 ```
 
-
 ## Arrow Function ES6
 
 Ahora vamos a hablar de las **arrow functions** presentes desde **ES6**. Es una sintaxis mucho más clara que además simplifica la forma en la que las funciones se comportan, asimilándolo a otros lenguajes de programación. Vamos a ver sus características comparándolo con funciones tradicionales.
 
 ### 1. Sintaxis
-
 
 ``` javascript
 // ES5
@@ -78,7 +76,7 @@ var add = function(x, y) {
 };
 // ES6
 let add = (x, y) => { return x + y };
-``` 
+```
 
 Permite aplicar y reducir las lineas de código de la función hasta llegar a la mínima expresión.
 
@@ -129,7 +127,7 @@ let person = {
   thisInArrow: () => {
     console.log("My name (arrow) is " + this.name); // no 'this' binding here
   },
-  thisInArrowPassingelement: (nameBind) => {
+  thisInArrowPassingElement: (nameBind) => {
     console.log("My name (arrow) is " + nameBind); // no 'this' binding here
   },
   thisInRegular() {
@@ -137,7 +135,7 @@ let person = {
   },
 };
 person.thisInArrow();
-person.thisInArrowPassingelement(person.name);
+person.thisInArrowPassingElement(person.name);
 person.thisInRegular();
 ```
 

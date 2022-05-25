@@ -1,5 +1,7 @@
 # Bucles e Iteración
 
+> Iteración en JavaScript
+
 Hay situaciones en las que es necesario que un bloque de instrucciones se ejecute una cantidad determinada de veces, bien sea para iterar entre múltiples elementos, crear nuevas secuencias...
 
 Para eso existen declaraciones de bucle. En JavaScript existen varios mecanismos para implementar la repetición de código, variando donde se coloca la evaluación.

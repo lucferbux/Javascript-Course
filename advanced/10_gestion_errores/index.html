@@ -14,16 +14,188 @@
   <div class="container">
     <div class="section">
       <a class="back-button" href="/advanced/advanced.html">
-        < Back</a> <h1>Gestión de Errores</h1>
+        < Back</a>
+        
+        <h1 id="gesti-n-de-errores">Gestión de errores</h1>
+        <p class="caption">Manejo de errores inesperados</p>
+                    <hr class="separator">
+<h2 id="try-catch">try..catch</h2>
+<p>Como hemos podido ver, hay muchas formas de que nuestro código pueda tener errores. El comportamiento general de JavaScript cuando se encuentra un error es parar la ejecución y devolver información acerca del conflicto. Para controlar estos errores en nuestro código existe la sintaxis de <code>try...catch</code>.</p>
+<p>El constructor de <code>try...catch</code> tiene dos bloques principales: <code>try</code> donde contendremos el código que puede tener el error y después <code>catch</code>, donde reaccionaremos a ese error:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">try</span> {
+    let dog = {
+        name: <span class="hljs-string">"Seymur"</span>,
+        age: <span class="hljs-number">12</span>
+    }
+
+    dog.breed.subtype;
+} <span class="hljs-keyword">catch</span> (err) {
+    console.log(err)
+}
+</code></pre>
+<p>Como podemos ver, el flujo es el siguiente, primero se evalúa el código del bloque <code>try</code>. Si todo funciona correctamente se salta el bloque <code>catch</code> y se continúa con la ejecución. Por otro lado, si falla esta parte, se ejecutará el código dentro del bloque <code>catch</code> y a continuación se reanudará la ejecución. Dentro del bloque <code>catch</code> tendremos el <strong>objeto error</strong>, que tendrá varias propiedades como <code>err.name</code>, <code>err.message</code> o <code>err.stack</code> con la información del error capturado.</p>
+<p>Hay ciertas características que tenemos que tener presente:</p>
+<ul>
+<li><strong><code>try...catch</code> solo funciona con errores de ejecución</strong>: Es decir, que sintaxis no válida hará que no se ejecute el bloque <code>catch</code>.</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">try</span> {
+  {{**}}}
+} <span class="hljs-keyword">catch</span> (err) {
+  alert(<span class="hljs-string">"El motor de JavaScript no entenderá este código"</span>);
+}
+</code></pre>
+<ul>
+<li><strong><code>try...catch</code> solo funciona de forma síncrona</strong>: Si tenemos código asíncrono en un <code>try..catch</code> no será reconocido y cualquier error no pasará al <code>catch</code>.</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">try</span> {
+  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    variableInventada; <span class="hljs-comment">// La ejecución parará aquí</span>
+  }, <span class="hljs-number">1000</span>);
+} <span class="hljs-keyword">catch</span> (err) {
+  alert( <span class="hljs-string">"no va a llegar"</span> );
+}
+</code></pre>
+<ul>
+<li><strong><code>try...catch...finally</code> ejecutará siempre el último bloque</strong>: Si tenemos código en un <code>try..catch</code> independientemente de la ejecución siempre se ejecutará el bloque <code>finally</code>.</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">let</span> dog = {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">"Seymur"</span>,
+        <span class="hljs-attr">age</span>: <span class="hljs-number">12</span>
+    }
+
+    dog.breed
+} <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.log(err);
+} <span class="hljs-keyword">finally</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Me ejecuto siempre"</span>);
+}
+</code></pre>
+<h2 id="throw">throw</h2>
+<p>El operador <code>throw</code> genera errores en parte de nuestro código. Esto es importante para tener un mayor control lógico de nuestro código. La sintaxis para declarar errores es la siguiente:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> <span class="hljs-built_in">error</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Error por defecto"</span>)
+<span class="hljs-keyword">let</span> syntaxError = <span class="hljs-keyword">new</span> SyntaxError(<span class="hljs-string">"Error sintáctico"</span>)
+...
+</code></pre>
+<p>Una vez generado un error podemos lanzar errores en las partes de nuestro código que puedan contener errores de ejecución:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> response = <span class="hljs-string">`{ "name": "Lucas" }`</span>
+
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">let</span> user = <span class="hljs-built_in">JSON</span>.parse(response);
+
+    <span class="hljs-keyword">if</span> (!user.name || !user.age) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">SyntaxError</span>(<span class="hljs-string">"Error, falta alguno de los datos"</span>);
+    }
+
+    <span class="hljs-built_in">console</span>.log( user.name );
+} <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.log( <span class="hljs-string">"Error JSON: "</span> + err.message);
+}
+</code></pre>
+<h2 id="custom-errors">Custom errors</h2>
+<p>Podemos crear nuestros propios errores extendiendo la clase <code>Error</code>. Esto permite una clasificación más granular de los errores de nuestro código, permitiendo poder reaccionar de manera diferente dependiendo del error que se ha producido. Vamos a ver algún ejemplo.</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MalformedField</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Error</span> </span>{
+  <span class="hljs-keyword">constructor</span>(message) {
+    <span class="hljs-keyword">super</span>(message);
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">"MalformedField"</span>;
+  }
+}
+
+<span class="hljs-keyword">let</span> response = <span class="hljs-string">`{ "name": 23, "age": 28 }`</span>
+
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">let</span> user = <span class="hljs-built_in">JSON</span>.parse(response);
+
+    <span class="hljs-keyword">if</span> (!user.name || !user.age) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">SyntaxError</span>(<span class="hljs-string">"Error, falta alguno de los datos"</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> user.name !== <span class="hljs-string">""</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> MalformedField(<span class="hljs-string">"Name no es una cadena"</span>);
+    }
+
+    <span class="hljs-built_in">console</span>.log( user.name );
+} <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-keyword">if</span> (err <span class="hljs-keyword">instanceof</span> MalformedField) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Atributo invalido: "</span> + err.message);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (err <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">SyntaxError</span>) { <span class="hljs-comment">// (*)</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"JSON Syntax Error: "</span> + err.message);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">throw</span> err;
+  }
+}
+</code></pre>
+
          
           <hr class="code-separator">
 
           <h2 id="arrow">Consola JavaScript</h2>
           <p class="folder">/advanced/10_gestion_errores/index.js</p>
           <pre>
-<code class="language-javascript">
+<code class="language-javascript">// Gestión de errores
 
-</code>
+// Try...catch
+
+try {
+  let dog = {
+    name: "Seymur",
+    age: 12,
+  };
+
+  dog.breed.subtype;
+} catch (err) {
+  console.log(err);
+}
+
+// Throw
+
+let response = `{ "name": "Lucas" }`;
+
+try {
+  let user = JSON.parse(response);
+
+  if (!user.name || !user.age) {
+    throw new SyntaxError("Error, falta alguno de los datos");
+  }
+
+  console.log(user.name);
+} catch (err) {
+  console.log("Error JSON: " + err.message);
+}
+
+// Custom error
+
+class MalformedField extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "MalformedField";
+  }
+}
+
+let responseMalformed = `{ "name": 23, "age": 28 }`;
+
+try {
+  let user = JSON.parse(responseMalformed);
+
+  if (!user.name || !user.age) {
+    throw new SyntaxError("Error, falta alguno de los datos");
+  }
+
+  if (typeof user.name !== "") {
+    throw new MalformedField("Name no es una cadena");
+  }
+
+  console.log(user.name);
+} catch (err) {
+  if (err instanceof MalformedField) {
+    console.log("Atributo invalido: " + err.message);
+  } else if (err instanceof SyntaxError) {
+    // (*)
+    console.log("JSON Syntax Error: " + err.message);
+  } else {
+    throw err;
+  }
+}</code>
 </pre>
 
     </div>

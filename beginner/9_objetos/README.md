@@ -1,5 +1,7 @@
 # Objetos
 
+> Objetos y prototipos
+
 Los objetos son otro tipo de dato que ya mencionamos en [la sección 4](/beginner/4_tipos_dato/README.md). A diferencia de los tipos primitivos, un objeto puede almacenar colecciones de datos con índices y entidades más complejas.
 
 Los objetos en JavaScript se diferencian un poco de otros lenguajes de programación, al ser un lenguaje **basado en prototipos** y no puramente orientado a objetos, en un momento veremos que significa esto.

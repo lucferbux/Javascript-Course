@@ -1,5 +1,7 @@
 # Variables
 
+> Almacenar valores en JavaScript
+
 Una variable es una contenedor para almacenar valores. Tradicionalmente esto se ha hecho con la palabra reservada `var`, pero ES6 introdujo dos nuevas palabras reservadas, `const` y `let`.
 
 El siguiente código muestra como crear una nueva variable:

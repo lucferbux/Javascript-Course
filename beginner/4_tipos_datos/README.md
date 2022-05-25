@@ -1,5 +1,7 @@
 # Tipos de Dato
 
+> Clasificación de tipos en JavaScript
+
 ## Introducción
 
 JavaScript tiene dos tipos de variables: tipos primitivos y tipos por referencia.

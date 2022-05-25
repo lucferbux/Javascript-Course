@@ -1,6 +1,6 @@
 # Promesas
 
-Una **promesa** es una implementación más avanzada que `callback` dentro de la asincronía de JavaScript. Es un proxy de un valor que probablemente no se conozca en el momento en el que la promesa se crea. Esto permite que funciones asíncronas devuelvan valores como métodos síncronos. En vez de devolver su valor final, devuelve **una promesa del valor en el futuro**. 
+Una **promesa** es una implementación más avanzada que `callback` dentro de la asincronía de JavaScript. Es un proxy de un valor que probablemente no se conozca en el momento en el que la promesa se crea. Esto permite que funciones asíncronas devuelvan valores como métodos síncronos. En vez de devolver su valor final, devuelve **una promesa del valor en el futuro**.
 
 Las **promesas** pueden tener tres estados:
 
@@ -8,7 +8,7 @@ Las **promesas** pueden tener tres estados:
 * **Completa:** `fulfilled`, significa que la operación se ha completado correctamente.
 * **Rechazada:** `rejected`, la operación ha fallado.
 
-Una operación pendiente puede o bien **completarse** o **rechazarse** con un error. Cuando ocurre cualquiera de las dos opciones, los operadores asociados por el método `then` de la promesa son ejecutados. Esto permite que no haya condiciones de carre333ra.
+Una operación pendiente puede o bien **completarse** o **rechazarse** con un error. Cuando ocurre cualquiera de las dos opciones, los operadores asociados por el método `then` de la promesa son ejecutados. Esto permite que no haya condiciones de carrera.
 
 ## Sintaxis
 

@@ -124,7 +124,7 @@ oldFunc.showArgs(<span class="hljs-number">1</span>, <span class="hljs-number">2
   thisInArrow: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"My name (arrow) is "</span> + <span class="hljs-keyword">this</span>.name); <span class="hljs-regexp">//</span> <span class="hljs-literal">no</span> <span class="hljs-string">'this'</span> binding here
   },
-  thisInArrowPassingelement: <span class="hljs-function"><span class="hljs-params">(nameBind)</span> =&gt;</span> {
+  thisInArrowPassingElement: <span class="hljs-function"><span class="hljs-params">(nameBind)</span> =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"My name (arrow) is "</span> + nameBind); <span class="hljs-regexp">//</span> <span class="hljs-literal">no</span> <span class="hljs-string">'this'</span> binding here
   },
   thisInRegular() {
@@ -132,7 +132,7 @@ oldFunc.showArgs(<span class="hljs-number">1</span>, <span class="hljs-number">2
   },
 };
 person.thisInArrow();
-person.thisInArrowPassingelement(person.name);
+person.thisInArrowPassingElement(person.name);
 person.thisInRegular();
 </code></pre>
           <h3 id="4-palabra-reservada-new-">4. Palabra reservada &quot;new&quot;</h3>

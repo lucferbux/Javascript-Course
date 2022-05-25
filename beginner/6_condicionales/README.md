@@ -1,4 +1,6 @@
-# Control de flujo
+# Condicionales
+
+> Operaciones condicionales en JavaScript
 
 En el nivel más elemental, un programa no es más que una ejecución secuencial de instrucciones. Esta ejecución tiene un flujo predefinido que el desarrollador querrá controlar con diversas técnicas.
 Hay veces que hay que ejecutar diferentes acciones dependiendo de diferentes condiciones. Para ello tenemos las **decisiones condicionales** que permiten ejecutar deliberadamente instrucciones dependiendo de una condición.

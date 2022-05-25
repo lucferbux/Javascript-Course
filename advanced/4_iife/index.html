@@ -14,25 +14,101 @@
     <div class="container">
         <div class="section">
             <a class="back-button" href="/advanced/advanced.html">
-                < Back</a> <h1>IIFE</h1>
-                    <p class="caption">Immediately Invoked Function Expression</p>
+                < Back</a> 
+                <h1 id="immediately-invoked-function-expression">Immediately Invoked Function Expression</h1>
+                <p class="caption">Aislamiento de variables y pronta ejecución</p>
                     <hr class="separator">
+                <p>Las Expresiones de funciones inmediatamente invocadas son <strong>funciones JavaScript</strong> que se ejecutan nada más ser definidas.</p>
+                <p>Es un patrón de diseño conocido como <a href="https://developer.mozilla.org/en-US/docs/Glossary/Self-Executing_Anonymous_Function">Funciones Anónimas Auto-Ejectuadas</a> que consiste en dos partes:</p>
+                <ol>
+                <li>La primera parte es una función anónima encerrada en el <code>Operador de agrupación ()</code>. Esto previene el acceso de variables dentro del IIFE y tampoco &quot;ensucian&quot; el scope global.</li>
+                <li>La segunda parte crea la función inmediatamente invocada con el comando <code>()</code> con el que JavaScript directamente interpretará la función.</li>
+                </ol>
+                <p>Al hacer esto, podemos crear nuevas variables sin que colisionen con el scope original.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// 1. Primera variante de IIFE</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c1. Primera variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    alert(<span class="hljs-string">"1. Estás usando IIFE"</span>)
+}());
 
+<span class="hljs-comment">// 2. Segunda variante de IIFE</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c2. Segunda variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"2. Estas usando IIFE"</span>)
+})();
 
-                    <p>Las Expresiones de funciones inmediatamente invocadas son <strong>funciones JavaScript</strong>
-                        que se ejecutan nada más ser definidas.</p>
-                    <p>Es un patrón de diseño conocido como <a
-                            href="https://developer.mozilla.org/en-US/docs/Glossary/Self-Executing_Anonymous_Function">Funciones
-                            Anónimas Auto-Ejectuadas</a> que consiste en dos partes:</p>
-                    <ol>
-                        <li>La primera parte es una función anónima encerrada en el <code>Operador de agrupación
-                                ()</code>. Esto previene el acceso de variables dentro del IIFE y tampoco
-                            &quot;ensucian&quot; el scope global.</li>
-                        <li>La segunda parte crea la función inmediatamente invocada con el comando <code>()</code> con
-                            el que JavaScript directamente interpretará la función.</li>
-                    </ol>
-                    <p>Al hacer esto, podemos crear nuevas variables sin que colisionen con el scope original.</p>
-                    <p><strong>Es una buena práctica agrupar una aplicación JavaScript en IIFE</strong></p>
+<span class="hljs-comment">// 3. Comprobar el scope de IIFE</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Tercera variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> newName = <span class="hljs-string">"Lucas"</span>;
+    <span class="hljs-built_in">console</span>.log(newName);
+}());
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> newName = <span class="hljs-string">"Maria"</span>;
+    <span class="hljs-built_in">console</span>.log(newName);
+}());
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.newName);
+</code></pre>
+                <h2 id="casos-de-uso">Casos de Uso</h2>
+                <p>Hay algunos casos de uso en los que es muy útil este patrón, que seguro que veréis en ciertas codebases que se enfrenten a estos problemas:</p>
+                <h3 id="evitar-contaminar-el-global-namespace">Evitar contaminar el global namespace</h3>
+                <p>En <em>codebase</em> muy grandes es muy normal encontrarse la inicialización de multitud de variables globales. Como ya vimos en la sección de variables, es importante evitar colisiones, sobre todo si tenemos que importar múltiples archivos de distintas partes del proyecto. Es por ello que es muy útil usar <em>IIFE</em> para aislar estas declaraciones y que no entren en conflicto con el resto de código.</p>
+<pre><code class="lang-javascript">(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-comment">// Código de iniciación, por ejemplo conectarse a una base de datos</span>
+    <span class="hljs-keyword">let</span> someVariable;
+    <span class="hljs-keyword">let</span> otherVariable;
+})();
+
+<span class="hljs-comment">// No podremos acceder y por lo tanto no tendrán colisión someVariable y otherVariable fuera del IIFE.</span>
+</code></pre>
+                <h3 id="ejecutar-inmediatamente-una-funci-n-as-ncrona">Ejecutar inmediatamente una función asíncrona</h3>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delayedFunction</span>(<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        resolve(x);
+    }, <span class="hljs-number">2000</span>);
+    });
+};
+
+(<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{ <span class="hljs-comment">// función asíncrona expresada como IIFE</span>
+    <span class="hljs-keyword">let</span> p_a = delayedFunction(<span class="hljs-number">20</span>);
+    <span class="hljs-keyword">let</span> p_b = delayedFunction(<span class="hljs-number">30</span>);
+    <span class="hljs-keyword">return</span> x + <span class="hljs-keyword">await</span> p_a + <span class="hljs-keyword">await</span> p_b;
+})(<span class="hljs-number">10</span>).then(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(v);  <span class="hljs-comment">// muestra por pantalla 60 después de 2 segundos.</span>
+});
+</code></pre>
+                <h3 id="patr-n-m-dulo">Patrón módulo</h3>
+                <p>En muchas ocasiones es interesante ocultar cierta funcionalidad que estamos definiendo en un módulo, es por ello que <em>IIFE</em> puede ser un mecanismo interesante para poder ocultar ciertas características del código de nuestro módulo.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> chargeBattery = <span class="hljs-function">(<span class="hljs-params">percentage</span>) =&gt;</span> (<span class="hljs-function">(<span class="hljs-params">copyPercentage</span>) =&gt;</span> {
+    <span class="hljs-keyword">let</span> percentage = copyPercentage; <span class="hljs-comment">// Esta variable es privada</span>
+    <span class="hljs-keyword">const</span> internalMechanism = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Direccionando batería a este dispositivo'</span>);
+    };
+    internalMechanism();
+    <span class="hljs-keyword">return</span> {
+    charge(amount) {
+        <span class="hljs-keyword">if</span> (percentage &gt;= amount) {
+        percentage -= amount;
+        <span class="hljs-keyword">return</span> percentage;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'Batería insuficiente'</span>;
+    },
+    };
+})(percentage);
+
+<span class="hljs-keyword">const</span> firstPhone = chargeBattery(<span class="hljs-number">100</span>);   <span class="hljs-comment">// "Direccionando batería a este dispositivo"</span>
+<span class="hljs-built_in">console</span>.log(firstPhone.percentage);      <span class="hljs-comment">// undefined, no se puede acceder a un atributo privado</span>
+<span class="hljs-built_in">console</span>.log(firstPhone.charge(<span class="hljs-number">10</span>));      <span class="hljs-comment">// 90</span>
+<span class="hljs-built_in">console</span>.log(firstPhone.charge(<span class="hljs-number">30</span>));      <span class="hljs-comment">// 60</span>
+<span class="hljs-built_in">console</span>.log(firstPhone.doBadThings);     <span class="hljs-comment">// undefined, el método es privado</span>
+<span class="hljs-keyword">const</span> secondPhone = chargeBattery(<span class="hljs-number">20</span>);   <span class="hljs-comment">// "Direccionando batería a este dispositivo"</span>
+<span class="hljs-built_in">console</span>.log(secondPhone.charge(<span class="hljs-number">30</span>));     <span class="hljs-comment">// "Batería insuficiente"</span>
+<span class="hljs-built_in">console</span>.log(secondPhone.charge(<span class="hljs-number">20</span>));     <span class="hljs-comment">// 0</span>
+</code></pre>
+                
 
 
                     <hr class="code-separator">

@@ -1,5 +1,5 @@
 # Introducción
-
+> Preparación del entorno JavaScript
 ## Preparación del entorno
 
 Vamos a preparar primero nuestro proyecto para poder seguir la clase. Aquí tenéis los pasos que necesitamos seguir para dejar el entorno montado en nuestro equipo.

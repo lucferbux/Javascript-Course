@@ -67,7 +67,7 @@ let student = {
 student.greeting();
 ```
 
-* En un evento, `this` se refiere al **elemento que recive el evento**.
+* En un evento, `this` se refiere al **elemento que recibe el evento**.
 
 ```javascript
 function actionButtonReceiver() {

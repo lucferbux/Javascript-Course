@@ -50,7 +50,7 @@
 asyncFuncAwait();
 </code></pre>
           <p>La función asíncrona se parará cuando encuentre el <code>await</code> y reanudará su ejecución una vez se
-            resuelva la promesa. Es una forma de <strong>sintactic sugar</strong> que mejora la legibilidad con respecto
+            resuelva la promesa. Es una forma de <strong>syntactic sugar</strong> que mejora la legibilidad con respecto
             a `promise.then``</p>
           <h2 id="sint-xis">Sintaxis</h2>
           <p>Ya hemos visto más o menos como se declara, ahora vamos a mostrar algún ejemplo real.</p>
@@ -77,7 +77,7 @@ asyncFuncAwait();
     <span class="hljs-keyword">let</span> response = <span class="hljs-keyword">await</span> login();
     <span class="hljs-built_in">console</span>.log(response);
   } <span class="hljs-keyword">catch</span> (err) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I'm in exeception of async"</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I'm in exception of async"</span>);
     <span class="hljs-built_in">console</span>.log(err);
   }
 };
@@ -100,10 +100,10 @@ req();
 <span class="hljs-keyword">let</span> reqWithCredentials = <span class="hljs-keyword">async</span> (username, password) =&gt; {
     <span class="hljs-keyword">try</span> {
         <span class="hljs-keyword">let</span> response = <span class="hljs-keyword">await</span> loginWitUsername(username, password);
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Función con parámteros"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Función con parámetros"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
         <span class="hljs-built_in">console</span>.log(response);
     } <span class="hljs-keyword">catch</span>(err) {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Función con parámteros"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Función con parámetros"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"I'm in exception of async"</span>);
         <span class="hljs-built_in">console</span>.log(err);
     }
@@ -170,14 +170,14 @@ let req = async () => {
     let response = await login();
     console.log(response);
   } catch (err) {
-    console.log("I'm in exeception of async");
+    console.log("I'm in exception of async");
     console.log(err);
   }
 };
 
 req();
 
-// 3. Function with paramteres
+// 3. Function with parameters
 
 
 console.log("Run before the promise");
@@ -197,10 +197,10 @@ var loginWitUsername = (username, password) => {
 let reqWithCredentials = async (username, password) => {
     try {
         let response = await loginWitUsername(username, password);
-        console.log("%c3. Función con parámteros", 'color: #229179; font-size: 16px;');
+        console.log("%c3. Función con parámetros", 'color: #229179; font-size: 16px;');
         console.log(response);
     } catch(err) {
-        console.log("%c3. Función con parámteros", 'color: #229179; font-size: 16px;');
+        console.log("%c3. Función con parámetros", 'color: #229179; font-size: 16px;');
         console.log("I'm in exception of async");
         console.log(err);
     }

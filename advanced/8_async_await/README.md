@@ -31,7 +31,7 @@ async function asyncFuncAwait() {
 asyncFuncAwait();
 ```
 
-La función asíncrona se parará cuando encuentre el `await` y reanudará su ejecución una vez se resuelva la promesa. Es una forma de **sintactic sugar** que mejora la legibilidad con respecto a `promise.then``
+La función asíncrona se parará cuando encuentre el `await` y reanudará su ejecución una vez se resuelva la promesa. Es una forma de **syntactic sugar** que mejora la legibilidad con respecto a `promise.then``
 
 ## Sintaxis
 
@@ -61,7 +61,7 @@ let req = async () => {
     let response = await login();
     console.log(response);
   } catch (err) {
-    console.log("I'm in exeception of async");
+    console.log("I'm in exception of async");
     console.log(err);
   }
 };
@@ -87,10 +87,10 @@ var loginWitUsername = (username, password) => {
 let reqWithCredentials = async (username, password) => {
     try {
         let response = await loginWitUsername(username, password);
-        console.log("%c3. Función con parámteros", 'color: #229179; font-size: 16px;');
+        console.log("%c3. Función con parámetros", 'color: #229179; font-size: 16px;');
         console.log(response);
     } catch(err) {
-        console.log("%c3. Función con parámteros", 'color: #229179; font-size: 16px;');
+        console.log("%c3. Función con parámetros", 'color: #229179; font-size: 16px;');
         console.log("I'm in exception of async");
         console.log(err);
     }

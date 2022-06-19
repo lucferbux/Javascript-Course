@@ -103,6 +103,22 @@ type ID = number | string | boolean
 let myID: ID = "23789s";
 let myOtherId: ID = 213432423;
 
+type Mail = {
+  header: string;
+  body: string;
+  timestamp: number;
+}
+
+function printMail(mail: Mail) {
+  const date = new Date(mail.timestamp);
+  console.log(`${mail.header} - ${date}`);
+  console.log(`---------------------------------`);
+  console.log(`${mail.body}`);
+}
+
+let mail: Mail = { header: "Hello Everyone", body: "This is a test email", timestamp: Date.now() };
+
+printMail(mail);
 
 console.log("%c6. Type Assertion", 'color: #229179; font-size: 16px;');
 

@@ -17,7 +17,6 @@
                 < Back</a> <h1>Tipos</h1>
                     <p class="caption">Introducción a los tipos de TypeScript</p>
                     <hr class="separator">
-                    <h1 id="tipos">Tipos</h1>
                     <p>En esta sección vamos a ver como TypeScript gestiona los tipos y como podemos usar una de las
                         características más importantes de este lenguaje.</p>
                     <h2 id="type-annotation">Type Annotation</h2>
@@ -164,6 +163,22 @@ padLeftUnion(<span class="hljs-string">"Hello world"</span>, <span class="hljs-b
 <pre><code class="lang-javascript"><span class="hljs-keyword">type</span> ID = <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">boolean</span>
 
 <span class="hljs-keyword">let</span> myID: ID = <span class="hljs-string">"23789s"</span>;</code></pre>
+
+                    <p>Podemos crear también type aliases compuestos, de diferentes anotaciones de tipos, siendo así que podamos crear definiciones enteras de un tipo.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> Mail = {
+  header: <span class="hljs-built_in">string</span>;
+  body: <span class="hljs-built_in">string</span>;
+  timestamp: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printMail</span>(<span class="hljs-params">mail: Mail</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${mail.header}</span> - <span class="hljs-subst">${mail.timestamp}</span>`</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`---------------------------------`</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${mail.body}</span>`</span>);
+}
+</code></pre>
+
+
                     <h2 id="type-assertions">Type Assertions</h2>
                     <p>Hay ocasiones en las que tenemos que hacer una conversión de un tipo, bien porque tenía un valor
                         de <strong>any</strong>, bien porque la librería no tiene tipos definidos o que el elemento es

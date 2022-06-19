@@ -17,6 +17,105 @@
                 < Back</a> <h1>Interfaces</h1>
                     <p class="caption">Vista general de Interfaces</p>
                     <hr class="separator">
+                    <h2 id="overview">Overview</h2>
+                    <p>Las interfaces son un tipo de construcción que permite definir los tipos en Objetos JavaScript.
+                        El compilador de TS no convierte la interfaz en código JavaScript, utiliza las interfaces para
+                        la comprobación de tipos.</p>
+                    <p>Puede extenderse para tener más flexibilidad y cuenta con atributos opcionales, atributos de solo
+                        lectura o funciones.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Person {
+    name: <span class="hljs-built_in">string</span>;
+    age: <span class="hljs-built_in">number</span>;
+    id?: <span class="hljs-built_in">string</span>;
+    talk:(<span class="hljs-built_in">string</span>)=&gt;<span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-keyword">interface</span> Student <span class="hljs-keyword">extends</span> Person {
+    college: <span class="hljs-built_in">string</span>;
+    bachelor: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> student: Student = {
+    name: <span class="hljs-string">"Lucas"</span>,
+    age: <span class="hljs-number">25</span>,
+    college: <span class="hljs-string">"ThreePoints"</span>,
+    bachelor: <span class="hljs-string">"Master Full Stack"</span>,
+    talk: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">phrase: <span class="hljs-built_in">string</span></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(phrase);
+    }
+}
+
+student.talk(<span class="hljs-string">"Hello world"</span>);
+</code></pre>
+                    <p>Si habéis estado atentos, os daréis cuenta que las <code>interfaces</code> son muy parecidas a
+                        las <code>types aliases</code> que hemos visto en la sección anterior, y es que podemos declarar
+                        un typo de objeto anónimo que luego aplicar a cualquier instancia, teniendo atributos,
+                        funciones, opcionales... Con esto nos surge la duda de <strong>cuando escoger tipos y cuando
+                            interfaces</strong>. Vamos a responderlo.</p>
+                    <h2 id="diferencias-entre-type-aliases-e-interfaces">Diferencias entre Type Aliases e Interfaces
+                    </h2>
+                    <p>Hace tiempo, las diferencias entre <strong>type aliases</strong> e <strong>interfaces</strong>
+                        eran más pronunciadas, pero estos últimos años TypeScript ha ido incorporando funcionalidades en
+                        ambas estructuras haciendo que <strong>sea posible elegir libremente cualquiera de las
+                            dos</strong>. Casi todas las funcionalidades de <code>interfaces</code> se encuentran en
+                        <code>type</code>, la diferencia más importante es que <strong>los tipos no pueden volver a
+                            abrirse para añadir nuevas propiedades</strong>, mientras que las <strong>interfaces son
+                            siempre extensibles</strong>.</p>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Extendiendo una Interface</span>
+                        
+<span class="hljs-keyword">interface</span> Vehicle {
+    name: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">interface</span> Car <span class="hljs-keyword">extends</span> Vehicle {
+    id: <span class="hljs-built_in">number</span>
+}
+
+<span class="hljs-keyword">const</span> opel: Car = { name: <span class="hljs-string">"Opel"</span>, id: <span class="hljs-number">123423434</span> };
+<span class="hljs-built_in">console</span>.log(opel.name);
+<span class="hljs-built_in">console</span>.log(opel.id);
+
+<span class="hljs-comment">// Extendiendo un Type mediante intersecciones</span>
+
+<span class="hljs-keyword">type</span> Computer = {
+    name: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">type</span> Mac = Computer &amp; {
+    model: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">const</span> mac: Mac = { name: <span class="hljs-string">"MacBook"</span>, model: <span class="hljs-string">"Pro"</span> };
+<span class="hljs-built_in">console</span>.log(mac.name);
+<span class="hljs-built_in">console</span>.log(mac.model);
+
+
+<span class="hljs-comment">// Añadir nuevos campos a una Interface</span>
+
+<span class="hljs-keyword">interface</span> Phone {
+    brand: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">interface</span> Phone {
+    model: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-keyword">const</span> iPhone: Phone = { brand: <span class="hljs-string">"iPhone"</span>, model: <span class="hljs-string">"13"</span> };
+<span class="hljs-built_in">console</span>.log(iPhone.brand);
+<span class="hljs-built_in">console</span>.log(iPhone.model);
+
+<span class="hljs-comment">// Añadir nuevos campos a una Type (No se puede)</span>
+
+<span class="hljs-keyword">type</span> Tablet = {
+    brand: <span class="hljs-built_in">string</span>
+}
+
+<span class="hljs-comment">// Error: Duplicate identifier "Tablet"</span>
+<span class="hljs-comment">// type Tablet = {  </span>
+<span class="hljs-comment">//     model: string</span>
+<span class="hljs-comment">// }</span>
+</code></pre>
+
 
         </div>
     </div>

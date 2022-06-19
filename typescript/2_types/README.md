@@ -156,6 +156,22 @@ let myID: ID = "23789s";
 let myOtherId: ID = 213432423;
 ```
 
+Podemos crear también type aliases compuestos, de diferentes anotaciones de tipos, siendo así que podamos crear definiciones enteras de un tipo.
+
+```typescript
+type Mail = {
+  header: string;
+  body: string;
+  timestamp: number;
+}
+
+function printMail(mail: Mail) {
+  console.log(`${mail.header} - ${mail.timestamp}`);
+  console.log(`---------------------------------`);
+  console.log(`${mail.body}`);
+}
+```
+
 ## Type Assertions
 
 Hay ocasiones en las que tenemos que hacer una conversión de un tipo, bien porque tenía un valor de **any**, bien porque la librería no tiene tipos definidos o que el elemento es genérico, esto por ejemplo en manipulación del DOM es muy común. Es por ello que existen las **type assertions** que permiten hacer un **cast** del tipo de un elemento.

@@ -61,40 +61,14 @@ function printId(id: number | string) {
 printId("8908sdf");
 
 console.log("%c4. Union Types", 'color: #229179; font-size: 16px;');
-/**
-* Takes a string and adds "padding" to the left.
-* If 'padding' is a string, then 'padding' is appended to the left side.
-* If 'padding' is a number, then that number of spaces is added to the left side.
-*/
-function padLeft(value: string, padding: any) {
-    if (typeof padding === "number") {
-        return Array(padding + 1).join(" ") + value;
-    }
-    if (typeof padding === "string") {
-        return padding + value;
-    }
-    throw new Error(`Expected string or number, got '${typeof padding}'.`);
+
+function printPhoneNumber(phoneNumber: number | string) {
+  console.log("Your phone number is " + phoneNumber);
 }
 
-console.log(padLeft("Hello world", 4)); // returns "    Hello world"
-
-/**
-* Takes a string and adds "padding" to the left.
-* If 'padding' is a string, then 'padding' is appended to the left side.
-* If 'padding' is a number, then that number of spaces is added to the left side.
-*/
-function padLeftUnion(value: string, padding: string | number) {
-    if (typeof padding === "number") {
-        return Array(padding + 1).join(" ") + value;
-    }
-    if (typeof padding === "string") {
-        return padding + value;
-    }
-    throw new Error(`Expected string or number, got '${typeof padding}'.`);
-}
-
-console.log(padLeft("Hello world", "        "));
-//padLeftUnion("Hello world", boolean); // error as it's not an expected type
+printPhoneNumber(612389238);
+printPhoneNumber("637839489");
+// printPhoneNumber({ phone: 613892348}); // Error
 
 console.log("%c5. Type Alias", 'color: #229179; font-size: 16px;');
 

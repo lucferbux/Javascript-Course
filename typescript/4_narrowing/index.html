@@ -15,8 +15,119 @@
         <div class="section">
             <a class="back-button" href="/typescript/typescript.html">
                 < Back</a> <h1>Narrowing</h1>
-                    <p class="caption">:)</p>
+                    <p class="caption">Interpolación de tipos en TypeScript</p>
                     <hr class="separator">
+
+<p><strong>Narrowing</strong> es la técnica que tiene TypeScript para comprender un bloque de código especial llamado <strong>type guard</strong> que permite interpolar el valor de un tipo que en principio puede ser ambiguo y así poder implementar múltiples lógicas para diferentes tipos. Existen múltiples <strong>type guards</strong> dependiendo del componentes que vayamos a usar, vamos a ver las más importantes.</p>
+<h2 id="narrowing-mediante-typeof-">Narrowing mediante &quot;TypeOf&quot;</h2>
+<p>Typeof es un operador de TypeScript que permite devolver el tipo de una variable o propiedad. Se utiliza en el contexto de una expresión para tener diferentes lógicas asociadas a un tipo en nuestro código. Las cadenas que <code>typeof</code> puede devolver son las siguientes:</p>
+<ul>
+<li><code>string</code></li>
+<li><code>number</code></li>
+<li><code>bigint</code></li>
+<li><code>bolean</code></li>
+<li><code>symbol</code></li>
+<li><code>undefined</code></li>
+<li><code>object</code></li>
+<li><code>function</code></li>
+</ul>
+<pre><code class="lang-javascript">let <span class="hljs-keyword">new</span><span class="hljs-type">Message</span> = <span class="hljs-string">"Hello World"</span>;
+console.log(typeof <span class="hljs-keyword">new</span><span class="hljs-type">Message</span>); <span class="hljs-comment">// Will return "string"</span>
+</code></pre>
+<p>Como habíamos visto en la <a href="../2_types/README.md">sección de tipos</a>, un parámetro puede tener múltiples tipos como <code>number</code> o <code>string</code> gracias a los <em>Union Types</em> o el uso de <code>any</code>. Podemos usar el operador <code>typeof</code> para hacer distintas operaciones al parámetro de entrada de la función.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended to the left side.
+ * If 'padding' is a number, then that number of spaces is added to the left side.
+ */</span>
+<span class="hljs-function">function <span class="hljs-title">padLeft</span>(<span class="hljs-params"><span class="hljs-keyword">value</span>: <span class="hljs-keyword">string</span>, padding: any</span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"number"</span>) {
+    <span class="hljs-keyword">return</span> Array(padding + <span class="hljs-number">1</span>).<span class="hljs-keyword">join</span>(<span class="hljs-string">" "</span>) + <span class="hljs-keyword">value</span>;
+  }
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"string"</span>) {
+    <span class="hljs-keyword">return</span> padding + <span class="hljs-keyword">value</span>;
+  }
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error(`Expected <span class="hljs-keyword">string</span> or number, got <span class="hljs-string">'${typeof padding}'</span>.`);
+}
+
+padLeft(<span class="hljs-string">"Hello world"</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">// returns "    Hello world"</span>
+</code></pre>
+<p>Como veis, al hacer uso del condicional junto al <code>typeof</code>, TypeScript infiere automáticamente el valor del parámetro <code>padding</code>, haciendo que se comporte como un <code>number</code> en el primer condicional y como una <code>string</code> en el segundo. Podemos todavía afinar un poco más la función sustituyendo el valor <code>any</code> por un atributo con <em>Union Types</em>.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended to the left side.
+ * If 'padding' is a number, then that number of spaces is added to the left side.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">padLeftUnion</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span>, padding: <span class="hljs-built_in">string</span>|<span class="hljs-built_in">number</span></span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"number"</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>(padding + <span class="hljs-number">1</span>).join(<span class="hljs-string">" "</span>) + value;
+  }
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"string"</span>) {
+    <span class="hljs-keyword">return</span> padding + value;
+  }
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`Expected string or number, got '<span class="hljs-subst">${typeof padding}</span>'.`</span>);
+}
+
+<span class="hljs-built_in">console</span>.log(padLeft(<span class="hljs-string">"Hello world"</span>, <span class="hljs-string">"        "</span>));
+padLeftUnion(<span class="hljs-string">"Hello world"</span>, <span class="hljs-built_in">boolean</span>); <span class="hljs-comment">// error as it's not an expected type</span>
+</code></pre>
+<h2 id="narrowing-mediante-equidad">Narrowing mediante equidad</h2>
+<p>TypeScript también puede usar comparadores de equidad como <code>===</code>, <code>!==</code>, <code>==</code>, <code>!=</code> para el <em>narrowing</em>.</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span>(<span class="hljs-params">x: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">boolean</span></span>) </span>{
+  <span class="hljs-keyword">if</span> (x === y) {
+    <span class="hljs-comment">// X e Y serán string</span>
+    x.toUpperCase();
+    y.toLowerCase();
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// X podrá ser string o number</span>
+    <span class="hljs-built_in">console</span>.log(x);
+    <span class="hljs-comment">// Y podrá ser string o boolean</span>
+    <span class="hljs-built_in">console</span>.log(y);
+  }
+}
+
+example(<span class="hljs-string">"string"</span>, <span class="hljs-literal">true</span>);
+</code></pre>
+<h2 id="narrowing-mediante-in-">Narrowing mediante &quot;In&quot;</h2>
+<p>JavaScript tiene el operador <code>in</code> para determinar si una propiedad determinada existe en un objeto. Este operador también se puede utilizar como <code>type guard</code> para determinar a través de atributos o métodos el tipo de una variable.</p>
+<pre><code class="lang-javascript">type Fish = { <span class="hljs-attr">swim</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">void</span> };
+type Bird = { <span class="hljs-attr">fly</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">void</span> };
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">move</span>(<span class="hljs-params">animal: Fish | Bird</span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-string">"swim"</span> <span class="hljs-keyword">in</span> animal) {
+    <span class="hljs-keyword">return</span> animal.swim();
+  }
+
+  <span class="hljs-keyword">return</span> animal.fly();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSmallPet</span>(<span class="hljs-params"></span>): <span class="hljs-title">Fish</span> | <span class="hljs-title">Bird</span> </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">swim</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"swimming"</span>);
+    },
+  };
+}
+
+<span class="hljs-keyword">let</span> pet = getSmallPet();
+
+move(pet);
+</code></pre>
+<h2 id="narrowing-usando-type-predicates-">Narrowing usando &quot;Type Predicates&quot;</h2>
+<p>De momento hemos usado operadores de JavaScript como <em>Type Guards</em>. Pero podemos conseguir lo mismo con una función construida con TypeScript. Simplemente tendremos que definir una función cuyo tipo de retorno es un <em>type predicate</em>.</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isFish</span><span class="hljs-params">(pet: Fish | Bird)</span>: pet <span class="hljs-title">is</span> <span class="hljs-title">Fish</span> </span>{
+  <span class="hljs-keyword">return</span> (pet <span class="hljs-keyword">as</span> Fish).swim !== <span class="hljs-literal">undefined</span>;
+}
+</code></pre>
+<p><code>pet is Fish</code> es el <em>type predicate</em> en este ejemplo. Un predicado se basa en el esquema <code>parameterName is Type</code>, donde <code>parameterName</code> debe ser el nombre de un parámetro de la función. Ahora cada vez que se llame esta función, TypeScript aplicará el <em>narrowing</em> a la variable que pasemos como parámetro a esa función.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">if</span> <span class="hljs-comment">(isFish(pet)</span>) {
+  pet.swim<span class="hljs-comment">()</span>;
+} else {
+  pet.fly<span class="hljs-comment">()</span>;
+}
+</code></pre>
+
+
 
         </div>
     </div>

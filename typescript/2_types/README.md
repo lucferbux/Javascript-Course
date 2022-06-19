@@ -77,70 +77,20 @@ let func: (firstArg: number, secondArg: number) => number = function (
 let newObj: { x: number; y: number } = { x: 10, y: 4 };
 ```
 
-## Typeof
-
-Typeof es un operador de TypeScript que permite devolver el tipo de una variable o propiedad. Se utiliza en el contexto de una expresión para tener diferentes lógicas asociadas a un tipo en nuestro código.
-
-```typescript
-let newMessage = "Hello World";
-console.log(typeof newMessage); // Will return "string"
-
-function printId(id: number | string) {
-    if (typeof id === "string") {
-      // In this branch, id is of type 'string'
-      console.log(id.toUpperCase());
-    } else {
-      // Here, id is of type 'number'
-      console.log(id);
-    }
-}
-
-printId("8908sdf");
-```
-
 ## Union Types
 
-TypeScript tiene también cierta flexibilidad en cuanto a la comprobación de tipos. Es normal que a veces nos encontremos con un argumento de método que espere que el tipo sea `number` o `string`, podemos ver el ejemplo que proporciona TypeScript en su documentación.
+TypeScript permite construir nuevos tipos en base a los ya existentes mediante una serie de operadores. Ahora que sabemos construir tipos, vamos a ver como podemos **combinarlos** para conseguir nuevas funcionalidades.
+
+Un `union type` está formado por dos o más tipos, representando valores que pueden cualquier otro tipo, cada uno de estos tipos son los *union's member*.
 
 ```typescript
-/**
- * Takes a string and adds "padding" to the left.
- * If 'padding' is a string, then 'padding' is appended to the left side.
- * If 'padding' is a number, then that number of spaces is added to the left side.
- */
-function padLeft(value: string, padding: any) {
-  if (typeof padding === "number") {
-    return Array(padding + 1).join(" ") + value;
-  }
-  if (typeof padding === "string") {
-    return padding + value;
-  }
-  throw new Error(`Expected string or number, got '${typeof padding}'.`);
+function printPhoneNumber(phoneNumber: number | string) {
+  console.log("Your phone number is " + phoneNumber);
 }
 
-padLeft("Hello world", 4); // returns "    Hello world"
-```
-
-Podríamos dejarlo así y directamente funcionaría, pero ya estaríamos dejando meter más tipos de los debidos y no conformaría una buena dinámica de tipos, es por lo que en estos casos usamos los **union types**
-
-```typescript
-/**
- * Takes a string and adds "padding" to the left.
- * If 'padding' is a string, then 'padding' is appended to the left side.
- * If 'padding' is a number, then that number of spaces is added to the left side.
- */
-function padLeftUnion(value: string, padding: string|number) {
-  if (typeof padding === "number") {
-    return Array(padding + 1).join(" ") + value;
-  }
-  if (typeof padding === "string") {
-    return padding + value;
-  }
-  throw new Error(`Expected string or number, got '${typeof padding}'.`);
-}
-
-console.log(padLeft("Hello world", "        "));
-padLeftUnion("Hello world", boolean); // error as it's not an expected type
+printPhoneNumber(612389238);
+printPhoneNumber("637839489");
+// printPhoneNumber({ phone: 613892348}); // Error
 ```
 
 ## Type Aliases

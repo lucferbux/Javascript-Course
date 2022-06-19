@@ -29,7 +29,7 @@ function printHelloWorld(): void {
     console.log('Hello World');
 }
 
-function sumThreeNums(first: number, second: number, third?: numner) {
+function sumThreeNums(first: number, second: number, third?: number) {
     return first + second + (third || 0);
 }
 
@@ -50,6 +50,6 @@ Por otro lado, en **funciones anónimas** TypeScript intentará también asignar
 const names = ["Alice", "Bob", "Eve"];
 
 names.forEach((s) => {
-  console.log(s.toUppercase()); // Will trigger -> Property 'toUppercase' does not exist on type 'string'. Did you mean 'toUpperCase'?
+  console.log(s.toUpperCase()); // Will trigger -> Property 'toUppercase' does not exist on type 'string'. Did you mean 'toUpperCase'?
 });
 ```

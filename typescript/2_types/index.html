@@ -17,6 +17,160 @@
                 < Back</a> <h1>Tipos</h1>
                     <p class="caption">Introducción a los tipos de TypeScript</p>
                     <hr class="separator">
+                    <h1 id="tipos">Tipos</h1>
+                    <p>En esta sección vamos a ver como TypeScript gestiona los tipos y como podemos usar una de las
+                        características más importantes de este lenguaje.</p>
+                    <h2 id="type-annotation">Type Annotation</h2>
+                    <p>La funcionalidad principal de TypeScript es añadir tipos a elementos de JavaScript como
+                        variables, funciones, objetos... Para ello, usa la sintaxis <code>elemento: tipo</code> para
+                        asignar los tipos que hayamos definido. Esto es conocido como <strong>type annotation</strong>.
+                        Una vez que un <em>identificador</em> es anotado con un tipo, <strong>solo podrá usarse con ese
+                            tipo</strong>. Si se usa ese identificador con un tipo diferente, el compilador de
+                        TypeScript lanzará un error.</p>
+                    <p>Si no se declara el tipo desde el principio TypeScript lo inferirá automáticamente, aplicando las
+                        mismas características que con los tipos explícitos. Si se quiere obviar esta funcionalidad, se
+                        puede asignar el tipo <strong>any</strong> a cualquier identificador para usarlo de la forma en
+                        la que estamos habituados en JavaScript.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> student: <span class="hljs-built_in">string</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>]; <span class="hljs-comment">// TypeScript error</span>
+
+<span class="hljs-keyword">let</span> other: <span class="hljs-built_in">any</span> = <span class="hljs-string">"Hello world"</span> <span class="hljs-comment">// Will compile</span></code></pre>
+                    <h2 id="categor-a-de-tipos">Categoría de tipos</h2>
+                    <h3 id="tipos-primitivos">Tipos primitivos</h3>
+                    <p>JavaScript tiene tres tipos primitivos: <code>string</code>, <code>number</code> y
+                        <code>boolean</code>. Cada uno de ellos tiene un tipo en TypeScript:</p>
+                    <ul>
+                        <li><code>string</code>: Representa las cadenas de JavaScript, con valores como <code>&quot;Hola
+                                mundo&quot;</code>.</li>
+                        <li><code>number</code>: Corresponde a los números de JavaScript. Como recordaréis, JavaScript
+                            no tiene diferentes valores como <em>int</em> o <em>float</em>, simplemente tenemos
+                            <code>number</code>.</li>
+                        <li><code>boolean</code>: Es para los valores booleanos <code>true</code> y <code>false</code>.
+                        </li>
+                    </ul>
+                    <p>También existen los tipos <code>String</code>, <code>Number</code> y <code>Boolean</code>
+                        <strong>con mayúsculas</strong> se refiere a tipos nativos de TypeScript, es legal su uso pero
+                        raramente son necesarios.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// string</span>
+<span class="hljs-keyword">let</span> message: <span class="hljs-built_in">string</span> = <span class="hljs-string">"Hello World"</span>;
+<span class="hljs-comment">// number</span>
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">sum</span>: number = <span class="hljs-number">2</span>;
+<span class="hljs-comment">// boolean</span>
+<span class="hljs-keyword">let</span> optional: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;</code></pre>
+                            
+                    <h3 id="any">Any</h3>
+                    <p>Como hemos dicho arriba, TypeSCript cuenta con un tipo especial llamado <code>any</code>, que se
+                        usa como comodín para evitar la comprobación de tipos. Básicamente cualquier elemento al que se
+                        le asigna <code>any</code> pasa a comportarse como un elemento JavaScript, al que se le puede
+                        asignar cualquier valor independientemente del tipo y así saltarse la comprobación del
+                        compilador de TypeScript.</p>
+<pre><code class="lang-javascript">let <span class="hljs-literal">any</span>Object: <span class="hljs-literal">any</span> = { name: <span class="hljs-string">"Lucas"</span> };
+<span class="hljs-literal">any</span>Object.callEmptyMethod();
+<span class="hljs-literal">any</span>Object.otherAttribute;
+<span class="hljs-literal">any</span>Object = <span class="hljs-string">"String"</span>;</code></pre>
+                    <h3 id="tipos-por-referencia">Tipos por referencia</h3>
+                    <p>Además de los tipos primitivos, TypeScript soporta tipos por referencia como <code>arrays</code>,
+                        <code>objetos</code> y el tipado de <code>funciones</code>.</p>
+                    <ul>
+                        <li><code>arrays</code>: Estructura ordenada de elementos. En el caso de querer tener una
+                            colección de números (<code>[1, 2, 3]</code>), podemos usar tanto la sintaxis
+                            <code>number[]</code> como <code>Array&lt;number&gt;</code>.</li>
+                        <li><code>functions</code>: Veremos más adelante el tipado de las funciones, pero por ahora
+                            podremos poner un ejemplo de la sintaxis. Una definición de función completa sería <code>let
+                                func: (firstArg: num, secondArg: num) =&gt; number = function(firstArg: num, secondArg:
+                                num): number {return firstArg + secondArg };</code>.</li>
+                        <li><code>objects</code>: Quitando los primitivos, es el otro tipo de tipo más común en
+                            TypeScript. Hablaremos en siguientes secciones, pero por ahora podemos adelantar la sintaxis
+                            <code>let newObj: { x: number, y: number} = { x: 10, y: 4 }</code>.</li>
+                    </ul>
+<pre><code class="lang-javascript"><span class="hljs-comment">// array</span>
+<span class="hljs-keyword">let</span> numbers: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>];
+<span class="hljs-comment">// function</span>
+<span class="hljs-keyword">let</span> func: (firstArg: <span class="hljs-built_in">number</span>, secondArg: <span class="hljs-built_in">number</span>) =&gt; <span class="hljs-built_in">number</span> = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">
+    firstArg: <span class="hljs-built_in">number</span>,
+    secondArg: <span class="hljs-built_in">number</span>
+</span>): <span class="hljs-title">number</span> </span>{
+    <span class="hljs-keyword">return</span> firstArg + secondArg;
+};
+<span class="hljs-comment">// object</span>
+<span class="hljs-keyword">let</span> newObj: { x: <span class="hljs-built_in">number</span>; y: <span class="hljs-built_in">number</span> } = { x: <span class="hljs-number">10</span>, y: <span class="hljs-number">4</span> };
+</code></pre>
+
+                    <h2 id="typeof">Typeof</h2>
+                    <p>Typeof es un operador de TypeScript que permite devolver el tipo de una variable o propiedad. Se utiliza en el contexto de una expresión para tener diferentes lógicas asociadas a un tipo en nuestro código.</p>
+<pre><code class="lang-javascript">let newMessage = <span class="hljs-string">"Hello World"</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> newMessage); <span class="hljs-regexp">//</span> Will <span class="hljs-keyword">return</span> <span class="hljs-string">"string"</span>
+
+function printId(id: number | string) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> id === <span class="hljs-string">"string"</span>) {
+        <span class="hljs-regexp">//</span> In <span class="hljs-keyword">this</span> branch, id <span class="hljs-keyword">is</span> <span class="hljs-keyword">of</span> type <span class="hljs-string">'string'</span>
+        <span class="hljs-built_in">console</span>.log(id.toUpperCase());
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-regexp">//</span> Here, id <span class="hljs-keyword">is</span> <span class="hljs-keyword">of</span> type <span class="hljs-string">'number'</span>
+        <span class="hljs-built_in">console</span>.log(id);
+    }
+}
+
+printId(<span class="hljs-string">"8908sdf"</span>);
+</code></pre>
+                    <h2 id="union-types">Union Types</h2>
+                    <p>TypeScript tiene también cierta flexibilidad en cuanto a la comprobación de tipos. Es normal que
+                        a veces nos encontremos con un argumento de método que espere que el tipo sea
+                        <code>number</code> o <code>string</code>, podemos ver el ejemplo que proporciona TypeScript en
+                        su documentación.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/**
+* Takes a string and adds "padding" to the left.
+* If 'padding' is a string, then 'padding' is appended to the left side.
+* If 'padding' is a number, then that number of spaces is added to the left side.
+*/</span>
+<span class="hljs-function">function <span class="hljs-title">padLeft</span>(<span class="hljs-params"><span class="hljs-keyword">value</span>: <span class="hljs-keyword">string</span>, padding: any</span>) </span>{
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"number"</span>) {
+    <span class="hljs-keyword">return</span> Array(padding + <span class="hljs-number">1</span>).<span class="hljs-keyword">join</span>(<span class="hljs-string">" "</span>) + <span class="hljs-keyword">value</span>;
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"string"</span>) {
+    <span class="hljs-keyword">return</span> padding + <span class="hljs-keyword">value</span>;
+}
+<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error(`Expected <span class="hljs-keyword">string</span> or number, got <span class="hljs-string">'${typeof padding}'</span>.`);
+}
+
+padLeft(<span class="hljs-string">"Hello world"</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">// returns "    Hello world"</span></code></pre>
+                    <p>Podríamos dejarlo así y directamente funcionaría, pero ya estaríamos dejando meter más tipos de
+                        los debidos y no conformaría una buena dinámica de tipos, es por lo que en estos casos usamos
+                        los <strong>union types</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/**
+* Takes a string and adds "padding" to the left.
+* If 'padding' is a string, then 'padding' is appended to the left side.
+* If 'padding' is a number, then that number of spaces is added to the left side.
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">padLeftUnion</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span>, padding: <span class="hljs-built_in">string</span>|<span class="hljs-built_in">number</span></span>) </span>{
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"number"</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>(padding + <span class="hljs-number">1</span>).join(<span class="hljs-string">" "</span>) + value;
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> padding === <span class="hljs-string">"string"</span>) {
+    <span class="hljs-keyword">return</span> padding + value;
+}
+<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`Expected string or number, got '<span class="hljs-subst">${typeof padding}</span>'.`</span>);
+}
+
+padLeftUnion(<span class="hljs-string">"Hello world"</span>, <span class="hljs-string">"20"</span>);
+padLeftUnion(<span class="hljs-string">"Hello world"</span>, <span class="hljs-built_in">boolean</span>); <span class="hljs-comment">// error as it's not an expected type</span></code></pre>
+                    <h2 id="type-aliases">Type Aliases</h2>
+                    <p>Ahora que conocemos los union types, podemos usarlos cuando queramos, pero hay <strong>una
+                            característica muy útil</strong> de TypeScript para no tener que ir escribiendo siempre las
+                        uniones. Suponemos que queremos un argumento que tenga de tipos <code>number | string |
+                            boolean</code>. Cada vez que queramos comprobar este tipo único, deberíamos escribir esta
+                        cadena, pudiendo llevar a errores si olvidamos algún tipo.</p>
+                    <p>Es por ello que podemos definir alias para identificar estos union types con un nombre
+                        característico que le queramos dar.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> ID = <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">boolean</span>
+
+<span class="hljs-keyword">let</span> myID: ID = <span class="hljs-string">"23789s"</span>;</code></pre>
+                    <h2 id="type-assertions">Type Assertions</h2>
+                    <p>Hay ocasiones en las que tenemos que hacer una conversión de un tipo, bien porque tenía un valor
+                        de <strong>any</strong>, bien porque la librería no tiene tipos definidos o que el elemento es
+                        genérico, esto por ejemplo en manipulación del DOM es muy común. Es por ello que existen las
+                        <strong>type assertions</strong> que permiten hacer un <strong>cast</strong> del tipo de un
+                        elemento.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> myCanvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"container"</span>) <span class="hljs-keyword">as</span> HTMLDivElement;</code></pre>
 
 
         </div>

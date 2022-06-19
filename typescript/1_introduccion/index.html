@@ -18,19 +18,18 @@
                     <p class="caption">Introducción a TypeScript</p>
                     <hr class="separator">
 
-                    <h2 id="introducci-n">Overview</h2>
-                    <p>TypeScript añade comprobación estática de código.</p>
-                    <p>JavaScript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el
-                        problema es que puedes encontrate con muchos posibles puntos de conflicto:</p>
-                    <ul>
-                        <li>Llamada a objetos que no existen</li>
-                    </ul>
-                    <pre><code class="lang-javascript">objetoSinDefinir.llamadaMetodo()<span class="hljs-comment">;</span>
+                    <p>Después de cubrir los principales conceptos de JavaScript, es hora de introducir TypeScript en nuestro <em>&quot;stack&quot;</em> tecnológico. No sólo porque en menos de 5 años se haya colocado como el <a href="https://octoverse.github.com/#top-languages-over-the-years">4º lenguaje más popular entre programadores</a>, si no porque añade una serie de funcionalidades extra a JavaScript que pueden mejorar significativamente el desarrollo de nuestros proyectos. </p>
+<h2 id="overview">Overview</h2>
+<p>La funcionalidad principal que TypeScript añade con respecto a JavaScript es la <strong>comprobación estática de código</strong>. JavaScript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el problema es que puedes encontrate con muchos posibles puntos de conflicto:</p>
+<ul>
+<li>Llamada a objetos que no existen</li>
+</ul>
+<pre><code class="lang-javascript">objetoSinDefinir.llamadaMetodo()<span class="hljs-comment">;</span>
 </code></pre>
-                    <ul>
-                        <li>Parámetros de función de diferentes tipos</li>
-                    </ul>
-                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">iteradorArray</span>(<span class="hljs-params">iterador</span>) </span>{
+<ul>
+<li>Parámetros de función de diferentes tipos</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">iteradorArray</span>(<span class="hljs-params">iterador</span>) </span>{
     <span class="hljs-keyword">for</span> (item <span class="hljs-keyword">in</span> iterador) {
         <span class="hljs-built_in">console</span>.log(item);
     }
@@ -38,88 +37,57 @@
 
 iteradorArray(<span class="hljs-number">3</span>);
 </code></pre>
-                    <ul>
-                        <li>Atributos que no existen en objetos</li>
-                    </ul>
-                    <pre><code class="lang-javascript">let person = {<span class="hljs-built_in">name</span>: <span class="hljs-string">"Lucas Fernandez"</span>, age:<span class="hljs-number">27</span> };
+<ul>
+<li>Atributos que no existen en objetos</li>
+</ul>
+<pre><code class="lang-javascript">let person = {<span class="hljs-built_in">name</span>: <span class="hljs-string">"Lucas Fernandez"</span>, age:<span class="hljs-number">27</span> };
 
 console.<span class="hljs-built_in">log</span>(person.profession);
 </code></pre>
-                    <ul>
-                        <li>Imports mal realizados</li>
-                    </ul>
-                    <pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { Feature } <span class="hljs-keyword">from</span> <span class="hljs-string">"incorrect/path"</span>;
+<ul>
+<li>Imports mal realizados</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { Feature } <span class="hljs-keyword">from</span> <span class="hljs-string">"incorrect/path"</span>;
 </code></pre>
-                    <p>Al ser JavaScript un lenguaje interpretado, todo el código será ejecutado en su entorno (si es
-                        web será en el motor del navegador), y estos errores <strong>no aparecerán hasta el tiempo de
-                            ejecución</strong>. Eso supone que muchos errores no aparecerán hasta que sean recogidos por
-                        tests, por pruebas reales en navegador o incluso pero, <strong>EN PRODUCCIÓN</strong>.</p>
-                    <p>La razón que TypeScript detecte estos problemas es porque tiene un compilador previo, que
-                        transforma el código de TypeScript a JavaScript, podemos hacer esto mismo simplemente llamando
-                        al compilador con <code>tsc file.js</code>.</p>
-                    <p><img class="container-image" src="/meta/0_16_TypeScript_Console.png" alt="TypeScript"></p>
-
-
-
-                    <a class="image-subheader"
-                        href="https://www.typescriptlang.org/play?#code/PTAEHUFMBsGMHsC2lQBd5oBYoCoE8AHSAZVgCcBLA1UABWgEM8BzM+AVwDsATAGiwoBnUENANQAd0gAjQRVSQAUCEmYKsTKGYUAbpGF4OY0BoadYKdJMoL+gzAzIoz3UNEiPOofEVKVqAHSKymAAmkYI7NCuqGqcANag8ABmIjQUXrFOKBJMggBcISGgoAC0oACCoASMFmgY7p7ehCTkVOle4jUMdRLYTqCc8LEZzCZmoNJODPHFZZXVtZYYkAAeRJTInDQS8po+rf40gnjbDKv8LqD2jpbYoACqAEoAMsK7sUmxkGSCc+VVQQuaTwVb1UBrDYULY7PagbgUZLJH6QbYmJAECjuMigZEMVDsJzCFLNXxtajBdw0AiUbYANUcoAAvKAABQETBkBiCSD5a6oWnMACUzIAfKAAN6KEolBCcQTwdwBaDwZjszncyBCgDcigAvsEaRlUAyyKyAEQACRgKog8DI0XNOuCKhwDQ8ZC8iHtzhB7Bo3zcZmY7AYzEg-Fg0HUiQYIL0Ii85oAoqsGIgavpzUkcebwA5UAByYQAOUgEnNQRUAHlvmRdjz+OHjqhHApXNI8KAnN6dKMsPoUAhEDDhFdAxJ7dERAYODjuiw2FxuEESkA">Consola
-                        TypeScript Online</a>
-
-
-                    <p><strong>TypeScript</strong> es un super-set de JavaScript, esto significa que podemos seguir
-                        escribiendo código en JavaScript mientras implementamos nuestro programa, permitiendo ser
-                        flexibles en el desarrollo mientras vamos teniendo desde el día 0 las ventajas que proporciona
-                        TypeScript, como el auto-completado, la auto-importación de módulos o la comprobación de tipos.
-                    </p>
-                    <h2 id="instalaci-n">Instalación</h2>
-                    <p>La instalación de TypeScript es muy sencilla, solo es necesario tener <a
-                            href="https://nodejs.org/en/">Node</a> instalado en el sistema. Una vez hecho, solo hay que
-                        ejecutar el siguiente comando:</p>
-                    <pre><code class="lang-bash">&gt; npm <span class="hljs-keyword">install</span> -g typescript
+<p>Al ser JavaScript un lenguaje interpretado, todo el código será ejecutado en su entorno (si es web será en el motor del navegador), y estos errores <strong>no aparecerán hasta el tiempo de ejecución</strong>. Eso supone que muchos errores no aparecerán hasta que sean recogidos por tests, por pruebas reales en navegador o incluso peor, <strong>EN PRODUCCIÓN</strong>.</p>
+<p>La razón de que TypeScript detecte estos problemas es porque tiene un compilador previo, que transforma el código de TypeScript a JavaScript. Podemos hacer esto mismo simplemente llamando al compilador con <code>tsc file.js</code>.</p>
+<p><img class="container-image" src="/meta/0_16_TypeScript_Console.png" alt="TypeScript"></p>
+<blockquote>
+<p><a href="https://www.typescriptlang.org/play?#code/PTAEHUFMBsGMHsC2lQBd5oBYoCoE8AHSAZVgCcBLA1UABWgEM8BzM+AVwDsATAGiwoBnUENANQAd0gAjQRVSQAUCEmYKsTKGYUAbpGF4OY0BoadYKdJMoL+gzAzIoz3UNEiPOofEVKVqAHSKymAAmkYI7NCuqGqcANag8ABmIjQUXrFOKBJMggBcISGgoAC0oACCoASMFmgY7p7ehCTkVOle4jUMdRLYTqCc8LEZzCZmoNJODPHFZZXVtZYYkAAeRJTInDQS8po+rf40gnjbDKv8LqD2jpbYoACqAEoAMsK7sUmxkGSCc+VVQQuaTwVb1UBrDYULY7PagbgUZLJH6QbYmJAECjuMigZEMVDsJzCFLNXxtajBdw0AiUbYANUcoAAvKAABQETBkBiCSD5a6oWnMACUzIAfKAAN6KEolBCcQTwdwBaDwZjszncyBCgDcigAvsEaRlUAyyKyAEQACRgKog8DI0XNOuCKhwDQ8ZC8iHtzhB7Bo3zcZmY7AYzEg-Fg0HUiQYIL0Ii85oAoqsGIgavpzUkcebwA5UAByYQAOUgEnNQRUAHlvmRdjz+OHjqhHApXNI8KAnN6dKMsPoUAhEDDhFdAxJ7dERAYODjuiw2FxuEESkA">Consola TypeScript Online</a></p>
+</blockquote>
+<p><strong>TypeScript</strong> es un super-set de JavaScript, esto significa que podemos seguir escribiendo código en JavaScript mientras implementamos nuestro programa, permitiendo ser flexibles en el desarrollo mientras vamos teniendo desde el día 0 las ventajas que proporciona TypeScript, como el <strong>auto-completado</strong>, la <strong>auto-importación de módulos</strong> o la <strong>comprobación de tipos</strong>.</p>
+<h2 id="instalaci-n">Instalación</h2>
+<p>La instalación de TypeScript es muy sencilla, solo es necesario tener <a href="https://nodejs.org/en/">Node</a> instalado en el sistema. Una vez hecho, simplemente hay que ejecutar el siguiente comando:</p>
+<pre><code class="lang-bash">&gt; npm <span class="hljs-keyword">install</span> -g typescript
 </code></pre>
-                    <p>Ahora podemos ejecutar sin ningún problema nuestro código. En este caso, tenemos un fichero
-                        llamado <code>index.ts</code> que tendremos que compilar a JavaScript, para ello ejecutremos lo
-                        siguiente:</p>
-                    <pre><code class="lang-bash">&gt; tsc <span class="hljs-built_in">index</span>.<span class="hljs-keyword">ts</span>
+<p>Ahora podemos ejecutar sin ningún problema nuestro código. En este caso, tenemos un fichero llamado <code>index.ts</code> que tendremos que compilar a JavaScript, para ello ejecutremos lo siguiente:</p>
+<pre><code class="lang-bash">&gt; tsc <span class="hljs-built_in">index</span>.<span class="hljs-keyword">ts</span>
 </code></pre>
-                    <p>Esto generará un fichero llamado <code>index.js</code> que podrá ser utilizado por el html de la
-                        página.</p>
-                    <h2 id="algunas-ventajas-frente-a-javascript">Algunas Ventajas frente a JavaScript</h2>
-                    <h3 id="compilaci-n-a-distintas-versiones">Compilación a distintas versiones</h3>
-                    <p>Una de las grandes ventajas de TypeScript es que podemos compilar a la versión de JavaScript que
-                        elijamos. Todo esto se puede configurar en el fichero <a
-                            href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">tsconfig.json</a>,
-                        pero también se puede realizar mediante la linea de comandos.</p>
-                    <pre><code class="lang-bash">&gt; tsc <span class="hljs-built_in">index</span>.<span class="hljs-keyword">ts</span> # default execution
+<p>Esto generará un fichero llamado <code>index.js</code> que podrá ser utilizado por el html de la página.</p>
+<h2 id="algunas-ventajas-frente-a-javascript">Algunas Ventajas frente a JavaScript</h2>
+<h3 id="compilaci-n-a-distintas-versiones">Compilación a distintas versiones</h3>
+<p>Una de las grandes ventajas de TypeScript es que podemos compilar a la versión de JavaScript que elijamos. Todo esto se puede configurar en el fichero <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">tsconfig.json</a>, pero también se puede realizar mediante la linea de comandos.</p>
+<pre><code class="lang-bash">&gt; tsc <span class="hljs-built_in">index</span>.<span class="hljs-keyword">ts</span> # default execution
 &gt; tsc --<span class="hljs-keyword">help</span> # <span class="hljs-keyword">display</span> <span class="hljs-keyword">all</span> the info 
 &gt; tsc <span class="hljs-built_in">index</span>.<span class="hljs-keyword">ts</span> -t ES5 # target TS5 code
 &gt; tsc <span class="hljs-built_in">index</span>.<span class="hljs-keyword">ts</span> -t ES6 # target TS6 code
+&gt; tsc async.<span class="hljs-keyword">ts</span> # Converts ES6 async await <span class="hljs-keyword">to</span> ES5
 </code></pre>
-                    <p>Esto permite utilizar las últimas características de ES6 que vimos, como <strong>arrow functions,
-                            optional chaining y nullish operator</strong> pudiendo luego ejecutarlo en navegadores
-                        antiguos.</p>
-                    <h3 id="tipado-est-ticos">Tipado estáticos</h3>
-                    <p>Al final es la característica estrella de TypeScript es el tipado estático. Esto permite asignar
-                        a variables, objetos y funciones de tipos, con los que se comprobará luego en tiempo de
-                        compilación si el valor asignado corresponde con la definición inicial <strong>evitando así
-                            potenciales errores en ejecución</strong>.</p>
-                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-keyword">string</span>;
+<p>Esto permite utilizar las últimas características de ES6 que vimos, como <strong>arrow functions, optional chaining y nullish operator</strong> pudiendo luego ejecutarlo en navegadores antiguos.</p>
+<h3 id="tipado-est-ticos">Tipado estáticos</h3>
+<p>Al final es la característica estrella de TypeScript es el tipado estático. Esto permite asignar a variables, objetos y funciones de tipos, con los que se comprobará luego en tiempo de compilación si el valor asignado corresponde con la definición inicial <strong>evitando así potenciales errores en ejecución</strong>.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-keyword">string</span>;
 
 studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">// Compiler Error</span>
 </code></pre>
-                    <p>También TypeScript tendrá tipado implícito, esto significa que si no se le añade un tipo pero sí
-                        un valor en la declaración, TypeScript inferirá el valor y lo tipará automáticamente.</p>
-                    <pre><code class="lang-javascript">let studentName = <span class="hljs-string">"Pepe"</span><span class="hljs-comment">;</span>
+<p>También TypeScript tendrá tipado implícito, esto significa que si no se le añade un tipo pero sí un valor en la declaración, TypeScript inferirá el valor y lo tipará automáticamente.</p>
+<pre><code class="lang-javascript">let studentName = <span class="hljs-string">"Pepe"</span><span class="hljs-comment">;</span>
 
 <span class="hljs-attribute">studentName</span> = <span class="hljs-number">23</span><span class="hljs-comment">; // Error</span>
 </code></pre>
-                    <h3 id="interfaces">Interfaces</h3>
-                    <p>Ahora hablaremos más en detenimiento de las <strong>interfaces</strong> en la siguiente sección,
-                        pero nos sirve para ejemplificar el siguiente punto. Las interfaces permiten comprobar la forma
-                        que los valores asignados a las variables deben de tener. Esto también se puede llamar <em>duck
-                            typing</em> o <em>structural subtyping</em> y básicamente permite declarar
-                        &quot;contratos&quot; con el resto de tu código o con código externo para seguir un modelo.</p>
-                    <pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Person {
+<h3 id="interfaces">Interfaces</h3>
+<p>Ahora hablaremos más en detenimiento de las <strong>interfaces</strong> en el <a href="../3_interfaces/index.html">siguiente apartado</a>, pero nos sirve para ejemplificar el siguiente punto. Las interfaces permiten comprobar la forma que los valores asignados a las variables deben de tener. Esto también se puede llamar <em>duck typing</em> o <em>structural subtyping</em> y básicamente permite declarar &quot;contratos&quot; con el resto de tu código o con código externo para seguir un modelo.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Person {
     name: <span class="hljs-built_in">string</span>,
     age: <span class="hljs-built_in">number</span>
     displayName(): <span class="hljs-built_in">void</span>;
@@ -133,29 +101,17 @@ studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">//
     year: <span class="hljs-built_in">number</span>
 }
 </code></pre>
-                    <p>Esto permite por ejemplo tener un modelo bien definido para <strong>comunicación rest</strong>,
-                        añadir tipos a objetos o argumentos de funciones para tener un correcto control o incluso tener
-                        control sobre el parsing JSON de las respuestas a peticiones web.</p>
-                    <h3 id="autocompletado">Autocompletado</h3>
-                    <p>En algunos IDEs como Visusal Studio Code, si descargamos la extensión de TypeScript (o en las
-                        versiones más modernas ya viene por defecto), podremos de disfrutar de algunas ventajas muy
-                        potentes, como por ejemplo el <strong>autocompletado de objetos o variables</strong> (gracias a
-                        la comprobación estática), el <strong>poder auto-importar de otros ficheros
-                            automáticamente</strong> o el poder visualizar el tsdoc de un objeto o método comentado.</p>
-                    <p><img class="container-image" src="/meta/0_17_typescript_autocomplete.png"
-                            alt="TypeScript Autocomplete"></p>
-                    <h3 id="flexibilidad-en-la-comprobaci-n-de-tipos">Flexibilidad en la comprobación de tipos</h3>
-                    <p>Hay momentos en los que, bien por compatibilidad con otras librerías, bien por la complejidad de
-                        los tipos o por alguna otra razón, se quiere obviar los tipos o directamente escribir el código
-                        en JavaScript. Esto es posible de distintas maneras.</p>
-                    <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-built_in">any</span> = <span class="hljs-string">"Pepe"</span>; <span class="hljs-comment">// Be careful, use with precaution</span>
+<p>Esto permite por ejemplo tener un modelo bien definido para <strong>comunicación rest</strong>, añadir tipos a objetos o argumentos de funciones para tener un correcto control o incluso tener control sobre el parsing JSON de las respuestas a peticiones web.</p>
+<h3 id="autocompletado">Autocompletado</h3>
+<p>En algunos IDEs como Visusal Studio Code, si descargamos la extensión de TypeScript (o en las versiones más modernas ya viene por defecto), podremos de disfrutar de algunas ventajas muy potentes, como por ejemplo el <strong>autocompletado de objetos o variables</strong> (gracias a la comprobación estática), el <strong>poder auto-importar de otros ficheros automáticamente</strong> o el poder visualizar el tsdoc de un objeto o método comentado.</p>
+<p><img class="container-image" src="/meta/0_17_typescript_autocomplete.png" alt="TypeScript Autocomplete"></p>
+<h3 id="flexibilidad-en-la-comprobaci-n-de-tipos">Flexibilidad en la comprobación de tipos</h3>
+<p>Hay momentos en los que, bien por compatibilidad con otras librerías, bien por la complejidad de los tipos o por alguna otra razón, se quiere obviar los tipos o directamente escribir el código en JavaScript. Esto es posible de distintas maneras.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> studentName: <span class="hljs-built_in">any</span> = <span class="hljs-string">"Pepe"</span>; <span class="hljs-comment">// Be careful, use with precaution</span>
 
 studentName = <span class="hljs-number">23</span>; <span class="hljs-comment">// It will work great</span>
 </code></pre>
-                    <p>Como se puede ver el tipo <strong>any</strong> permite que la variable actúe de la misma manera
-                        que en JavaScript. Esto, unido a que podemos seguir usando la sintaxis de JavaScript, nos
-                        permite tener cierta flexibilidad a la hora de desarrollar ciertos componentes que pueden ser
-                        difíciles de implementar en primer lugar con TypeScript.</p>
+<p>Como se puede ver el tipo <strong>any</strong> permite que la variable actúe de la misma manera que en JavaScript. Esto, unido a que podemos seguir usando la sintaxis de JavaScript, nos permite tener cierta flexibilidad a la hora de desarrollar ciertos componentes que pueden ser difíciles de implementar en primer lugar con TypeScript.</p>
 
 
         </div>

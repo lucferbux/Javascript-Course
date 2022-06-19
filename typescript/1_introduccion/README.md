@@ -1,10 +1,10 @@
 # Introducción
 
+Después de cubrir los principales conceptos de JavaScript, es hora de introducir TypeScript en nuestro *"stack"* tecnológico. No sólo porque en menos de 5 años se haya colocado como el [4º lenguaje más popular entre programadores](https://octoverse.github.com/#top-languages-over-the-years), si no porque añade una serie de funcionalidades extra a JavaScript que pueden mejorar significativamente el desarrollo de nuestros proyectos. 
+
 ## Overview
 
-TypeScript añade comprobación estática de código.
-
-JavaScript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el problema es que puedes encontrate con muchos posibles puntos de conflicto:
+La funcionalidad principal que TypeScript añade con respecto a JavaScript es la **comprobación estática de código**. JavaScript es dinámico, y es por ello que es muy flexible y ágil a la hora de prototipar, el problema es que puedes encontrate con muchos posibles puntos de conflicto:
 
 * Llamada a objetos que no existen
 
@@ -38,19 +38,19 @@ console.log(person.profession);
 import { Feature } from "incorrect/path";
 ```
 
-Al ser JavaScript un lenguaje interpretado, todo el código será ejecutado en su entorno (si es web será en el motor del navegador), y estos errores **no aparecerán hasta el tiempo de ejecución**. Eso supone que muchos errores no aparecerán hasta que sean recogidos por tests, por pruebas reales en navegador o incluso pero, **EN PRODUCCIÓN**.
+Al ser JavaScript un lenguaje interpretado, todo el código será ejecutado en su entorno (si es web será en el motor del navegador), y estos errores **no aparecerán hasta el tiempo de ejecución**. Eso supone que muchos errores no aparecerán hasta que sean recogidos por tests, por pruebas reales en navegador o incluso peor, **EN PRODUCCIÓN**.
 
-La razón que TypeScript detecte estos problemas es porque tiene un compilador previo, que transforma el código de TypeScript a JavaScript, podemos hacer esto mismo simplemente llamando al compilador con ```tsc file.js```.
+La razón de que TypeScript detecte estos problemas es porque tiene un compilador previo, que transforma el código de TypeScript a JavaScript. Podemos hacer esto mismo simplemente llamando al compilador con ```tsc file.js```.
 
 ![TypeScript](/meta/0_16_TypeScript_Console.png)
 
 > [Consola TypeScript Online](https://www.typescriptlang.org/play?#code/PTAEHUFMBsGMHsC2lQBd5oBYoCoE8AHSAZVgCcBLA1UABWgEM8BzM+AVwDsATAGiwoBnUENANQAd0gAjQRVSQAUCEmYKsTKGYUAbpGF4OY0BoadYKdJMoL+gzAzIoz3UNEiPOofEVKVqAHSKymAAmkYI7NCuqGqcANag8ABmIjQUXrFOKBJMggBcISGgoAC0oACCoASMFmgY7p7ehCTkVOle4jUMdRLYTqCc8LEZzCZmoNJODPHFZZXVtZYYkAAeRJTInDQS8po+rf40gnjbDKv8LqD2jpbYoACqAEoAMsK7sUmxkGSCc+VVQQuaTwVb1UBrDYULY7PagbgUZLJH6QbYmJAECjuMigZEMVDsJzCFLNXxtajBdw0AiUbYANUcoAAvKAABQETBkBiCSD5a6oWnMACUzIAfKAAN6KEolBCcQTwdwBaDwZjszncyBCgDcigAvsEaRlUAyyKyAEQACRgKog8DI0XNOuCKhwDQ8ZC8iHtzhB7Bo3zcZmY7AYzEg-Fg0HUiQYIL0Ii85oAoqsGIgavpzUkcebwA5UAByYQAOUgEnNQRUAHlvmRdjz+OHjqhHApXNI8KAnN6dKMsPoUAhEDDhFdAxJ7dERAYODjuiw2FxuEESkA)
 
-**TypeScript** es un super-set de JavaScript, esto significa que podemos seguir escribiendo código en JavaScript mientras implementamos nuestro programa, permitiendo ser flexibles en el desarrollo mientras vamos teniendo desde el día 0 las ventajas que proporciona TypeScript, como el auto-completado, la auto-importación de módulos o la comprobación de tipos.
+**TypeScript** es un super-set de JavaScript, esto significa que podemos seguir escribiendo código en JavaScript mientras implementamos nuestro programa, permitiendo ser flexibles en el desarrollo mientras vamos teniendo desde el día 0 las ventajas que proporciona TypeScript, como el **auto-completado**, la **auto-importación de módulos** o la **comprobación de tipos**.
 
 ## Instalación
 
-La instalación de TypeScript es muy sencilla, solo es necesario tener [Node](https://nodejs.org/en/) instalado en el sistema. Una vez hecho, solo hay que ejecutar el siguiente comando:
+La instalación de TypeScript es muy sencilla, solo es necesario tener [Node](https://nodejs.org/en/) instalado en el sistema. Una vez hecho, simplemente hay que ejecutar el siguiente comando:
 
 ```bash
 > npm install -g typescript
@@ -100,7 +100,7 @@ studentName = 23; // Error
 
 ### Interfaces
 
-Ahora hablaremos más en detenimiento de las **interfaces** en la siguiente sección, pero nos sirve para ejemplificar el siguiente punto. Las interfaces permiten comprobar la forma que los valores asignados a las variables deben de tener. Esto también se puede llamar *duck typing* o *structural subtyping* y básicamente permite declarar "contratos" con el resto de tu código o con código externo para seguir un modelo.
+Ahora hablaremos más en detenimiento de las **interfaces** en el [siguiente apartado](../3_interfaces/index.html), pero nos sirve para ejemplificar el siguiente punto. Las interfaces permiten comprobar la forma que los valores asignados a las variables deben de tener. Esto también se puede llamar *duck typing* o *structural subtyping* y básicamente permite declarar "contratos" con el resto de tu código o con código externo para seguir un modelo.
 
 ```typescript
 interface Person {
@@ -125,7 +125,6 @@ Esto permite por ejemplo tener un modelo bien definido para **comunicación rest
 En algunos IDEs como Visusal Studio Code, si descargamos la extensión de TypeScript (o en las versiones más modernas ya viene por defecto), podremos de disfrutar de algunas ventajas muy potentes, como por ejemplo el **autocompletado de objetos o variables** (gracias a la comprobación estática), el **poder auto-importar de otros ficheros automáticamente** o el poder visualizar el tsdoc de un objeto o método comentado.
 
 ![TypeScript Autocomplete](/meta/0_17_typescript_autocomplete.png)
-
 
 ### Flexibilidad en la comprobación de tipos
 

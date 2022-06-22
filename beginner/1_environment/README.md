@@ -29,7 +29,7 @@ Vamos a preparar primero nuestro proyecto para poder seguir la clase. Aquí ten�
 3. Escribe un código que sume dos números y luego lo imprima en pantalla.
 ![Live server](/meta/0_4_code.png)
 
-### Motor JavaScript
+## Motor JavaScript
 
 JavaScript originalmente funcionaba dentro de los navegadores web. Todo navegador tiene lo que llamamos el Motor JavaScript o *JavaScript Engine*, que ejecuta el código.
 Aquí tenéis los mótores de los principales navegadores:
@@ -41,7 +41,7 @@ Aquí tenéis los mótores de los principales navegadores:
 En 2008, [Ryan Dahl](https://en.wikipedia.org/wiki/Ryan_Dahl) cansado de las limitaciones de muchos Servidores Web, creó un entorno en C/C++ que contenía el motor V8 de Chrome y permitía la ejecución de **código en JavaScript fuera del navegador**.
 Esto permitió el uso de JavaScript para desarrollo de Backend, ampliando enormemente la popularidad del lenguaje.
 
-### JavaScript vs ECMAScript
+## JavaScript vs ECMAScript
 
 Otro de los términos que tenemos que definir antes de comenzar con esta sesión es `ECMAScript` y su diferencia con JavaScript. Básicamente **ECMAScript** es una especificación, mientras que **JavaScript** es un lenguaje de programación que sigue esa especificación. Esto significa que *ECMAScript* va definiendo las novedades que posteriormente serán implementadas en *JavaScript*.
 En 2015 se lanzó ECMAScript 6 **(ES6)**, este lanzamiento supuso una revolución ya que introdujo muchas novedades como `clasess`, nueva importación de módulos, o *keywords* como `let`.

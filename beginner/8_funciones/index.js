@@ -38,18 +38,18 @@ function map(f, a) {
 console.log("%c2. Paso por valor y referencia", 'color: #229179; font-size: 16px;');
 
 function changeValue(object1) {
-    object1.make = 'Samsung';
+    object1.brand = 'Samsung';
     object1.model = 'Galaxy';
 }
 
-var myPhone = {make: 'Apple', model: 'iPhone', year: 2020};
+var myPhone = {brand: 'Apple', model: 'iPhone', year: 2020};
 var x, y;
 
-x = myPhone.make; // x gets the value "Apple"
+x = myPhone.brand; // x gets the value "Apple"
 console.log(x);
 
 changeValue(myPhone);
-y = myPhone.make; // y gets the value "Samsung"
+y = myPhone.brand; // y gets the value "Samsung"
 console.log(y);
 
 // Variables locales y variables globales

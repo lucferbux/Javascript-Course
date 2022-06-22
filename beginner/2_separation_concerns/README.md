@@ -4,7 +4,7 @@
 
 ## Separación de Preocupaciones
 
-A la hora de crear código, cuanto más aumenta la complejidad del proyecto, más aumenta las líneas de código del mismo. Es por ello que existen mecanísmos para asegurar que podemos organizar nuestro código de una manera lógica y concisa, para así evitar situaciones en las que el mantenimiento del código sea inabordable. Una de estas estrategias es separar nuestro código en múltiples ficheros, cada uno encargado de un set de funcionalidades específico. Esto es lo que llamamos **separación de preocupaciones**.
+A la hora de crear código, cuanto más aumenta la complejidad del proyecto, más aumenta las líneas de código del mismo. Es por ello que existen mecanismo para asegurar que podemos organizar nuestro código de una manera lógica y concisa, para así evitar situaciones en las que el mantenimiento del código sea inabordable. Una de estas estrategias es separar nuestro código en múltiples ficheros, cada uno encargado de un set de funcionalidades específico. Esto es lo que llamamos **separación de preocupaciones**.
 
 1. Ahora el tag `<script>` tiene un atributo llamado **src**. Esto indica el fichero que cargará con el código JavaScript.
 2. Separar diferentes archivos permite llevar a cabo la [Separación de Preocupaciones](https://en.wikipedia.org/wiki/Separation_of_concerns) muy importante en el mundo del desarrollo.

@@ -40,20 +40,20 @@ b = 50;
 let eq = a == b;
 console.log(`eq: ${eq}`);
 
-let eq = a == c;
-console.log(`eq: ${eq}`);
+let eq2 = a == c;
+console.log(`eq2: ${eq2}`);
 
-// Equaylity + type
-let eq = a === c;
-console.log(`eq: ${eq}`);
+// Equality + type
+let eq3 = a === c;
+console.log(`eq3: ${eq3}`);
 
 
 // Inequality
 let ieq = a != b;
 console.log(`ieq: ${ieq}`);
 
-let ieq = a != c;
-console.log(`ieq: ${ieq}`);
+let ieq2 = a != c;
+console.log(`ieq2: ${ieq2}`);
 
 // Greater
 let gt = a > b;
@@ -105,8 +105,8 @@ c = 60;
 c /= a;
 console.log(c);
 
-// Operadores Lógicos, de Identidad y Pretenencia
-console.log("%cOperadores Lógicos, de Identidad y Pretenencia", 'color: //229179; font-size: 16px;');
+// Operadores Lógicos, de Identidad y Pertenencia
+console.log("%cOperadores Lógicos, de Identidad y Pertenencia", 'color: //229179; font-size: 16px;');
 a = 30;
 b = 50;
 c = [20, 30, 70, 80];

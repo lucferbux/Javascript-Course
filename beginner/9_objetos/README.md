@@ -160,7 +160,7 @@ let nationalityTeacher = teacher.nationality;
 Hast aquí bien, podemos acceder a las propiedades que queramos de una forma sencilla. Pero desde el punto de vista estructural, si necesitamos asignar **n** propiedades tendremos que repetir el proceso **n** veces. Es donde entra en juego la desestructuración de objetos.
 
 ```javascript
-console.log("%c3. Desestructuración de objetos ", 'color: #229179; font-size: 16px;');
+console.log("%c4. Desestructuración de objetos ", 'color: #229179; font-size: 16px;');
 
 // 1. Property to variable
 const { age } = teacher;

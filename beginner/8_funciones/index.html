@@ -77,18 +77,18 @@
                         cambia en la variable externa.</p>
                     <p>Esto se puede ver también en código:</p>
                     <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeValue</span>(<span class="hljs-params">object1</span>) </span>{
-  object1.make = <span class="hljs-string">'Samsung'</span>;
+  object1.brand = <span class="hljs-string">'Samsung'</span>;
   object1.model = <span class="hljs-string">'Galaxy'</span>;
 }
 
 <span class="hljs-keyword">var</span> myPhone = {<span class="hljs-attr">make</span>: <span class="hljs-string">'Apple'</span>, <span class="hljs-attr">model</span>: <span class="hljs-string">'iPhone'</span>, <span class="hljs-attr">year</span>: <span class="hljs-number">2020</span>};
 <span class="hljs-keyword">var</span> x, y;
 
-x = myPhone.make; <span class="hljs-comment">// x gets the value "Apple"</span>
+x = myPhone.brand; <span class="hljs-comment">// x gets the value "Apple"</span>
 <span class="hljs-built_in">console</span>.log(x);
 
 myFunc(myPhone);
-y = myPhone.make; <span class="hljs-comment">// y gets the value "Samsung"</span>
+y = myPhone.brand; <span class="hljs-comment">// y gets the value "Samsung"</span>
 <span class="hljs-built_in">console</span>.log(y);
 </code></pre>
                     <h2 id="variables-locales-y-variables-globales">Variables Locales y Variables Globales</h2>
@@ -111,7 +111,7 @@ y = myPhone.make; <span class="hljs-comment">// y gets the value "Samsung"</span
 
 displayMessage();
 
-<span class="hljs-built_in">console</span>.log(innerVariable);
+<span class="hljs-built_in">// console.log(innerVariable); This will fail
 </code></pre>
                     <h2 id="par-metros">Parámetros</h2>
                     <p>Podemos pasar cualquier dato arbitrario a nuestra función usando parámetros (también llamados
@@ -220,18 +220,18 @@ function map(f, a) {
 // Paso por valor y referencia
 
 function changeValue(object1) {
-    object1.make = 'Samsung';
+    object1.brand = 'Samsung';
     object1.model = 'Galaxy';
 }
 
-var myPhone = {make: 'Apple', model: 'iPhone', year: 2020};
+var myPhone = {brand: 'Apple', model: 'iPhone', year: 2020};
 var x, y;
 
-x = myPhone.make; // x gets the value "Apple"
+x = myPhone.brand; // x gets the value "Apple"
 console.log(x);
 
 changeValue(myPhone);
-y = myPhone.make; // y gets the value "Samsung"
+y = myPhone.brand; // y gets the value "Samsung"
 console.log(y);
 
 // Variables locales y variables globales

@@ -94,7 +94,7 @@ console.log(vehicle);
 console.log(car);
 
 // Desestructuración de objetos
-console.log("%c3. Desestructuración de objetos ", 'color: #229179; font-size: 16px;');
+console.log("%c4. Desestructuración de objetos ", 'color: #229179; font-size: 16px;');
 let teacher = {
     name: 'Lucas',
     age: 25,

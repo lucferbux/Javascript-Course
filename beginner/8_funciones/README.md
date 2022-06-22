@@ -67,18 +67,18 @@ Esto se puede ver también en código:
 
 ```javascript
 function changeValue(object1) {
-  object1.make = 'Samsung';
+  object1.brand = 'Samsung';
   object1.model = 'Galaxy';
 }
 
-var myPhone = {make: 'Apple', model: 'iPhone', year: 2020};
+var myPhone = {brand: 'Apple', model: 'iPhone', year: 2020};
 var x, y;
 
-x = myPhone.make; // x gets the value "Apple"
+x = myPhone.brand; // x gets the value "Apple"
 console.log(x);
 
 myFunc(myPhone);
-y = myPhone.make; // y gets the value "Samsung"
+y = myPhone.brand; // y gets the value "Samsung"
 console.log(y);
 ```
 
@@ -102,7 +102,7 @@ function displayMessage() {
 
 displayMessage();
 
-console.log(innerVariable);
+// console.log(innerVariable); This will fail
 ```
 
 ## Parámetros

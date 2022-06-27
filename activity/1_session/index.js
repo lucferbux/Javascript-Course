@@ -1,6 +1,10 @@
 // Ejercicio 1
-import "./aboutme.js";
+import {mensaje} from './aboutme.js';
+console.log(mensaje);
 console.log("Ejercicio 1");
+
+import "./ejercicio4.js";
+import "./ejercicio6.js";
 
 // Ejercicio 2
 

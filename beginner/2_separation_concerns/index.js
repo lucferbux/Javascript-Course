@@ -1,3 +1,6 @@
+import {aboutMe} from "./aboutme.js";
+aboutMe();
+
 console.log("%cSeparation of concerns", 'color: #3913B8; font-size: 20px;');
 
 

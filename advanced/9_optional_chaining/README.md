@@ -32,13 +32,17 @@ Vamos a ver las distintas combinaciones que podemos obtener con el *encadenamien
 dog.name // this value exists
 cat?.name // optional chain would return undefined
 
+console.log("------------------");
+
 // bad
 // dog.lease.color
 
-// god
+// good
 cat?.lease.brand // this is unsafe, but valid in this context
 dog.chip.brand // this value exists
 dog.lease?.color // optional chain will avoid exception
+
+console.log("------------------");
 
 // bad
 // dog.walk()
@@ -46,6 +50,8 @@ dog.lease?.color // optional chain will avoid exception
 // good
 dog.bark() // this value exists
 dog.walk?.() // optional chain will return undefined when function is executed
+
+console.log("------------------");
 
 // bad
 // dog.chip.["owner"]

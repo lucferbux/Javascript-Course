@@ -26,19 +26,16 @@
                 </ol>
                 <p>Al hacer esto, podemos crear nuevas variables sin que colisionen con el scope original.</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// 1. Primera variante de IIFE</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c1. Primera variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
 (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     alert(<span class="hljs-string">"1. Estás usando IIFE"</span>)
 }());
 
 <span class="hljs-comment">// 2. Segunda variante de IIFE</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c2. Segunda variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
 (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"2. Estas usando IIFE"</span>)
 })();
 
 <span class="hljs-comment">// 3. Comprobar el scope de IIFE</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"%c3. Tercera variante de IIFE"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
 (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> newName = <span class="hljs-string">"Lucas"</span>;
     <span class="hljs-built_in">console</span>.log(newName);

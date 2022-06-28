@@ -15,4 +15,4 @@ Puedes realizar los ejercicios creando un nuevo proyecto que compile TypeScript 
 Crea dos interfaces, una llamada `Car` y otra `Motorcycle`. La primera tendrá las propiedades `tires` (number), `turnOnEngine()` (función que devuelve void) y `pressPedal()` (función que devuelve void).
 La segunda tendrá las propiedades `tires` (number), `turnOnEngine()` (función que devuelve void) y `openThrottle()` (función que devuelve void).
 Escribe una función que acepte un parámetro que pueda ser `Car` o `Motorcycle` que, primero llame a turnOnEngine, y luego si es Car llame a pressPedal pero si es Motorcycle llame a openThrottle().
-Para la comprobación no valdrá `typeof`, necesitaremos hacer uso de [type predicates]()
+Para la comprobación no valdrá `typeof`, necesitaremos hacer uso de [type predicates](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates).

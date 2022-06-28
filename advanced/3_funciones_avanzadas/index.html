@@ -83,18 +83,22 @@ console.log(sumAllNumbers(...sumArr));
   <span class="hljs-keyword">return</span> x + y;
 };
 <span class="hljs-comment">// ES6</span>
-<span class="hljs-keyword">let</span> add = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> { <span class="hljs-keyword">return</span> x + y };
+<span class="hljs-keyword">let</span> addShort = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> { <span class="hljs-keyword">return</span> x + y };
+addShort(1, 2);
 </code></pre>
           <p>Permite aplicar y reducir las lineas de código de la función hasta llegar a la mínima expresión.</p>
-          <pre><code class="lang-javascript">let add = <span class="hljs-function"><span class="hljs-params">(x, y)</span> =&gt;</span> x + y
+          <pre><code class="lang-javascript">let addShorter = <span class="hljs-function"><span class="hljs-params">(x, y)</span> =&gt;</span> x + y
+addShorter(1, 2);
 </code></pre>
           <p>Además, permite incluso eliminar paréntesis si solo hay un argumento, o directamente no incluir argumentos.
           </p>
           <pre><code class="lang-javascript"><span class="hljs-comment">// One argument</span>
 <span class="hljs-keyword">let</span> squareNum = <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x * x;
+squareNum(2);
 
 <span class="hljs-comment">// No argument</span>
 <span class="hljs-keyword">let</span> helloWorld = <span class="hljs-function"><span class="hljs-params">_</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello World"</span>);
+helloWorld();
 </code></pre>
           <h3 id="2-binding-de-argumentos">2. Binding de argumentos</h3>
           <p>Las <strong>arrow functions</strong> no tienen <strong>argument binding</strong>. En el caso de las

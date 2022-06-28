@@ -21,13 +21,17 @@ let cat = null;
 console.log(dog.name); // this value exists
 console.log(cat?.name); // optional chain would return undefined
 
+console.log("------------------");
+
 // bad
 // dog.lease.color
 
-// god
+// good
 console.log(cat?.lease.brand); // this is unsafe, but valid in this context
 console.log(dog.chip.brand); // this value exists
 console.log(dog.lease?.color); // optional chain will avoid exception
+
+console.log("------------------");
 
 // bad
 // dog.walk()
@@ -35,6 +39,8 @@ console.log(dog.lease?.color); // optional chain will avoid exception
 // good
 dog.bark(); // this value exists
 dog.walk?.(); // optional chain will return undefined when function is executed
+
+console.log("------------------");
 
 // bad
 // dog.chip.["owner"]

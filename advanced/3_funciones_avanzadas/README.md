@@ -75,13 +75,15 @@ var add = function(x, y) {
   return x + y;
 };
 // ES6
-let add = (x, y) => { return x + y };
+let addShort = (x, y) => { return x + y };
+addShort(1, 2);
 ```
 
 Permite aplicar y reducir las lineas de código de la función hasta llegar a la mínima expresión.
 
 ``` javascript
-let add = (x, y) => x + y 
+let addShorter = (x, y) => x + y;
+addShorter(1, 2);
 ```
 
 Además, permite incluso eliminar paréntesis si solo hay un argumento, o directamente no incluir argumentos.
@@ -89,10 +91,11 @@ Además, permite incluso eliminar paréntesis si solo hay un argumento, o direct
 ```javascript
 // One argument
 let squareNum = x => x * x;
+squareNum(2);
 
 // No argument
 let helloWorld = _ => console.log("Hello World");
-
+helloWorld();
 ```
 
 ### 2. Binding de argumentos

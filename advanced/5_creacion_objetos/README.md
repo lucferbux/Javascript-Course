@@ -10,7 +10,7 @@ Una **función constructora** no es más que una función regular que se convier
 
 ```javascript
 // without name 
-var person0 = function(name, age) {
+var person = function(name, age) {
     this.name = name;
     this.age = age;
 }

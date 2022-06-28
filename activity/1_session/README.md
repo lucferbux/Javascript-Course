@@ -16,7 +16,7 @@ Se requiere un navegador con herramientas de desarrollador:
 * Abre el navegador seleccionado y dirígete a la sección de `Actividades/Actividad 1`.
 * Abre la sección de *Sources* en las herramientas web, dirígete al fichero aboutme.js que creaste en la sección anterior y añade unos cuantos breakpoints en el script que has creado.
 * Añade un breakpoint más en `console.log(“Ej 1”)`.
-* ¿Qué se ejecuta antes, la llamada a `console.log()` o el contenido del fichero `aboutme.js`?
+* ¿Qué se ejecuta antes, la llamada a `console.log()` o el contenido del fichero `aboutme.js`? ¿Por qué?
 
 ## Ejercicio 3
 
@@ -28,7 +28,7 @@ Se requiere un navegador con herramientas de desarrollador:
 
 ## Ejercicio 5
 
-* ¿Cuál es la diferencia entre ejecutar un fichero JavaScript en un navegador web en formato `<script>` y en formato `<script type=”module”>`?.
+* ¿Cuáles son las diferencias entre ejecutar un fichero JavaScript en un navegador web en formato `<script>` y en formato `<script type=”module”>`?. Busca documentación para enumerar los principales comportamientos de ambas.
 
 ## Ejercicio 6
 

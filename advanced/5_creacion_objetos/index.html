@@ -32,7 +32,21 @@
                         <br>
                     <p>Una <strong>función constructora</strong> no es más que una función regular que se convierte en
                         constructor cuando se declara con la palabra <code>new</code>.</p>
-                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>)</span>{
+<pre><code class="lang-javascript"><span class="hljs-comment">// without name </span>
+<span class="hljs-keyword">var</span> person = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name, age</span>) </span>{
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+}
+
+<span class="hljs-keyword">var</span> lucas = <span class="hljs-keyword">new</span> person(<span class="hljs-string">"Lucas"</span>, <span class="hljs-number">26</span>);
+
+<span class="hljs-keyword">var</span> maria = <span class="hljs-keyword">new</span> person(<span class="hljs-string">"Maria"</span>, <span class="hljs-number">27</span>);
+
+<span class="hljs-built_in">console</span>.log(lucas);
+<span class="hljs-built_in">console</span>.log(maria);
+
+<span class="hljs-comment">// with name</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>)</span>{
     <span class="hljs-keyword">this</span>.name = name;
     <span class="hljs-keyword">this</span>.age = age;
 }
@@ -48,6 +62,16 @@
 
 person1.info();
 </code></pre>
+
+<p>Se podría extender el objeto mediante un <strong>spread operator</strong> de sus prototipos.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> person_extended = {
+    height: <span class="hljs-number">180</span>,
+    <span class="hljs-params">...</span>person1
+}
+
+console.<span class="hljs-keyword">log</span>(person_extended);
+</code></pre>
+
                     <p>Como podéis ver es posible crear objetos mediante <strong>funciones constructoras</strong> aunque
                         es un poco engorroso el añadir nuevos métodos o extender las clases, es por ello que en
                         <strong>ES6</strong> se introdujeron las <strong>clases</strong>.</p>

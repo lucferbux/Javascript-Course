@@ -35,6 +35,7 @@ console.log("%cOperadores de Compraración", 'color: //229179; font-size: 16px;'
 // Ejemplos de operadores de comparación
 a = 30;
 b = 50;
+let c = '30';
 
 // Equality
 let eq = a == b;
@@ -82,7 +83,7 @@ a = 30;
 b = 50;
 
 // Assignment (=)
-let c = a + b;
+c = a + b;
 console.log(c);
 
 // Addition with assignment
@@ -121,8 +122,6 @@ console.log(at || bf);
 
 // NOT operator
 console.log(!at);
-
-console.log("------------")
 
 // Membership
 console.log(a in c);

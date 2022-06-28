@@ -44,13 +44,17 @@ let cat = null;
 dog.<span class="hljs-keyword">name</span> <span class="hljs-comment">// this value exists</span>
 cat?.<span class="hljs-keyword">name</span> <span class="hljs-comment">// optional chain would return undefined</span>
 
+console.log("------------------");
+
 <span class="hljs-comment">// bad</span>
 <span class="hljs-comment">// dog.lease.color</span>
 
-<span class="hljs-comment">// god</span>
+<span class="hljs-comment">// good</span>
 cat?.lease.brand <span class="hljs-comment">// this is unsafe, but valid in this context</span>
 dog.chip.brand <span class="hljs-comment">// this value exists</span>
 dog.lease?.<span class="hljs-built_in">color</span> <span class="hljs-comment">// optional chain will avoid exception</span>
+
+console.log("------------------");
 
 <span class="hljs-comment">// bad</span>
 <span class="hljs-comment">// dog.walk()</span>
@@ -58,6 +62,8 @@ dog.lease?.<span class="hljs-built_in">color</span> <span class="hljs-comment">/
 <span class="hljs-comment">// good</span>
 dog.bark() <span class="hljs-comment">// this value exists</span>
 dog.walk?.() <span class="hljs-comment">// optional chain will return undefined when function is executed</span>
+
+console.log("------------------");
 
 <span class="hljs-comment">// bad</span>
 <span class="hljs-comment">// dog.chip.["owner"]</span>

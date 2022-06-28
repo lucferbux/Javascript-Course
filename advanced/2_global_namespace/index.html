@@ -48,11 +48,11 @@ displayNewName();
                         hemos comentado en el <a href="/beginner/3_variables/index.html">módulo 3</a> <code>var</code>
                         añade la variable al scope global si se encuentra en este entorno, es por ello que podemos
                         demostrar fácilmente la visibilidad de las declaraciones.</p>
-                    <pre><code class="lang-javascript"><span class="hljs-comment">// Global Scope</span>
+                    <pre><code class="lang-javascript"><span class="hljs-comment">// Scope of variables</span>
 <span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Variable</span> = <span class="hljs-string">"Hello World"</span>;
 console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">Variable</span>);
 
-<span class="hljs-comment">// Function Scope</span>
+<span class="hljs-comment">// Avoid collision</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myScope</span></span>() {
     <span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Name</span> = <span class="hljs-string">"Lucas"</span>
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span><span class="hljs-type">Name</span>
@@ -61,8 +61,7 @@ console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">
 console.log(myScope())
 console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">Name</span>); <span class="hljs-comment">//should be undefined</span>
 
-<span class="hljs-comment">// Global Scope</span>
-console.log(<span class="hljs-string">"%c5. Creating new variable"</span>, <span class="hljs-string">'color: #229179; font-size: 16px;'</span>);
+<span class="hljs-comment">// Creating a new variable</span>
 <span class="hljs-keyword">var</span> <span class="hljs-keyword">new</span><span class="hljs-type">Name</span> = <span class="hljs-string">"Lucas Fernandez"</span>;
 console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">Name</span>); <span class="hljs-comment">//should be Lucas Fernandez</span>
 </code></pre>

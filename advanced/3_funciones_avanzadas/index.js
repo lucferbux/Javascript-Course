@@ -50,6 +50,7 @@ console.log("%cArrow Functions", 'color: #3913B8; font-size: 20px;');
 console.log("%c1. Declaration", 'color: #229179; font-size: 16px;');
 // Declaration
 
+// ES5
 var add = function(x, y) {
   return x + y;
 };

@@ -52,7 +52,7 @@ Comparan valores de ambos lados de la operación y deciden la relación entre am
 // Operadores de Comparación
 a = 30;
 b = 50;
-c = '30';
+let c = '30';
 
 // Equality
 let eq = a == b;

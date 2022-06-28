@@ -51,7 +51,3 @@ function drive(vehicle: Car | Motorcycle): void {
         motorcycle.openThrottle();
     }
 }
-
-// Ejercicio 3
-
-// Para comprobar la solución, cambia la rama a final y comprueba los resultados.

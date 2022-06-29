@@ -66,49 +66,6 @@ console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">
 console.log(window.<span class="hljs-keyword">new</span><span class="hljs-type">Name</span>); <span class="hljs-comment">//should be Lucas Fernandez</span>
 </code></pre>
 
-
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/advanced/2_global_namespace/index.js</p>
-                    <pre>
-<code class="language-javascript">// Namespace
-
-// 1. Namespace in JavaScript
-let name = "Lucas";
-
-console.log(name);
-
-function displayNewName() {
-    let name = "Ricardo";
-    console.log(name);
-}
-
-displayNewName();
-
-// 2. Default root namespace in a browser is window
-console.log(window);
-console.log(window === this); // Equal in browse
-console.log(this);
-
-// 3. Each variable declared is attached in the window
-var newVariable = "Hello World";
-console.log(window.newVariable);
-
-// 4. The way to avoid collision is create variables in it's own scope (functions...)
-function myScope() {
-    var newName = "Lucas"
-    return newName
-}
-
-console.log(myScope())
-console.log(window.newName); //should be undefined
-
-// 5.Creating this variable should change that
-var newName = "Lucas Fernandez";
-console.log(window.newName); //should be Lucas Fernandez</code>
-</pre>
-
         </div>
     </div>
     <script src="../../prism.js"></script>

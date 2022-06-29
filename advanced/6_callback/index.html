@@ -72,52 +72,6 @@ loggingCallback(<span class="hljs-string">"lucferbux"</span>, logUser, logError)
 console.log(<span class="hljs-string">"This is going to print before too..."</span>);
 </code></pre>
 
-
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/advanced/6_callback/index.js</p>
-                    <pre>
-<code class="language-javascript">// Callback
-
-let myCallback = (callback) => {
-    setTimeout(() => {
-        callback("1. Callback function ---> logged");
-    }, 100);
-};
-
-let logUser = (response) => {
-    console.log(response);
-};
-
-myCallback(logUser);
-
-console.log("This is going to print before...");
-
-
-// 2. Passing arguments
-
-// Having an error
-let logError = (error) => {
-    console.log(error);
-}
-
-let loggingCallback = (login, response, error) => {
-    setTimeout(() => {
-        if(login === "lucferbux") {
-            response("2. Callback with parameters --> User logged")
-        } else {
-            error("error, username invalid")
-        }
-    }, 100);
-}
-
-loggingCallback("lucferbux", logUser, logError);
-
-
-console.log("This is going to print before too...");</code>
-</pre>
-
         </div>
     </div>
     <script src="../../prism.js"></script>

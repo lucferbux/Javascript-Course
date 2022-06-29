@@ -105,39 +105,6 @@
 <span class="hljs-built_in">console</span>.log(secondPhone.charge(<span class="hljs-number">30</span>));     <span class="hljs-comment">// "Batería insuficiente"</span>
 <span class="hljs-built_in">console</span>.log(secondPhone.charge(<span class="hljs-number">20</span>));     <span class="hljs-comment">// 0</span>
 </code></pre>
-                
-
-
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/advanced/4_IIFE/index.js</p>
-<pre>
-<code class="language-javascript">console.log("IIFE");
-
-// Primera variante de IIFE
-(function() {
-    alert("Estás usando IIFE")
-}());
-
-// Segunda variante de IIFE
-(function() {
-    console.log("Estas usando IIFE")
-})();
-
-// Comprobar el scope de IIFE
-(function() {
-    var newName = "Lucas";
-    console.log(newName);
-}());
-
-(function() {
-    var newName = "Maria";
-    console.log(newName);
-}());
-
-console.log(window.newName);</code>
-</pre>
 
         </div>
     </div>

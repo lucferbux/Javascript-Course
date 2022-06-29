@@ -80,54 +80,6 @@ dog.chip?.[<span class="hljs-string">"owner"</span>]
         </ul>
         <p>Esta sintaxis es muy útil y puede evitar muchos problemas en nuestro código, aún así, es recomendable no usar este operador de forma indiscriminada, porque podría ocultar errores de programación en puntos donde podrían estar ocurriendo.</p>
         
-         
-          <hr class="code-separator">
-
-          <h2 id="arrow">Consola JavaScript</h2>
-          <p class="folder">/advanced/10_optional_chaining/index.js</p>
-          <pre>
-<code class="language-javascript">let dog = {
-  name: "Seymur",
-  age: 12,
-  chip: {
-      brand: "Soyner",
-      address: "123, 3rd Street, New New York"
-  },
-  bark: () => {
-      console.log("woof")
-  }
-};
-
-let cat = null;
-
-// bad
-// cat.name
-
-// good
-dog.name // this value exists
-cat?.name // optional chain would return undefined
-
-// bad
-// dog.lease.color
-
-// god
-cat?.lease.brand // this is unsafe, but valid in this context
-dog.chip.brand // this value exists
-dog.lease?.color // optional chain will avoid exception
-
-// bad
-// dog.walk()
-
-// good
-dog.bark() // this value exists
-dog.walk?.() // optional chain will return undefined when function is executed
-
-// bad
-// dog.chip.["owner"]
-
-// good
-dog.chip?.["owner"]</code></pre>
-
     </div>
   </div>
   <script src="../../prism.js"></script>

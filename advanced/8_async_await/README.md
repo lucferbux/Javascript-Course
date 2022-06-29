@@ -71,6 +71,8 @@ req();
 
 ### Paso de argumentos
 
+Podemos además añadir argumentos a nuestras llamadas de `async...await`.
+
 ```javascript
 var loginWitUsername = (username, password) => {
   return new Promise(function (resolve, rejected) {

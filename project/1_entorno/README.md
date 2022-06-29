@@ -36,6 +36,3 @@ Los principales beneficios de implementar Webpack son los siguientes:
 
 El principal problema es la alta curva de aprendizaje que requiere esta herramienta. Aún así, Frameworks tan famosos como **React** lo utilizan (sin exponer su dificultosa configuración) para gestionar la compilación del código.
 
-## Projecto
-
-Tenemos un [ejemplo de proyecto](https://github.com/lucferbux/TypescriptWeatherExample) para practicar con TypeScript.

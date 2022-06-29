@@ -17,17 +17,29 @@
                 < Back</a> <h1>Actividad Sesión 3</h1>
                     <p class="caption">Actividades para TypeScript</p>
                     <hr class="separator">
-
+                    <p>Puedes realizar los ejercicios creando un nuevo proyecto que compile TypeScript o puedes utilizar <a href="https://www.typescriptlang.org/play">el playground de TypeScript</a>. Dentro de <strong>index.ts</strong> tenéis los resultados a los dos primeros ejercicios.</p>
                     <h2 id="ejercicio-1">Ejercicio 1</h2>
                     <ul>
-                    <li>Crea una interfaz &#39;Person&#39; que tenga como atributos &#39;name&#39;, &#39;age&#39; y &#39;profession&#39;. Ahora define una arrow function que tenga como parámetro esta interfaz y que devuelva un array con sus propiedades, esta función tiene que tener tipado el parámetro de entrada y el return</li>
+                    <li><p>Crea una interfaz &#39;Person&#39; que tenga como atributos &#39;name&#39;, &#39;age&#39; y &#39;profession&#39;. Ahora define una arrow function que tenga como parámetro esta interfaz y que devuelva un array con <strong>el valor de sus propiedades</strong>, esta función tiene que tener <strong>tipado el parámetro de entrada y el return</strong>.</p>
+                    </li>
+                    <li><p>Ayuda -&gt; El array probablemente necesite <a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types">union type</a> *</p>
+                    </li>
                     </ul>
-                    <pre><code class="lang-javascript">// <span class="hljs-keyword">return</span> -&gt; [<span class="hljs-string">"name"</span>, <span class="hljs-string">"age"</span>, <span class="hljs-string">"profession"</span>]</code></pre>
+<pre><code class="lang-javascript">// input name -&gt; Lucas / age -&gt; <span class="hljs-number">28</span> / profession -&gt; Full Stack
+// <span class="hljs-keyword">return</span> -&gt; [<span class="hljs-string">"Lucas"</span>, <span class="hljs-number">28</span>, <span class="hljs-string">"profession"</span>]
+</code></pre>
                     <h2 id="ejercicio-2">Ejercicio 2</h2>
+                    <p>Escribe una función llamada <code>sumOrConcatenate</code> que acepte dos parámetros. Cada uno de estos parámetros podrá ser de tipo <code>number</code> o <code>string</code>. La función devolverá una suma si los dos parámetros son números, una concatenación con el símbolo <code>-</code> si son los dos <code>strings</code> o una cadena concatenadad con <code>:</code> si uno es un <code>number</code> y el otro <code>string</code>.</p>
+<pre><code class="lang-javascript">console.<span class="hljs-built_in">log</span>(sumOrConcatenate(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>)); <span class="hljs-comment">// 7</span>
+console.<span class="hljs-built_in">log</span>(sumOrConcatenate(<span class="hljs-number">4</span>, <span class="hljs-string">"hello"</span>)); <span class="hljs-comment">// 4:hello </span>
+console.<span class="hljs-built_in">log</span>(sumOrConcatenate(<span class="hljs-string">"hello"</span>, <span class="hljs-string">"world"</span>)); <span class="hljs-comment">//hello-world</span>
+</code></pre>
+                    <h2 id="ejercicio-3">Ejercicio 3</h2>
                     <p>Crea dos interfaces, una llamada <code>Car</code> y otra <code>Motorcycle</code>. La primera tendrá las propiedades <code>tires</code> (number), <code>turnOnEngine()</code> (función que devuelve void) y <code>pressPedal()</code> (función que devuelve void).
                     La segunda tendrá las propiedades <code>tires</code> (number), <code>turnOnEngine()</code> (función que devuelve void) y <code>openThrottle()</code> (función que devuelve void).
                     Escribe una función que acepte un parámetro que pueda ser <code>Car</code> o <code>Motorcycle</code> que, primero llame a turnOnEngine, y luego si es Car llame a pressPedal pero si es Motorcycle llame a openThrottle().
-                    Para la comprobación no valdrá <code>typeof</code>, necesitaremos hacer uso de <a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates">type predicates</a></p>
+                    Para la comprobación no valdrá <code>typeof</code>, necesitaremos hacer uso de <a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates">type predicates</a>.</p>
+                    
                     
 
         </div>

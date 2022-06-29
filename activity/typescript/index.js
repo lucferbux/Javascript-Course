@@ -1,20 +1,17 @@
 // Ejercicio 1
-var listProperties = function (person) {
-    var objectProperties = Object.keys(person);
-    return objectProperties;
-};
-console.log(listProperties({ name: "Lucas", age: 27, profession: "Teacher" }));
-function isCar(vehicle) {
-    return vehicle.pressPedal !== undefined;
-}
-function drive(vehicle) {
-    vehicle.turnOnEngine();
-    if (isCar(vehicle)) {
-        var car = vehicle;
-        car.pressPedal();
+// Ejercicio 2
+function sumOrConcatenate(value1, value2) {
+    if (typeof value1 === "number" && typeof value2 === "number") {
+        return value1 + value2;
+    }
+    else if (typeof value1 === "string" && typeof value2 === "string") {
+        return "".concat(value1, "-").concat(value2);
     }
     else {
-        var motorcycle = vehicle;
-        motorcycle.openThrottle();
+        return "".concat(value1, ":").concat(value2);
     }
 }
+console.log(sumOrConcatenate(4, 3));
+console.log(sumOrConcatenate(4, "hello"));
+console.log(sumOrConcatenate("hello", "world"));
+// Ejercicio 3

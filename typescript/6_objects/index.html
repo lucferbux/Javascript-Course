@@ -18,6 +18,43 @@
                     <p class="caption">Tipar objetos en TypeScript</p>
                     <hr class="separator">
                     
+                    <p>Como ya vimos en la sección de JavaScript, los objetos son la <strong>unidad fundamental para agrupar y pasar información</strong>. En TypeScript, representamos esta información mediante el <em>tipo objeto</em>.</p>
+<p>Este tipo se puede representar de varias maneras, ya sea como objeto anónimo:</p>
+<pre><code class="lang-javascript">function greetAnonymous(person: { <span class="hljs-built_in">name</span>: <span class="hljs-built_in">string</span>; age: <span class="hljs-built_in">number</span> }) {
+<span class="hljs-built_in">  return</span> <span class="hljs-string">"Hello "</span> + person.<span class="hljs-built_in">name</span>;
+}
+greetAnonymous({<span class="hljs-built_in">name</span>: <span class="hljs-string">"Lucas"</span>, age: <span class="hljs-number">28</span>});
+</code></pre>
+<p>Pueden ser declarados a través de <code>interfaces</code>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Person {
+  name: <span class="hljs-built_in">string</span>;
+  age: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">let</span> person: Person = {name: <span class="hljs-string">"Lucas"</span>, age: <span class="hljs-number">28</span>};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greetInterface</span>(<span class="hljs-params">person: Person</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello "</span> + person.name;
+}
+greetInterface(person);
+</code></pre>
+<p>O como un <code>type alias</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> PersonType = {
+  name: <span class="hljs-built_in">string</span>;
+  age: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">let</span> personType: PersonType = {name: <span class="hljs-string">"Lucas"</span>, age: <span class="hljs-number">28</span>};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greetType</span>(<span class="hljs-params">person: PersonType</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello "</span> + person.name;
+}
+
+greetType(personType);
+</code></pre>
+<p>En estos tres ejemplos tenemos funciones con objetos como parámetros que contienen la propiedad <code>name</code>, un string, y <code>age</code>, un número.</p>
+<p>Es por ello que podemos utilizar cualquiera de estas estructuras para representar objetos en JavaScript, además, como <a href="../3_interfaces/README.md">vimos en la sección de interfaces</a>, actualmente en TypeScript puede usarse indistintamente <code>interfaces</code> y <code>type alias</code> en casi cualquier contexto.</p>
+
         </div>
     </div>
     <script src="../../prism.js"></script>

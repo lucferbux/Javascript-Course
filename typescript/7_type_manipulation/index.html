@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General - TypeScript</title>
+    <title>Manipulación Tipos - TypeScript</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
 </head>
@@ -14,9 +14,167 @@
     <div class="container" id="container">
         <div class="section">
             <a class="back-button" href="/typescript/typescript.html">
-                < Back</a> <h1>Conceptos Generales</h1>
-                    <p class="caption">Principales Conceptos en TypeScript</p>
+                < Back</a> <h1>Manipulación de Tipos</h1>
+                    <p class="caption">Conceptos avanzados de tipos</p>
                     <hr class="separator">
+                    <h2 id="gen-ricos">Genéricos</h2>
+<h3 id="overview">Overview</h3>
+<p>Uno de los puntos más importantes dentro de la Ingeniería de Software es crear componentes que sean <strong>robustos</strong> y <strong>reusables</strong>. Es por ello que en esta sección nos centraremos en introducir el concepto de <code>generics</code>, que permitirá que nuestro código sea más flexible y reusable. El objetivo principal de los <strong>genéricos</strong> es crear un componente que pueda trabajar con una variedad de tipos en contraposición a funcionar exclusivamente con un sólo tipo, como hemos estado viendo hasta ahora.</p>
+<p>Vamos a ver el <strong>genérico</strong> más utilizado y simple en JavaScript: El <code>array</code>. En TypeScript un <em>array</em> se declara con el tipo <code>Array</code>, seguido del tipo que compondrá esta estructura entre los símbolos <code>&lt; &gt;</code>. El caso de que sea genérico es que podemos cambiar el tipo entre los símbolos de menor y mayor y la funcionalidad se mantendrá independientemente del tipo.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> nums: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+</code></pre>
+<p>Vamos a suponer que para una función, vamos a querer devolver el último elemento de un Array:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> lastNumber = <span class="hljs-function">(<span class="hljs-params">arr: <span class="hljs-built_in">Array</span>&lt;number&gt;</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> arr[arr.length - <span class="hljs-number">1</span>];
+}
+
+<span class="hljs-keyword">const</span> lNumber = lastNumber([<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]);
+</code></pre>
+<p>Pero, ¿qué pasa si quisiéramos pasar un array de <code>strings</code> como parámetro?. Pues JavaScript va a lanzar un error. Una solución sería usar <code>union types</code>, pero tendríamos que contemplar todas las posibilades que pueda abarcar los tipos de array. Es aquí donde entran los <strong>genéricos</strong>.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> lastElement = &lt;T&gt;(arr: <span class="hljs-keyword">Array</span>&lt;T&gt;) =&gt; {
+    <span class="hljs-keyword">return</span> arr[arr.length - <span class="hljs-number">1</span>];
+}
+
+<span class="hljs-keyword">const</span> lastElementNumber = lastElement([<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]);
+<span class="hljs-keyword">const</span> lastElementString = lastElement&lt;string&gt;([<span class="hljs-string">'Hello'</span>, <span class="hljs-string">'World'</span>, <span class="hljs-string">'!'</span>]); <span class="hljs-comment">// / Typescript infiere el tipo pero lo puedes indicar</span>
+</code></pre>
+<p>En este ejemplo podemos ver que le pasamos un tipo <code>T</code>. Esta <code>T</code> puede ser cualquier identificador, pero por convenio se suele utilizar esa letra mayúscula para representar un tipo genérico.</p>
+<p>Si prestamos atención al ejemplo, podemos ver que el tipo de retorno es inferido por TypeScript y es que no es necesario declararlo explícitamente para que TypeScript pueda adivinar el tipo que vamos a devolver. Además de esto, al hacer la llamada de la función, TypeScript inferirá el tipo del genérico en base al parámetro de entrada, como se <strong>puede ver en el primer ejemplo</strong>.</p>
+<h3 id="m-ltiples-gen-ricos">Múltiples genéricos</h3>
+<p>Podemos tener múltiples genéricos como argumentos en una función, en este caso  si queremos tener diferentes argumentos con tipos genéricos. El funcionamiento es el mismo, tener múltiples identificadores separados por comas entre los símbolos de mayor y menor <code>&lt;X, Y, Z&gt;</code>, siendo que el nombre del identificador por convenio suele ser una letra mayúscula.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeString = &lt;X, Y&gt;(x: X, y: Y): <span class="hljs-built_in">string</span> =&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${x}</span> <span class="hljs-subst">${y}</span>`</span>;
+}
+
+<span class="hljs-keyword">const</span> firstString = makeString(<span class="hljs-number">5</span>, <span class="hljs-string">"hello"</span>);
+
+<span class="hljs-keyword">const</span> secondString = makeString&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>[]&gt;(<span class="hljs-string">"Array -&gt;"</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);
+</code></pre>
+<p>Como podéis ver, al igual que en el primer ejemplo, podemos inferir los tipos en la llamada de la función al pasar los argumentos, pero si queremos dejarlos explícitamente marcados podemos hacerlo como en la segunda llamada.</p>
+<h3 id="valor-por-defecto">Valor por defecto</h3>
+<p>También podemos tener valores por defecto en los genéricos de manera <strong>similar a valores por defecto en parámetros de una función</strong>. Básicamente tenemos que tipar alguno de los genéricos dentro de su declaración, haciendo así que si no se indica el valor, por defecto tengan que ser del tipo declarado.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> makeStringDefault = &lt;X, Y = <span class="hljs-built_in">number</span>&gt;(x: X, y: Y): <span class="hljs-built_in">string</span> =&gt; {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${x}</span> <span class="hljs-subst">${y}</span>`</span>;
+}
+
+<span class="hljs-keyword">const</span> fistStringValid = makeStringDefault(<span class="hljs-number">5</span>, <span class="hljs-string">"hello"</span>);
+
+<span class="hljs-keyword">const</span> secondStringValid = makeStringDefault&lt;<span class="hljs-built_in">number</span>[]&gt;([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-number">4</span>);
+
+<span class="hljs-comment">// Will Fail -&gt; const secondStringValid = makeStringDefault&lt;number[]&gt;([1, 2, 3], "hello");</span>
+</code></pre>
+<p>Como podemos ver, en el primer ejemplo infiere que el segundo parámetro es un <code>string</code>, por lo que convierte el genérico <code>Y</code> en un <code>string</code>. Por otro lado, si decidimos añadir el tipo explícitamente de uno de los genéricos, el otro quedará cono el tipo number por defecto, por lo que si pasamos un argumento que no sea de ese tipo fallará.</p>
+<h3 id="a-adir-restricciones">Añadir restricciones</h3>
+<p>Ahora vamos a suponer que tenemos una función que acepta un <strong>objeto genérico</strong>, pero tenemos como condición que ese objeto <strong>tenga una serie de parámetros obligatorios</strong>. Vamos a ver como podríamos solventarlo con genéricos.</p>
+<pre><code class="lang-javascript">const makeFullName = &lt;T <span class="hljs-keyword">extends</span> {<span class="hljs-string">firstName:</span> string, <span class="hljs-string">lastName:</span> string}&gt;( <span class="hljs-string">obj:</span> T ) =&gt; {
+    <span class="hljs-keyword">return</span>  {
+        ...obj,
+<span class="hljs-symbol">        fullName:</span> obj.firstName + <span class="hljs-string">" "</span> + obj.lastName
+    };
+};
+
+const person1 = makeFullName({<span class="hljs-string">firstName:</span> <span class="hljs-string">"Lucas"</span>, <span class="hljs-string">lastName:</span> <span class="hljs-string">"Fernandez"</span>, <span class="hljs-string">age:</span> <span class="hljs-number">28</span>});
+const person2 = makeFullName({<span class="hljs-string">firstName:</span> <span class="hljs-string">"Pedro"</span>, <span class="hljs-string">lastName:</span> <span class="hljs-string">"Ramirez"</span>, <span class="hljs-string">profession:</span> <span class="hljs-string">"Full Stack"</span>});
+<span class="hljs-comment">// Will Fail const personFail = makeFullName({otherName: "Lucas", lastName: "Fernandez", age: 28});</span>
+</code></pre>
+<p>Con esto ya vemos un caso de uso bastante potente, intentar replicar este mismo comportamiento con JavaScript requeriría comprobaciones en tiempo real en el cuerpo de la función y excepciones o algún mecanismo similar cuando no se cumplen estas restricciones.</p>
+<h3 id="interfaces">Interfaces</h3>
+<p>Podremos usar también usar genéricos en interfaces cuando queremos múltiples tipos con variaciones de atributos de una forma sencilla.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Message&lt;T&gt; {
+    id: <span class="hljs-built_in">string</span>;
+    timestamp: <span class="hljs-built_in">number</span>;
+    data: T;
+}
+
+<span class="hljs-keyword">type</span> MessageNumber = Message&lt;<span class="hljs-built_in">number</span>&gt;;
+<span class="hljs-keyword">let</span> messageNumber: MessageNumber = {id: <span class="hljs-string">"as8df90asdf"</span>, timestamp: <span class="hljs-number">23429342349</span>, data: <span class="hljs-number">23482934092384092384029384293840238</span>};
+<span class="hljs-built_in">console</span>.log(messageNumber);
+
+<span class="hljs-keyword">type</span> MessageString = Message&lt;<span class="hljs-built_in">string</span>&gt;;
+<span class="hljs-keyword">let</span> messageString: MessageString = {id: <span class="hljs-string">"oiausdf989as"</span>, timestamp: <span class="hljs-number">38495830989</span>, data: <span class="hljs-string">"Hello World"</span>};
+<span class="hljs-built_in">console</span>.log(messageString);
+</code></pre>
+<h2 id="keyof">Keyof</h2>
+<p>El operador <code>keyof</code> coge como parámetro un tipo objeto y produce una cadena con la unión de sus tipos, por ejemplo:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> <span class="hljs-type">Point </span>= { x: number; y: number };
+<span class="hljs-keyword">type</span> <span class="hljs-type">P </span>= keyof Point; // <span class="hljs-string">"x"</span> | <span class="hljs-string">"y"</span>
+let point: P = <span class="hljs-string">"x"</span>;
+</code></pre>
+<p>Si quisiéramos poner otro valor que no fuese <code>x</code> o <code>y</code> TypeScript se quejaría. En principio no parece muy útil, pero este operador combinado con genéricos puede ayudar en ciertos casos de uso:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> Staff = {
+  name: <span class="hljs-built_in">string</span>;
+  salary: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProperty</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">K</span> <span class="hljs-title">extends</span> <span class="hljs-title">keyof</span> <span class="hljs-title">T</span>&gt;(<span class="hljs-params">obj: T, key: K</span>): <span class="hljs-title">T</span>[<span class="hljs-title">K</span>] </span>{
+  <span class="hljs-keyword">return</span> obj[key];
+}
+
+<span class="hljs-keyword">const</span> developer: Staff = {
+  name: <span class="hljs-string">"Tobias"</span>,
+  salary: <span class="hljs-number">100</span>,
+};
+
+<span class="hljs-keyword">const</span> nameType = getProperty(developer, <span class="hljs-string">"name"</span>);
+<span class="hljs-comment">// Compiler error -&gt; const salaryType getProperty(developer, ‘pay’); //Cannot find name 'pay'.(2304)</span>
+</code></pre>
+<h2 id="typeof">Typeof</h2>
+<p>Ahora vamos a ver como usar <code>typeof</code> de forma más avanzada. Si os acordáis, este operador devolvía un string con el tipo de una variable o propiedad.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> s = <span class="hljs-string">"hello"</span>;
+<span class="hljs-keyword">let</span> n: <span class="hljs-keyword">typeof</span> s = <span class="hljs-string">"world"</span>;
+<span class="hljs-built_in">console</span>.log(n);
+</code></pre>
+<p>Pero si combinamos esta funcionalidad con estructuras más avanzadas como <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">ReturnType<T></a>, que acepta como parámetro una función y devuelve el tipo de retorno, podemos conseguir cosas como esta:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>() {
+    <span class="hljs-keyword">return</span> <span class="hljs-type">{</span> x: <span class="hljs-number">10</span>, y: <span class="hljs-number">3</span> };
+}
+<span class="hljs-keyword">type</span> <span class="hljs-type">PointPredicate </span>= ReturnType&lt;typeof f&gt;;
+
+const pointPredicate: PointPredicate = {x: <span class="hljs-number">10</span>, y: <span class="hljs-number">4</span>};
+console.log(pointPredicate);
+</code></pre>
+<p>Básicamente podemos conseguir definir tipos con el parámetro de retorno de una función de forma muy sencilla.</p>
+<h2 id="conditionals">Conditionals</h2>
+<p>Los condicionales son un paso más para permitir la modificación de nuestro código en base a ciertos parámetros de entrada. Vamos a ver un ejemplo.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Animal {
+  live(): <span class="hljs-built_in">void</span>;
+}
+<span class="hljs-keyword">interface</span> Dog <span class="hljs-keyword">extends</span> Animal {
+  woof(): <span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-keyword">type</span> Example1 = Dog extends Animal ? <span class="hljs-built_in">number</span> : <span class="hljs-built_in">string</span>; <span class="hljs-comment">// En este primer caso se evaluará si Dog extiende a Animal y se asignará number</span>
+
+<span class="hljs-keyword">type</span> Example2 = <span class="hljs-built_in">RegExp</span> extends Animal ? <span class="hljs-built_in">number</span> : <span class="hljs-built_in">string</span>; <span class="hljs-comment">// Como RegExp no extiende a Animal se asignará el tipo string</span>
+</code></pre>
+<p>Como podemos ver se usa la estructura del <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">operador ternario</a> para decidir si una evaluación se cumple. En el primer caso como el tipo <code>Dog</code> extiende del tipo <code>Animal</code>, asignaremos el tipo de la izquierda. En el segundo caso al ser la condición falsa se asignará el tipo de la derecha.</p>
+<p>Ahora vamos a ver un ejemplo más complejo, supongamos que queremos que una función devuelva un objeto diferente dependiendo del tipo de parámetro de entrada. Con <code>conditionals</code> es relativamente sencillo implementar la lógica.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> IdLabel {
+    id: <span class="hljs-built_in">number</span>;
+    message: <span class="hljs-built_in">string</span>;
+    timestamp: <span class="hljs-built_in">number</span>;
+}
+<span class="hljs-keyword">interface</span> NameLabel {
+    name: <span class="hljs-built_in">string</span>;
+    message: <span class="hljs-built_in">string</span>;
+    timestamp: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">type</span> NameOrId&lt;T extends <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>&gt; = T extends <span class="hljs-built_in">number</span> ? IdLabel : NameLabel;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createLabel</span>&lt;<span class="hljs-title">T</span> <span class="hljs-title">extends</span> <span class="hljs-title">number</span> | <span class="hljs-title">string</span>&gt;(<span class="hljs-params">idOrName: T</span>): <span class="hljs-title">NameOrId</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> idOrName === <span class="hljs-string">"number"</span>) {
+    <span class="hljs-keyword">return</span> { id: <span class="hljs-number">1</span>, message: <span class="hljs-string">"Hello world"</span>, timestamp: <span class="hljs-number">234234234</span> } as NameOrId&lt;T&gt;;
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> { name: <span class="hljs-string">"foo"</span>, message: <span class="hljs-string">"Hello world"</span>, timestamp: <span class="hljs-number">234234234</span> } as NameOrId&lt;T&gt;;
+  }
+}
+
+<span class="hljs-keyword">let</span> firstLabel = createLabel(<span class="hljs-string">"typescript"</span>);
+
+<span class="hljs-keyword">let</span> secondLabel = createLabel(<span class="hljs-number">23</span>);
+</code></pre>
+
 
 
         </div>

@@ -2,6 +2,9 @@ console.log("%cNarrowing", "color: #3913B8; font-size: 20px;");
 
 console.log("%c1. Typeof Narrowing", "color: #229179; font-size: 16px;");
 
+let newMessage = "Hello World";
+console.log(typeof newMessage); // Will return "string"
+
 /**
  * Takes a string and adds "padding" to the left.
  * If 'padding' is a string, then 'padding' is appended to the left side.

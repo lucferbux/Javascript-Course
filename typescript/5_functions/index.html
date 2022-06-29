@@ -33,24 +33,34 @@ const <span class="hljs-built_in">sum</span> = sumNums(<span class="hljs-number"
 let sumMore = <span class="hljs-function"><span class="hljs-keyword">function</span></span> (first: <span class="hljs-keyword">number</span>, second: <span class="hljs-keyword">number</span>): <span class="hljs-keyword">number</span> {
     <span class="hljs-keyword">return</span> first + second;
 }
+const sumAnother = sumMore(<span class="hljs-number">3</span>, <span class="hljs-number">9</span>);
 </code></pre>
 <p>Como podemos ver, podemos asociar tipos tanto a los parámetros de entrada como en el valor de retorno. Si no se indica, <strong>TypeScript inferirá el valor de retorno en base a el cuerpo de la función</strong>, así que no es completamente necesario en todas las ocasiones.</p>
 <p>En TypeScript nos podemos encontrar los mismos casos que en JavaScript, como pueden ser <strong>funciones sin retorno</strong>, <strong>parámetros opcionales</strong>, <strong>parámetros por defecto</strong>, <strong>parámetros rest</strong>...</p>
 <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printHelloWorld</span><span class="hljs-params">()</span>: void </span>{
     console.log(<span class="hljs-string">'Hello World'</span>);
 }
+printHelloWorld();
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumThreeNums</span><span class="hljs-params">(first: number, second: number, third?: number)</span> </span>{
     <span class="hljs-keyword">return</span> first + second + (third || <span class="hljs-number">0</span>);
 }
 
+<span class="hljs-keyword">const</span> sumThree = sumThreeNums(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>);
+
+<span class="hljs-keyword">const</span> sumOptional = sumThreeNums(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>);
+
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pow</span><span class="hljs-params">(base: number, exponent: number = 10)</span></span>{
     <span class="hljs-keyword">return</span> base ** exponent;
 }
 
+<span class="hljs-keyword">const</span> powNum = sumThreeNums(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>);
+
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumMultipleNums</span><span class="hljs-params">(<span class="hljs-rest_arg">...rest</span>: number[])</span> </span>{
   <span class="hljs-keyword">return</span> rest.reduce((p, c) =&gt; p + c, <span class="hljs-number">0</span>);
 }
+
+<span class="hljs-keyword">const</span> multipleNums = sumMultipleNums(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>);
 </code></pre>
 <h2 id="funciones-an-nimas">Funciones anónimas</h2>
 <p>Por otro lado, en <strong>funciones anónimas</strong> TypeScript intentará también asignar tipos a los parámetros de entrada dependiendo del contexto. Esto es llamado <em>tipado contextual</em> ya que usa el contexto de ejecución para inferir los tipos.</p>
@@ -60,6 +70,7 @@ names.forEach(<span class="hljs-function"><span class="hljs-params">(s)</span> =
   <span class="hljs-built_in">console</span>.log(s.toUpperCase()); <span class="hljs-regexp">//</span> Will trigger -&gt; Property <span class="hljs-string">'toUppercase'</span> does <span class="hljs-keyword">not</span> exist <span class="hljs-literal">on</span> type <span class="hljs-string">'string'</span>. Did you mean <span class="hljs-string">'toUpperCase'</span>?
 });
 </code></pre>
+
 
 
         </div>

@@ -42,25 +42,7 @@ let func: (firstArg: number, secondArg: number) => number = function (
 // object
 let newObj: { x: number; y: number } = { x: 10, y: 4 };
 
-console.log("%c3. Typeof", 'color: #229179; font-size: 16px;');
-
-let newMessage = "Hello World";
-console.log(typeof newMessage); // Will return "string"
-
-// Typeof
-function printId(id: number | string) {
-    if (typeof id === "string") {
-      // In this branch, id is of type 'string'
-      console.log(id.toUpperCase());
-    } else {
-      // Here, id is of type 'number'
-      console.log(id);
-    }
-}
-
-printId("8908sdf");
-
-console.log("%c4. Union Types", 'color: #229179; font-size: 16px;');
+console.log("%c3. Union Types", 'color: #229179; font-size: 16px;');
 
 function printPhoneNumber(phoneNumber: number | string) {
   console.log("Your phone number is " + phoneNumber);
@@ -70,7 +52,7 @@ printPhoneNumber(612389238);
 printPhoneNumber("637839489");
 // printPhoneNumber({ phone: 613892348}); // Error
 
-console.log("%c5. Type Alias", 'color: #229179; font-size: 16px;');
+console.log("%c4. Type Alias", 'color: #229179; font-size: 16px;');
 
 type ID = number | string | boolean
 
@@ -94,6 +76,6 @@ let mail: Mail = { header: "Hello Everyone", body: "This is a test email", times
 
 printMail(mail);
 
-console.log("%c6. Type Assertion", 'color: #229179; font-size: 16px;');
+console.log("%c5. Type Assertion", 'color: #229179; font-size: 16px;');
 
 const myCanvas = document.getElementById("container") as HTMLDivElement;

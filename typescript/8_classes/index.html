@@ -18,6 +18,87 @@
                     <p class="caption">Definir clases en TypeScript</p>
                     <hr class="separator">
 
+                    <h2 id="overview">Overview</h2>
+<p>TypeScript utiliza la sintaxis moderna de ES6 para soportar <strong>clases</strong>. Tiene una aproximación más parecida a una orientación de objetos real que JavaScript. Además, como habíamos mencionado antes, una de las ventajas de TypeScript es que podemos usar esta característica en cualquier navegador ya que podrá compilarse a versiones anteriores. En esta sección vamos a ver algunas de las propiedades de las clases en TypeScript.</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">class</span> Person {
+  <span class="hljs-built_in">name</span>: <span class="hljs-built_in">string</span>;
+  constructor(<span class="hljs-built_in">name</span>: <span class="hljs-built_in">string</span>) {
+    this.<span class="hljs-built_in">name</span> = <span class="hljs-built_in">name</span>;
+  }
+  speak(phrase: <span class="hljs-built_in">string</span> = <span class="hljs-string">"Hello World"</span>) {
+    console.<span class="hljs-built_in">log</span>(talk);
+  }
+}
+
+let person: Person = new Person(<span class="hljs-string">"Pablo"</span>);
+</code></pre>
+<h2 id="palabras-reservadas">Palabras reservadas</h2>
+<h3 id="readonly">readonly</h3>
+<p>Podemos utilizar la palabra reservada <code>readonly</code> para indicar que un atributo es sólo de lectura.</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Greeter</span> </span>{
+  readonly name: string = <span class="hljs-string">"world"</span>;
+
+  <span class="hljs-keyword">constructor</span>(otherName?: string) {
+    <span class="hljs-keyword">if</span> (otherName !== <span class="hljs-literal">undefined</span>) {
+      <span class="hljs-keyword">this</span>.name = otherName;
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> greeter = <span class="hljs-keyword">new</span> Greeter();
+
+<span class="hljs-built_in">console</span>.log(greeter.name);
+<span class="hljs-comment">// This will fail -&gt; g.name = "also not ok";</span>
+</code></pre>
+<p>Si intentamos acceder al valor <code>name</code> TypeScript lanzará un error de acceso.</p>
+<h3 id="implements">implements</h3>
+<p>La palabra reservada <code>implments</code> permite comprobar si una clase satisface la estructura de una <code>interface</code> en concreto.</p>
+<pre><code class="lang-javascript">interface Pingable {
+  ping(): <span class="hljs-literal">void</span>;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sonar</span> <span class="hljs-title">implements</span> <span class="hljs-title">Pingable</span> {</span>
+  ping() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"ping!"</span>);
+  }
+}
+
+<span class="hljs-regexp">// class Ball implements Pingable { //</span>Class <span class="hljs-string">'Ball'</span> incorrectly implements interface <span class="hljs-string">'Pingable'</span>. Property <span class="hljs-string">'ping'</span> <span class="hljs-keyword">is</span> missing <span class="hljs-keyword">in</span> type <span class="hljs-string">'Ball'</span> but required <span class="hljs-keyword">in</span> type <span class="hljs-string">'Pingable'</span>.
+<span class="hljs-regexp">//   pong() {
+//</span>     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"pong!"</span>);
+<span class="hljs-regexp">//   }
+//</span> }
+</code></pre>
+<h3 id="extends">extends</h3>
+<p>La palabra reservada <code>extends</code> sirve para implementar herencia en TypeScript. Las clases derivadas heredan todas las propiedades y métodos de la clase base, y como no se pueden definir miembros adicionales. O hacer <em>override</em> de métodos con <code>super</code>.</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StudentExtend</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
+    constructor(name: string) {
+        <span class="hljs-keyword">super</span>(name);
+    }
+    speak(phrase = <span class="hljs-string">"And I want to learn"</span>) {
+        console.log(<span class="hljs-string">"I'm a student..."</span>);
+        <span class="hljs-keyword">super</span>.speak(phrase);
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{
+    constructor(name: string) {
+        <span class="hljs-keyword">super</span>(name);
+    }
+    speak(phrase = <span class="hljs-string">"And I want to teach"</span>) {
+        console.log(<span class="hljs-string">"I'm a teacher..."</span>);
+        <span class="hljs-keyword">super</span>.speak(phrase);
+    }
+}
+
+let pepe = <span class="hljs-keyword">new</span> <span class="hljs-type">StudentExtend</span>(<span class="hljs-string">"I'm learning TypeScript"</span>);
+let juan: <span class="hljs-type">Person</span> = <span class="hljs-keyword">new</span> <span class="hljs-type">Teacher</span>(<span class="hljs-string">"I'm teaching new feature"</span>);
+
+pepe.speak();
+juan.speak(<span class="hljs-string">"And i love it"</span>);
+</code></pre>
+
+
                   
         </div>
     </div>

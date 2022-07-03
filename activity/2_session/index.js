@@ -21,3 +21,5 @@ let loginWitUsername = (username, password) => {
       }, 200);
     });
 };
+
+console.log('Estoy en la rama Actividad2');

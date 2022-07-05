@@ -17,7 +17,7 @@
                 < Back</a> <h1>Actividad Sesión 3</h1>
                     <p class="caption">Actividades para TypeScript</p>
                     <hr class="separator">
-                    <p>Puedes realizar los ejercicios creando un nuevo proyecto que compile TypeScript o puedes utilizar <a href="https://www.typescriptlang.org/play">el playground de TypeScript</a>. Dentro de <strong>index.ts</strong> tenéis los resultados a los dos primeros ejercicios.</p>
+                    <p>Puedes realizar los ejercicios creando un nuevo proyecto que compile TypeScript o puedes utilizar <a href="https://www.typescriptlang.org/play">el playground de TypeScript</a>.</p>
                     <h2 id="ejercicio-1">Ejercicio 1</h2>
                     <ul>
                     <li><p>Crea una interfaz &#39;Person&#39; que tenga como atributos &#39;name&#39;, &#39;age&#39; y &#39;profession&#39;. Ahora define una arrow function que tenga como parámetro esta interfaz y que devuelva un array con <strong>el valor de sus propiedades</strong>, esta función tiene que tener <strong>tipado el parámetro de entrada y el return</strong>.</p>
@@ -40,7 +40,22 @@ console.<span class="hljs-built_in">log</span>(sumOrConcatenate(<span class="hlj
                     Escribe una función que acepte un parámetro que pueda ser <code>Car</code> o <code>Motorcycle</code> que, primero llame a turnOnEngine, y luego si es Car llame a pressPedal pero si es Motorcycle llame a openThrottle().
                     Para la comprobación no valdrá <code>typeof</code>, necesitaremos hacer uso de <a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates">type predicates</a>.</p>
                     
-                    
+                    <h2 id="ejercicio-4">Ejercicio 4</h2>
+                    <p>Crea una <code>función genérica</code>, que acepte un array que pueda contener <code>strings</code> y <code>numbers</code> y devuelva el <strong>mismo array sin el primer elemento</strong>.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> strArray: string[] = [<span class="hljs-string">'Hello'</span>, <span class="hljs-string">'World'</span>, <span class="hljs-string">'Im'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'Full'</span>, <span class="hljs-string">'Stack'</span>, <span class="hljs-string">'Developer'</span>];
+<span class="hljs-keyword">const</span> numArray: number[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>];
+<span class="hljs-keyword">const</span> mixedArray: Array&lt;number|string&gt; = [<span class="hljs-string">'Hello'</span>, <span class="hljs-string">'I'</span>, <span class="hljs-string">'have'</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'tasks'</span>];
+<span class="hljs-keyword">const</span> unsupportedArray = [{name: <span class="hljs-string">'Lucas'</span>, surname: <span class="hljs-string">'Fernandez'</span>}, <span class="hljs-string">'Hello'</span>, <span class="hljs-number">22</span>];
+
+<span class="hljs-keyword">const</span> newStrArray = removeFirstEntry(strArray);
+<span class="hljs-keyword">const</span> newNumArray = removeFirstEntry(numArray);
+<span class="hljs-keyword">const</span> newMixedArray = removeFirstEntry(mixedArray);
+<span class="hljs-regexp">// const newUnsupportedArray = removeFirstEntry(unsupportedArray); --&gt; will fail
+
+console.log(newStrArray); //</span><span class="hljs-function"> --&gt;</span> [<span class="hljs-string">'World'</span>, <span class="hljs-string">'Im'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'Full'</span>, <span class="hljs-string">'Stack'</span>, <span class="hljs-string">'Developer'</span>];
+<span class="hljs-built_in">console</span>.log(newNumArray); <span class="hljs-regexp">// --&gt; [2, 3, 4, 5, 6, 7];
+console.log(newMixedArray); //</span><span class="hljs-function"> --&gt;</span> [<span class="hljs-string">'I'</span>, <span class="hljs-string">'have'</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'tasks'</span>];
+</code></pre>
 
         </div>
     </div>

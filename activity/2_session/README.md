@@ -5,7 +5,7 @@
 * Escribe un programa que tome como entrada un objeto y devuelva una lista con sus propiedades. Solo puede tener como entrada un objeto y el tipo de vuelta tiene que ser un array.
 
 ```javascript
-var person {
+const person {
     name: “Lucas”,
     age: 27,
     profession:”Developer",

@@ -253,6 +253,17 @@ strong {
     margin-right: 10px; 
 }
 
+.console {
+    opacity: 0.6;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.console::before {
+    content:"💻";
+    margin-right: 10px; 
+}
+
 .reference {
     font-size: 18px;
     line-height: 50px;

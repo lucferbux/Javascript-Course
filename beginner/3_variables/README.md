@@ -13,9 +13,13 @@ let variable;
 Una variable puede almacenar valores, para ello usamos el operador de asignación `=`:
 
 ``` javascript
-let firstVariable;
-firstVariable = "Hola mundo";
-console.log(firstVariable);
+var firstVar = "Hello World";
+let secondVar = "I 'm Lucas";
+const ID_PERSON = "28934289D";
+
+console.log(firstVar);
+console.log(secondVar);
+console.log(ID_PERSON);
 ```
 
 En el ejemplo anterior, la cadena se almacena en un espacio de memoria apuntando a la variable `firstVariable`, así, podremos acceder a este valor siempre que referenciemos a la variable.

@@ -1,5 +1,5 @@
-// 1. Ejecución de un módulo
-console.log("%c1. Ejecución de un Módulo", 'color: #229179; font-size: 16px;');
+// 2. additional.js
+console.log("%c2. additional.js", 'color: #229179; font-size: 16px;');
 
 function externalExecution() {
     console.log("I'm being executed");

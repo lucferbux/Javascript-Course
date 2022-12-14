@@ -19,9 +19,9 @@ let nombre2 = 'Lucas'
     , edad2 = 27; 
 
 
-console.log("%c1. Var vs Let", 'color: #229179; font-size: 16px;');
+console.log("%c2. Var vs Let", 'color: #229179; font-size: 16px;');
 
-console.log("+++++++ Scope Rules +++++++");
+console.log("%c2.1. Regals de Scope", 'color: #cf694a; font-size: 14px;');
 
 function scope_rules() {
     var hello = "Hello";
@@ -42,7 +42,7 @@ function scope_rules() {
 
 scope_rules()
 
-console.log("+++++++ Hoisting +++++++");
+console.log("%c2.2. Hoisting", 'color: #cf694a; font-size: 14px;');
 
 // hoisted
 console.log(hoisted);
@@ -55,7 +55,7 @@ console.log("Reference Error");
 let notHoisted = "not hoisted";
 console.log(notHoisted);
 
-console.log("+++++++ Propiedad Global +++++++");
+console.log("%c2.3. Propiedad Global", 'color: #cf694a; font-size: 14px;');
 
 var globalVar = "Global";
 let notGlobalVar = "Not global";
@@ -63,7 +63,7 @@ let notGlobalVar = "Not global";
 console.log(window.globalVar);
 console.log(window.notglobalVar);
 
-console.log("+++++++ Re-declaración +++++++");
+console.log("%c2.4. Re-declaración", 'color: #cf694a; font-size: 14px;');
 
 var redeclare = "hello";
 var redeclare = "world"; 

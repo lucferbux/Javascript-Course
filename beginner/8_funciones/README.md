@@ -67,8 +67,8 @@ Esto se puede ver también en código:
 
 ```javascript
 function changeValue(object1) {
-  object1.brand = 'Samsung';
-  object1.model = 'Galaxy';
+    object1.brand = 'Samsung';
+    object1.model = 'Galaxy';
 }
 
 var myPhone = {brand: 'Apple', model: 'iPhone', year: 2020};
@@ -77,7 +77,7 @@ var x, y;
 x = myPhone.brand; // x gets the value "Apple"
 console.log(x);
 
-myFunc(myPhone);
+changeValue(myPhone);
 y = myPhone.brand; // y gets the value "Samsung"
 console.log(y);
 ```

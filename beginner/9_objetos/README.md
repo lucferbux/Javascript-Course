@@ -97,11 +97,11 @@ Hablando más claro, en una **herencia clásica**, un programador escribe una cl
 
 En la **herencia por prototipado**, los objetos **heredan directamente** de otros objetos. Toda la abstracción de las clases desaparece. La reutilización de código y la jerarquía se consigue a través de un enlace de los objetos extendidos. Cuando pedimos una propiedad en un objeto, irá siguiendo esta jerarquía hacia arriba hasta dar con el objeto que definió esa propiedad en primera instancia.
 
-Podremos obtener los prototipos de un objeto mediante el método `getPrototypeOf()``
+Podremos obtener los prototipos de un objeto mediante el método `Object.getPrototypeOf()``
 
 ```javascript
 // Get properties from object
-console.log(me.getPrototypeOf());
+console.log(Object.getPrototypeOf(me));
 console.log(me.__proto__)
 ```
 

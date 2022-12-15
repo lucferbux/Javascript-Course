@@ -87,9 +87,9 @@ console.<span class="hljs-built_in">log</span>(multiword);
                         reutilización de código y la jerarquía se consigue a través de un enlace de los objetos
                         extendidos. Cuando pedimos una propiedad en un objeto, irá siguiendo esta jerarquía hacia arriba
                         hasta dar con el objeto que definió esa propiedad en primera instancia.</p>
-                    <p>Podremos obtener los prototipos de un objeto mediante el método `getPrototypeOf()``</p>
+                    <p>Podremos obtener los prototipos de un objeto mediante el método `Object.getPrototypeOf()``</p>
                     <pre><code class="lang-javascript"><span class="hljs-comment">// Get properties from object</span>
-console.<span class="hljs-built_in">log</span>(me.getPrototypeOf());
+console.<span class="hljs-built_in">log</span>(Object.getPrototypeOf(me));
 console.<span class="hljs-built_in">log</span>(me.__proto__)
 </code></pre>
                     <p>Si queremos, podremos heredar las propiedades de un objeto a través de otro.</p>

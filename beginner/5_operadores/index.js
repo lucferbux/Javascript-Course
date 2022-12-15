@@ -56,6 +56,10 @@ console.log(`ieq: ${ieq}`);
 let ieq2 = a != c;
 console.log(`ieq2: ${ieq2}`);
 
+// Inequality + type
+let ieq = a !== b;
+console.log(`ieq: ${ieq}`);
+
 // Greater
 let gt = a > b;
 console.log(`gt: ${gt}`);

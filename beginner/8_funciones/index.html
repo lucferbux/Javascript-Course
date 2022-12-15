@@ -77,17 +77,17 @@
                         cambia en la variable externa.</p>
                     <p>Esto se puede ver también en código:</p>
                     <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeValue</span>(<span class="hljs-params">object1</span>) </span>{
-  object1.brand = <span class="hljs-string">'Samsung'</span>;
-  object1.model = <span class="hljs-string">'Galaxy'</span>;
+    object1.brand = <span class="hljs-string">'Samsung'</span>;
+    object1.model = <span class="hljs-string">'Galaxy'</span>;
 }
 
-<span class="hljs-keyword">var</span> myPhone = {<span class="hljs-attr">make</span>: <span class="hljs-string">'Apple'</span>, <span class="hljs-attr">model</span>: <span class="hljs-string">'iPhone'</span>, <span class="hljs-attr">year</span>: <span class="hljs-number">2020</span>};
+<span class="hljs-keyword">var</span> myPhone = {<span class="hljs-attr">brand</span>: <span class="hljs-string">'Apple'</span>, <span class="hljs-attr">model</span>: <span class="hljs-string">'iPhone'</span>, <span class="hljs-attr">year</span>: <span class="hljs-number">2020</span>};
 <span class="hljs-keyword">var</span> x, y;
 
 x = myPhone.brand; <span class="hljs-comment">// x gets the value "Apple"</span>
 <span class="hljs-built_in">console</span>.log(x);
 
-myFunc(myPhone);
+changeValue(myPhone);
 y = myPhone.brand; <span class="hljs-comment">// y gets the value "Samsung"</span>
 <span class="hljs-built_in">console</span>.log(y);
 </code></pre>

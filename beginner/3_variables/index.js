@@ -50,7 +50,7 @@ var hoisted = "hoisted";
 console.log(hoisted)
 
 // not hoisted
-//console.log(notHoisted); ReferenceError
+//console.log(notHoisted); //ReferenceError
 console.log("Reference Error");
 let notHoisted = "not hoisted";
 console.log(notHoisted);

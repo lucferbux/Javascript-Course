@@ -23,3 +23,14 @@ function dividedSevent() {
 
 // Ejercicio 6
 
+const formatter  = {
+    prefix: 'Hello',
+  };
+  
+  append("Master"); //llamada a a la funcion;
+  
+  // crea una varible con la concateacion de los dos strings
+  function append (value) {
+      var concat = formatter.prefix+' '+value;
+      console.log(concat);
+  };

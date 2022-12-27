@@ -1,5 +1,8 @@
 // Ejercicio 1
-import "./aboutme.js";
+import {phase} from "./aboutme.js";
+
+console.log(phase);
+
 console.log("Ejercicio 1");
 
 // Ejercicio 2

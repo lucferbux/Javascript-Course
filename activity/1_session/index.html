@@ -46,22 +46,67 @@
                         <li>Añade un breakpoint más en <code>console.log(“Ej 1”)</code>.</li>
                         <li>¿Qué se ejecuta antes, la llamada a <code>console.log()</code> o el contenido del fichero
                             <code>aboutme.js</code>? ¿Por qué?</li>
+                            <li>
+                                <p class="jose-answers">Respuesta de Jose Zuniga:</p>
+                                <p class="jose-answers"> Al agregar los breakpoints, se ejecuta el contenido de <code>aboutme.js</code><br /> pues en tiempo de ejecucion el Javascript esta leyendo el archivo importando primero</p>
+                            </li>
                     </ul>
                     <h2 id="ejercicio-3">Ejercicio 3</h2>
                     <ul>
                         <li>Enumera 3 herramientas útiles dentro de las herramientas de desarrollo de <strong>Google
                                 Chrome</strong> o <strong>Mozila Firefox</strong> (inspector, consola, networking…) y
-                            explica su funcionamiento.</li>
+                            explica su funcionamiento.
+                            <p class="jose-answers">Respuesta de Jose Zuniga:</p>
+                        </li>
+                        <li>
+                            <h4 class="jose-answers">Application / Storage:</h4>
+                            <p>Este tab nos ayuda a visualizar cookies que esten siendo utilizadas en la pagina o sitio web. Adem&aacute;, podemos<br/> ver la lista de variables que se estan almacenado en el storage del browser. Se pueden editar, o eliminar manualmente</p>
+                        </li>
+                        <li>
+                            <h4 class="jose-answers">Network:</h4>
+                            <p>Es mi favorito!. Pues en el podemos ver la lista de recursos que consume una pagina o sitio web. Podemos ver:<br />
+                                <ol>
+                                    <li>Archivos de CSS</li>
+                                    <li>Imagenes</li>
+                                    <li>Otros archivos de Javascript</li>
+                                    <li>Darnos cuenta si un sitio tiene sus archivos en modo Chunk</li>
+                                    <li>Revisar si el sitio tiene consume API's por medio de HTTP(S) o WebSockets activos</li>
+                                </ol>
+                            </p>
+                        </li>
+                        <li>
+                            <h4 class="jose-answers">Inspector / Elements:</h4>
+                            <p>Quiz&aacute; es el menos complejo. Pero por el cual podrian modificar "en caliente" nuestra pagina. Claro, no tocaran nunca los archivos originales.<br />PERO, se puede modificar un elemento, cambiar propiedades de CSS, revisar el BOX MODEL de un elemento. Solo por mencionar algunas cosas</p>
+                        </li>
                     </ul>
                     <h2 id="ejercicio-4">Ejercicio 4</h2>
                     <ul>
                         <li>Programa un script que imprima todos los números del 1 al 100 que sean divisibles por 7.
+                            <p class="jose-answers">Respuesta de Jose Zuniga:</p>
+                            <p>He creado un archivo llamado <code>divider.js</code> para resolver este item</p>
                         </li>
                     </ul>
                     <h2 id="ejercicio-5">Ejercicio 5</h2>
                     <ul>
                         <li>¿Cuales son las diferencias entre ejecutar un fichero JavaScript en un navegador web en formato
-                            <code>&lt;script&gt;</code> y en formato <code>&lt;script type=”module”&gt;</code>?. Busca documentación para enumerar los principales comportamientos de ambas.</li>
+                            <code>&lt;script&gt;</code> y en formato <code>&lt;script type=”module”&gt;</code>?. Busca documentación para enumerar los principales comportamientos de ambas.<p class="jose-answers">Respuesta de Jose Zuniga:</p></li>
+                            <li>
+                                <h4>Principales caracteristicas:</h4>
+                                <ol>
+                                    <li>Permite dividir el javascript segun funcionalidad. </li>
+                                    <li>Puede utilizar una extension <code>.mjs</code></li>
+                                    <li>La ejecucion de un archivo script tradicional es que al momento de cargar la pagina, el browser toma dicho script y lo ejecuta de principio a fin</li>
+                                    <li>Mientras que un type 'module' permite a los navegadores modernos ejecutar codigo segun demanda, tal y como lo hace NodeJs (por ejemplo).</li>
+                                    <li>Un modulo puede indicar que variables o funciones pueden ser accesibles fuera de dicho  modulo. Lo cual es util para uso global</li>
+                                    <li>
+                                        <h5>Some references:</h5>
+                                        <ol>
+                                            <li><a href="https://usefulangle.com/post/252/script-type-module">type=module</a></li>
+                                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">Modules MDN</a></li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </li>
                     </ul>
                     <h2 id="ejercicio-6">Ejercicio 6</h2>
                     <ul>

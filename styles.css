@@ -339,6 +339,10 @@ strong {
     margin-bottom: 40px;
 }
 
+.jose-answers {
+    font-weight: bold;
+}
+
 @media(max-width: 600px) {
     h1 {
         font-size: 42px;

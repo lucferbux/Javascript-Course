@@ -1,76 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introducción</title>
-    <link rel="stylesheet" href="../../styles.css">
-    <link rel="stylesheet" href="../../prism.css">
-</head>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../../prism.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="section">
-            <a class="back-button" href="/beginner/beginner.html">
-                < Back</a> 
-                    <h1 id="introducci-n">Introducción</h1>
-                    <p class="caption">Preparación del entorno JavaScript</p>
-                    <hr>
-                    <h2 id="preparaci-n-del-entorno">Preparación del entorno</h2>
-                    <p>Vamos a preparar primero nuestro proyecto para poder seguir la clase. Aquí tenéis los pasos que necesitamos seguir para dejar el entorno montado en nuestro equipo.</p>
-                    <h3 id="1-consola-de-desarrollador">1. Consola de desarrollador</h3>
-                    <ol>
-                    <li>Abre Chrome.</li>
-                    <li>En la pantalla principal, pulsa el botón derecho y elige <em>Inspeccionar elemento</em> en el menú.
-                    <img class="container-image" src="/meta/0_1_inspect.png" alt="Inspeccionar elemento"></li>
-                    <li>Selecciona <em>Consola</em> en la pestaña.</li>
-                    <li>Copia y pega el siguiente código y mira qué pasa <code>console.log(&#39;Hello World&#39;);</code>
-                    <img class="container-image" src="/meta/0_2_console.png" alt="Consola chrome"></li>
-                    <li>Copia y pega el siguiente código y mira qué pasa <code>alert(&#39;Hello World&#39;);</code></li>
-                    </ol>
-                    <h3 id="2-entorno">2. Entorno</h3>
-                    <ol>
-                    <li>Descarga Visual Studio Code</li>
-                    <li>Descarga e instala <a href="https://nodejs.org/en/">Node</a></li>
-                    <li>Descarga Live Server en las extensiones de Visual Studio Code.</li>
-                    <li>Selecciona el archivo <code>index.html</code> con el botón derecho y pulsa <em>Abrir con Live Server</em>
-                    <img class="container-image" src="/meta/0_3_live_server.png" alt="Live server"></li>
-                    </ol>
-                    <h3 id="3-modificando-el-c-digo">3. Modificando el código</h3>
-                    <ol>
-                    <li>Modifica el código JavaScript que se encuentra en el tag <code>&lt;script&gt;&lt;/script&gt;</code>.</li>
-                    <li>Escribe un código que pinte en pantalla un mensaje.</li>
-                    <li>Escribe un código que sume dos números y luego lo imprima en pantalla.
-                    <img class="container-image" src="/meta/0_4_code.png" alt="Live server"></li>
-                    </ol>
-                    <h2 id="motor-javascript">Motor JavaScript</h2>
-                    <p>JavaScript originalmente funcionaba dentro de los navegadores web. Todo navegador tiene lo que llamamos el Motor JavaScript o <em>JavaScript Engine</em>, que ejecuta el código.
-                    Aquí tenéis los motores de los principales navegadores:</p>
-                    <ul>
-                    <li><a href="https://v8.dev">Google Chrome V8</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey">Mozilla SpiderMonkey</a></li>
-                    <li><a href="https://developer.apple.com/documentation/javascriptcore">Safari JavaScript Core/ Nitro</a></li>
-                    </ul>
-                    <p>En 2008, <a href="https://en.wikipedia.org/wiki/Ryan_Dahl">Ryan Dahl</a> cansado de las limitaciones de muchos Servidores Web, creó un entorno en C/C++ que contenía el motor V8 de Chrome y permitía la ejecución de <strong>código en JavaScript fuera del navegador</strong>.
-                    Esto permitió el uso de JavaScript para desarrollo de Backend, ampliando enormemente la popularidad del lenguaje.</p>
-                    <h2 id="javascript-vs-ecmascript">JavaScript vs ECMAScript</h2>
-                    <p>Otro de los términos que tenemos que definir antes de comenzar con esta sesión es <code>ECMAScript</code> y su diferencia con JavaScript. Básicamente <strong>ECMAScript</strong> es una especificación, mientras que <strong>JavaScript</strong> es un lenguaje de programación que sigue esa especificación. Esto significa que <em>ECMAScript</em> va definiendo las novedades que posteriormente serán implementadas en <em>JavaScript</em>.
-                    En 2015 se lanzó ECMAScript 6 <strong>(ES6)</strong>, este lanzamiento supuso una revolución ya que introdujo muchas novedades como <code>clasess</code>, nueva importación de módulos, o <em>keywords</em> como <code>let</code>.</p>
-                    <h2 id="-qu-puede-hacer-javascript-en-el-navegador-">¿Qué puede hacer JavaScript en el navegador?</h2>
-                    <p>JavaScript es un lenguaje muy versatil, ya que permite realizar una gran cantidad de tareas en diferentes entornos, pero esto mismo ha llevado a muchas confusiones acerca de lo que realmente puede hacer el lenguaje dentro del navegador.</p>
-                    <p>El JavaScript moderno es un lenguaje de programación <em>&quot;seguro&quot;</em>, es decir, no permite acceder a la memoria o a la CPU a bajo nivel, ya que fue creado inicialmente para los navegadores. Gracias a entornos como <em>Node</em>, <em>JavaScript</em> puede acceder a recursos como procesos, archivos arbitrarios del sistema o CPU de forma sencilla, pero son <em>funcionalidades externas al navegador</em>.</p>
-                    <p>Algunos ejemplos de los que JavaScript puede hacer en navegadores son los siguientes:</p>
-                    <ul>
-                    <li>Añadir HTLM a una página, modificar el contenido existente incluyendo estilos.</li>
-                    <li>Reaccionar a acciones de usuarios, como clics, movimientos del cursor, teclas...</li>
-                    <li>Realizar peticiones por internet a otros servidores remotos.</li>
-                    <li>Acceder y modificar cookies, enseñar mensajes al usuario.</li>
-                    <li>Serializar información en el cliente mediante <em>&quot;almacenamiento local&quot;</em>.</li>
-                    </ul>
-                    
-        </div>
+      <div class="section">
+        <a class="back-button" href="/beginner/beginner.html"> < Back</a>
+        <h1 id="introducci-n">Introducción</h1>
+        <p class="caption">Preparación del entorno JavaScript</p>
+        <hr />
+        <h2 id="preparaci-n-del-entorno">Preparación del entorno</h2>
+        <p>
+          Vamos a preparar primero nuestro proyecto para poder seguir la clase.
+          Aquí tenéis los pasos que necesitamos seguir para dejar el entorno
+          montado en nuestro equipo.
+        </p>
+        <h3 id="1-consola-de-desarrollador">1. Consola de desarrollador</h3>
+        <ol>
+          <li>Abre Chrome.</li>
+          <li>
+            En la pantalla principal, pulsa el botón derecho y elige
+            <em>Inspeccionar elemento</em> en el menú.
+            <img
+              class="container-image"
+              src="/meta/0_1_inspect.png"
+              alt="Inspeccionar elemento"
+            />
+          </li>
+          <li>Selecciona <em>Consola</em> en la pestaña.</li>
+          <li>
+            Copia y pega el siguiente código y mira qué pasa
+            <code>console.log(&#39;Hello World&#39;);</code>
+            <img
+              class="container-image"
+              src="/meta/0_2_console.png"
+              alt="Consola chrome"
+            />
+          </li>
+          <li>
+            Copia y pega el siguiente código y mira qué pasa
+            <code>alert(&#39;Hello World&#39;);</code>
+          </li>
+        </ol>
+        <h3 id="2-entorno">2. Entorno</h3>
+        <ol>
+          <li>Descarga Visual Studio Code</li>
+          <li>Descarga e instala <a href="https://nodejs.org/en/">Node</a></li>
+          <li>
+            Descarga Live Server en las extensiones de Visual Studio Code.
+          </li>
+          <li>
+            Selecciona el archivo <code>index.html</code> con el botón derecho y
+            pulsa <em>Abrir con Live Server</em>
+            <img
+              class="container-image"
+              src="/meta/0_3_live_server.png"
+              alt="Live server"
+            />
+          </li>
+        </ol>
+        <h3 id="3-modificando-el-c-digo">3. Modificando el código</h3>
+        <ol>
+          <li>
+            Modifica el código JavaScript que se encuentra en el tag
+            <code>&lt;script&gt;&lt;/script&gt;</code>.
+          </li>
+          <li>Escribe un código que pinte en pantalla un mensaje.</li>
+          <li>
+            Escribe un código que sume dos números y luego lo imprima en
+            pantalla.
+            <img
+              class="container-image"
+              src="/meta/0_4_code.png"
+              alt="Live server"
+            />
+          </li>
+        </ol>
+        <h2 id="motor-javascript">Motor JavaScript</h2>
+        <p>
+          JavaScript originalmente funcionaba dentro de los navegadores web.
+          Todo navegador tiene lo que llamamos el Motor JavaScript o
+          <em>JavaScript Engine</em>, que ejecuta el código. Aquí tenéis los
+          motores de los principales navegadores:
+        </p>
+        <ul>
+          <li><a href="https://v8.dev">Google Chrome V8</a></li>
+          <li>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
+              >Mozilla SpiderMonkey</a
+            >
+          </li>
+          <li>
+            <a href="https://developer.apple.com/documentation/javascriptcore"
+              >Safari JavaScript Core/ Nitro</a
+            >
+          </li>
+        </ul>
+        <p>
+          En 2008,
+          <a href="https://en.wikipedia.org/wiki/Ryan_Dahl">Ryan Dahl</a>
+          cansado de las limitaciones de muchos Servidores Web, creó un entorno
+          en C/C++ que contenía el motor V8 de Chrome y permitía la ejecución de
+          <strong>código en JavaScript fuera del navegador</strong>. Esto
+          permitió el uso de JavaScript para desarrollo de Backend, ampliando
+          enormemente la popularidad del lenguaje.
+        </p>
+        <h2 id="javascript-vs-ecmascript">JavaScript vs ECMAScript</h2>
+        <p>
+          Otro de los términos que tenemos que definir antes de comenzar con
+          esta sesión es <code>ECMAScript</code> y su diferencia con JavaScript.
+          Básicamente <strong>ECMAScript</strong> es una especificación,
+          mientras que <strong>JavaScript</strong> es un lenguaje de
+          programación que sigue esa especificación. Esto significa que
+          <em>ECMAScript</em> va definiendo las novedades que posteriormente
+          serán implementadas en <em>JavaScript</em>. En 2015 se lanzó
+          ECMAScript 6 <strong>(ES6)</strong>, este lanzamiento supuso una
+          revolución ya que introdujo muchas novedades como
+          <code>clasess</code>, nueva importación de módulos, o
+          <em>keywords</em> como <code>let</code>.
+        </p>
+        <h2 id="-qu-puede-hacer-javascript-en-el-navegador-">
+          ¿Qué puede hacer JavaScript en el navegador?
+        </h2>
+        <p>
+          JavaScript es un lenguaje muy versatil, ya que permite realizar una
+          gran cantidad de tareas en diferentes entornos, pero esto mismo ha
+          llevado a muchas confusiones acerca de lo que realmente puede hacer el
+          lenguaje dentro del navegador.
+        </p>
+        <p>
+          El JavaScript moderno es un lenguaje de programación
+          <em>&quot;seguro&quot;</em>, es decir, no permite acceder a la memoria
+          o a la CPU a bajo nivel, ya que fue creado inicialmente para los
+          navegadores. Gracias a entornos como <em>Node</em>,
+          <em>JavaScript</em> puede acceder a recursos como procesos, archivos
+          arbitrarios del sistema o CPU de forma sencilla, pero son
+          <em>funcionalidades externas al navegador</em>.
+        </p>
+        <p>
+          Algunos ejemplos de los que JavaScript puede hacer en navegadores son
+          los siguientes:
+        </p>
+        <ul>
+          <li>
+            Añadir HTLM a una página, modificar el contenido existente
+            incluyendo estilos.
+          </li>
+          <li>
+            Reaccionar a acciones de usuarios, como clics, movimientos del
+            cursor, teclas...
+          </li>
+          <li>Realizar peticiones por internet a otros servidores remotos.</li>
+          <li>Acceder y modificar cookies, enseñar mensajes al usuario.</li>
+          <li>
+            Serializar información en el cliente mediante
+            <em>&quot;almacenamiento local&quot;</em>.
+          </li>
+        </ul>
+      </div>
     </div>
     <!-- Es una buena práctica poner el tag <script> al final del <body> en vez de en el <head>, esto se debe a que el HTML se carga desde arriba a abajo. 
         El <head> se carga primero, por lo que puede causar algunos problemas:
@@ -79,9 +174,14 @@
             2. Si tienes mucho javascript, puede afectar al tiempo de carga.
     -->
     <script>
-        // Add your code here
-        console.log("hello world 1");
-    </script>
-</body>
+      // Add your code here
+      let a = 47;
+      let b = 203;
 
+      //Suma
+      let add = a + b;
+      //console.log(`add: ${add}`);
+      alert(`${add}`);
+    </script>
+  </body>
 </html>

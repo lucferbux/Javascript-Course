@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitFlow</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/extra/extra.html">
+                < Back</a> 
+<h1 id="m-ltiples-repositorios-remotos">Múltiples repositorios remotos</h1>
+<blockquote>
+<p>Controlar tu proyecto con repositorio en upstream</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>Como extra a la <a href="../1_gitflow/README.md">sección anterior</a>, vamos a explicar como crear una Pull Request en tu propio repositorio dentro de un <strong>fork</strong>.</p>
+<h2 id="creaci-n-del-fork">Creación del Fork</h2>
+<p>Al haber creado un fork, vamos a tener tres entornos diferenciados que tendremos que tener en cuenta:</p>
+<ol>
+<li><strong>Upstream</strong>: O el proyecto inicial, en el caso de este proyecto, será el <a href="https://github.com/lucferbux/Javascript-Course">repositorio del profesor</a>.</li>
+<li><strong>Origin</strong>: En este caso el fork remoto que habéis creado, tendrá el formato <code>github/your-username/Javascript-Course</code>.</li>
+<li><strong>Local</strong>: Es el repositorio en vuestro ordenador, es la carpeta a la que accederéis después de hacer <code>git clone</code> en vuestra máquina.</li>
+</ol>
+<h2 id="mandar-cambios-a-tu-fork">Mandar cambios a tu fork</h2>
+<p>Una vez clonado tu fork, y al haber hecho <code>git clone</code> de tu repositorio, deberías encontrar un entorno similar a este ejecutando el siguiente comando en tu proyecto:</p>
+<pre><code class="lang-bash">&gt; git remote -v
+origin  <span class="hljs-string">git@github.com/&lt;your-username&gt;/Javascript-Course.git (fetch)</span>
+origin  <span class="hljs-string">git@github.com/&lt;your-username&gt;/Javascript-Course.git (push)</span>
+</code></pre>
+<p>Si por error has clonado el repositorio principal (<code>https://github.com/lucferbux/Javascript-Course.git</code>), dirígete a la siguiente sección.</p>
+<p>Por el contrario, si tienes el entorno creado correctamente, vamos a agregar el repositorio principal con lo siguiente:</p>
+<pre><code class="lang-bash">&gt; git remote add upstream <span class="hljs-string">git@github.com/lucferbux/Javascript-Course.git</span>
+&gt; git fetch upstream
+<span class="hljs-string">remote:</span> Enumerating <span class="hljs-string">objects:</span> <span class="hljs-number">86</span>, done.
+<span class="hljs-string">remote:</span> Counting <span class="hljs-string">objects:</span> <span class="hljs-number">100</span>% (<span class="hljs-number">86</span>/<span class="hljs-number">86</span>), done.
+<span class="hljs-string">remote:</span> Compressing <span class="hljs-string">objects:</span> <span class="hljs-number">100</span>% (<span class="hljs-number">55</span>/<span class="hljs-number">55</span>), done.
+<span class="hljs-string">remote:</span> Total <span class="hljs-number">86</span> (delta <span class="hljs-number">34</span>), reused <span class="hljs-number">79</span> (delta <span class="hljs-number">31</span>), pack-reused <span class="hljs-number">0</span>
+Unpacking <span class="hljs-string">objects:</span> <span class="hljs-number">100</span>% (<span class="hljs-number">86</span><span class="hljs-regexp">/86), 1.50 MiB | 14.11 MiB/</span>s, done.
+... (more)
+</code></pre>
+<p>Con esto habremos añadido el repositorio principal por si queremos sincronizar cambios con nuestro fork. Para añadir nuevos cambios y crear un pull request en vuestro fork solo tendréis que hacer:</p>
+<pre><code class="lang-bash">&gt; git fetch <span class="hljs-keyword">origin </span><span class="hljs-comment"># sincronizar con el repositorio remoto</span>
+&gt; git checkout -<span class="hljs-keyword">b </span>&lt;name_branch&gt; <span class="hljs-keyword">origin/main </span><span class="hljs-comment"># crear una nueva rama basada en la rama main del remoto</span>
+<span class="hljs-comment"># realizar los cambios que queráis</span>
+&gt; git <span class="hljs-keyword">add </span>. <span class="hljs-comment"># Añadir todos los cambios</span>
+&gt; git commit -m <span class="hljs-string">"your message"</span> <span class="hljs-comment"># Crear commit</span>
+&gt; git push <span class="hljs-keyword">origin </span>&lt;name_branch&gt; <span class="hljs-comment"># Enviar los cambios al repositorio remoto</span>
+</code></pre>
+<h2 id="arreglar-haber-clonado-upstream">Arreglar haber clonado upstream</h2>
+<p>Si desde un principio has clonado el repositorio principal`, hay una forma sencilla de arreglar el entorno para dejarlo en el estado que hemos comentado antes:</p>
+<ol>
+<li>Crear un fork del repositorio desde GitHub.</li>
+<li>Copiar la url de vuestro fork que aparece al pulsar el botón verde de <code>&lt;&gt; Clone</code>.</li>
+<li>Ahora en vuestro proyecto en local, ejecutar lo siguiente.</li>
+</ol>
+<pre><code class="lang-bash">&gt; git remote <span class="hljs-built_in">rename</span> origin upstream # cambiar <span class="hljs-keyword">el</span> nombre del remote <span class="hljs-keyword">a</span> upstream
+&gt; git remote <span class="hljs-built_in">add</span> origin http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/<span class="hljs-symbol">&lt;your-username&gt;</span>/Javascript-Course.git # <span class="hljs-keyword">a</span>ñadir como origin <span class="hljs-keyword">la</span> url de <span class="hljs-keyword">tu</span> fork que acabas de copiar
+&gt; git fetch origin
+&gt; git branch --<span class="hljs-keyword">set</span>-upstream-<span class="hljs-keyword">to</span> origin/main # cambia <span class="hljs-keyword">el</span> track de <span class="hljs-keyword">la</span> rama <span class="hljs-keyword">en</span> local <span class="hljs-keyword">a</span> origin/main
+</code></pre>
+<p>Ahora el entorno debe estar bien configurado, ahora podemos repetir la operación anterior para crear una pull request en tu fork:</p>
+<pre><code class="lang-bash">&gt; git fetch <span class="hljs-keyword">origin </span><span class="hljs-comment"># sincronizar con el repositorio remoto</span>
+&gt; git checkout -<span class="hljs-keyword">b </span>&lt;name_branch&gt; <span class="hljs-keyword">origin/main </span><span class="hljs-comment"># crear una nueva rama basada en la rama main del remoto</span>
+<span class="hljs-comment"># realizar los cambios que queráis</span>
+&gt; git <span class="hljs-keyword">add </span>. <span class="hljs-comment"># Añadir todos los cambios</span>
+&gt; git commit -m <span class="hljs-string">"your message"</span> <span class="hljs-comment"># Crear commit</span>
+&gt; git push <span class="hljs-keyword">origin </span>&lt;name_branch&gt; <span class="hljs-comment"># Enviar los cambios al repositorio remoto</span>
+</code></pre>
+
+        </div>
+    </div>
+    <!-- Es una buena práctica poner el tag <script> al final del <body> en vez de en el <head>, esto se debe a que el HTML se carga desde arriba a abajo. 
+        El <head> se carga primero, por lo que puede causar algunos problemas:
+        
+            1. Si hay código que altera el <body> no habrá elementos HTML cargados, así que no podrá afectar.
+            2. Si tienes mucho javascript, puede afectar al tiempo de carga.
+    -->
+    <script>
+        // Add your code here
+    </script>
+    <script src="../../prism.js"></script>
+</body>
+
+</html>

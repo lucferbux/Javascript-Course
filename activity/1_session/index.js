@@ -1,10 +1,17 @@
 // Ejercicio 1
+console.log("Ejercicio 1 antes");
     import "./aboutme.js";
-console.log("Ejercicio 1");
+console.log("Ejercicio 1 después");
 
 // Ejercicio 2
+//
+// Se ejecuta primero el contenido de aboutme.js 
+// Esto ocurre, no por el orden en que aparece su referencia en el fichero index.js sino porque en primer lugar se evalúan los IMPORT incluídos en el fichero
+// Este comportamiento fue validado, incorporando una sentencia console.log() antes de la sentencia IMPORT y el resultado expuesto en CONSOLA confirmó la evaluación del IMPORT
+// para luego visualizar los dos console.log del Ejercicio 1.
 
 // Ejercicio 3
+//
 // INSPECCIONAR : Permite acceder a un ambiente en el que se puede tener un acabado control del código que está siendo ejecutado en el Browser.
 //                Dentro de las principales Funcionales se encuentran :
 // ELEMENTOS    : Permite revisar el código que sustenta la interfaz que es expuesta a los usuarios.
@@ -21,6 +28,7 @@ import "./divisibles_x_7.js";
 console.log("Ejercicio 4");
 
 // Ejercicio 5
+//
 // SCRIPTS o CLASSIC SCRIPT es el uso más básico y directo de Javascript.
 // Organizar el código en MODULE SCRIPTS permite :
 // 1.- Definir de acuerdo a su lógica componentes más pequeños e independiente y que pueden ser invocados desde otras secciones de una solución
@@ -31,4 +39,16 @@ console.log("Ejercicio 4");
 // 6.- MODULE son cargados de forma asincrona y evaluados nada más al IMPORTARSE.
 
 // Ejercicio 6
-
+import "./creaobjeto.js";
+console.log("Ejercicio 6");
+//
+//let formatter = {
+//    prefix: "Hello",
+//    append: function(texto){
+//               console.log(formatter.prefix + " " + texto);
+//    }
+//};
+//
+//formatter.toLowerString = function (texto2) {
+//    console.log(texto2.toLowerCase());
+//};

@@ -15,9 +15,9 @@ returnKeys(person);
 
 // Ejercicio 3
 
-var cadenaInvertir = "HOLA";
+var cadenaInvertir = "";
 
-const revertString = (string) => {
+let revertString = (string) => {
   if (string === "") {
     throw new Error('El string es vacio!');
   } else {

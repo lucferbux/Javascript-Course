@@ -18,17 +18,22 @@ returnKeys(person);
 var cadenaInvertir = "";
 
 let revertString = (string) => {
-  if (string === "") {
-    throw new Error('El string es vacio!');
-  } else {
-    let stringRev = "";
-    for (let i = 0; i < string.length; i++) {
-      stringRev = string[i] + stringRev;
+  try{
+    if (string === "") {
+      throw new Error('El string es vacio!');
+    } else {
+      let stringRev = "";
+      for (let i = 0; i < string.length; i++) {
+        stringRev = string[i] + stringRev;
+      }
+      return (stringRev);
     }
-    return (stringRev);
+  } catch (err) {
+    alert( "won't work" );
   }
-};
 
+};
+console.log(  "Error atrapado");
 const invertirCadena = {
   cadena: revertString(cadenaInvertir)
 };

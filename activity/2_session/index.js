@@ -7,15 +7,15 @@ function returnKeys(obj) {
   console.log(keys);
   return keys;
 }
-
-ObjeToList(person);
+returnKeys(person);
 
 
 // Ejercicio 2
 
+
 // Ejercicio 3
 
-var cadenaInvertir = "";
+var cadenaInvertir = "HOLA";
 
 const revertString = (string) => {
   if (string === "") {
@@ -36,17 +36,34 @@ const invertirCadena = {
 console.log(invertirCadena);
 
 // Ejercicio 4
+class Login {
+  constructor(user, password) {
+    this.user = user;
+    this.password = password;
+  }
 
-let username = "admin";
-let password = "passwd";
-
-let login = (username == "admin" && password == "passwd") ?
-  () => alert('User logged in') :
-  () => alert('User or passwd incorrect');
-
-login(username, password);
+  login() {
+    if (this.user === "admin" && this.password === "passwd") {
+      alert("User logged in");
+    } else {
+      alert("User or password incorrect");
+    }
+  }
+}
 
 // Ejercicio 5
+const btnSuccess = document.getElementById('loginSuccess');
+btnSuccess.addEventListener('click', () => {
+  let newLogin = new Login("admin", "passwd");
+  newLogin.login();
+});
+
+const btnFailure = document.getElementById('loginFailure');
+btnFailure.addEventListener('click', () => {
+  let newLogin = new Login("navarro", "123");
+  newLogin.login();
+});
+
 
 // Ejercicio 6
 
@@ -61,3 +78,20 @@ let loginWitUsername = (username, password) => {
     }, 200);
   });
 };
+
+const btnLoginSuccessAsync = document.getElementById('loginSuccessAsync');
+btnLoginSuccessAsync.addEventListener('click', async => {
+
+  loginWitUsername("admin", "passwd").then((resolved) => {
+    alert(resolved);
+  })
+    .catch((rejected) => { alert(rejected); })
+});
+
+const btnLoginFailureAsync = document.getElementById('loginFailureAsync');
+btnLoginFailureAsync.addEventListener('click', async => {
+  loginWitUsername("navarro", "123").then((resolved) => {
+    alert(resolved);
+  })
+    .catch((rejected) => { alert(rejected); })
+});

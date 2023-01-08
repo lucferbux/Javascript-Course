@@ -14,7 +14,8 @@
     <div class="container">
         <div class="section">
             <a class="back-button" href="/activity/activity.html">
-                < Back</a> <h1>Actividad 2</h1>
+                < Back</a>
+                    <h1>Actividad 2</h1>
                     <p class="caption">Actividades Sesión Avanzada</p>
                     <hr class="separator">
 
@@ -37,21 +38,31 @@
                     </ul>
                     <h2 id="ejercicio-3">Ejercicio 3</h2>
                     <ul>
-                    <li>Crea una clase a la que llamaremos &quot;InvertirCadena&quot; con las siguientes propiedades:</li>
-                    <li>Un atributo llamado <code>cadenaInvertir</code> que sea una cadena vacía.</li>
-                    <li>Una función en formato <strong>arrow function</strong>, que tome el atributo <code>cadenaInvertir</code> e imprima en pantalla el resultado invertido. Ej &quot;Hola mundo&quot; quedaría &quot;odnum aloH&quot;.</li>
-                    <li>Si el parámetro de la cadena <code>cadenaInvertir</code> es vacío, lance un error (throw). Ej. &quot;&quot;. throw error.</li>
-                    <li>Ahora instancia la clase en un objeto que llamaremos <code>invertirCadena</code>.</li>
+                        <li>Crea una clase a la que llamaremos &quot;InvertirCadena&quot; con las siguientes
+                            propiedades:</li>
+                        <li>Un atributo llamado <code>cadenaInvertir</code> que sea una cadena vacía.</li>
+                        <li>Una función en formato <strong>arrow function</strong>, que tome el atributo
+                            <code>cadenaInvertir</code> e imprima en pantalla el resultado invertido. Ej &quot;Hola
+                            mundo&quot; quedaría &quot;odnum aloH&quot;.
+                        </li>
+                        <li>Si el parámetro de la cadena <code>cadenaInvertir</code> es vacío, lance un error (throw).
+                            Ej. &quot;&quot;. throw error.</li>
+                        <li>Ahora instancia la clase en un objeto que llamaremos <code>invertirCadena</code>.</li>
                     </ul>
-                    <p>Ejecuta primero la función sin cambiar <code>cadenaInvertir</code>. ¿Cómo podemos hacer para que nuestro código no rompa al ejecutarse?. Ahora cambia el valor a <code>cadenaInvertir</code> y vuelve a llamar la función. ¿Cuál es el resultado?. Por último, intenta acceder al siguiente método <code>invertirCadena.nuevoMetodo()</code>. ¿Cómo podemos hacer para que no de un error?</p>
-                    
+                    <p>Ejecuta primero la función sin cambiar <code>cadenaInvertir</code>. ¿Cómo podemos hacer para que
+                        nuestro código no rompa al ejecutarse?. Ahora cambia el valor a <code>cadenaInvertir</code> y
+                        vuelve a llamar la función. ¿Cuál es el resultado?. Por último, intenta acceder al siguiente
+                        método <code>invertirCadena.nuevoMetodo()</code>. ¿Cómo podemos hacer para que no de un error?
+                    </p>
+
                     <h2 id="ejercicio-4">Ejercicio 4</h2>
                     <ul>
                         <li>Crea una clase con el formato ES6. Esta clase va a tener dos atributos, <em>username</em> y
                             <em>password</em> y un método <em>login()</em> que compruebe que username tiene el valor
                             <strong>admin</strong> y password el valor <strong>passwd</strong> y en caso positivo, lance
                             una alerta diciendo que el usuario esté logeado, en caso contrario, que diga que el usuario
-                            o la contraseña son incorrectas. Siendo que:</li>
+                            o la contraseña son incorrectas. Siendo que:
+                        </li>
                     </ul>
                     <pre><code class="lang-javascript">let login = new Login(“admin”, “passwd”) // alert -&gt; <span class="hljs-keyword">User</span> <span class="hljs-title">logged</span> <span class="hljs-keyword">in</span>
 let logbad = new Login(“pepe”, “bad”) // alert -&gt; <span class="hljs-keyword">User</span> <span class="hljs-title">or</span> passwd incorrect
@@ -64,7 +75,8 @@ let logbad = new Login(“pepe”, “bad”) // alert -&gt; <span class="hljs-k
                             <strong>loginFailure</strong>. En el primero crearemos un objeto login que sea correcto y
                             llamaremos a la función para que de el resultado correcto. En el segundo crearemos un objeto
                             login con parámetros incorrectos y llamaremos a login para que falle. Para ello consulta los
-                            siguientes documentos.</li>
+                            siguientes documentos.
+                        </li>
                         <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById">Get DOM
                                 element</a></li>
                         <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event">Click
@@ -78,7 +90,8 @@ let logbad = new Login(“pepe”, “bad”) // alert -&gt; <span class="hljs-k
                                 <strong>loginSuccessAsync</strong> y <strong>loginFailureAsync</strong>. En el primero
                                 llamaremos a la función <code>loginWitUsername</code> para que de el resultado correcto.
                                 En el segundo llamaremos a la función con parámetros incorrectos. Os dejo un par de
-                                pistas para resolver el ejercicio.</p>
+                                pistas para resolver el ejercicio.
+                            </p>
                         </li>
                         <li>
                             <p>Primero, <code>addEventListener(&#39;click&#39;, () =&gt; {})</code> no acepta asincronía
@@ -105,28 +118,74 @@ let logbad = new Login(“pepe”, “bad”) // alert -&gt; <span class="hljs-k
                     <button class="custom-button button-cancel" id="loginFailureAsync">Error Async</button>
                     <pre>
 <code class="language-javascript">// Ejercicio 1
+    var person = { name: "Lucas", age: 27, profession: "Developer" };
 
+    function returnKeys(obj) {
+      const keys = Object.keys(obj);//extrae todas las keys
+      console.log(keys);
+      return keys;
+    }
+    
+    returnKeys(person);
+    
 // Ejercicio 2
 
 // Ejercicio 3
+var cadenaInvertir = "";
+
+const revertString = (string) => {
+  if (string === "") {
+    throw new Error('El string es vacio!');
+  } else {
+    let stringRev = "";
+    for (let i = 0; i < string.length; i++) {
+      stringRev = string[i] + stringRev;
+    }
+    return (stringRev);
+  }
+};
+
+const invertirCadena = {
+  cadena: revertString(cadenaInvertir)
+};
+
+console.log(invertirCadena);
+
 
 // Ejercicio 4
+class Login {
+  constructor(username, password){
+      this.username = username;
+      this.password = password;
+  }
+
+  login(){
+      if (this.username === "admin" && this.password === "passwd"){
+          alert ("User logged in");
+      }else{
+          alert ("User or password incorrect");
+      }
+  }
+}
 
 // Ejercicio 5
+const btnSuccess = document.getElementById('loginSuccess');
+btnSuccess.addEventListener('click', () => {
+  let login = new Login("admin", "passwd");
+  login.login();
+});
+
+const btnFailure = document.getElementById('loginFailure');
+btnFailure.addEventListener('click', () => {
+  let login = new Login("navarro", "123");
+  login.login();
+});
 
 // Ejercicio 6
 
-let loginWitUsername = (username, password) => {
-    return new Promise(function (resolve, rejected) {
-        setTimeout(() => {
-        if (username === "admin" && password === "passwd") {
-            resolve("User logged in");
-        } else {
-            rejected("Error: invalid username or password");
-        }
-        }, 200);
-    });
-};</code>
+
+
+</code>
 </pre>
 
         </div>

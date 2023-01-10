@@ -1,12 +1,19 @@
-const formatter = {
-    prefix: 'Hello',
+class Formatter {
+    constructor() {
+        this.prefix = 'Hello';
+    }
+
     append(c) {
-        return formatter.prefix + ' ' + c
-    },
-    toLowerString(c) {
-        return (formatter.prefix + ' ' + c).toLowerCase()
-    },
+        console.log(this.prefix + ' ' + c)
+    }
 }
 
-console.log(formatter.append('madafuker'))
-console.log(formatter.toLowerString('madafuker'))
+
+Formatter.prototype.toLowerString = function (c){
+    console.log(c.toLowerCase())
+}
+
+var test = new Formatter()
+
+test.append('Andres')
+test.toLowerString('Andres')

@@ -59,9 +59,9 @@ console.log(validaContexto2()); // Devuelve un Error ya que "this" queda indefin
 //    3.1) "this" hace referencia a Propiedades del Objeto, cuando el Método se define sin emplear "Arrow Function"
 var prome=2.0; // define window.promedio = 2.0
 
-let alumno = {
-    curso:4;
-    prome:6.0; // define alumno.promedio = 6.0 
+let alumno1 = {
+    curso:4,
+    prome:6.0, // define alumno.promedio = 6.0 
     resultado() {console.log(`su nota promedio es : ${this.prome}`)}
 }
 alumno.resultado() // Devuelve "su nota promedio es : 6"
@@ -69,8 +69,8 @@ alumno.resultado() // Devuelve "su nota promedio es : 6"
 //    3.2) Propiedades del Objeto pero en el Contexto Global, cuando el Método se define con "Arrow Function"
 //         se redefine el objeto "alumno" usando ()=> en el Metodo "resultado"
 let alumno = {
-  curso:4;
-  prome:6.0; // define alumno.promedio = 6.0 
+  curso:4,
+  prome:6.0, // define alumno.promedio = 6.0 
   resultado:() => {console.log(`su nota promedio es : ${this.prome}`)}
 }
 alumno.resultado() // Devuelve "su nota promedio es : 2" --> ()=> establece que "this" apunte al Contexto Global y no del Objeto que aloja al Método.
@@ -107,6 +107,26 @@ testfunc(2,5);   // resultado --> ' Ha obtenido un promedio igual a : 3.5'
 // ¿?
 
 // Ejercicio 3
+
+let InvertirCadena = class {
+  constructor(cadenaInvertir) {
+      this.cadenaInvertir = "";
+      this.cadenaInventir = cadenaInvertir;
+  }
+  invierte = (cadena) => {
+    let i = 0;
+    function reversa(cad) {
+       i = cad.length;
+       if (i >= 1) {
+          return cad[i] + reversa(cad.slice(0,-1));  
+          } 
+          else {
+               return cad[0];
+               }
+       }
+    reversa(cadena);
+  }
+}
 
 // Ejercicio 4
 

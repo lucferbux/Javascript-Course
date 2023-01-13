@@ -62,7 +62,21 @@ Ahora podemos ejecutar sin ningún problema nuestro código. En este caso, tenem
 > tsc index.ts
 ```
 
-Esto generará un fichero llamado ```index.js``` que podrá ser utilizado por el html de la página.
+Esto generará un fichero llamado ```index.js``` que podrá ser utilizado por el html de la página. **En ningún momento es necesario instalar typescript de forma global, normalmente lo tendremos como parte de una dependencia de nuestro proyecto**
+
+### Ejecución con node
+
+Podremos también ejecutar ficheros de forma global si instalamos lo siguiente en nuestro equipo:
+
+```bash
+> npm install -g ts-node
+```
+
+Ahora podremos ejecutar nuestros ficheros typescript directamente ejecutando:
+
+```bash
+> node-ts index.ts
+```
 
 ## Algunas Ventajas frente a JavaScript
 

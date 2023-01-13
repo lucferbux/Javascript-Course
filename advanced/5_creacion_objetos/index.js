@@ -61,7 +61,7 @@ class Student {
     }
 }
 
-const first_student = new Student("Pedro", 22);
+const first_student = new Student("Pedro", 12);
 first_student.displayInfo();
 
 // Class expression

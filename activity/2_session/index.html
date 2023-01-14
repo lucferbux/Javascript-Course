@@ -8,9 +8,11 @@
     <title>Actividad Sesión 2</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
+    
 </head>
 
 <body>
+   
     <div class="container">
         <div class="section">
             <a class="back-button" href="/activity/activity.html">
@@ -99,12 +101,14 @@ let logbad = new Login(“pepe”, “bad”) // alert -&gt; <span class="hljs-k
 
                     <h2 id="arrow">Consola JavaScript</h2>
                     <p class="folder">/activity/2_session/index.js</p>
-                    <button class="custom-button" id="loginSuccess">Login</button>
-                    <button class="custom-button button-cancel" id="loginFailure">Error</button>
+                    <button class="custom-button" id="loginSuccess" >Login</button>
+                    <button class="custom-button button-cancel" id="loginFailure" >Error</button>
                     <button class="custom-button" id="loginSuccessAsync">Login Async</button>
                     <button class="custom-button button-cancel" id="loginFailureAsync">Error Async</button>
                     <pre>
-<code class="language-javascript">// Ejercicio 1
+<code class="language-javascript">
+    
+// Ejercicio 1
 
 // Ejercicio 2
 
@@ -116,24 +120,23 @@ let logbad = new Login(“pepe”, “bad”) // alert -&gt; <span class="hljs-k
 
 // Ejercicio 6
 
-let loginWitUsername = (username, password) => {
-    return new Promise(function (resolve, rejected) {
-        setTimeout(() => {
-        if (username === "admin" && password === "passwd") {
-            resolve("User logged in");
-        } else {
-            rejected("Error: invalid username or password");
-        }
-        }, 200);
-    });
+//let loginWitUsername = (username, password) => {
+//    return new Promise(function (resolve, rejected) {
+//        setTimeout(() => {
+//        if (username === "admin" && password === "passwd") {
+//            resolve("User logged in");
+//        } else {
+//            rejected("Error: invalid username or password");
+//        }
+//        }, 200);
+//    });
 };</code>
 </pre>
 
         </div>
     </div>
     <script src="../../prism.js"></script>
-    <script src="index.js">
-    </script>
+    <script src="index.js"></script>
 </body>
 
 </html>

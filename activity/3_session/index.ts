@@ -41,3 +41,17 @@ function sumOrConcatenate(x: any, y: any) {
 }
 
 sumOrConcatenate(x, y);
+
+
+
+
+//--------------------------E4---------------------------------
+
+const newArray = (arr: (number | string)[])=> {
+  arr.shift();
+    console.log((arr));
+}
+
+newArray([1,2,3]);        // ok
+newArray(['1','2','3']);  // ok
+newArray([1,2,'3',4]);  // ok

@@ -1,6 +1,8 @@
 //import { set } from "lodash";
 
+// *********************************************************************************************************
 // Ejercicio 1
+//
 function propiedadesObjEnArr(Objeto) {
         return Object.getOwnPropertyNames(Objeto);
 }
@@ -14,6 +16,7 @@ objEx1 = {
 arreglo = propiedadesObjEnArr(objEx1);
 // console.log(arreglo); // Devuelve (3) ['nombre', 'edad', 'profesion']
 
+// *********************************************************************************************************
 // Ejercicio 2
 
 // "This" hacer referencia a un Objeto en distintos contextos:
@@ -107,6 +110,7 @@ testfunc(2,5);   // Devuelve --> ' Ha obtenido un promedio igual a : 3.5'
 // 5) al elemento que recibe un evento
 // ¿?
 
+// *********************************************************************************************************
 // Ejercicio 3
 
 InvertirCadena = class {
@@ -139,7 +143,7 @@ InvertirCadena = class {
 InvertirCadena.nuevoMetodo?.();
 
 
-
+// *********************************************************************************************************
 // Ejercicio 4
 
 
@@ -159,7 +163,7 @@ class Login {
  
 };
 
-
+// *********************************************************************************************************
 // Ejercicio 5
 
 buttonLogOk = document.getElementById('loginSuccess');
@@ -167,6 +171,7 @@ buttonLogNotOk = document.getElementById('loginFailure');
 buttonLogOk.addEventListener('click', (event) => { let login = new Login("admin","passwd"); } );
 buttonLogNotOk.addEventListener('click', (event) => { let login = new Login("admin","pass123"); } ); 
 
+// *********************************************************************************************************
 // Ejercicio 6
 
 
@@ -189,12 +194,4 @@ buttonAsyncNotOk.addEventListener('click',(event) => { const logi = loginWitUser
                                                        logi .then( (resolved)=>{ window.alert(resolved); } )
                                                             .catch( (rejected)=>{ window.alert(rejected); } )
                                                      } ); 
-//buttonAsyncOk.addEventListener(   'click', loginWitUsername("admin","passwd")
-//                                                  .then( (resolved)=>{ window.alert(resolved); } )
-//                                                 .catch( (rejected)=>{ window.alert(rejected); } ) );
-//buttonAsyncNotOk.addEventListener('click', loginWitUsername("admin","pass123")
-//                                                  .then( (resolved)=>{ console.log(resolved); } )
-//                                                 .catch( (rejected)=>{ window.alert(rejected); } ) ); 
-//logi
-//    .then(  (resolve) => { window.alert(resolve); } )
-//    .catch( (rejected) => { window.alert(rejected);} ) 
+

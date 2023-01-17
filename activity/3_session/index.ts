@@ -7,12 +7,10 @@ interface PersonData {
   profession: string;
 }
 
-
 let getPersonDetail = (person: PersonData) => {
   let list = [person.name, person.age, person.profession];
   return list;
 }
-
 
 let Info = {
   name: 'Mariangela',
@@ -35,23 +33,58 @@ function sumOrConcatenate(x: any, y: any) {
     } else {
       console.log(x + ":" + y);
     }
-  } catch  {
+  } catch {
     console.log("Error");
   }
 }
 
 sumOrConcatenate(x, y);
 
+//--------------------------E3---------------------------------
+
+interface Car {
+  tires: () => number;
+  turnOnEngine: () => void;
+  pressPedal: () => void;
+}
+
+interface Motorcycle {
+  tires: () => number;
+  turnOnEngine: () => void;
+  openThrottle: () => void;
+}
+
+function turnOnEngine(): void {
+  console.log('turnOnEngine!')
+}
+function openThrottle(): void {
+  console.log('openThrottle!')
+}
+function pressPedal(): void {
+  console.log('pressPedal!')
+}
+function isFish(pet: Car | Motorcycle) {
+  if (pet as Car) {
+    return (pet as Car).pressPedal !== undefined;
+  }
+  else {
+    return (pet as Motorcycle).openThrottle !== undefined;
+  }
+
+}
+
+
+
 
 
 
 //--------------------------E4---------------------------------
 
-const newArray = (arr: (number | string)[])=> {
+const newArray = (arr: (number | string)[]) => {
   arr.shift();
-    console.log((arr));
+  console.log((arr));
 }
 
-newArray([1,2,3]);        // ok
-newArray(['1','2','3']);  // ok
-newArray([1,2,'3',4]);  // ok
+newArray([1, 2, 3]);        // ok
+newArray(['1', '2', '3']);  // ok
+newArray([1, 2, '3', 4]);  // ok

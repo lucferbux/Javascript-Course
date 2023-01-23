@@ -17,7 +17,8 @@ const personProps = (person: Person): stringOrNumber[] => {
     let propsValues: stringOrNumber[] = []
 
     propsNames.forEach(prop => {
-        const propValue = getProperty(personCopy, prop)
+        const property: P = prop as keyof Person
+        const propValue = getProperty(personCopy, property)
         propsValues.push(propValue);
     });
 
@@ -34,7 +35,8 @@ const test1Ej1: Person = {
     profession: 'Backend dev'
 }
 
-personProps(test1Ej1)
+const personValues = personProps(test1Ej1);
+console.log(personValues)
 
 // Ejercicio 2
 console.error('Ejercicio 2---------------------------------------------------------')

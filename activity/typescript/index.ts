@@ -89,3 +89,34 @@ let movil = movilCar
 operaVehiculo(movil);
 
 // Ejercicio 4
+const strArray: string[] = ['Hello', 'World', 'Im', 'a', 'Full', 'Stack', 'Developer'];
+const numArray: number[] = [1, 2, 3, 4, 5, 6, 7];
+const mixedArray: Array<number|string> = ['Hello', 'I', 'have', 3, 'tasks'];
+const unsupportedArray = [{name: 'Lucas', surname: 'Fernandez'}, 'Hello', 22];
+
+function removeFirstEntry(...arrIn:any[] ){
+//    
+    //let arrOut: Array < number | string >;
+    var arrOut : Array< number | string >;
+    let x = 0;
+    console.log("elementos en arrIn : ",arrIn.length );
+    for (var i = 1; i < arrIn.length; i++) {
+        x = i - 1;
+        console.log(x,arrIn[i]);
+    }
+    return arrIn;
+}
+
+//function removeFirstEntry(...arrIn){
+//    console.log(arrIn.length);
+//}
+
+console.log(strArray.length);
+const newStrArray = removeFirstEntry(strArray);
+const newNumArray = removeFirstEntry(numArray);
+const newMixedArray = removeFirstEntry(mixedArray);
+//const newUnsupportedArray = removeFirstEntry(unsupportedArray); --> will fail
+
+console.log("hola",strArray,newStrArray); // --> ['World', 'Im', 'a', 'Full', 'Stack', 'Developer'];
+console.log(newNumArray); // --> [2, 3, 4, 5, 6, 7];
+console.log(newMixedArray); // --> ['I', 'have', 3, 'tasks'];

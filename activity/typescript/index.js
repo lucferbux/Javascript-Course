@@ -21,5 +21,31 @@ function sumOrConcatenate(param1, param2) {
     return "Tipo de alguno de los parámetros INVÁLIDO";
 }
 console.log(sumOrConcatenate("7", "5"));
-// Ejercicio 3
+function carVehicle(veh) {
+    return veh.pressPedal !== undefined;
+}
+function operaVehiculo(vehiculo) {
+    vehiculo.turnOnEngine("Enciende el Motor");
+    if (carVehicle(vehiculo)) {
+        return vehiculo.pressPedal("Presiona el Pedal del CAR");
+    }
+    else {
+        return vehiculo.openThrottle("Acelerador abierto! de la MOTO");
+    }
+}
+var movilMoto = {
+    tires: 2,
+    turnOnEngine: function (accion) { console.log(accion); },
+    openThrottle: function (accion) { console.log(accion); }
+};
+var movilCar = {
+    tires: 4,
+    turnOnEngine: function (accion) { console.log(accion); },
+    pressPedal: function (accion) { console.log(accion); }
+};
+// elegir sólo un móvil [ movilMoto | movilCar ]
+//
+//let movil = movilMoto;
+var movil = movilCar;
+operaVehiculo(movil);
 // Ejercicio 4

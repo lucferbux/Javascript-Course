@@ -42,4 +42,50 @@ function sumOrConcatenate(param1:number|string, param2:number|string):number|str
 
 // Ejercicio 3
 
+interface Car {
+    tires: number;
+    turnOnEngine:(param:string)=>void;
+    pressPedal  :(param:string)=>void;
+} 
+
+interface Motorcycle {
+    tires: number;
+    turnOnEngine:(param:string)=>void;
+    openThrottle:(param:string)=>void;
+} 
+
+function carVehicle(veh: Car | Motorcycle): veh is Car {
+  return (veh as Car).pressPedal !== undefined;
+}
+
+function operaVehiculo(vehiculo: Car | Motorcycle) {
+    
+    vehiculo.turnOnEngine("Enciende el Motor");
+
+    if (carVehicle(vehiculo)) {
+    return vehiculo.pressPedal("Presiona el Pedal del CAR");
+    } else    {
+        return vehiculo.openThrottle("Acelerador abierto! de la MOTO");
+    }
+}
+
+const movilMoto : Motorcycle = {
+    tires:2,
+    turnOnEngine: function(accion:string) {console.log(accion)},
+    openThrottle: function(accion:string) {console.log(accion)}
+    }
+
+const movilCar : Car = {
+    tires:4,
+    turnOnEngine: function(accion:string) {console.log(accion)},
+    pressPedal  : function(accion:string) {console.log(accion)}
+}
+
+// elegir sólo un móvil [ movilMoto | movilCar ]
+//
+//let movil = movilMoto;
+let movil = movilCar
+
+operaVehiculo(movil);
+
 // Ejercicio 4

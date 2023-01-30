@@ -2,7 +2,7 @@
 
 ## Ejercicio 1
 
-* Escribe un programa que tome como entrada un objeto y devuelva una lista con sus propiedades. Solo puede tener como entrada un objeto y el tipo de vuelta tiene que ser un array.
+* Escribe una arrow function que tome como entrada un objeto y devuelva una lista con sus propiedades. Solo puede tener como entrada un objeto y el tipo de vuelta tiene que ser un array.
 
 ```javascript
 const person {
@@ -16,6 +16,7 @@ const person {
 ## Ejercicio 2
 
 * Enumera los distintos valores que puede tener “this” y pon un ejemplo de cada uno.
+* ¿Qué diferencias hay entre las arrow functions y las function expressions?.
 
 ## Ejercicio 3
 

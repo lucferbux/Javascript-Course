@@ -75,8 +75,10 @@ Podremos también ejecutar ficheros de forma global si instalamos lo siguiente e
 Ahora podremos ejecutar nuestros ficheros typescript directamente ejecutando:
 
 ```bash
-> node-ts index.ts
+> ts-node index.ts
 ```
+
+**Tenéis una sección dentro del proyecto llamada typescriptplayground en la que podéis interactuar y ejecutar ts-node y tsc**
 
 ## Algunas Ventajas frente a JavaScript
 

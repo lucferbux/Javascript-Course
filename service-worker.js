@@ -10,8 +10,8 @@ self.addEventListener('install', e => {
         './manifest.json',
         './styles.css',
         './prism.css',
-        './logo192,png',
-        './logo512,png',
+        './logo192.png',
+        './logo512.png',
         './favicon.ico'
       ]);
     })

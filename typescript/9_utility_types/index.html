@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Clases - TypeScript</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="section">
+            <a class="back-button" href="/typescript/typescript.html">
+                < Back</a> 
+                
+<h1 id="utility-types">Utility Types</h1>
+<h2 id="overview">Overview</h2>
+<p>Además de toda la sintaxis que hemos visto, TypeScript cuenta con algunas utilidades que permiten hacer transformaciones de tipos para abarcar una gran cantidad de casos de uso, en esta sección veremos algunos de ellos.</p>
+<h2 id="partial">Partial</h2>
+<p>El tipo <code>Partial&lt;T&gt;</code> convierte todas las propiedades de un tipo <code>T</code> en opcionales. Es útil cuando queremos crear objetos parciales o actualizar solo algunas propiedades de un objeto existente.</p>
+<p>Su definición sería la siguiente</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> <span class="hljs-type">Partial</span>&lt;<span class="hljs-type">T</span>&gt; = {
+    [<span class="hljs-type">P</span> in keyof <span class="hljs-type">T</span>]?: <span class="hljs-type">T</span>[<span class="hljs-type">P</span>];
+};
+</code></pre>
+<p>Y una implementación podría ser:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Usuario {
+    nombre: <span class="hljs-built_in">string</span>;
+    edad: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">// Aquí, todas las propiedades de 'Usuario' se vuelven opcionales</span>
+<span class="hljs-keyword">type</span> UsuarioParcial = Partial&lt;Usuario&gt;;
+
+<span class="hljs-keyword">const</span> usuario1: UsuarioParcial = { nombre: <span class="hljs-string">"Juan"</span> }; <span class="hljs-comment">// Válido</span>
+<span class="hljs-keyword">const</span> usuario2: UsuarioParcial = { edad: <span class="hljs-number">28</span> }; <span class="hljs-comment">// Válido</span>
+</code></pre>
+<h2 id="required">Required</h2>
+<p>El tipo <code>Required&lt;T&gt;</code> convierte todas las propiedades opcionales de un tipo <code>T</code> en obligatorias. Es útil cuando queremos asegurarnos de que todas las propiedades de un objeto estén presentes.</p>
+<p>El uso de <code>Required</code> sería el siguiente</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> <span class="hljs-type">Required</span>&lt;<span class="hljs-type">T</span>&gt; = {
+    [<span class="hljs-type">P</span> in keyof <span class="hljs-type">T</span>]-?: <span class="hljs-type">T</span>[<span class="hljs-type">P</span>];
+};
+</code></pre>
+<p>Y un ejemplo de uso sería:</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UsuarioOpcional</span> {</span>
+    nombre?: string;
+    edad?: number;
+}
+
+type UsuarioCompleto = Required&lt;UsuarioOpcional&gt;;
+
+const <span class="hljs-string">usuario1:</span> UsuarioCompleto = { <span class="hljs-string">nombre:</span> <span class="hljs-string">"Juan"</span>, <span class="hljs-string">edad:</span> <span class="hljs-number">28</span> }; <span class="hljs-comment">// Válido</span>
+const <span class="hljs-string">usuario2:</span> UsuarioCompleto = { <span class="hljs-string">nombre:</span> <span class="hljs-string">"Juan"</span> }; <span class="hljs-comment">// Error: falta la propiedad 'edad'</span>
+</code></pre>
+<h2 id="pick">Pick</h2>
+<p>El tipo <code>Pick&lt;T, K&gt;</code> selecciona un conjunto de propiedades <code>K</code> del tipo <code>T</code>. Es útil cuando queremos extraer un subconjunto de propiedades de un objeto y crear un nuevo tipo con ellas.</p>
+<p><code>Pick</code> estaría implementado de la siguiente forma:</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Pick&lt;T</span>, <span class="hljs-title">K</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">keyof</span> <span class="hljs-title">T&gt;</span> </span>= {
+    [<span class="hljs-type">P</span> in <span class="hljs-type">K</span>]: <span class="hljs-type">T</span>[<span class="hljs-type">P</span>];
+};
+</code></pre>
+<p>Y su uso sería:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">interface</span> Usuario {
+    nombre: <span class="hljs-built_in">string</span>;
+    edad: <span class="hljs-built_in">number</span>;
+    email: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">type</span> UsuarioResumido = Pick&lt;Usuario, <span class="hljs-string">"nombre"</span> | <span class="hljs-string">"email"</span>&gt;;
+
+<span class="hljs-keyword">const</span> usuario: UsuarioResumido = {
+    nombre: <span class="hljs-string">"Juan"</span>,
+    email: <span class="hljs-string">"juan@example.com"</span>
+}; <span class="hljs-comment">// Válido</span>
+</code></pre>
+<h2 id="omit">Omit</h2>
+<p>El tipo <code>Omit&lt;T, K&gt;</code> elimina un conjunto de propiedades <code>K</code> del tipo <code>T</code>. Es útil cuando queremos crear un nuevo tipo excluyendo algunas propiedades de un objeto existente.</p>
+<p>La definición de <code>Omit</code> es:</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Omit&lt;T</span>, <span class="hljs-title">K</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">keyof</span> <span class="hljs-title">any&gt;</span> </span>= <span class="hljs-type">Pick</span>&lt;<span class="hljs-type">T</span>, <span class="hljs-type">Exclude</span>&lt;keyof <span class="hljs-type">T</span>, <span class="hljs-type">K</span>&gt;&gt;;
+</code></pre>
+<p>Y su uso sería:</p>
+<pre><code class="lang-javascript">interface <span class="hljs-class">Usuario </span>{
+<span class="hljs-symbol">    nombre:</span> string;
+<span class="hljs-symbol">    edad:</span> number;
+<span class="hljs-symbol">    email:</span> string;
+}
+
+type UsuarioSinEmail = Omit<span class="hljs-params">&lt;Usuario, "email"&gt;</span>;
+
+const usuario: UsuarioSinEmail = {
+<span class="hljs-symbol">    nombre:</span> <span class="hljs-string">"Juan"</span>,
+<span class="hljs-symbol">    edad:</span> <span class="hljs-number">28</span>
+}; <span class="hljs-comment">// Válido</span>
+
+const usuarioConEmail: UsuarioSinEmail = {
+<span class="hljs-symbol">    nombre:</span> <span class="hljs-string">"Juan"</span>,
+<span class="hljs-symbol">    edad:</span> <span class="hljs-number">28</span>,
+<span class="hljs-symbol">    email:</span> <span class="hljs-string">"juan@example.com"</span>
+}; <span class="hljs-comment">// Error: la propiedad 'email' no debe existir</span>
+</code></pre>
+<h2 id="exclude">Exclude</h2>
+<p>El tipo <code>Exclude&lt;T, U&gt;</code> crea un nuevo tipo excluyendo aquellos elementos presentes en <code>U</code> del tipo <code>T</code>. Es útil cuando queremos eliminar elementos específicos de un tipo union.</p>
+<p>La definición de <code>Omit</code> es:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">type</span> Exclude&lt;<span class="hljs-built_in">T</span>, U&gt; = <span class="hljs-built_in">T</span> extends U ? never <span class="hljs-symbol">:</span> <span class="hljs-built_in">T</span>;
+</code></pre>
+<p>Y podríamos usarlo de la siguiente manera:</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Animales</span></span> = <span class="hljs-string">"perro"</span> | <span class="hljs-string">"gato"</span> | <span class="hljs-string">"elefante"</span> | <span class="hljs-string">"tigre"</span>;
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">AnimalesDom</span></span>ésticos = <span class="hljs-string">"perro"</span> | <span class="hljs-string">"gato"</span>;
+
+<span class="hljs-comment">// Aquí, 'AnimalesSalvajes' será un tipo que contiene solo "elefante" y "tigre"</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">AnimalesSalvajes</span></span> = Exclude&lt;Animales, AnimalesDomésticos&gt;;
+
+<span class="hljs-keyword">const</span> animalSalvaje1: AnimalesSalvajes = <span class="hljs-string">"elefante"</span>; <span class="hljs-comment">// Válido</span>
+<span class="hljs-keyword">const</span> animalSalvaje2: AnimalesSalvajes = <span class="hljs-string">"tigre"</span>; <span class="hljs-comment">// Válido</span>
+<span class="hljs-keyword">const</span> animalSalvaje3: AnimalesSalvajes = <span class="hljs-string">"perro"</span>; <span class="hljs-comment">// Error: "perro" no está en el tipo 'AnimalesSalvajes'</span>
+</code></pre>
+
+
+
+                  
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>

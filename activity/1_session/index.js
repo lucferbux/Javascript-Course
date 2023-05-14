@@ -3,12 +3,15 @@
 import "../1_session/aboutme.js";
 console.log("Ejercicio 1");
 
+console.log("%c2. Nuevo Breakpoint", 'color: #229179; font-size: 16px;');
 // Ejercicio 2
 console.log("New Breakpoint");
 
 // Ejercicio 3
 
 // Ejercicio 4
+
+console.log("%c2. Iteración o bucle de números divisibles para 7", 'color: #229179; font-size: 16px;');
 
 // Itera del número 1 al 100
 for (let i = 1; i <= 100; i++) {
@@ -23,6 +26,7 @@ for (let i = 1; i <= 100; i++) {
 
 // Ejercicio 6
 
+console.log("%c2. Objeto, metodo append y atributo prototype", 'color: #229179; font-size: 16px;');
 // Objeto, metodo append y atributo prototype
 
 let formatter = {

@@ -1,5 +1,5 @@
 // Ejercicio 1
-import "./aboutme.js";
+import {externalExecution} from "./aboutme.js";
 console.log("Ejercicio 1");
 
 // Ejercicio 2

@@ -50,8 +50,8 @@ console.log(`eq3: ${eq3}`);
 
 
 // Inequality
-let ieq = a != b;
-console.log(`ieq: ${ieq}`);
+//let ieq = a != b;
+//console.log(`ieq: ${ieq}`);
 
 let ieq2 = a != c;
 console.log(`ieq2: ${ieq2}`);

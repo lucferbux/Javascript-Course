@@ -104,61 +104,6 @@ let funVale = function() {
     return "Hello World";
 }</code>
 </pre>
-                    
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/beginner/4_tipos_datos/index.js</p>
-<pre>
-<code class="language-javascript">console.log("Data types");
-
-// Primitive types
-let boolVal = true;
-console.log(boolVal);
-let nullVal = null;
-console.log(nullVal);
-let undefinedVal = undefined;
-console.log(undefinedVal);
-let numberVal = 10;
-console.log(numberVal);
-let stringVal = "Hello";
-console.log(stringVal);
-let symVal = Symbol();
-console.log(symVal);
-
-
-// Reference types
-let emptyObject = {};
-let filledObject = {"name": "lucas", "surname": "fernandez"};
-console.log(emptyObject);
-console.log(filledObject);
-
-let filledArray = ["one", "two", "three"];
-console.log(filledArray);
-
-let funVale = function() {
-    return "Hello World";
-}
-console.log(funVale());
-
-// Dynamic data types (could change)
-let foo = 42;    // foo is now a number
-foo     = 'bar'; // foo is now a string
-foo     = true;  // foo is now a boolean
-
-// Copying primitive
-var a = 13         // assign `13` to `a`
-var b = a          // copy the value of `a` to `b`
-b = 37             // assign `37` to `b`
-console.log(a)     // => 13
-
-// Copying a reference
-var a = { c: 13 }  // assign the reference of a new object to `a`
-var b = a          // copy the reference of the object inside `a` to new variable `b`
-b.c = 37           // modify the contents of the object `b` refers to
-console.log(a)     // => { c: 37 }</code>
-</pre>
-
         </div>
     </div>
     <script src="../../prism.js"></script> 

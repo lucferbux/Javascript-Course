@@ -10,6 +10,7 @@ let myCallback = (callback) => {
 };
 
 let logUser = (response) => {
+    console.log("Entramos en el logUser")
     console.log(response);
 };
 
@@ -23,20 +24,21 @@ console.log("%c2. Callback function with arguments", 'color: #229179; font-size:
 
 // Having an error
 let logError = (error) => {
+    console.log("Entramos en el error")
     console.log(error);
 }
 
 let loggingCallback = (login, response, error) => {
     setTimeout(() => {
-        if(login === "lucferbux") {
+        if(login.username === "lucferbux" && login.password === "patata") {
             response("2. Callback with parameters --> User logged")
         } else {
-            error("error, username invalid")
+            error("error, username or password invalid")
         }
     }, 100);
 }
 
-loggingCallback("lucferbux", logUser, logError);
+loggingCallback({username: "lucferbux", password: "patata"}, logUser, logError);
 
 
 console.log("This is going to print before too...");

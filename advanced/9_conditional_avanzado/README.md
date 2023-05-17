@@ -1,6 +1,32 @@
-# Optional Chaining
+# Condicionales avanzados
 
-> Acceso de valores
+> Uso de condicionales avanzado
+
+## Ternary operator
+
+A veces, queremos asignar una variable dependiendo de una condición, en algunos lenguajes se haría de la siguiente forma:
+
+```javascript
+let login;
+let password = prompt("Please enter the password", "");
+
+if (password == "patata") {
+    login = true;
+} else {
+    login = false;
+}
+
+console.log(login);
+```
+
+Afortunadamente, existe una manera de realizar esta misma operación de una forma mucho más sencilla con el operador condicional **?**.
+
+```javascript
+let loginShort = (password == "patata") ? true : false;
+console.log(loginShort);
+```
+
+## Optional Chaining
 
 El operador de *optional chaining* o *encadenamiento opcional* `?.` permite acceder al valor de una propiedad encadenada de un objeto sin tener que comprobar que cada valor en esa cadena sea válido.
 
@@ -69,3 +95,24 @@ Al final, la sintaxis del *encadenamiento opcional* tiene tres formas diferencia
 * `obj.method?.()` -> ejecuta la función `obj.method()` si existe, si no devuelve `undefined`.
 
 Esta sintaxis es muy útil y puede evitar muchos problemas en nuestro código, aún así, es recomendable no usar este operador de forma indiscriminada, porque podría ocultar errores de programación en puntos donde podrían estar ocurriendo.
+
+## Operador de fusión
+
+El **nullish coalescing operator** o **??** permite realizar una evaluación para comprobar si una variable es **null** o **undefined**, de una forma similar al operador condicional.
+
+
+Por otra parte, podemos conseguir lo mismo pero cayendo en el callback si los valores son negativos con el operador or `||`.
+
+```javascript
+let user;
+
+console.log(user ?? "Anonymous");
+
+console.log(user || "Anonymous");
+
+user = "Lucas";
+
+console.log(user ?? "Anonymous");
+
+console.log((user !== null && user !== undefined) ? user : "Anonymous");
+```

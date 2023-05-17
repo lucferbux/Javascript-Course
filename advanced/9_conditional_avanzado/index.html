@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+  <title>Optional chaining</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="section">
+      <a class="back-button" href="/advanced/advanced.html">
+        < Back</a> 
+        <h1 id="condicionales-avanzados">Condicionales avanzados</h1>
+        <blockquote>
+          <p>Conceptos condicionales avanzados</p>
+        </blockquote>
+        <h2 id="ternary-operator">Ternary operator</h2>
+<p>A veces, queremos asignar una variable dependiendo de una condición, en algunos lenguajes se haría de la siguiente forma:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> login;
+<span class="hljs-keyword">let</span> <span class="hljs-attr">password</span> = prompt(<span class="hljs-string">"Please enter the password"</span>, <span class="hljs-string">""</span>);
+
+<span class="hljs-keyword">if</span> (<span class="hljs-attr">password</span> == <span class="hljs-string">"patata"</span>) {
+    <span class="hljs-attr">login</span> = <span class="hljs-literal">true</span>;
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-attr">login</span> = <span class="hljs-literal">false</span>;
+}
+
+console.log(login);
+</code></pre>
+<p>Afortunadamente, existe una manera de realizar esta misma operación de una forma mucho más sencilla con el operador condicional <strong>?</strong>.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">loginShort</span> = (<span class="hljs-attr">password</span> == <span class="hljs-string">"patata"</span>) ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;
+console.log(loginShort);
+</code></pre>
+<h2 id="optional-chaining">Optional Chaining</h2>
+<blockquote>
+<p>Acceso de valores</p>
+</blockquote>
+<p>El operador de <em>optional chaining</em> o <em>encadenamiento opcional</em> <code>?.</code> permite acceder al valor de una propiedad encadenada de un objeto sin tener que comprobar que cada valor en esa cadena sea válido.</p>
+<p>Para hacernos una idea, el <em>encadenamiento opcional</em> <code>?.</code> funciona de igual manera que el encadenamiento normal <code>.</code> pero permite evitar errores si una referencia es nula (<code>null</code> o <code>undefined</code>), devolviendo siempre o el valor que buscábamos o <code>undefined</code>. Cuando utilizamos este operador para acceder funciones, si no existen, devolverán <code>undefined</code>.</p>
+<pre><code class="lang-javascript">let dog = {
+<span class="hljs-symbol">    name:</span> <span class="hljs-string">"Seymur"</span>,
+<span class="hljs-symbol">    age:</span> <span class="hljs-number">12</span>,
+<span class="hljs-symbol">    chip:</span> {
+<span class="hljs-symbol">        brand:</span> <span class="hljs-string">"Soyner"</span>,
+<span class="hljs-symbol">        address:</span> <span class="hljs-string">"123, 3rd Street, New New York"</span>
+    },
+<span class="hljs-symbol">    bark:</span> () =&gt; {
+        console.log(<span class="hljs-string">"woof"</span>)
+    }
+};
+
+let cat = null;
+</code></pre>
+<p>Vamos a ver las distintas combinaciones que podemos obtener con el <em>encadenamiento opcional</em> que hace que nuestro código no rompa pese a que estemos accediendo a valores inexistentes.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// bad</span>
+<span class="hljs-comment">// cat.name</span>
+
+<span class="hljs-comment">// good</span>
+dog.<span class="hljs-keyword">name</span> <span class="hljs-comment">// this value exists</span>
+cat?.<span class="hljs-keyword">name</span> <span class="hljs-comment">// optional chain would return undefined</span>
+
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"------------------"</span>);
+
+<span class="hljs-comment">// bad</span>
+<span class="hljs-comment">// dog.lease.color</span>
+
+<span class="hljs-comment">// good</span>
+cat?.lease.brand <span class="hljs-comment">// this is unsafe, but valid in this context</span>
+dog.chip.brand <span class="hljs-comment">// this value exists</span>
+dog.lease?.<span class="hljs-built_in">color</span> <span class="hljs-comment">// optional chain will avoid exception</span>
+
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"------------------"</span>);
+
+<span class="hljs-comment">// bad</span>
+<span class="hljs-comment">// dog.walk()</span>
+
+<span class="hljs-comment">// good</span>
+dog.bark() <span class="hljs-comment">// this value exists</span>
+dog.walk?.() <span class="hljs-comment">// optional chain will return undefined when function is executed</span>
+
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"------------------"</span>);
+
+<span class="hljs-comment">// bad</span>
+<span class="hljs-comment">// dog.chip.["owner"]</span>
+
+<span class="hljs-comment">// good</span>
+dog.chip?.[<span class="hljs-string">"owner"</span>]
+</code></pre>
+<p>Como podéis ver hay varias situaciones donde el <em>encadenamiento opcional</em> nos evita problemas en la ejecución de nuestro código. El mecanismo principal de este operador es que <em>cortocircuita</em> en el primer parámetro inválido y devuelve un valor <code>undefined</code>, esto hace que en ejemplos como <code>cat?.lease.brand</code> no se produzca un error aunque <code>lease</code> no exista, ya que la ejecución se detendrá al intentar acceder a <code>cat</code>, que es un valor <em>indefinido</em>.</p>
+<p>Al final, la sintaxis del <em>encadenamiento opcional</em> tiene tres formas diferenciadas:</p>
+<ul>
+<li><code>obj?.prop</code> -&gt; devuelve el valor si existe, si no devuelve <code>undefined</code>.</li>
+<li><code>obj?.[prop]</code> -&gt; devuelve el valor si existe, si no devuelve <code>undefined</code>.</li>
+<li><code>obj.method?.()</code> -&gt; ejecuta la función <code>obj.method()</code> si existe, si no devuelve <code>undefined</code>.</li>
+</ul>
+<p>Esta sintaxis es muy útil y puede evitar muchos problemas en nuestro código, aún así, es recomendable no usar este operador de forma indiscriminada, porque podría ocultar errores de programación en puntos donde podrían estar ocurriendo.</p>
+<h2 id="operador-de-fusi-n">Operador de fusión</h2>
+<p>El <strong>nullish coalescing operator</strong> o <strong>??</strong> permite realizar una evaluación para comprobar si una variable es <strong>null</strong> o <strong>undefined</strong>, de una forma similar al operador condicional.</p>
+<p>Por otra parte, podemos conseguir lo mismo pero cayendo en el callback si los valores son negativos con el operador or <code>||</code>.</p>
+<pre><code class="lang-javascript">let <span class="hljs-keyword">user</span>;
+
+console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">user</span> ?? <span class="hljs-string">"Anonymous"</span>);
+
+console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">user</span> || <span class="hljs-string">"Anonymous"</span>);
+
+<span class="hljs-keyword">user</span> = <span class="hljs-string">"Lucas"</span>;
+
+console.<span class="hljs-keyword">log</span>(<span class="hljs-keyword">user</span> ?? <span class="hljs-string">"Anonymous"</span>);
+
+console.<span class="hljs-keyword">log</span>((<span class="hljs-keyword">user</span> !== null &amp;&amp; <span class="hljs-keyword">user</span> !== undefined) ? <span class="hljs-keyword">user</span> : <span class="hljs-string">"Anonymous"</span>);
+</code></pre>
+                
+
+    </div>
+  </div>
+  <script src="../../prism.js"></script>
+  <script src="index.js">
+  </script>
+</body>
+
+</html>

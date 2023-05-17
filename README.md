@@ -1,4 +1,4 @@
-# Curso JavaScript
+# Curso JavaScript Personal Javier Flores Villatoro
 
 > Introducción a conceptos de JavaScript Moderno y TypeScript
 

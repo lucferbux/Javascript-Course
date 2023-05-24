@@ -78,7 +78,7 @@ Ahora podremos ejecutar nuestros ficheros typescript directamente ejecutando:
 > ts-node index.ts
 ```
 
-**Tenéis una sección dentro del proyecto llamada typescriptplayground en la que podéis interactuar y ejecutar ts-node y tsc**
+**Tenéis una sección dentro del proyecto llamada playground en la que podéis interactuar y ejecutar ts-node y tsc**
 
 ## Algunas Ventajas frente a JavaScript
 

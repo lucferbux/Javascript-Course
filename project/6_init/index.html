@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - Inicialización</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/project/project.html">< Back</a> 
+                    <h1>Inicialización</h1>
+                    <p class="caption">Como configurar el proyecto e iniciarlizarlo en local</p>
+                    <hr class="separator">
+
+
+<p>Antes de explicar el código en detenimiento, vamos a mencionar los ficheros de entrada y el ficharo de configuración de dependencias.</p>
+<h2 id="package-json">Package.json</h2>
+<p>Este fichero va a servir para definir las dependencias de nuestro proyecto, así como los scripts que vamos a utilizar para ejecutarlo. Para ello, los pasos que vamos a seguir para inicializar nuestro proyecto son los siguientes:</p>
+<ol>
+<li>Instalar las dependencias con <code>npm install</code>.</li>
+<li>Ejecutar el proyecto en local con <code>npm run start:dev</code>.</li>
+</ol>
+<pre><code class="lang-json">{
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"webpack-babel"</span>,
+    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Template of a Webpack Babel project"</span>,
+    <span class="hljs-attr">"main"</span>: <span class="hljs-string">"index.js"</span>,
+    <span class="hljs-attr">"scripts"</span>: {
+        <span class="hljs-attr">"clean"</span>: <span class="hljs-string">"rm dist/bundle.js"</span>,
+        <span class="hljs-attr">"build-dev"</span>: <span class="hljs-string">"webpack --mode development"</span>,
+        <span class="hljs-attr">"build-prod"</span>: <span class="hljs-string">"webpack --mode production"</span>,
+        <span class="hljs-attr">"start:dev"</span>: <span class="hljs-string">"webpack serve --mode development"</span>
+    },
+    <span class="hljs-attr">"devDependencies"</span>: {
+        <span class="hljs-attr">"css-loader"</span>: <span class="hljs-string">"^6.7.3"</span>,
+        <span class="hljs-attr">"favicons"</span>: <span class="hljs-string">"^7.0.2"</span>,
+        <span class="hljs-attr">"favicons-webpack-plugin"</span>: <span class="hljs-string">"^6.0.0"</span>,
+        <span class="hljs-attr">"file-loader"</span>: <span class="hljs-string">"^6.2.0"</span>,
+        <span class="hljs-attr">"html-loader"</span>: <span class="hljs-string">"^4.2.0"</span>,
+        <span class="hljs-attr">"html-webpack-plugin"</span>: <span class="hljs-string">"^5.5.0"</span>,
+        <span class="hljs-attr">"mini-css-extract-plugin"</span>: <span class="hljs-string">"^2.7.2"</span>,
+        <span class="hljs-attr">"node-sass"</span>: <span class="hljs-string">"^8.0.0"</span>,
+        <span class="hljs-attr">"sass-loader"</span>: <span class="hljs-string">"^13.2.0"</span>,
+        <span class="hljs-attr">"style-loader"</span>: <span class="hljs-string">"^3.3.1"</span>,
+        <span class="hljs-attr">"ts-loader"</span>: <span class="hljs-string">"^9.4.2"</span>,
+        <span class="hljs-attr">"typescript"</span>: <span class="hljs-string">"^4.9.4"</span>,
+        <span class="hljs-attr">"url-loader"</span>: <span class="hljs-string">"^4.1.1"</span>,
+        <span class="hljs-attr">"webpack"</span>: <span class="hljs-string">"^5.75.0"</span>,
+        <span class="hljs-attr">"webpack-cli"</span>: <span class="hljs-string">"^5.0.1"</span>,
+        <span class="hljs-attr">"webpack-dev-server"</span>: <span class="hljs-string">"^4.11.1"</span>
+    }
+}
+</code></pre>
+<h2 id="index-ts">Index.ts</h2>
+<p>No nos vamos a detener en el archivo html porque ya se mencionará en el módulo 3, vamos a ver por encima el fichero <code>index.ts</code> para comprobar como es el punto de entrada de nuestro proyecto.</p>
+<p>Podemos observar que vamos a importar los estilos y la función <code>getWeather</code> que hemos creado en el módulo anterior. Además, vamos a importar las funciones que hemos creado para manipular el DOM y vamos a añadir un evento al botón para que cuando se haga click, se ejecute la función <code>displayWeather</code>.</p>
+<p>Gracias a la separación de preocupaciones, nuestro código es mucho más legible y mantenible y podemos centrarnos en cada parte del proyecto de forma independiente.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { getWeather } <span class="hljs-keyword">from</span> <span class="hljs-string">'./networking/weather'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles/main.scss'</span>;
+<span class="hljs-keyword">import</span> { buttonClick, getCity, updateInteface } <span class="hljs-keyword">from</span> <span class="hljs-string">'./dom-manipulation/domManipulation'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> displayWeather = <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> city = getCity();
+    <span class="hljs-keyword">if</span>(city) {
+        <span class="hljs-keyword">const</span> weather = <span class="hljs-keyword">await</span> getWeather(city);
+        updateInteface(weather);
+    } 
+}
+
+<span class="hljs-keyword">if</span> (buttonClick) buttonClick.addEventListener(<span class="hljs-string">'click'</span>, displayWeather);
+</code></pre>
+                    
+
+    <script src="../../prism.js"></script>
+
+</body>
+
+</html>

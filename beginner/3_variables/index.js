@@ -23,7 +23,7 @@ console.log("%c2. Var vs Let", 'color: #229179; font-size: 16px;');
 
 console.log("%c2.1. Regals de Scope", 'color: #cf694a; font-size: 14px;');
 
-function scope_rules() {
+function scopeRules() {
     var hello = "Hello";
     let world = "World";
   
@@ -40,7 +40,7 @@ function scope_rules() {
     console.log("Reference Error");
 }
 
-scope_rules()
+scopeRules()
 
 console.log("%c2.2. Hoisting", 'color: #cf694a; font-size: 14px;');
 

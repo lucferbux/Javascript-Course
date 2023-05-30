@@ -20,11 +20,20 @@ Se requiere un navegador con herramientas de desarrollador:
 
 ## Ejercicio 3
 
-* Enumera 3 herramientas útiles dentro de las herramientas de desarrollo de **Google Chrome** o **Mozila Firefox** (inspector, consola, networking…) y explica su funcionamiento.
+* Programa un script que imprima todos los números del 1 al 100 que sean divisibles por 7.
 
 ## Ejercicio 4
 
-* Programa un script que imprima todos los números del 1 al 100 que sean divisibles por 7.
+* Siguiendo el ejemplo anterior, imagina que has usado un bucle como este:
+
+```javascript
+for(var i = 0; i < 101; i++) {
+    // Solución
+}
+console.log(i);
+```
+
+* ¿Qué valor tendrá la variable `i` al finalizar el bucle? ¿Por qué? ¿Habría alguna forma de evitar que la variable `i` se declare de forma global?
 
 ## Ejercicio 5
 
@@ -36,7 +45,7 @@ Se requiere un navegador con herramientas de desarrollador:
 
 `formatter.append(“World”) // Result: Hello World`
 
-* Ahora añade mediante el atributo prototype otro método que acepte también un solo argumento e imprima esa misma cadena en minúsculas.
+* **Una vez el objeto esté creado** añade mediante el atributo **prototype** (buscad en la documentación) otro método que acepte también un solo argumento e imprima esa misma cadena en minúsculas.
 
 `formatter.toLowerString(“I’m Lucas”) // Result: i’m lucas`
 

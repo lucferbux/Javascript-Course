@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - Modelo de datos</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/project/project.html">< Back</a> 
+                    <h1>Modelo de datos</h1>
+                    <p class="caption">Modelo de datos del proyecto</p>
+                    <hr class="separator">
+
+<p>Dentro de la definición de modelos tenemos dos apartados. El primero son las interfaces, que definirán la estructura de los datos que recibimos de la API y que permitirá manipular los datos de una forma más sencilla.</p>
+<pre><code class="lang-javascript"><span class="hljs-selector-tag">export</span> <span class="hljs-selector-tag">interface</span> <span class="hljs-selector-tag">WeatherResponse</span> {
+    <span class="hljs-attribute">weather</span>: [Weather];
+    <span class="hljs-attribute">base</span>: string;
+    <span class="hljs-attribute">main</span>: Main;
+    <span class="hljs-attribute">visibility</span>: number;
+    <span class="hljs-attribute">wind</span>: Wind;
+    <span class="hljs-attribute">name</span>: string;
+}
+
+<span class="hljs-selector-tag">interface</span> <span class="hljs-selector-tag">Wind</span> {
+    <span class="hljs-attribute">speed</span>: number;
+    <span class="hljs-attribute">deg</span>: number;
+    <span class="hljs-attribute">gust</span>: number
+}
+
+<span class="hljs-selector-tag">interface</span> <span class="hljs-selector-tag">Weather</span> {
+    <span class="hljs-attribute">id</span>: number;
+    <span class="hljs-attribute">main</span>: string;
+    <span class="hljs-attribute">description</span>: string;
+    <span class="hljs-attribute">icon</span>: string;
+}
+
+<span class="hljs-selector-tag">interface</span> <span class="hljs-selector-tag">Main</span> {
+    <span class="hljs-attribute">temp</span>: number;
+    <span class="hljs-attribute">feels_like</span>: number;
+    <span class="hljs-attribute">temp_min</span>: number;
+    <span class="hljs-attribute">temp_max</span>: number;
+    <span class="hljs-attribute">pressure</span>: number;
+    <span class="hljs-attribute">humidity</span>: number;
+}
+</code></pre>
+<p>El segundo apartado son la definición de constantes que nos permitirán mapear los datos de la API con los iconos que tenemos en la carpeta de assets. En particular esto se puede realizar mediante la transformación <code>keyof typeof</code>, convirtiendo el tipo de dato en un array de strings con los nombres de las propiedades del objeto.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> WeatherIcon = {
+    <span class="hljs-string">"01d"</span>: sunny,
+    <span class="hljs-string">"01n"</span>: sunny,
+    <span class="hljs-string">"02d"</span>: clearCloudy,
+    <span class="hljs-string">"02n"</span>: clearCloudy,
+    <span class="hljs-string">"03d"</span>: cloudy,
+    <span class="hljs-string">"03n"</span>: cloudy,
+    <span class="hljs-string">"04d"</span>: mostlyCloudy,
+    <span class="hljs-string">"04n"</span>: mostlyCloudy,
+    <span class="hljs-string">"09d"</span>: showers,
+    <span class="hljs-string">"09n"</span>: showers,
+    <span class="hljs-string">"10d"</span>: drizzle,
+    <span class="hljs-string">"10n"</span>: drizzle,
+    <span class="hljs-string">"11d"</span>: thunderstroms,
+    <span class="hljs-string">"11n"</span>: thunderstroms,
+    <span class="hljs-string">"13d"</span>: snow,
+    <span class="hljs-string">"13n"</span>: snow,
+    <span class="hljs-string">"50d"</span>: foggy,
+    <span class="hljs-string">"50n"</span>: foggy,
+} <span class="hljs-keyword">as</span> <span class="hljs-keyword">const</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> DayOfWeek = [
+    <span class="hljs-string">"Monday"</span>,
+    <span class="hljs-string">"Tuesday"</span>,
+    <span class="hljs-string">"Wednesday"</span>,
+    <span class="hljs-string">"Thursday"</span>,
+    <span class="hljs-string">"Friday"</span>,
+    <span class="hljs-string">"Saturday"</span>,
+    <span class="hljs-string">"Sunday"</span>
+];
+
+<span class="hljs-keyword">export</span> type WeatherIcontype = keyof <span class="hljs-keyword">typeof</span> WeatherIcon;
+</code></pre> 
+
+    <script src="../../prism.js"></script>
+
+</body>
+
+</html>

@@ -20,72 +20,25 @@
                     <p class="caption">Actividades Sesión Principiante</p>
                     <hr class="separator">
 
-                    <h2 id="ejercicio-1">Ejercicio 1</h2>
-                    <ul>
-                        <li>Crea un <a href="https://github.com/lucferbux/JavaScript-Course">nuevo fork del proyecto del
-                                curso</a></li>
-                        <li>Crea un nuevo archivo llamado <code>aboutme.js</code></li>
-                        <li>Crea un script en ese fichero con tres variables (elige un nombre descriptivo para cada
-                            una). La primera almacenará tu nombre y apellidos, la segunda tu profesión y la tercera el
-                            puesto que querrías desempeñar o el que desempeñas actualmente.</li>
-                        <li>Crea una nueva variable que almacene una cadena, que mediante <a
-                                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">template
-                                literals</a> incluya esta frase con las variables: <code>Hola, me llamo [variable del
-                                nombre] y me dedico a [variable profresión]. Estoy cursando este Máster porque me
-                                gustaría trabajar en [variable del puesto]</code></li>
-                        <li>Muestra por pantalla esta última variable.</li>
-                        <li>Importa tu fichero <code>aboutme.js</code> en el fichero <code>index.js</code> en la parte
-                            del Ejercicio 1 antes del <code>console.log(&quot;Ej 1&quot;)</code>.</li>
-                    </ul>
-                    <h2 id="ejercicio-2">Ejercicio 2</h2>
-                    <p>Se requiere un navegador con herramientas de desarrollador:</p>
-                    <ul>
-                        <li>Abre el navegador seleccionado y dirígete a la sección de <code>Actividades/Actividad
-                                1</code>.</li>
-                        <li>Abre la sección de <em>Sources</em> en las herramientas web, dirígete al fichero aboutme.js
-                            que creaste en la sección anterior y añade unos cuantos breakpoints en el script que has
-                            creado.</li>
-                        <li>Añade un breakpoint más en <code>console.log(“Ej 1”)</code>.</li>
-                        <li>¿Qué se ejecuta antes, la llamada a <code>console.log()</code> o el contenido del fichero
-                            <code>aboutme.js</code>? ¿Por qué?</li>
-                    </ul>
-                    <h2 id="ejercicio-3">Ejercicio 3</h2>
-                    <ul>
-                        <li>Enumera 3 herramientas útiles dentro de las herramientas de desarrollo de <strong>Google
-                                Chrome</strong> o <strong>Mozila Firefox</strong> (inspector, consola, networking…) y
-                            explica su funcionamiento.</li>
-                    </ul>
-                    <h2 id="ejercicio-4">Ejercicio 4</h2>
-                    <ul>
-                        <li>Programa un script que imprima todos los números del 1 al 100 que sean divisibles por 7.
-                        </li>
-                    </ul>
-                    <h2 id="ejercicio-5">Ejercicio 5</h2>
-                    <ul>
-                        <li>¿Cuales son las diferencias entre ejecutar un fichero JavaScript en un navegador web en formato
-                            <code>&lt;script&gt;</code> y en formato <code>&lt;script type=”module”&gt;</code>?. Busca documentación para enumerar los principales comportamientos de ambas.</li>
-                    </ul>
-                    <h2 id="ejercicio-6">Ejercicio 6</h2>
-                    <ul>
-                        <li>Crea un objeto llamado <strong>formatter</strong> con un atributo, que llamaremos
-                            <em>prefix</em>, que tendrá de valor <code>“Hello “</code>, y un método que llamaremos
-                            <em>append</em>, que imprimirá la concatenación entre el atributo <em>prefix</em> y la
-                            cadena que pasemos como argumento en el método.</li>
-                    </ul>
-                    <p><code>formatter.append(“World”) // Result: Hello World</code></p>
-                    <ul>
-                        <li>Ahora añade mediante el atributo prototype otro método que acepte también un solo argumento
-                            e imprima esa misma cadena en minúsculas.</li>
-                    </ul>
-                    <p><code>formatter.toLowerString(“I’m Lucas”) // Result: i’m lucas</code></p>
+<h2 id="ejercicio-1">Ejercicio 1</h2>
+<ul>
+<li>Crea un <a href="https://github.com/lucferbux/JavaScript-Course">nuevo fork del proyecto del curso</a></li>
+<li>Crea un nuevo archivo llamado <code>aboutme.js</code></li>
+<li>Crea un script en ese fichero con tres variables (elige un nombre descriptivo para cada una). La primera almacenará tu nombre y apellidos, la segunda tu profesión y la tercera el puesto que querrías desempeñar o el que desempeñas actualmente.</li>
+<li>Crea una nueva variable que almacene una cadena, que mediante <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">template literals</a> incluya esta frase con las variables: <code>Hola, me llamo [variable del nombre] y me dedico a [variable profresión]. Estoy cursando este Máster porque me gustaría trabajar en [variable del puesto]</code></li>
+<li>Muestra por pantalla esta última variable.</li>
+<li>Importa tu fichero <code>aboutme.js</code> en el fichero <code>index.js</code> en la parte del Ejercicio 1 antes del <code>console.log(&quot;Ej 1&quot;)</code>.</li>
+</ul>
+<h2 id="ejercicio-2">Ejercicio 2</h2>
+<p>Se requiere un navegador con herramientas de desarrollador:</p>
+<ul>
+<li>Abre el navegador seleccionado y dirígete a la sección de <code>Actividades/Actividad 1</code>.</li>
+<li>Abre la sección de <em>Sources</em> en las herramientas web, dirígete al fichero aboutme.js que creaste en la sección anterior y añade unos cuantos breakpoints en el script que has creado.</li>
+<li>Añade un breakpoint más en <code>console.log(“Ej 1”)</code>.</li>
+<li>¿Qué se ejecuta antes, la llamada a <code>console.log()</code> o el contenido del fichero <code>aboutme.js</code>? ¿Por qué?</li>
+</ul>
 
-
-
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/activity/1_session/index.js</p>
-                    <pre>
+<pre>
 <code class="language-javascript">// Ejercicio 1
 
 console.log("Ejercicio 1");
@@ -99,6 +52,37 @@ console.log("Ejercicio 1");
 // Ejercicio 5
 
 // Ejercicio 6</code></pre>
+
+<h2 id="ejercicio-3">Ejercicio 3</h2>
+<ul>
+<li>Programa un script que imprima todos los números del 1 al 100 que sean divisibles por 7.</li>
+</ul>
+<h2 id="ejercicio-4">Ejercicio 4</h2>
+<ul>
+<li>Siguiendo el ejemplo anterior, imagina que has usado un bucle como este:</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">for</span>(var <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; <span class="hljs-number">101</span>; <span class="hljs-built_in">i</span>++) {
+    // Solución
+}
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">i</span>);
+</code></pre>
+<ul>
+<li>¿Qué valor tendrá la variable <code>i</code> al finalizar el bucle? ¿Por qué? ¿Habría alguna forma de evitar que la variable <code>i</code> se declare de forma global?</li>
+</ul>
+<h2 id="ejercicio-5">Ejercicio 5</h2>
+<ul>
+<li>¿Cuáles son las diferencias entre ejecutar un fichero JavaScript en un navegador web en formato <code>&lt;script&gt;</code> y en formato <code>&lt;script type=”module”&gt;</code>?. Busca documentación para enumerar los principales comportamientos de ambas.</li>
+</ul>
+<h2 id="ejercicio-6">Ejercicio 6</h2>
+<ul>
+<li>Crea un objeto llamado <strong>formatter</strong> con un atributo, que llamaremos <em>prefix</em>, que tendrá de valor <code>“Hello “</code>, y un método que llamaremos <em>append</em>, que imprimirá la concatenación entre el atributo <em>prefix</em> y la cadena que pasemos como argumento en el método.</li>
+</ul>
+<p><code>formatter.append(“World”) // Result: Hello World</code></p>
+<ul>
+<li><strong>Una vez el objeto esté creado</strong> añade mediante el atributo <strong>prototype</strong> (buscad en la documentación) otro método que acepte también un solo argumento e imprima esa misma cadena en minúsculas.</li>
+</ul>
+<p><code>formatter.toLowerString(“I’m Lucas”) // Result: i’m lucas</code></p>
+
 
         </div>
     </div>

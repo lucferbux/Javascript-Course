@@ -84,7 +84,7 @@ Ahora vamos a hablar de las diferencias entre **var**, **let** y **const** ya qu
 La mayor diferencia tiene que ver con las **reglas de scope**, ya veremos más adelante en profundidad el concepto de Scope, básicamente es el entorno encapsulado en que se ejecuta un trozo de código. Las variables declaradas con `var` están delimitadas al **cuerpo de la función** (function scope) mientras que `let`está delimitado al bloque que le rodea, marcado por `{ }` (block scope).
 
 ```javascript
-function scope_rules() {
+function scopeRules() {
     var hello = "Hello";
     let world = "World";
   
@@ -101,7 +101,7 @@ function scope_rules() {
     console.log("Reference Error");
 }
 
-scope_rules()
+scopeRules()
 ```
 
 ### Hoisting

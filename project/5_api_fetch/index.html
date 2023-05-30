@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - API Fetch</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/project/project.html">< Back</a> 
+                    <h1>API Fetch</h1>
+                    <p class="caption">Networking del proyecto</p>
+                    <hr class="separator">
+
+
+<p>Esta sección es bastante sencilla, pero merece la pena explicarla. Vamos a crear un archivo <code>weather.ts</code> en el que vamos a definir las funciones que nos permitirán hacer las llamadas a la API.
+Este fichero hará uso de la función <code>fetch</code> de JavaScript, que nos permite hacer llamadas a APIs de forma sencilla. Si queréis saber más sobre esta función, podéis consultar la <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">documentación de MDN</a>.</p>
+<h2 id="async-await">Async Await</h2>
+<p>Como ya hemos mencionado en la sección de JavaScript, ahremos uso de asincronía para ejecutar las llamadas a la API. Para ello, haremos uso de la palabra reservada <code>async</code> en la definición de la función, y de la palabra reservada <code>await</code> en la llamada a la función <code>fetch</code>.</p>
+<pre><code class="lang-javascript">export const getWeather = async (city: string): Promise&lt;WeatherResponse&gt; =&gt; {
+    var requestOptions: RequestInit = {
+    method: <span class="hljs-string">"<span class="hljs-keyword">GET</span>"</span>,
+    redirect: <span class="hljs-string">"follow"</span>,
+    };
+
+    let response = await fetch(
+    `https://api.openweathermap.org/data/<span class="hljs-number">2</span>.<span class="hljs-number">5</span>/weather?q=${city}&amp;appid=ac6f213887b95d0b8171b342e702e112&amp;units=metric`,
+    requestOptions
+    );
+    return response.json();
+};
+</code></pre>
+<p>Podeís observar que la función <code>getWeather</code> devuelve una <code>Promise</code> de tipo <code>WeatherResponse</code>, que es la interfaz que hemos definido en el fichero <code>model/weatherResponses.ts</code>.</p>
+<h2 id="promises">Promises</h2>
+<p>Esta respuesta podría realizarse también con <code>Promises</code>, como ya vimos en su momento, vamos a ver rápidamente cómo refactorizar la llamada anterior para realizarla con Promesas.</p>
+<pre><code class="lang-javascript">export const getWeatherPromises = (city: string): Promise&lt;WeatherResponse&gt; =&gt; {
+    var requestOptions: RequestInit = {
+    method: <span class="hljs-string">"<span class="hljs-keyword">GET</span>"</span>,
+    redirect: <span class="hljs-string">"follow"</span>,
+    };
+
+    return fetch(
+    `https://api.openweathermap.org/data/<span class="hljs-number">2</span>.<span class="hljs-number">5</span>/weather?q=${city}&amp;appid=ac6f213887b95d0b8171b342e702e112&amp;units=metric`,
+    requestOptions
+    ).then((response) =&gt; response.json());
+};
+</code></pre>
+                    
+
+    <script src="../../prism.js"></script>
+
+</body>
+
+</html>

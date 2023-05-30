@@ -20,8 +20,17 @@
                     <p class="caption">Estructura del proyecto</p>
                     <hr class="separator">
 
-                    <h1 id="proyecto">Proyecto</h1>
-<p>En esta segunda sesión vamos a repasar la estructura del proyecto para ver como abordar el desarrollo.</p>
+<p>Ahora vamos a ver los ficheros de configuración y la estructura de carpetas que vamos a utilizar en el proyecto.
+Nuestro proyecto cuenta con la siguiente estructura:</p>
+<pre><code class="lang-bash">|<span class="hljs-literal">_</span> dist
+|<span class="hljs-literal">_</span> node_modules
+|<span class="hljs-literal">_</span> src
+|<span class="hljs-literal">_</span> webpack.config.js
+|<span class="hljs-literal">_</span> tsconfig.json
+|<span class="hljs-literal">_</span> <span class="hljs-keyword">package</span>.json
+|<span class="hljs-literal">_</span> <span class="hljs-keyword">package</span>-lock.json
+|<span class="hljs-literal">_</span> .gitignore
+</code></pre>
 <h2 id="ficheros-de-configuraci-n">Ficheros de configuración</h2>
 <p>En la <strong>raíz del proyecto</strong> encontramos diversos archivos de configuración y documentación general. Estos ficheros se encuentran aquí por su facilidad de acceso y debido a que por convención, todas las herramientas esperan esta información y configuración en la carpeta principal del proyecto. Estos archivos son:</p>
 <ul>
@@ -31,55 +40,9 @@
 <li><strong>README</strong>: Archivo que contiene información acerca del proyecto en formato <strong>markdown</strong>. En muchos proveedores de control de versiones como <a href="https://github.com">Github</a> o <a href="https://about.gitlab.com">Gitlab</a> convierten este fichero en <strong>HTML</strong> para renderizarlo en la página principal.</li>
 <li><strong>LICENSE</strong>: Licencia del proyecto, es recomendable elegir una licencia para tu proyecto en caso de hacerlo público, para proteger el código de uso indebido. Hay bastantes guías acerca de la elección de licencias como <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">esta de GitHub</a>.</li>
 <li><strong>.gitignore</strong>: Fichero que indica a git que archivos ignorar y no incluir en el control de versiones. Muy útil para excluir cosas como <strong>node_modules</strong> o ficheros de configuración como <strong>.env</strong>.</li>
+<li><strong>webpack.config.js</strong>: Ya hemos mencionado este fichero, sirve para configurar el comportamiento de webpack.</li>
 <li><strong>meta</strong>: Carpeta donde almacenar documentación y recursos.</li>
 </ul>
-<h2 id="carpeta-src">Carpeta src</h2>
-<p><img class="container-image" src="/meta/0_20_scaffolding.png" alt="Scaffolding"></p>
-<p>En la carpeta <code>src</code> encontraremos el código necesario para desarrollar nuestra aplicación, vamos a repasar algunos de los ficheros más importantes.</p>
-<h3 id="root">root</h3>
-<p>En la carpeta raíz <code>/src</code> podemos encontrar los siguientes archivos:</p>
-<ul>
-<li><strong>index.ts:</strong>: El punto de entrada de nuestra aplicación, aquí pondremos la lógica principal de nuestra web, e importaremos todos los ficheros que necesitemos para conseguirlo.</li>
-<li><strong>index.html:</strong> El archivo html de entrada de nuestro proyecto, si observáis el fichero, no tiene importado ni los ficheros <strong>javascript</strong> ni los estilos <strong>css</strong> ya que Webpack se encargará de importarlos en tiempo de compilación.</li>
-<li><strong>declaration.d.ts:</strong> Fichero de declaración de módulos para typescript, en nuestro proyecto nos permite <strong>importar y usar los recursos gráficos</strong>.</li>
-</ul>
-<h3 id="dom-manipulation">dom-manipulation</h3>
-<p>En esta carpeta tendremos toda la lógica de manipulación del DOM. De todo esto hablaremos en el <strong>Módulo 2</strong> del Máster, pero si queréis ir entendiendo un poco la lógica, tenéis este estupenda <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">guía de mdn</a> con toda la información necesaria para saber manipular DOM con JavaScript.</p>
-<ul>
-<li><strong>domManipulation.ts:</strong> En este fichero tendremos que <strong>crear todas las referencias de elementos del index.html</strong>, y luego añadir la lógica de las funciones declaradas para procesar la aplicación.</li>
-</ul>
-<h3 id="images">images</h3>
-<p>Aquí tendremos todos los recursos gráficos de la aplicación, que luego importaremos gracias al <code>declaration.d.ts</code>.</p>
-<h3 id="mock">mock</h3>
-<p>En esta carpeta tendremos un ejemplo de respuesta si queremos hacer un <em>mock</em> de la repuesta antes de implementar el <strong>networking</strong></p>
-<h3 id="model">model</h3>
-<p>Aquí incluiremos las <code>interfaces</code> de TypeScript de todo el modelo de la aplicación. Tendremos una constante llamada <code>WeatherIcon</code> que nos permitirá implementar de forma genérica el icono necesario.</p>
-<pre><code class="lang-javascript">export const WeatherIcon = {
-    <span class="hljs-string">"01d"</span>: sunny,
-    <span class="hljs-string">"01n"</span>: sunny,
-    <span class="hljs-string">"02d"</span>: clearCloudy,
-    <span class="hljs-string">"02n"</span>: clearCloudy,
-    <span class="hljs-string">"03d"</span>: <span class="hljs-keyword">cloudy,
-</span>    <span class="hljs-string">"03n"</span>: <span class="hljs-keyword">cloudy,
-</span>    <span class="hljs-string">"04d"</span>: mostlyCloudy,
-    <span class="hljs-string">"04n"</span>: mostlyCloudy,
-    <span class="hljs-string">"09d"</span>: <span class="hljs-keyword">showers,
-</span>    <span class="hljs-string">"09n"</span>: <span class="hljs-keyword">showers,
-</span>    <span class="hljs-string">"10d"</span>: drizzle,
-    <span class="hljs-string">"10n"</span>: drizzle,
-    <span class="hljs-string">"11d"</span>: thunderstroms,
-    <span class="hljs-string">"11n"</span>: thunderstroms,
-    <span class="hljs-string">"13d"</span>: snow,
-    <span class="hljs-string">"13n"</span>: snow,
-    <span class="hljs-string">"50d"</span>: foggy,
-    <span class="hljs-string">"50n"</span>: foggy,
-} as const<span class="hljs-comment">;</span>
-</code></pre>
-<h3 id="networking">networking</h3>
-<p>Aquí implementaremos la lógica de llamada de la aplicación mediante la librería <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>.</p>
-<h3 id="styles">styles</h3>
-<p>En esta última carpeta tendremos los ficheros de estilo de nuestra aplicación, en los que haremos uso de <a href="https://sass-lang.com">sass css</a>.</p>
-
         </div>
     </div>
 

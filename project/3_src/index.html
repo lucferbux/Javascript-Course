@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - Lógica de aplicación</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/project/project.html">< Back</a> 
+                    <h1>Lógica de aplicación</h1>
+                    <p class="caption">Elementos que conforman la lógica de aplicación</p>
+                    <hr class="separator">
+
+<p>Ahora nos vamos a centrar en la carpeta <code>src</code>, que contendrá la lógica de nuestra aplicación. Su estructura es la siguiente:</p>
+<pre><code class="lang-bash"><span class="hljs-string">|_ dom-manipulation</span>
+    <span class="hljs-string">|_ domManipulation.ts</span>
+<span class="hljs-string">|_ images</span>
+    <span class="hljs-string">|_ ...</span>
+<span class="hljs-string">|_ mock</span>
+    <span class="hljs-string">|_ responses.ts</span>
+<span class="hljs-string">|_ model</span>
+    <span class="hljs-string">|_ weatherResponses.ts</span>
+<span class="hljs-string">|_ networking</span>
+    <span class="hljs-string">|_ weather.ts</span>
+<span class="hljs-string">|_ styles</span>
+    <span class="hljs-string">|_ main.scss</span>
+<span class="hljs-string">|_ declaration.d.ts</span>
+<span class="hljs-string">|_ index.ts</span>
+<span class="hljs-string">|_ index.html</span>
+</code></pre>
+<h2 id="carpeta-src">Ficheros</h2>
+<p>En la carpeta <code>src</code> encontraremos el código necesario para desarrollar nuestra aplicación, vamos a repasar algunos de los ficheros más importantes.</p>
+<h3 id="root">root</h3>
+<p>En la carpeta raíz <code>/src</code> podemos encontrar los siguientes archivos:</p>
+<ul>
+<li><strong>index.ts:</strong>: El punto de entrada de nuestra aplicación, aquí pondremos la lógica principal de nuestra web, e importaremos todos los ficheros que necesitemos para conseguirlo.</li>
+<li><strong>index.html:</strong> El archivo html de entrada de nuestro proyecto, si observáis el fichero, no tiene importado ni los ficheros <strong>javascript</strong> ni los estilos <strong>css</strong> ya que Webpack se encargará de importarlos en tiempo de compilación.</li>
+<li><strong>declaration.d.ts:</strong> Fichero de declaración de módulos para typescript, en nuestro proyecto nos permite <strong>importar y usar los recursos gráficos</strong>.</li>
+</ul>
+<h3 id="dom-manipulation">dom-manipulation</h3>
+<p>En esta carpeta tendremos toda la lógica de manipulación del DOM. De todo esto hablaremos en el <strong>Módulo 2</strong> del Máster, pero si queréis ir entendiendo un poco la lógica, tenéis este estupenda <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">guía de mdn</a> con toda la información necesaria para saber manipular DOM con JavaScript.</p>
+<ul>
+<li><strong>domManipulation.ts:</strong> En este fichero tendremos que <strong>crear todas las referencias de elementos del index.html</strong>, y luego añadir la lógica de las funciones declaradas para procesar la aplicación.</li>
+</ul>
+<h3 id="images">images</h3>
+<p>Aquí tendremos todos los recursos gráficos de la aplicación, que luego importaremos gracias al <code>declaration.d.ts</code>.</p>
+<h3 id="mock">mock</h3>
+<p>En esta carpeta tendremos un ejemplo de respuesta si queremos hacer un <em>mock</em> de la repuesta antes de implementar el <strong>networking</strong></p>
+<h3 id="model">model</h3>
+<p>Aquí incluiremos las <code>interfaces</code> de TypeScript de todo el modelo de la aplicación.</p>
+<h3 id="networking">networking</h3>
+<p>Aquí implementaremos la lógica de llamada de la aplicación mediante la librería <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>.</p>
+<h3 id="styles">styles</h3>
+<p>En esta última carpeta tendremos los ficheros de estilo de nuestra aplicación, en los que haremos uso de <a href="https://sass-lang.com">sass css</a>.</p>
+        </div>
+    </div>
+
+    <script src="../../prism.js"></script>
+
+</body>
+
+</html>

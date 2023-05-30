@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - DOM Manipulation</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/project/project.html">< Back</a> 
+                    <h1>DOM Manipulation</h1>
+                    <p class="caption">Modificar la interfaz a través de TypeScript</p>
+                    <hr class="separator">
+
+
+<p>Dentro de este fichero, podemos identificar tres partes:</p>
+<h2 id="importaci-n-de-dependencias">Importación de dependencias</h2>
+<p>Primero importaremos los modelos de TypeScript necesarios para poder implementar correctamente la lógica de aplicación:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { DayOfWeek, WeatherIcon, WeatherIcontype, WeatherResponse } <span class="hljs-keyword">from</span> <span class="hljs-string">"../model/weatherResponse"</span>;
+</code></pre>
+<h2 id="referencias-a-elementos-del-dom">Referencias a elementos del DOM</h2>
+<p>Ahora vamos a definir las diferentes referencias a los elementos del dom mediante el método <code>getElementById</code>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> buttonClick = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"button-location"</span>);
+<span class="hljs-keyword">const</span> temperature =  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"weather-temp"</span>);
+<span class="hljs-keyword">const</span> weatherDescription = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"weather-desc"</span>);
+<span class="hljs-keyword">const</span> WeatherIconPng = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"weather-icon"</span>);
+<span class="hljs-keyword">const</span> LocationText = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"location-text"</span>);
+<span class="hljs-keyword">const</span> DateDayName = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"date-dayname"</span>);
+<span class="hljs-keyword">const</span> DateDay = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"date-day"</span>);
+<span class="hljs-keyword">const</span> maxTemp = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"text-temp-max"</span>);
+<span class="hljs-keyword">const</span> minTemp = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"text-temp-min"</span>);
+<span class="hljs-keyword">const</span> humidity = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"text-humidity"</span>);
+<span class="hljs-keyword">const</span> wind = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"text-wind"</span>);
+<span class="hljs-keyword">const</span> locationInput = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"weather-location-input"</span>);
+</code></pre>
+<h2 id="funciones-de-manipulaci-n">Funciones de manipulación</h2>
+<p>Por último, vamos a definir las funciones de manipulación del DOM, que serán las encargadas de actualizar la interfaz de usuario con los datos de la API.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> updateInteface = (weather: WeatherResponse) :<span class="hljs-built_in">void</span> =&gt; {
+
+    <span class="hljs-keyword">if</span> (temperature) temperature.textContent = <span class="hljs-built_in">Math</span>.floor(weather.main.temp).toString() + <span class="hljs-string">"ºC"</span>;
+    <span class="hljs-keyword">if</span> (weatherDescription) weatherDescription.textContent = weather.weather[<span class="hljs-number">0</span>].main;
+    changeWeatherIcon(weather.weather[<span class="hljs-number">0</span>].icon ?? <span class="hljs-string">'01d'</span>);
+
+    <span class="hljs-keyword">if</span> (LocationText) LocationText.textContent = weather.name;
+    <span class="hljs-keyword">if</span> (DateDayName) DateDayName.textContent = getDayOfWeek();
+    <span class="hljs-keyword">if</span> (DateDay) DateDay.textContent = getDate();
+
+    <span class="hljs-keyword">if</span> (maxTemp) maxTemp.textContent = <span class="hljs-built_in">Math</span>.floor(weather.main.temp_max) + <span class="hljs-string">" ºC"</span>;
+    <span class="hljs-keyword">if</span> (minTemp) minTemp.textContent = <span class="hljs-built_in">Math</span>.floor(weather.main.temp_min) + <span class="hljs-string">" ºC"</span>;
+    <span class="hljs-keyword">if</span> (humidity) humidity.textContent = weather.main.humidity.toString() + <span class="hljs-string">" %"</span>;
+    <span class="hljs-keyword">if</span> (wind) wind.textContent = weather.wind.speed.toString() + <span class="hljs-string">" m/s"</span>;
+
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCity</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+    <span class="hljs-keyword">if</span>(locationInput) {
+        <span class="hljs-keyword">return</span> (locationInput as HTMLInputElement).value;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDayOfWeek</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+    <span class="hljs-keyword">let</span> day = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+    <span class="hljs-keyword">return</span> DayOfWeek[day.getDay()];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDate</span>(<span class="hljs-params"></span>): <span class="hljs-title">string</span> </span>{
+    <span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+    <span class="hljs-keyword">return</span> date.toLocaleDateString(<span class="hljs-string">"es-ES"</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeWeatherIcon</span>(<span class="hljs-params">weatherImageRef: <span class="hljs-built_in">string</span></span>) </span>{
+    <span class="hljs-keyword">const</span> weatherMap = [weatherImageRef];
+    validateImage(weatherMap);
+    <span class="hljs-keyword">const</span> mappedWeather = weatherMap.map(weather =&gt; WeatherIcon[weather])[<span class="hljs-number">0</span>] ?? WeatherIcon[<span class="hljs-string">"01d"</span>];
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> mappedWeather[<span class="hljs-number">0</span>] === <span class="hljs-string">"string"</span>) {
+        <span class="hljs-keyword">if</span> (WeatherIconPng) (WeatherIconPng as HTMLImageElement).src = mappedWeather;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateImage</span>(<span class="hljs-params">values: <span class="hljs-built_in">string</span>[]</span>): <span class="hljs-title">asserts</span> <span class="hljs-title">values</span> <span class="hljs-title">is</span> <span class="hljs-title">WeatherIcontype</span>[] </span>{
+    <span class="hljs-keyword">if</span> (!values.every(isValidImage)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'invalid image'</span>);    
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValidImage</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">value</span> <span class="hljs-title">is</span> <span class="hljs-title">WeatherIcontype</span> </span>{
+    <span class="hljs-keyword">return</span> value <span class="hljs-keyword">in</span> WeatherIcon;
+}
+</code></pre>
+                    
+
+    <script src="../../prism.js"></script>
+
+</body>
+
+</html>

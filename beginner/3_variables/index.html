@@ -99,7 +99,7 @@ console.<span class="hljs-keyword">log</span>($ + _); <span class="hljs-comment"
                         ejecuta un trozo de código. Las variables declaradas con <code>var</code> están delimitadas al
                         <strong>cuerpo de la función</strong> (function scope) mientras que <code>let</code>está
                         delimitado al bloque que le rodea, marcado por <code>{ }</code> (block scope)</p>
-                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scope_rules</span>(<span class="hljs-params"></span>) </span>{
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scopeRules</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> hello = <span class="hljs-string">"Hello"</span>;
     <span class="hljs-keyword">let</span> world = <span class="hljs-string">"World"</span>;
 
@@ -116,7 +116,7 @@ console.<span class="hljs-keyword">log</span>($ + _); <span class="hljs-comment"
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Reference Error"</span>);
 }
 
-scope_rules()
+scopeRules()
 </code></pre>
                     <h3 id="hoisting">Hoisting</h3>
                     <p>Hoisting es uno de los términos más confusos en JavaScript, básicamente ya hemos hablado de que

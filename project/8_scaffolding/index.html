@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - Instalación del proyecto</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/project/project.html">< Back</a> 
+                    <h1>Instalaciónd el proyecto</h1>
+                    <p class="caption">Instalación desde cero</p>
+                    <hr class="separator">
+
+<p>En este apartado vamos a ver como crear el proyecto desde 0 para que podamos trabajar con el. Los pasos son los siguientes:</p>
+<ol>
+<li>Creamos el proyecto vacío con el siguiente comando:</li>
+
+<pre><code class="lang-bash"><span class="hljs-built_in">mkdir</span> typescript-weather &amp;&amp; <span class="hljs-built_in">cd</span> typescript-weather
+</code></pre>
+
+<li>Inicializamos el proyecto con el siguiente comando:</li>
+
+<pre><code class="lang-bash"><span class="hljs-built_in">npm</span> init -y
+</code></pre>
+
+<li>Instalamos las dependencias necesarias para el proyecto:</li>
+
+<pre><code class="lang-bash">npm install css-loader@<span class="hljs-number">6.8</span><span class="hljs-number">.1</span> favicons@<span class="hljs-number">7.1</span><span class="hljs-number">.2</span> favicons-webpack-plugin@<span class="hljs-number">6.0</span><span class="hljs-number">.0</span> file-loader@<span class="hljs-number">6.2</span><span class="hljs-number">.0</span> html-loader@<span class="hljs-number">4.2</span><span class="hljs-number">.0</span> html-webpack-plugin@<span class="hljs-number">5.5</span><span class="hljs-number">.0</span> mini-css-extract-plugin@<span class="hljs-number">2.7</span><span class="hljs-number">.6</span> node-sass@<span class="hljs-number">9.0</span><span class="hljs-number">.0</span> sass-loader@<span class="hljs-number">13.3</span><span class="hljs-number">.1</span> style-loader@<span class="hljs-number">3.3</span><span class="hljs-number">.3</span> ts-loader@<span class="hljs-number">9.4</span><span class="hljs-number">.3</span> typescript@<span class="hljs-number">5.0</span><span class="hljs-number">.4</span> url-loader@<span class="hljs-number">4.1</span><span class="hljs-number">.1</span> webpack@<span class="hljs-number">5.84</span><span class="hljs-number">.1</span> webpack-cli@<span class="hljs-number">5.1</span><span class="hljs-number">.1</span> webpack-dev-server@<span class="hljs-number">4.15</span><span class="hljs-number">.0</span>
+</code></pre>
+
+<li><p>Del <a href="https://github.com/lucferbux/TypescriptWeatherExample">proyecto original</a> copiamos los archivos <code>tsconfig.json</code> y <code>webpack.config.js</code> en la raíz del proyecto para habilitar el uso de TypeScript y Webpack como vimos en la <a href="../1_entorno/README.md">sección inicial</a>.</p>
+</li>
+<li><p>Copiamos la carpeta <code>src</code> con la lógica de la aplicacióne la raíz del proyecto.</p>
+</li>
+<li><p>Ahora solo tenemos que ejecutar una copia en local con <code>npm run start:dev</code></p>
+</li>
+</ol>
+                    
+                    
+
+        </div>
+    </div>
+
+    <script src="../../prism.js"></script>
+
+</body>
+
+</html>

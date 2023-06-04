@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+  <title>Networking</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="section">
+      <a class="back-button" href="/advanced/advanced.html">
+        < Back</a> <h1 id="iteraci-n-avanzada">Networking</h1>
+        <p class="caption">Peticiones a través del navegador</p>
+        <hr class="separator">
+
+          <p>Vamos a combinar ahora rápidament lo visto en la sección de asincronía con peticiones externas a un servicio API. Vamos a hacer uso del método <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET">GET</a> para obtener información de una API externa.</p>
+<p>Para realizar la petición, vamos a hacer uso de la API <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">fetc</a> incluída por defecto en el navegador. Esta API nos permite realizar peticiones HTTP de forma sencilla con una sintáxis sencilla.</p>
+<p>Fetch nos devuelve una <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">promesa</a> que podemos resolver con el método <code>then</code> y que nos permite obtener el resultado de la petición. En caso de que la petición falle, podemos obtener el error con el método <code>catch</code>. Podemos traducir esto a <code>async/await</code> usando la sintaxis que ya hemos visto.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> getUsers = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">"https://jsonplaceholder.typicode.com/users"</span>)
+        .then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> response.json())
+        .then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> data);
+};
+
+<span class="hljs-keyword">const</span> getPosts = <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">"https://jsonplaceholder.typicode.com/posts"</span>);
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> response.json();
+    <span class="hljs-keyword">return</span> data;
+};
+</code></pre>
+<p>Ahora simplemente vamos a coger la referencia de los botones y vamos a llamar a las funciones cuando se haga click en ellos.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> getUsersButton = <span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(<span class="hljs-string">"#getUsers"</span>);
+getUsersButton.addEventListener(<span class="hljs-string">"click"</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> getUsers();
+    console.log(users);
+});
+
+<span class="hljs-keyword">const</span> getPostsButton = <span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(<span class="hljs-string">"#getPosts"</span>);
+getPostsButton.addEventListener(<span class="hljs-string">"click"</span>, () =&gt; {
+    getPosts().then((data) =&gt; console.log(data));
+});
+</code></pre>
+
+          <button class="custom-button" id="getUsers">Get Users</button>
+          <button class="custom-button" id="getPosts">Get Posts</button>
+
+    </div>
+  </div>
+  <script src="../../prism.js"></script>
+  <script src="index.js">
+  </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-console.log("%cManipulación de tipos", "color: #3913B8; font-size: 20px;");
+console.log("%cGenericos", "color: #3913B8; font-size: 20px;");
 
 console.log("%c1. Genéricos", "color: #229179; font-size: 16px;");
 

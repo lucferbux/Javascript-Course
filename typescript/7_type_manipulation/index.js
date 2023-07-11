@@ -9,7 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-console.log("%cManipulación de tipos", "color: #3913B8; font-size: 20px;");
+console.log("%cGenéricos", "color: #3913B8; font-size: 20px;");
 console.log("%c1. Genéricos", "color: #229179; font-size: 16px;");
 console.log("-------- overview ----------");
 var nums = [1, 3, 4];

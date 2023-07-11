@@ -1,8 +1,6 @@
-# Manipulación de tipos
+# Genéricos
 
-## Genéricos
-
-### Overview
+## Overview
 
 Uno de los puntos más importantes dentro de la Ingeniería de Software es crear componentes que sean **robustos** y **reusables**. Es por ello que en esta sección nos centraremos en introducir el concepto de `generics`, que permitirá que nuestro código sea más flexible y reusable. El objetivo principal de los **genéricos** es crear un componente que pueda trabajar con una variedad de tipos en contraposición a funcionar exclusivamente con un sólo tipo, como hemos estado viendo hasta ahora.
 

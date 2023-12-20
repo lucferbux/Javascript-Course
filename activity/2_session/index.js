@@ -1,4 +1,17 @@
-// Ejercicio 1
+// Ejercicio 1 
+
+const getObjectProperties = (obj) => Object.keys(obj);
+
+const person = {
+    name: "Lucas",
+    age: 27,
+    profession: "Developer",
+};
+
+const result = getObjectProperties(person);
+console.log(result); // Output: ["name", "age", "profession"]
+
+
 
 // Ejercicio 2
 

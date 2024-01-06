@@ -8,15 +8,23 @@ console.log("Ejercicio 1");
 
 // Ejercicio 3
 
-// -- A vuestra elección --
-
-// Ejercicio 4
-
 for (let i = 0; i < 101; i++) {
   if (i % 7 == 0) {
     console.log(i);
   }
 }
+
+// Ejercicio 4
+
+// for(var i = 0; i < 101; i++) {
+//   // Solución
+// }
+// console.log(i);
+
+
+// Tendrá valor de 101
+// El valor de i es 101 porque es el último valor que se le asigna en el bucle for, y al ser var, es una variable global, por lo que se puede acceder a ella desde fuera del bucle.
+// Cambiándolo a let
 
 const alternative = Array.from(Array(101).keys()).filter(
   (number) => number % 7 === 0

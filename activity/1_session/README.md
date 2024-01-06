@@ -48,4 +48,3 @@ console.log(i);
 * **Una vez el objeto esté creado** añade mediante el atributo **prototype** (buscad en la documentación) otro método que acepte también un solo argumento e imprima esa misma cadena en minúsculas.
 
 `formatter.toLowerString(“I’m Lucas”) // Result: i’m lucas`
-

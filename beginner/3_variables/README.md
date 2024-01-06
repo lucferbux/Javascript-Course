@@ -13,9 +13,13 @@ let variable;
 Una variable puede almacenar valores, para ello usamos el operador de asignación `=`:
 
 ``` javascript
-let firstVariable;
-firstVariable = "Hola mundo";
-console.log(firstVariable);
+var firstVar = "Hello World";
+let secondVar = "I 'm Lucas";
+const ID_PERSON = "28934289D";
+
+console.log(firstVar);
+console.log(secondVar);
+console.log(ID_PERSON);
 ```
 
 En el ejemplo anterior, la cadena se almacena en un espacio de memoria apuntando a la variable `firstVariable`, así, podremos acceder a este valor siempre que referenciemos a la variable.
@@ -80,7 +84,7 @@ Ahora vamos a hablar de las diferencias entre **var**, **let** y **const** ya qu
 La mayor diferencia tiene que ver con las **reglas de scope**, ya veremos más adelante en profundidad el concepto de Scope, básicamente es el entorno encapsulado en que se ejecuta un trozo de código. Las variables declaradas con `var` están delimitadas al **cuerpo de la función** (function scope) mientras que `let`está delimitado al bloque que le rodea, marcado por `{ }` (block scope).
 
 ```javascript
-function scope_rules() {
+function scopeRules() {
     var hello = "Hello";
     let world = "World";
   
@@ -97,7 +101,7 @@ function scope_rules() {
     console.log("Reference Error");
 }
 
-scope_rules()
+scopeRules()
 ```
 
 ### Hoisting

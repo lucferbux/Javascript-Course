@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+  <title>Gestión de errores</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="section">
+      <a class="back-button" href="/advanced/advanced.html">
+        < Back</a> <h1 id="iteraci-n-avanzada">Iteración avanzada</h1>
+          <blockquote>
+            <p>Uso de map, filter, reduce y forech</p>
+          </blockquote>
+          <p>Ya vimos en la primera sesión como iterar en elementos iterables como <strong>Arrays</strong>. Normalmente
+            con un bucle for podemos realizar casi cualquier operación, pero para existen métodos diseñados
+            específicamente para operaciones pesadas sobre elementos iterables. Vamos a ver algunos de ellos.</p>
+          <h2 id="map">Map</h2>
+          <p>El método <code>.map()</code> iterar todos los elementos de un iterable, retornando un nuevo iterable, dada
+            una determinada función o callback a ejecutar en cada elemento que lo compone.</p>
+          <pre><code class="lang-javascript"><span class="hljs-comment">// map([🌽, 🐮, 🐔], cook) =&gt; [🍿, 🍔, 🍳]</span>
+
+<span class="hljs-keyword">const</span> iterableArrayMap = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">const</span> newArrayMap = iterableArrayMap.map(<span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> number + <span class="hljs-number">1</span>);
+</code></pre>
+          <p>Podemos ver que por cada elemento, vamos a realizar una operación, en este caso la suma de 1.</p>
+          <h2 id="filter">Filter</h2>
+          <p>El método <code>.filter()</code> retorna un iterable con los elementos que cumplan una condición.</p>
+          <pre><code class="lang-javascript"><span class="hljs-comment">// filter([🍿, 🍔, 🍳], isVegetarian) =&gt;  [🍿, 🍳]</span>
+
+const iterableArrayFilter = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>];
+const filteredValues = iterableArrayFilter.filter(number =&gt; number &gt; <span class="hljs-number">20</span>);
+</code></pre>
+          <h2 id="reduce">Reduce</h2>
+          <p>El método <code>.reduce()</code> permite &quot;reducir&quot; o &quot;transformar&quot; los elementos de un
+            iterable a un único valor.</p>
+          <pre><code class="lang-javascript"><span class="hljs-comment">// reduce([🍿, 🍳], eat) =&gt; 💩</span>
+
+<span class="hljs-keyword">const</span> interableArrayReduce = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>];
+<span class="hljs-keyword">const</span> total = interableArrayReduce.reduce(<span class="hljs-function">(<span class="hljs-params">accumulator, number</span>) =&gt;</span> {
+ <span class="hljs-keyword">return</span> accumulator + number;
+});
+</code></pre>
+          <h2 id="foreach">Foreach</h2>
+          <p>Este método, similar al <code>map()</code>, ejecutará el callback indicado por cada elemento del interable.
+            La mayor diferencia entre ambos, es que este método no retorna nada, simplemente se limitará a recorrerlo.
+          </p>
+          <pre><code class="lang-javascript"><span class="hljs-comment">// [🐱, 🐹, 🐰].foreach() </span>
+
+<span class="hljs-keyword">const</span> iterableArrayForEach = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">const</span> sumNumbers = <span class="hljs-function">(<span class="hljs-params">numbers</span>) =&gt;</span> number + <span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> newArrayForEach = iterableArrayForEach.forEach(<span class="hljs-function"><span class="hljs-params">number</span> =&gt;</span> sumNumbers(number));
+</code></pre>
+
+
+    </div>
+  </div>
+  <script src="../../prism.js"></script>
+  <script src="index.js">
+  </script>
+</body>
+
+</html>

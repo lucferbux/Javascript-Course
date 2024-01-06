@@ -1,7 +1,7 @@
-console.log("%cOperadores", 'color: //3913B8; font-size: 20px;');
+console.log("%cOperadores", 'color: #3913B8; font-size: 20px;');
 
 // Operadores Aritméticos
-console.log("%cOperadores Aritméticos", 'color: //229179; font-size: 16px;');
+console.log("%cOperadores Aritméticos", 'color: #229179; font-size: 16px;');
 let a = 30;
 let b = 50;
 
@@ -31,7 +31,7 @@ console.log(`exp: ${exp}`);
 
 
 // Operadores de Comparación
-console.log("%cOperadores de Compraración", 'color: //229179; font-size: 16px;');
+console.log("%cOperadores de Compraración", 'color: #229179; font-size: 16px;');
 // Ejemplos de operadores de comparación
 a = 30;
 b = 50;
@@ -50,11 +50,15 @@ console.log(`eq3: ${eq3}`);
 
 
 // Inequality
-let ieq = a != b;
-console.log(`ieq: ${ieq}`);
+//let ieq = a != b;
+//console.log(`ieq: ${ieq}`);
 
 let ieq2 = a != c;
 console.log(`ieq2: ${ieq2}`);
+
+// Inequality + type
+let ieq = a !== b;
+console.log(`ieq: ${ieq}`);
 
 // Greater
 let gt = a > b;
@@ -77,7 +81,7 @@ console.log(30 >= 30);
 
 
 // Operadores de Asignación
-console.log("%cOperadores de Asignación", 'color: //229179; font-size: 16px;');
+console.log("%cOperadores de Asignación", 'color: #229179; font-size: 16px;');
 // Ejemplos de operadores de asignación
 a = 30;
 b = 50;
@@ -107,7 +111,7 @@ c /= a;
 console.log(c);
 
 // Operadores Lógicos, de Identidad y Pertenencia
-console.log("%cOperadores Lógicos, de Identidad y Pertenencia", 'color: //229179; font-size: 16px;');
+console.log("%cOperadores Lógicos, de Identidad y Pertenencia", 'color: #229179; font-size: 16px;');
 a = 30;
 b = 50;
 c = [20, 30, 70, 80];

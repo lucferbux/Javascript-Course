@@ -5,9 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="styles.css">
+    <link rel='manifest' href='./manifest.json'>
     <title>JavaScript Course</title>
+
+    <script>
+        // Registering our Service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            console.log('Successfully registered service worker');
+        }
+    </script>
 </head>
 
 <body>
@@ -20,13 +31,15 @@
 
             <h2 id="resppositories">Repositorio</h2>
 
-            <p>Bienvenido al curso de JavaScript & TypeScript del Máster de Full Stack Development. En este las próximas cuatro sesiones veremos los conceptos fundamentales de estos lenguajes de programación. 
+            <p>Bienvenido al curso de JavaScript & TypeScript del Máster de Full Stack Development. En este las próximas
+                cuatro sesiones veremos los conceptos fundamentales de estos lenguajes de programación.
                 <br>
-                Antes de nada, dirígete al <a href="https://github.com/lucferbux/Javascript-Course">repositorio del curso</a> para descargarte el proyecto.
+                Antes de nada, dirígete al <a href="https://github.com/lucferbux/Javascript-Course">repositorio del
+                    curso</a> para descargarte el proyecto.
             </p>
 
             <h2 id="instrucciones">Tabla de contenidos</h2>
-            
+
             <div class="table-content">
                 <ul>
                     <li> <a href="/beginner/beginner.html">Principiante</a> </li>
@@ -41,25 +54,31 @@
             <h2 id="conceptos-generales">Conceptos generales</h2>
             <p>JavaScript es uno de los lenguajes de programación más populares que existen en el mundo. De acuerdo a la
                 <a href="https://insights.stackoverflow.com/survey/2020">encuesta anual de desarrolladores de Stack
-                    Overflow</a> se encuentra en el número 1 de tecnologías más pupulares.</p>
+                    Overflow</a> se encuentra en el número 1 de tecnologías más populares.
+            </p>
             <p>Ahora mismo es una herramienta muy útil ya que permite al desarrollador trabajar en diversos perfiles
                 como <strong>Desarrollador Front-End</strong>, <strong>Desarrollador Back-End</strong>,
                 <strong>Desarrollador Full-Stack</strong>, <strong>Desarrollador Mobile</strong> y otras muchas
-                posiciones.</p>
+                posiciones.
+            </p>
             <h3 id="ejemplos">Ejemplos</h3>
             <p>Actualmente se pueden construir casi cualquier tipo de tecnología con JavaScript, aquí dejo algunos
                 ejemplos famosos:</p>
             <ul>
-                <li><b>Web -></b> <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a> está construida con <a
-                        href="https://reactjs.org" target="_blank" rel="noopener">React</a> </li>
-                <li><b>App -></b> <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a> está construida con <a
-                        href="https://reactnative.dev" target="_blank" rel="noopener">React Navite</a></li>
-                <li><b>Servicio Web -></b> <a href="https://www.netflix.com" target="_blank" rel="noopener">Netflix</a> tiene parte de su back construido
+                <li><b>Web -></b> <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a> está
+                    construida con <a href="https://reactjs.org" target="_blank" rel="noopener">React</a> </li>
+                <li><b>App -></b> <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a> está
+                    construida con <a href="https://reactnative.dev" target="_blank" rel="noopener">React Navite</a>
+                </li>
+                <li><b>Servicio Web -></b> <a href="https://www.netflix.com" target="_blank" rel="noopener">Netflix</a>
+                    tiene parte de su back construido
                     en <a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node</a></li>
-                <li><b>Herramientas CLI -></b> <a href="https://github.com/SBoudrias/Inquirer.js" target="_blank" rel="noopener">Inquirer</a> es una
+                <li><b>Herramientas CLI -></b> <a href="https://github.com/SBoudrias/Inquirer.js" target="_blank"
+                        rel="noopener">Inquirer</a> es una
                     herramienta que te permite crear CLI</li>
                 <li><b>Juegos -></b> Podéis ver ejemplos de juegos creados en JavaScript en <a
-                        href="https://dev.to/gscode/10-best-of-javascript-games-3mjj" target="_blank" rel="noopener">este post</a></li>
+                        href="https://dev.to/gscode/10-best-of-javascript-games-3mjj" target="_blank"
+                        rel="noopener">este post</a></li>
             </ul>
         </div>
     </div>

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manipulación Tipos - TypeScript</title>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Genéricos - TypeScript</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
 </head>
@@ -14,11 +16,10 @@
     <div class="container" id="container">
         <div class="section">
             <a class="back-button" href="/typescript/typescript.html">
-                < Back</a> <h1>Manipulación de Tipos</h1>
+                < Back</a> <h1>Genéricos</h1>
                     <p class="caption">Conceptos avanzados de tipos</p>
                     <hr class="separator">
-                    <h2 id="gen-ricos">Genéricos</h2>
-<h3 id="overview">Overview</h3>
+<h2 id="overview">Overview</h3>
 <p>Uno de los puntos más importantes dentro de la Ingeniería de Software es crear componentes que sean <strong>robustos</strong> y <strong>reusables</strong>. Es por ello que en esta sección nos centraremos en introducir el concepto de <code>generics</code>, que permitirá que nuestro código sea más flexible y reusable. El objetivo principal de los <strong>genéricos</strong> es crear un componente que pueda trabajar con una variedad de tipos en contraposición a funcionar exclusivamente con un sólo tipo, como hemos estado viendo hasta ahora.</p>
 <p>Vamos a ver el <strong>genérico</strong> más utilizado y simple en JavaScript: El <code>array</code>. En TypeScript un <em>array</em> se declara con el tipo <code>Array</code>, seguido del tipo que compondrá esta estructura entre los símbolos <code>&lt; &gt;</code>. El caso de que sea genérico es que podemos cambiar el tipo entre los símbolos de menor y mayor y la funcionalidad se mantendrá independientemente del tipo.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">let</span> nums: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];

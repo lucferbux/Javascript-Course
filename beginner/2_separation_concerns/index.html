@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
     <title>Estructura del código</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
@@ -77,20 +79,16 @@
                     <h2 id="arrow">Consola JavaScript</h2>
                     <p class="folder">/beginner/2_separation_concerns/index.js</p>
                     <pre>
-<code class="language-javascript">
----- index.js --- 
-
-console.log("Separation of concerns");
+<code class="language-javascript">// 1. index.js
 import {externalExecution} from "./additional.js";
 
 externalExecution();
+</code>
+</pre>
 
-
------ additional.js ------
-
-// 1. Ejecución de un módulo
-console.log("%c1. Ejecución de un Módulo", 'color: #229179; font-size: 16px;');
-
+<p class="folder">/beginner/2_separation_concerns/additional.js</p>
+                    <pre>
+<code class="language-javascript">// 2. additional.js
 function externalExecution() {
     console.log("I'm being executed");
 }

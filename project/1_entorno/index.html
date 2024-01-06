@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avanzado - TypeScript</title>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - Entorno</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
 </head>
@@ -47,7 +49,78 @@
 </li>
 </ul>
 <p>El principal problema es la alta curva de aprendizaje que requiere esta herramienta. Aún así, Frameworks tan famosos como <strong>React</strong> lo utilizan (sin exponer su dificultosa configuración) para gestionar la compilación del código.</p>
+<p>La estructura del fichero Webpack de nuestro proyecto es la siguiente:</p>
+<pre><code class="lang-javascript">const webpack = require(<span class="hljs-string">"webpack"</span>);
+const path = require(<span class="hljs-string">"path"</span>);
+const HtmlWebpackPlugin = require(<span class="hljs-string">"html-webpack-plugin"</span>);
+const FaviconsWebpackPlugin = require(<span class="hljs-string">"favicons-webpack-plugin"</span>);
+const MiniCssExtractPlugin = require(<span class="hljs-string">"mini-css-extract-plugin"</span>);
 
+const config = {
+<span class="hljs-symbol">  entry:</span> <span class="hljs-string">"./src/index.ts"</span>,
+<span class="hljs-symbol">  devtool:</span> <span class="hljs-string">"inline-source-map"</span>,
+<span class="hljs-symbol">  output:</span> {
+<span class="hljs-symbol">    path:</span> path.resolve(__dirname, <span class="hljs-string">"dist"</span>),
+<span class="hljs-symbol">    filename:</span> <span class="hljs-string">"bundle.js"</span>,
+  },
+<span class="hljs-symbol">  module:</span> {
+<span class="hljs-symbol">    rules:</span> [
+      {
+<span class="hljs-symbol">        test:</span> /\.html$/,
+<span class="hljs-symbol">        use:</span> [
+          {
+<span class="hljs-symbol">            loader:</span> <span class="hljs-string">"html-loader"</span>,
+<span class="hljs-symbol">            options:</span> { minimize: true },
+          },
+        ],
+      },
+      {
+<span class="hljs-symbol">        test:</span> /\.ts(x)?$/,
+<span class="hljs-symbol">        loader:</span> <span class="hljs-string">"ts-loader"</span>,
+<span class="hljs-symbol">        exclude:</span> /node_modules/,
+      },
+      {
+<span class="hljs-symbol">        test:</span> /\.css$/,
+<span class="hljs-symbol">        use:</span> [MiniCssExtractPlugin.loader, <span class="hljs-string">"css-loader"</span>],
+      },
+      {
+<span class="hljs-symbol">        test:</span> /\.scss$/,
+<span class="hljs-symbol">        use:</span> [MiniCssExtractPlugin.loader, <span class="hljs-string">"css-loader"</span>, <span class="hljs-string">"sass-loader"</span>],
+      },
+      {
+<span class="hljs-symbol">        test:</span> /\.(png|jpg|jpeg|gif)$/i,
+<span class="hljs-symbol">        type:</span> <span class="hljs-string">"asset/resource"</span>,
+      },
+    ],
+  },
+<span class="hljs-symbol">  plugins:</span> [
+    new HtmlWebpackPlugin({
+<span class="hljs-symbol">      filename:</span> <span class="hljs-string">"index.html"</span>,
+<span class="hljs-symbol">      template:</span> <span class="hljs-string">"src/index.html"</span>,
+    }),
+    new MiniCssExtractPlugin(),
+    new FaviconsWebpackPlugin(<span class="hljs-string">"./src/images/icon.png"</span>),
+  ],
+<span class="hljs-symbol">  resolve:</span> {
+<span class="hljs-symbol">    extensions:</span> [<span class="hljs-string">".tsx"</span>, <span class="hljs-string">".ts"</span>, <span class="hljs-string">".js"</span>],
+  },
+<span class="hljs-symbol">  devServer:</span> {
+<span class="hljs-symbol">    contentBase:</span> path.join(__dirname, <span class="hljs-string">"dist"</span>),
+<span class="hljs-symbol">    compress:</span> true,
+<span class="hljs-symbol">    port:</span> <span class="hljs-number">9000</span>,
+  },
+};
+
+module.exports = config;
+</code></pre>
+<p>Vamos a repasar por encima algunas configuraciones:</p>
+<ul>
+<li><strong>entry</strong>: Indica el fichero de entrada de webpack para compilar el proyecto.</li>
+<li><strong>devtool</strong>: Indica como los <em>source maps</em> son generados, es decir, el fichero final, <strong>inline-source-map</strong> es recomendado para publicar un solo fichero.</li>
+<li><strong>output</strong>: Indica el nombre del fichero resultante.</li>
+<li><strong>module</strong>: Contiene las diferentes reglas para compilar los archivos, siendo algunos de estos los ficheros <code>html</code>, ficheros <code>ts</code> para typescript, <code>css</code> para estilos o recuros <code>png</code>, <code>jpg</code>...</li>
+<li><strong>plugins</strong>: Carga los diferentes plugins que seleccionemos, en este caso tenemos uno para minimizar css con <code>MiniCssExtractPlugin</code>, controlar el <em>favicon</em> con <code>FaviconsWebpackPlugin</code> y comprimir el HTML con <code>HtmlWebpackPlugin</code>.</li>
+</ul>
         </div>
     </div>
 

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
     <title>Introducción - TypeScript</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
@@ -63,7 +65,15 @@ console.<span class="hljs-built_in">log</span>(person.profession);
 <p>Ahora podemos ejecutar sin ningún problema nuestro código. En este caso, tenemos un fichero llamado <code>index.ts</code> que tendremos que compilar a JavaScript, para ello ejecutremos lo siguiente:</p>
 <pre><code class="lang-bash">&gt; tsc <span class="hljs-built_in">index</span>.<span class="hljs-keyword">ts</span>
 </code></pre>
-<p>Esto generará un fichero llamado <code>index.js</code> que podrá ser utilizado por el html de la página.</p>
+<p>Esto generará un fichero llamado <code>index.js</code> que podrá ser utilizado por el html de la página. <strong>En ningún momento es necesario instalar typescript de forma global, normalmente lo tendremos como parte de una dependencia de nuestro proyecto</strong></p>
+<h3 id="ejecuci-n-con-node">Ejecución con node</h3>
+<p>Podremos también ejecutar ficheros de forma global si instalamos lo siguiente en nuestro equipo:</p>
+<pre><code class="lang-bash">&gt; npm install -g ts-<span class="hljs-keyword">node</span><span class="hljs-title"></span>
+</code></pre>
+<p>Ahora podremos ejecutar nuestros ficheros typescript directamente ejecutando:</p>
+<pre><code class="lang-bash">&gt; <span class="hljs-keyword">ts</span><span class="hljs-title">-node</span> index.ts
+</code></pre>
+<p><strong>Tenéis una sección dentro del proyecto llamada playground en la que podéis interactuar y ejecutar ts-node y tsc</strong></p>
 <h2 id="algunas-ventajas-frente-a-javascript">Algunas Ventajas frente a JavaScript</h2>
 <h3 id="compilaci-n-a-distintas-versiones">Compilación a distintas versiones</h3>
 <p>Una de las grandes ventajas de TypeScript es que podemos compilar a la versión de JavaScript que elijamos. Todo esto se puede configurar en el fichero <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">tsconfig.json</a>, pero también se puede realizar mediante la linea de comandos.</p>

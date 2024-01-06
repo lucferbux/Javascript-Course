@@ -36,3 +36,77 @@ Los principales beneficios de implementar Webpack son los siguientes:
 
 El principal problema es la alta curva de aprendizaje que requiere esta herramienta. Aún así, Frameworks tan famosos como **React** lo utilizan (sin exponer su dificultosa configuración) para gestionar la compilación del código.
 
+La estructura del fichero Webpack de nuestro proyecto es la siguiente:
+
+```javascript
+const webpack = require("webpack");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const config = {
+  entry: "./src/index.ts",
+  devtool: "inline-source-map",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true },
+          },
+        ],
+      },
+      {
+        test: /\.ts(x)?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "src/index.html",
+    }),
+    new MiniCssExtractPlugin(),
+    new FaviconsWebpackPlugin("./src/images/icon.png"),
+  ],
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000,
+  },
+};
+
+module.exports = config;
+```
+
+Vamos a repasar por encima algunas configuraciones:
+
+* **entry**: Indica el fichero de entrada de webpack para compilar el proyecto.
+* **devtool**: Indica como los *source maps* son generados, es decir, el fichero final, **inline-source-map** es recomendado para publicar un solo fichero.
+* **output**: Indica el nombre del fichero resultante.
+* **module**: Contiene las diferentes reglas para compilar los archivos, siendo algunos de estos los ficheros `html`, ficheros `ts` para typescript, `css` para estilos o recuros `png`, `jpg`...
+* **plugins**: Carga los diferentes plugins que seleccionemos, en este caso tenemos uno para minimizar css con `MiniCssExtractPlugin`, controlar el *favicon* con `FaviconsWebpackPlugin` y comprimir el HTML con `HtmlWebpackPlugin`.

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
     <title>Variables</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
@@ -26,10 +28,15 @@
 </code></pre>
                     <p>Una variable puede almacenar valores, para ello usamos el operador de asignación <code>=</code>:
                     </p>
-                    <pre><code class="lang-javascript">let firstVariable<span class="hljs-comment">;</span>
-<span class="hljs-attribute">firstVariable</span> = <span class="hljs-string">"Hola mundo"</span><span class="hljs-comment">;</span>
-console.log(firstVariable)<span class="hljs-comment">;</span>
+                    <pre><code class="lang-javascript">var firstVar = <span class="hljs-string">"Hello World"</span><span class="hljs-comment">;</span>
+let secondVar = <span class="hljs-string">"I 'm Lucas"</span><span class="hljs-comment">;</span>
+const ID_PERSON = <span class="hljs-string">"28934289D"</span><span class="hljs-comment">;</span>
+
+console.log(firstVar)<span class="hljs-comment">;</span>
+console.log(secondVar)<span class="hljs-comment">;</span>
+console.log(ID_PERSON)<span class="hljs-comment">;</span>
 </code></pre>
+                        
                     <p>En el ejemplo anterior, la cadena se almacena en un espacio de memoria apuntando a la variable
                         <code>firstVariable</code>, así, podremos acceder a este valor siempre que referenciemos a la
                         variable.</p>
@@ -92,7 +99,7 @@ console.<span class="hljs-keyword">log</span>($ + _); <span class="hljs-comment"
                         ejecuta un trozo de código. Las variables declaradas con <code>var</code> están delimitadas al
                         <strong>cuerpo de la función</strong> (function scope) mientras que <code>let</code>está
                         delimitado al bloque que le rodea, marcado por <code>{ }</code> (block scope)</p>
-                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scope_rules</span>(<span class="hljs-params"></span>) </span>{
+                    <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scopeRules</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> hello = <span class="hljs-string">"Hello"</span>;
     <span class="hljs-keyword">let</span> world = <span class="hljs-string">"World"</span>;
 
@@ -109,7 +116,7 @@ console.<span class="hljs-keyword">log</span>($ + _); <span class="hljs-comment"
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Reference Error"</span>);
 }
 
-scope_rules()
+scopeRules()
 </code></pre>
                     <h3 id="hoisting">Hoisting</h3>
                     <p>Hoisting es uno de los términos más confusos en JavaScript, básicamente ya hemos hablado de que
@@ -164,88 +171,6 @@ scope_rules()
 </code></pre>
                     <h3 id="gu-a-de-estilos">Guía de estilos</h3>
                     <p>Pese a que las variables en JavaScript sigan el estilo de CamelCase, está muy extendido el uso de mayúsculas para declarar constantes, usando la barra baja para separar palabras. Podéis consultar el estilo de la declaración de variables en la <a href="https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/JavaScript#variables">guía de estilos de MDN</a>.</p>
-
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/beginner/2_separation_concerns/index.js</p>
-                    <pre>
-<code class="language-javascript">//Variables
-
-// Declaración
-
-var firstVar = "Hello World";
-let secondVar = "I 'm Lucas";
-const ID_PERSON = "28934289D";
-
-console.log(firstVar);
-console.log(secondVar);
-console.log(ID_PERSON);
-
-// declaración en una misma linea
-let nombre = 'Lucas', apellido = 'Fernandez', edad = 27;
-
-// declaración "coma first"
-let nombre2 = 'Lucas'
-    , apellido2 = 'Fernandez'
-    , edad2 = 27; 
-
-
-// Var vs Let
-
-// Scope Rules
-
-function scope_rules() {
-    var hello = "Hello";
-    let world = "World";
-    
-    console.log(hello, world); // Hello World
-    
-    {
-        var name = "Lucas"
-        let surname = "Fernandez";
-        console.log(name, surname); // Lucas Fernandez
-    }
-    
-    console.log(name); // Lucas
-    //console.log(surname); // ReferenceError
-    console.log("Reference Error");
-}
-
-scope_rules()
-
-// Hoisting
-
-// hoisted
-console.log(hoisted);
-var hoisted = "hoisted";
-console.log(hoisted)
-
-// not hoisted
-//console.log(notHoisted); ReferenceError
-console.log("Reference Error");
-let notHoisted = "not hoisted";
-console.log(notHoisted);
-
-// Propiedad Global
-
-var globalVar = "Global";
-let notGlobalVar = "Not global";
-
-console.log(window.globalVar);
-console.log(window.notglobalVar);
-
-// Redeclaración
-
-var redeclare = "hello";
-var redeclare = "world"; 
-console.log(redeclare);
-
-let notRedeclare = "hello"; 
-//let notRedeclare = "bar2"; 
-console.log("Sintax Error");</code>
-</pre>
-
         </div>
     </div>
     <script src="../../prism.js"></script>

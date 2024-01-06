@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
     <title>Funciones</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
@@ -77,17 +79,17 @@
                         cambia en la variable externa.</p>
                     <p>Esto se puede ver también en código:</p>
                     <pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeValue</span>(<span class="hljs-params">object1</span>) </span>{
-  object1.brand = <span class="hljs-string">'Samsung'</span>;
-  object1.model = <span class="hljs-string">'Galaxy'</span>;
+    object1.brand = <span class="hljs-string">'Samsung'</span>;
+    object1.model = <span class="hljs-string">'Galaxy'</span>;
 }
 
-<span class="hljs-keyword">var</span> myPhone = {<span class="hljs-attr">make</span>: <span class="hljs-string">'Apple'</span>, <span class="hljs-attr">model</span>: <span class="hljs-string">'iPhone'</span>, <span class="hljs-attr">year</span>: <span class="hljs-number">2020</span>};
+<span class="hljs-keyword">var</span> myPhone = {<span class="hljs-attr">brand</span>: <span class="hljs-string">'Apple'</span>, <span class="hljs-attr">model</span>: <span class="hljs-string">'iPhone'</span>, <span class="hljs-attr">year</span>: <span class="hljs-number">2020</span>};
 <span class="hljs-keyword">var</span> x, y;
 
 x = myPhone.brand; <span class="hljs-comment">// x gets the value "Apple"</span>
 <span class="hljs-built_in">console</span>.log(x);
 
-myFunc(myPhone);
+changeValue(myPhone);
 y = myPhone.brand; <span class="hljs-comment">// y gets the value "Samsung"</span>
 <span class="hljs-built_in">console</span>.log(y);
 </code></pre>
@@ -179,124 +181,6 @@ console.log(arr); <span class="hljs-comment">// [2, 4, 6]</span>
 <h2 id="estilo">Estilo</h2>
 <p>Si queréis conocer las reglas de estilo para funciones, podéis dirigiros a la <a href="https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/JavaScript#functions_and_objects">guía de estilos de MDN</a>.</p>
 
-                    <hr class="code-separator">
-
-                    <h2 id="arrow">Consola JavaScript</h2>
-                    <p class="folder">/beginner/8_funciones/index.js</p>
-                    <pre>
-<code class="language-javascript">// Funciones
-//Declaración
-console.log(functionDeclaration())
-
-// Function declaration -> Regular function, it will run at the start of the scope with hoisting
-
-function functionDeclaration() {
-    console.log("function declaration");
-};
-
-// Expression
-
-// Function expression -> Anonymous function assigned to a variable
-
-var functionExpression = function() {
-    console.log("function expression");
-}
-
-// Function as a parameter
-function map(f, a) {
-    let result = []; // Create a new Array
-    let i; // Declare variable
-    for (i = 0; i != a.length; i++)
-        result[i] = f(a[i]);
-    return result;
-    }
-    const f = function(x) {
-        return x * x * x;
-    }
-    let numbers = [0, 1, 2, 5, 10];
-    let cube = map(f,numbers);
-    console.log(cube);
-
-// Paso por valor y referencia
-
-function changeValue(object1) {
-    object1.brand = 'Samsung';
-    object1.model = 'Galaxy';
-}
-
-var myPhone = {brand: 'Apple', model: 'iPhone', year: 2020};
-var x, y;
-
-x = myPhone.brand; // x gets the value "Apple"
-console.log(x);
-
-changeValue(myPhone);
-y = myPhone.brand; // y gets the value "Samsung"
-console.log(y);
-
-// Variables locales y variables globales
-console.log("%c3. Variables locales y variables globales", 'color: #229179; font-size: 16px;');
-
-let outerVariable = "I'm an outer variable";
-let otherVariable = "I'm other outer variable";
-
-function displayMessage() {
-    let innerVariable = "I'm an inner variable";
-
-    console.log(innerVariable);
-    console.log(outerVariable);
-
-    let otherVariable = "I'm defining an inner variable";
-    console.log(otherVariable);
-}
-
-displayMessage();
-
-// console.log(innerVariable); -> this will fail
-
-// Parámetros
-
-// normal parameter
-function multiply(a, b) {
-    b = b ?? 1; // Nullish operator
-
-    return a * b;
-}
-console.log(multiply(5)); // 5
-    
-// default parameter
-function multiplyDefault(a, b = 1) {
-    return a * b;
-}
-
-console.log(multiplyDefault(5)); // 5
-    
-// rest parameter
-function multiplyRest(multiplier, ...theArgs) {
-    return theArgs.map(x => multiplier * x);
-}
-
-var arr = multiplyRest(2, 1, 2, 3);
-console.log(arr); // [2, 4, 6]
-
-// Valores de retorno
-
-// normal parameter
-function multiplyReturn(a, b) {
-    if(b !== undefined) {
-        return a * b;
-    } else {
-        return 0;
-    }
-}
-console.log(multiplyReturn(5)); // 0
-
-// return
-function returnNothing() { return }
-
-console.log(returnNothing() === undefined);
-}</code>
-</pre>
 
         </div>
     </div>

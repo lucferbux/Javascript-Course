@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Proyecto - Estructura</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/project/project.html">< Back</a> 
+                    <h1>Estructura</h1>
+                    <p class="caption">Estructura del proyecto</p>
+                    <hr class="separator">
+
+<p>Ahora vamos a ver los ficheros de configuración y la estructura de carpetas que vamos a utilizar en el proyecto.
+Nuestro proyecto cuenta con la siguiente estructura:</p>
+<pre><code class="lang-bash">|<span class="hljs-literal">_</span> dist
+|<span class="hljs-literal">_</span> node_modules
+|<span class="hljs-literal">_</span> src
+|<span class="hljs-literal">_</span> webpack.config.js
+|<span class="hljs-literal">_</span> tsconfig.json
+|<span class="hljs-literal">_</span> <span class="hljs-keyword">package</span>.json
+|<span class="hljs-literal">_</span> <span class="hljs-keyword">package</span>-lock.json
+|<span class="hljs-literal">_</span> .gitignore
+</code></pre>
+<h2 id="ficheros-de-configuraci-n">Ficheros de configuración</h2>
+<p>En la <strong>raíz del proyecto</strong> encontramos diversos archivos de configuración y documentación general. Estos ficheros se encuentran aquí por su facilidad de acceso y debido a que por convención, todas las herramientas esperan esta información y configuración en la carpeta principal del proyecto. Estos archivos son:</p>
+<ul>
+<li><strong>package.json &amp; package-lock.json</strong>: Especificación de la configuración que espera un proyecto <strong>npm</strong>. Aquí se encuentran las dependencias, metadatos, comandos de ejecución y demás información acerca de nuestro proyecto en formato <em>JSON</em>. <strong>Package-lock.json</strong> se genera automáticamente en cada operación que <strong>npm</strong> modifique el <strong>package.json</strong> o <strong>node_modules</strong>.</li>
+<li><strong>node_modules</strong>: Carpeta que aparecerá una vez ejecutemos <code>npm install</code>. Contiene el código de todas las dependencias de nuestro proyecto.</li>
+<li><strong>tsconfig.json</strong>: Fichero de configuración de typescript. Podéis ver sus opciones en el <a href="/typescript/3_entorno/index.html">curso de TypeScript</a>.</li>
+<li><strong>README</strong>: Archivo que contiene información acerca del proyecto en formato <strong>markdown</strong>. En muchos proveedores de control de versiones como <a href="https://github.com">Github</a> o <a href="https://about.gitlab.com">Gitlab</a> convierten este fichero en <strong>HTML</strong> para renderizarlo en la página principal.</li>
+<li><strong>LICENSE</strong>: Licencia del proyecto, es recomendable elegir una licencia para tu proyecto en caso de hacerlo público, para proteger el código de uso indebido. Hay bastantes guías acerca de la elección de licencias como <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">esta de GitHub</a>.</li>
+<li><strong>.gitignore</strong>: Fichero que indica a git que archivos ignorar y no incluir en el control de versiones. Muy útil para excluir cosas como <strong>node_modules</strong> o ficheros de configuración como <strong>.env</strong>.</li>
+<li><strong>webpack.config.js</strong>: Ya hemos mencionado este fichero, sirve para configurar el comportamiento de webpack.</li>
+<li><strong>meta</strong>: Carpeta donde almacenar documentación y recursos.</li>
+</ul>
+        </div>
+    </div>
+
+    <script src="../../prism.js"></script>
+
+</body>
+
+</html>

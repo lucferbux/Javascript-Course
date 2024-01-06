@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Manipulación de tipos - TypeScript</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="section">
+            <a class="back-button" href="/typescript/typescript.html">
+                < Back</a> <h1>Manipulación de tipos</h1>
+                    <p class="caption">Operaciones básicas de tipos</p>
+                    <hr class="separator">
+                    <h2 id="type-aliases">Union types</h2>
+                    <p>TypeScript permite construir nuevos tipos en base a los ya existentes mediante una serie de operadores. Ahora que sabemos construir tipos, vamos a ver como podemos <strong>combinarlos</strong> para conseguir nuevas funcionalidades.</p>
+<p>Un <code>union type</code> está formado por dos o más tipos, representando valores que pueden cualquier otro tipo, cada uno de estos tipos son los <em>union&#39;s member</em>.</p>
+<pre><code class="lang-javascript"><span class="hljs-selector-tag">function</span> <span class="hljs-selector-tag">printPhoneNumber</span>(<span class="hljs-attribute">phoneNumber</span>: number | string) {
+  <span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-string">"Your phone number is "</span> + phoneNumber);
+}
+
+<span class="hljs-selector-tag">printPhoneNumber</span>(<span class="hljs-number">612389238</span>);
+<span class="hljs-selector-tag">printPhoneNumber</span>(<span class="hljs-string">"637839489"</span>);
+<span class="hljs-comment">// printPhoneNumber({ phone: 613892348}); // Error</span>
+</code></pre>
+<h2 id="type-aliases">Type Aliases</h2>
+<p>Ahora que conocemos los union types, podemos usarlos cuando queramos, pero hay <strong>una característica muy útil</strong> de TypeScript para no tener que ir escribiendo siempre las uniones. Suponemos que queremos un argumento que tenga de tipos <code>number | string | boolean</code>. Cada vez que queramos comprobar este tipo único, deberíamos escribir esta cadena, pudiendo llevar a errores si olvidamos algún tipo.</p>
+<p>Es por ello que podemos definir alias para identificar estos union types con un nombre característico que le queramos dar.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> ID = <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">boolean</span>
+
+<span class="hljs-keyword">let</span> myID: ID = <span class="hljs-string">"23789s"</span>;
+<span class="hljs-keyword">let</span> myOtherId: ID = <span class="hljs-number">213432423</span>;
+</code></pre>
+<p>Podemos crear también type aliases compuestos, de diferentes anotaciones de tipos, siendo así que podamos crear definiciones enteras de un tipo.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> Mail = {
+  header: <span class="hljs-built_in">string</span>;
+  body: <span class="hljs-built_in">string</span>;
+  timestamp: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printMail</span>(<span class="hljs-params">mail: Mail</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${mail.header}</span> - <span class="hljs-subst">${mail.timestamp}</span>`</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`---------------------------------`</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${mail.body}</span>`</span>);
+}
+</code></pre>
+<h2 id="type-assertions">Type Assertions</h2>
+<p>Hay ocasiones en las que tenemos que hacer una conversión de un tipo, bien porque tenía un valor de <strong>any</strong>, bien porque la librería no tiene tipos definidos o que el elemento es genérico, esto por ejemplo en manipulación del DOM es muy común. Es por ello que existen las <strong>type assertions</strong> que permiten hacer un <strong>cast</strong> del tipo de un elemento.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> myCanvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"container"</span>) <span class="hljs-keyword">as</span> HTMLDivElement;
+</code></pre>
+
+
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>

@@ -32,35 +32,3 @@ if(counter == 1){
 } else {
     console.log("We've got more than that");
 }
-
-console.log("%c3. ?", 'color: #229179; font-size: 16px;');
-
-const age = 22;
-
-let accessAllowed = (age > 18) ? true : false;
-
-let login;
-let password = prompt("Please enter the password", "");
-
-if (password == "patata") {
-    login = true;
-} else {
-    login = false;
-}
-
-console.log(login);
-
-let loginShort = (password == "patata") ? true : false;
-console.log(loginShort);
-
-console.log("%c4. ??", 'color: #229179; font-size: 16px;');
-
-let user;
-
-console.log(user ?? "Anonymous");
-
-user = "Lucas";
-
-console.log(user ?? "Anonymous");
-
-console.log((user !== null && user !== undefined) ? user : "Anonymous");

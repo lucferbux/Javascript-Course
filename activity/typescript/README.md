@@ -15,11 +15,12 @@ Puedes realizar los ejercicios creando un nuevo proyecto que compile TypeScript 
 
 ## Ejercicio 2
 
-Escribe una función llamada `sumOrConcatenate` que acepte dos parámetros. Cada uno de estos parámetros podrá ser de tipo `number` o `string`. La función devolverá una suma si los dos parámetros son números, una concatenación con el símbolo `-` si son los dos `strings` o una cadena concatenadad con `:` si uno es un `number` y el otro `string`.
+Escribe una función llamada `sumOrConcatenate` que acepte dos parámetros. Cada uno de estos parámetros podrá ser de tipo `number` o `string`. La función devolverá una suma si los dos parámetros son números, una concatenación con el símbolo `-` si son los dos `strings` o una cadena concatenadad con `+` si uno es un `number` y el otro `string`.
 
 ```javascript
 console.log(sumOrConcatenate(4, 3)); // 7
-console.log(sumOrConcatenate(4, "hello")); // 4:hello 
+console.log(sumOrConcatenate(4, "hello")); // 4+hello 
+console.log(sumOrConcatenate(4, "3")); // 4+3 
 console.log(sumOrConcatenate("hello", "world")); //hello-world
 ```
 

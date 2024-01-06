@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
     <title>Tipos - TypeScript</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../prism.css">
@@ -17,7 +19,7 @@
                 < Back</a> <h1>Tipos</h1>
                     <p class="caption">Introducción a los tipos de TypeScript</p>
                     <hr class="separator">
-                    <p>En esta sección vamos a ver como TypeScript gestiona los tipos y como podemos usar una de las características más importantes de este lenguaje.</p>
+<p>En esta sección vamos a ver como TypeScript gestiona los tipos y como podemos usar una de las características más importantes de este lenguaje.</p>
 <h2 id="type-annotation">Type Annotation</h2>
 <p>La funcionalidad principal de TypeScript es añadir tipos a elementos de JavaScript como variables, funciones, objetos... Para ello, usa la sintaxis <code>elemento: tipo</code> para asignar los tipos que hayamos definido. Esto es conocido como <strong>type annotation</strong>. Una vez que un <em>identificador</em> es anotado con un tipo, <strong>solo podrá usarse con ese tipo</strong>. Si se usa ese identificador con un tipo diferente, el compilador de TypeScript lanzará un error.</p>
 <p>Si no se declara el tipo desde el principio TypeScript lo inferirá automáticamente, aplicando las mismas características que con los tipos explícitos. Si se quiere obviar esta funcionalidad, se puede asignar el tipo <strong>any</strong> a cualquier identificador para usarlo de la forma en la que estamos habituados en JavaScript.</p>
@@ -76,44 +78,98 @@ talkFunc(<span class="hljs-string">"Hello world"</span>);
 <span class="hljs-comment">// object</span>
 <span class="hljs-keyword">let</span> newObj: { x: <span class="hljs-built_in">number</span>; y: <span class="hljs-built_in">number</span> } = { x: <span class="hljs-number">10</span>, y: <span class="hljs-number">4</span> };
 </code></pre>
-<h2 id="union-types">Union Types</h2>
-<p>TypeScript permite construir nuevos tipos en base a los ya existentes mediante una serie de operadores. Ahora que sabemos construir tipos, vamos a ver como podemos <strong>combinarlos</strong> para conseguir nuevas funcionalidades.</p>
-<p>Un <code>union type</code> está formado por dos o más tipos, representando valores que pueden cualquier otro tipo, cada uno de estos tipos son los <em>union&#39;s member</em>.</p>
-<pre><code class="lang-javascript"><span class="hljs-selector-tag">function</span> <span class="hljs-selector-tag">printPhoneNumber</span>(<span class="hljs-attribute">phoneNumber</span>: number | string) {
-  <span class="hljs-selector-tag">console</span><span class="hljs-selector-class">.log</span>(<span class="hljs-string">"Your phone number is "</span> + phoneNumber);
-}
-
-<span class="hljs-selector-tag">printPhoneNumber</span>(<span class="hljs-number">612389238</span>);
-<span class="hljs-selector-tag">printPhoneNumber</span>(<span class="hljs-string">"637839489"</span>);
-<span class="hljs-comment">// printPhoneNumber({ phone: 613892348}); // Error</span>
-</code></pre>
-<h2 id="type-aliases">Type Aliases</h2>
-<p>Ahora que conocemos los union types, podemos usarlos cuando queramos, pero hay <strong>una característica muy útil</strong> de TypeScript para no tener que ir escribiendo siempre las uniones. Suponemos que queremos un argumento que tenga de tipos <code>number | string | boolean</code>. Cada vez que queramos comprobar este tipo único, deberíamos escribir esta cadena, pudiendo llevar a errores si olvidamos algún tipo.</p>
-<p>Es por ello que podemos definir alias para identificar estos union types con un nombre característico que le queramos dar.</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> ID = <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">boolean</span>
-
-<span class="hljs-keyword">let</span> myID: ID = <span class="hljs-string">"23789s"</span>;
-<span class="hljs-keyword">let</span> myOtherId: ID = <span class="hljs-number">213432423</span>;
-</code></pre>
-<p>Podemos crear también type aliases compuestos, de diferentes anotaciones de tipos, siendo así que podamos crear definiciones enteras de un tipo.</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">type</span> Mail = {
-  header: <span class="hljs-built_in">string</span>;
-  body: <span class="hljs-built_in">string</span>;
-  timestamp: <span class="hljs-built_in">number</span>;
-}
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printMail</span>(<span class="hljs-params">mail: Mail</span>) </span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${mail.header}</span> - <span class="hljs-subst">${mail.timestamp}</span>`</span>);
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`---------------------------------`</span>);
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${mail.body}</span>`</span>);
+<h2 id="tipos-especiales">Tipos especiales</h2>
+<p>Hay una serie de tipos especiales que no corresponden con ningún tipo de JavaScript, pero que son útiles para describir ciertos comportamientos en TypeScript. Vamos a ver algunos de los más importantes:</p>
+<h3 id="enum">Enum</h3>
+<p>En TypeScript, las enumeraciones, conocidas como enums, son un tipo de dato que nos permite definir un conjunto de valores constantes con nombres descriptivos. Los enums proporcionan una forma conveniente de trabajar con conjuntos predefinidos de valores en nuestro código.</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Direccion</span> {</span>
+  Norte,
+  Sur,
+  Este,
+  Oeste,
 }
 </code></pre>
-<h2 id="type-assertions">Type Assertions</h2>
-<p>Hay ocasiones en las que tenemos que hacer una conversión de un tipo, bien porque tenía un valor de <strong>any</strong>, bien porque la librería no tiene tipos definidos o que el elemento es genérico, esto por ejemplo en manipulación del DOM es muy común. Es por ello que existen las <strong>type assertions</strong> que permiten hacer un <strong>cast</strong> del tipo de un elemento.</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> myCanvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"container"</span>) <span class="hljs-keyword">as</span> HTMLDivElement;
+<p>En este ejemplo, hemos definido un enum llamado &quot;Direccion&quot; con cuatro valores posibles: &quot;Norte&quot;, &quot;Sur&quot;, &quot;Este&quot; y &quot;Oeste&quot;. Por defecto, cada valor de un enum está asociado con un número entero, comenzando desde 0 y aumentando en uno para cada valor subsiguiente. Sin embargo, también es posible asignar valores personalizados a los miembros del enum:</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">DiaSemana</span> {</span>
+  Lunes = <span class="hljs-number">1</span>,
+  Martes,
+  Miercoles,
+  Jueves,
+  Viernes,
+  Sabado,
+  Domingo,
+}
 </code></pre>
+<p>En este ejemplo, hemos asignado valores numéricos explícitos al enum &quot;DiaSemana&quot;, comenzando desde 1.</p>
+<h4 id="uso-de-enums">Uso de enums</h4>
+<p>Una vez que hemos definido un enum, podemos utilizarlo en nuestro código para representar conjuntos específicos de valores. Podemos acceder a los valores del enum utilizando la notación de punto:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> direccionActual: Direccion = Direccion.Norte;
+console.<span class="hljs-built_in">log</span>(direccionActual); <span class="hljs-comment">// Imprime: 0</span>
 
+direccionActual = Direccion.Sur;
+console.<span class="hljs-built_in">log</span>(direccionActual); <span class="hljs-comment">// Imprime: 1</span>
+</code></pre>
+<p>En este ejemplo, hemos declarado una variable llamada &quot;direccionActual&quot; de tipo &quot;Direccion&quot; y la hemos inicializado con el valor &quot;Norte&quot;. Luego, cambiamos su valor a &quot;Sur&quot;. Al imprimir la variable, obtenemos los valores numéricos asociados a cada miembro del enum.</p>
+<h4 id="enums-con-valores-de-cadena">Enums con valores de cadena</h4>
+<p>En TypeScript, los enums también pueden tener valores de cadena. Esto es útil cuando necesitamos representar un conjunto de valores que no son numéricos. Por ejemplo:</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">DiaSemana</span> </span>{
+  Lunes = <span class="hljs-string">"Lunes"</span>,
+  Martes = <span class="hljs-string">"Martes"</span>,
+  Miercoles = <span class="hljs-string">"Miercoles"</span>,
+  Jueves = <span class="hljs-string">"Jueves"</span>,
+  Viernes = <span class="hljs-string">"Viernes"</span>,
+  Sabado = <span class="hljs-string">"Sabado"</span>,
+  Domingo = <span class="hljs-string">"Domingo"</span>,
+}
+</code></pre>
+<p>En este ejemplo, hemos definido un enum llamado &quot;DiaSemana&quot; con siete valores posibles: &quot;Lunes&quot;, &quot;Martes&quot;, &quot;Miercoles&quot;, &quot;Jueves&quot;, &quot;Viernes&quot;, &quot;Sabado&quot; y &quot;Domingo&quot;. Cada uno de estos valores es una cadena de texto.</p>
+<h4 id="beneficios-de-los-enums">Beneficios de los enums</h4>
+<p>Los enums proporcionan varios beneficios en el desarrollo de software. Algunas ventajas clave incluyen:</p>
+<ul>
+<li><p>Legibilidad y mantenibilidad: Al utilizar enums, podemos asignar nombres descriptivos a valores constantes, lo que hace que nuestro código sea más legible y comprensible.</p>
+</li>
+<li><p>Autocompletado y validación: Los IDE y las herramientas de desarrollo pueden ofrecer autocompletado y validación cuando utilizamos enums, lo que nos ayuda a evitar errores de escritura y a trabajar más eficientemente.</p>
+</li>
+<li><p>Tipo seguro: Los valores de un enum están fuertemente tipados, lo que significa que no podemos asignar valores que no estén definidos en el enum. Esto nos ayuda a evitar errores sutiles y garantiza un código más robusto.</p>
+</li>
+</ul>
+<p>En resumen, los enums en TypeScript nos permiten definir conjuntos de valores constantes con nombres descriptivos, lo que mejora la legibilidad, el mantenimiento y la seguridad de nuestro código. Su uso es especialmente útil cuando necesitamos trabajar con opciones predefinidas y limitadas en nuestro programa.</p>
+<h3 id="unknown-y-never">Unknown y never</h3>
+<p>En TypeScript, existen dos tipos especiales: &#39;unknown&#39; y &#39;never&#39;. Estos tipos pueden resultar confusos al principio, pero entender su uso adecuado es fundamental para escribir código más seguro y robusto. Veamos en qué consisten cada uno de ellos:</p>
+<h4 id="unknown">Unknown</h4>
+<p>El tipo &#39;unknown&#39; representa un valor desconocido. Es similar al tipo &#39;any&#39;, pero con restricciones más estrictas. Cuando una variable se declara con el tipo &#39;unknown&#39;, no se puede realizar ninguna operación directa en ella sin antes realizar una comprobación o una conversión de tipo explícita.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">let</span> <span class="hljs-attribute">userInput</span>: unknown;
 
+<span class="hljs-comment">// Ejemplo de comprobación de tipo</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> userInput === <span class="hljs-string">'string'</span>) {
+  <span class="hljs-built_in">console</span>.log(userInput.toUpperCase());
+}
+
+<span class="hljs-comment">// Ejemplo de conversión de tipo</span>
+<span class="hljs-keyword">let</span> username = userInput <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>;
+<span class="hljs-built_in">console</span>.log(username.toUpperCase());
+</code></pre>
+<p>Como se muestra en el ejemplo, antes de operar con una variable de tipo &#39;unknown&#39;, debemos verificar su tipo o realizar una conversión de tipo adecuada. Esto garantiza que no se realicen operaciones no válidas y evita errores en tiempo de ejecución.</p>
+<h4 id="never">Never</h4>
+<p>El tipo &#39;never&#39; representa un valor que nunca puede ocurrir. Se utiliza principalmente en dos contextos: para indicar que una función nunca debe retornar un valor o para especificar un tipo que no tiene valores posibles.</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Función que lanza una excepción y nunca retorna un valor</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throwError</span>(<span class="hljs-params">message: string</span>): <span class="hljs-title">never</span> </span>{
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(message);
+}
+
+<span class="hljs-comment">// Función que tiene un bucle infinito y nunca termina</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">infiniteLoop</span>(<span class="hljs-params"></span>): <span class="hljs-title">never</span> </span>{
+  <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'¡Este bucle nunca termina!'</span>);
+  }
+}
+
+<span class="hljs-comment">// Variable de tipo 'never' que no puede tener valores</span>
+<span class="hljs-keyword">let</span> unreachable: never;
+unreachable = <span class="hljs-number">10</span>; <span class="hljs-comment">// Error, 'never' no puede tener valores asignados</span>
+</code></pre>
+<p>El tipo &#39;never&#39; es útil para indicar de manera explícita que ciertos escenarios no son posibles en nuestro código. Por ejemplo, una función que lanza una excepción nunca retornará un valor válido, por lo que su tipo de retorno se define como &#39;never&#39;.</p>
+<p>En resumen, los tipos &#39;unknown&#39; y &#39;never&#39; son herramientas poderosas en TypeScript que nos ayudan a fortalecer la seguridad y claridad de nuestro código. El uso adecuado de estos tipos puede evitar errores comunes y mejorar la legibilidad de nuestro programa.</p>
         </div>
     </div>
     <script src="../../prism.js"></script>

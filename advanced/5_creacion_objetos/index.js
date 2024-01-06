@@ -35,12 +35,12 @@ person1.info();
 
 // Extension
 
-let person_extended = {
+let personExtended = {
     height: 180,
     ...person1
 }
 
-console.log(person_extended);
+console.log(personExtended);
 
 // 2. Clases
 
@@ -61,8 +61,8 @@ class Student {
     }
 }
 
-const first_student = new Student("Pedro", 22);
-first_student.displayInfo();
+const firstStudent = new Student("Pedro", 22);
+firstStudent.displayInfo();
 
 // Class expression
 

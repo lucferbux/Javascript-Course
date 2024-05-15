@@ -1,6 +1,7 @@
 // Ejercicio 1
-import "./aboutme.js";
-console.log("Ejercicio 1");
+console.log('Ejercicio 1 ----')
+import { aboutMe } from './aboutme.js';
+console.log(aboutMe());
 
 // Ejercicio 2
 

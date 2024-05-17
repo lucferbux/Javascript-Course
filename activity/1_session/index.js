@@ -1,6 +1,16 @@
 // Ejercicio 1
-import "./aboutme.js";
+import { createSentece, fakeStudent } from "./aboutme.js";
+const { name, title, job } = fakeStudent;
+
+const fakeSentence = createSentece(name, title, job)
+
+const sentence = createSentece('Jorge Chacon', 'Frontend Developer', 'Full-Stack Developer - Growth Specialist');
+
+console.log(sentence);
+console.log(fakeSentence);
+
 console.log("Ejercicio 1");
+
 
 // Ejercicio 2
 

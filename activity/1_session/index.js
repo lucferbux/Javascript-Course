@@ -16,6 +16,17 @@ console.log("Ejercicio 1");
 
 // Ejercicio 3
 
+const divisiblesDeSiete = () => {
+    let result = []
+    for (let numero = 0; numero < 101; numero++) {
+        
+        if(numero % 7 === 0) result.push(numero)
+    }
+    return result
+}
+
+console.log(divisiblesDeSiete());
+
 // Ejercicio 4
 
 // Ejercicio 5

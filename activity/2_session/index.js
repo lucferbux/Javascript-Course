@@ -1,4 +1,4 @@
-import { InvertirCadena } from './script.js';
+import { InvertirCadena, Login } from './script.js';
 
 // Ejercicio 1
 // Example of arrow function
@@ -56,11 +56,15 @@ console.log(invertirCadena.reverseString());
 try {
   invertirCadena.nuevoMetodo();
 } catch (error) {
-
   // Manejamos el error de acceso a un método inexistente
-  console.error(error.message); 
+  console.error(error.message);
 }
 // Ejercicio 4
+
+const login = new Login('admin', 'passwd');
+login.login();
+let logbad = new Login('pepe', 'bad');
+logbad.login();
 
 // Ejercicio 5
 

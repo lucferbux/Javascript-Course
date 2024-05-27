@@ -62,12 +62,27 @@ try {
 // Ejercicio 4
 
 const login = new Login('admin', 'passwd');
-login.login();
+ login.login();
 let logbad = new Login('pepe', 'bad');
-logbad.login();
+ logbad.login();
 
 // Ejercicio 5
 
+const userLogin = (username, password) => {
+  const userData = new Login(username, password);
+  userData.login();
+};
+
+const goodButton = document.getElementById('loginSuccess');
+
+const badLoginButton = document.getElementById('loginFailure');
+
+goodButton.addEventListener('click', () => {
+  login.login();
+});
+badLoginButton.addEventListener('click', () => {
+  logbad.login();
+});
 // Ejercicio 6
 
 let loginWitUsername = (username, password) => {
@@ -81,3 +96,27 @@ let loginWitUsername = (username, password) => {
     }, 200);
   });
 };
+
+// Wrapper para atrapar excepciones
+async function handleLogin(username, password) {
+  try {
+    const result = await loginWitUsername(username, password);
+    // Aquí manejamos el éxito del inicio de sesión
+    console.log(result);
+  } catch (error) {
+    // Aquí manejamos cualquier error que ocurra durante el inicio de sesión
+    console.error(error);
+  }
+}
+
+// Declaramos los botones con sus IDs
+const asyncGoodButton = document.getElementById('loginSuccessAsync');
+const asyncBadButton = document.getElementById('loginFailureAsync');
+
+asyncGoodButton.addEventListener('click', async () => {
+  handleLogin('admin', 'passwd');
+});
+
+asyncBadButton.addEventListener('click', async () => {
+  handleLogin('notadmin', 'passwd');
+});

@@ -30,6 +30,8 @@ console.log(getData(person));
 
 // Ejercicio 2
 
+//La respuesta esta en el README
+
 // Ejercicio 3
 
 // Ejercicio 4

@@ -124,6 +124,100 @@ boundFunction(); // {name: 'example'}
           <li>
             ¿Qué diferencias hay entre las arrow functions y las function
             expressions?
+            <ul>
+              <li>
+                <p>Manejo de this:</p>
+                <ul>
+                  <li>
+                    <p>
+                      Arrow Function: No tiene su propio this. Hereda el this
+                      del contexto en el que fue definida.
+                    </p>
+                    <pre><code class="lang-javascript">const obj = {
+  value: 42,
+  arrowFunction: () => {
+    console.log(this.value); // `this` se refiere al contexto léxico, no al objeto `obj`
+  }
+};
+obj.arrowFunction(); // undefined
+</code>
+                  </li>
+                  <li>
+                    <p>
+                      Function Expression: Tiene su propio this, que se refiere
+                      al objeto desde el cual se llama.
+                    </p>
+                    <pre><code class="lang-javascript">const obj = {
+  value: 42,
+  functionExpression: function() {
+    console.log(this.value); // `this` se refiere al objeto `obj`
+  }
+};
+obj.functionExpression(); // 42
+</code>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>Uso de arguments:</p>
+                <ul>
+                  <li>
+                    <p>Arrow Function: No tiene su propio objeto arguments.</p>
+                    <pre><code class="lang-javascript">const arrowFunction = () => {
+  console.log(arguments); // ReferenceError: arguments is not defined
+};
+arrowFunction();
+</code>
+                  </li>
+                  <li>
+                    <p>Function Expression: Tiene su propio objeto arguments.</p>
+                    <pre><code class="lang-javascript">const functionExpression = function() {
+  console.log(arguments); // Imprime los argumentos pasados a la función
+};
+functionExpression(1, 2, 3); // [1, 2, 3]
+</code>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>Uso como constructor:</p>
+                <ul>
+                  <li>
+                    <p>Arrow Function: No puede ser usada como constructor (no se puede usar con new).</p>
+                    <pre><code class="lang-javascript">const ArrowFunction = () => {};
+const instance = new ArrowFunction(); // TypeError: ArrowFunction is not a constructor
+</code>
+                  </li>
+                  <li>
+                    <p>Function Expression: Puede ser usada como constructor.</p>
+                    <pre><code class="lang-javascript">const FunctionExpression = function() {};
+const instance = new FunctionExpression(); // Funciona correctamente
+</code>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>Comportamiento con métodos call, apply, bind:</p>
+                <ul>
+                  <li>
+                    <p>Arrow Function: El this no se modifica con call, apply o bind.</p>
+                    <pre><code class="lang-javascript">const arrowFunction = () => {
+  console.log(this); // `this` siempre se refiere al contexto léxico
+};
+arrowFunction.call({name: 'example'}); // Se refiere al contexto léxico
+</code>
+                  </li>
+                  <li>
+                    <p>Function Expression: El this puede ser modificado con call, apply o bind.</p>
+                    <pre><code class="lang-javascript">const functionExpression = function() {
+  console.log(this); // `this` se refiere al primer argumento de "call" o "apply"
+};
+functionExpression.call({name: 'example'}); // {name: 'example'}
+</code>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </li>
         </ul>
         <h2 id="ejercicio-3">Ejercicio 3</h2>

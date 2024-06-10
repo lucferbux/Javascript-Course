@@ -1,11 +1,9 @@
 // Ejercicio 1
-import { aboutMe} from "./aboutme";
-import {myName, myProfession, myPosition} from "./aboutme";
+import {  aboutMe } from "./aboutme";
 
-const myInfo = aboutMe(myName, myProfession, myPosition);
-console.log(myInfo);
 
 console.log("Ejercicio 1");
+console.log(aboutMe)
 
 
 // Ejercicio 2

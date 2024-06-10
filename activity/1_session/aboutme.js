@@ -5,10 +5,11 @@
  * @param profession
  * @param position
  */
-export const aboutMe = (completeName, profession, position) => {
-    `Hola, me llamo ${completeName} y me dedico a ${profession}. Estoy cursando este Máster porque me gustaría trabajar en ${position}`
-}
 
-export const myName = "César Ibarra";
-export const myProfession = "Frontend Developer";
-export const myPosition = "Fullstack Developer";
+const myName = "César Ibarra";
+const myProfession = "Frontend Developer";
+const myPosition = "Fullstack Developer";
+
+const aboutMe = `Hola, me llamo ${myName} y me dedico a ${myProfession}. Estoy cursando este Máster porque me gustaría trabajar en ${myPosition}`
+
+export { aboutMe };

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Tutorial de Git</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/extra/extra.html">< Back</a>
+            <h1 id="introduccion">Tutorial de Git</h1>
+            <p class="caption">Comandos y conceptos esenciales de Git</p>
+            <hr>
+
+            <h2 id="overview">Introducción</h2>
+            <p>Git es un sistema de control de versiones distribuido diseñado para rastrear cambios en el código fuente durante el desarrollo de software. Facilita la colaboración entre desarrolladores y permite mantener un historial completo de todos los cambios realizados en un proyecto.</p>
+            
+            <p>En este tutorial, cubriremos los comandos y conceptos más importantes de Git que todo desarrollador debería conocer.</p>
+
+            <h2 id="instalacion">Instalación de Git</h2>
+            <p>Antes de comenzar, asegúrate de tener Git instalado en tu sistema:</p>
+
+            <h3>macOS</h3>
+            <pre><code class="language-bash">brew install git</code></pre>
+            <p>o descárgalo desde <a href="https://git-scm.com/download/mac" target="_blank">git-scm.com</a></p>
+
+            <h3>Windows</h3>
+            <p>Descarga e instala desde <a href="https://git-scm.com/download/win" target="_blank">git-scm.com</a></p>
+
+            <h3>Linux (Ubuntu/Debian)</h3>
+            <pre><code class="language-bash">sudo apt-get update
+sudo apt-get install git</code></pre>
+
+            <h2 id="configuracion">Configuración Inicial</h2>
+            <p>Después de instalar Git, debes configurar tu identidad:</p>
+            <pre><code class="language-bash">git config --global user.name "Tu Nombre"
+git config --global user.email "tu.email@ejemplo.com"</code></pre>
+
+            <h2 id="comandos-basicos">Comandos Básicos</h2>
+
+            <h3 id="clone">git clone</h3>
+            <p>Crea una copia local de un repositorio remoto:</p>
+            <pre><code class="language-bash">git clone https://github.com/usuario/repositorio.git</code></pre>
+            <p>Para clonar una rama específica:</p>
+            <pre><code class="language-bash">git clone -b nombre-rama https://github.com/usuario/repositorio.git</code></pre>
+
+            <h3 id="init">git init</h3>
+            <p>Inicializa un nuevo repositorio Git en el directorio actual:</p>
+            <pre><code class="language-bash">git init</code></pre>
+
+            <h3 id="status">git status</h3>
+            <p>Muestra el estado de los archivos en el directorio de trabajo:</p>
+            <pre><code class="language-bash">git status</code></pre>
+
+            <h3 id="add">git add</h3>
+            <p>Añade archivos al área de preparación (staging):</p>
+            <pre><code class="language-bash">git add archivo.txt       # Añade un archivo específico
+git add .               # Añade todos los archivos modificados
+git add *.js            # Añade todos los archivos JavaScript</code></pre>
+
+            <h3 id="commit">git commit</h3>
+            <p>Guarda los cambios en el repositorio:</p>
+            <pre><code class="language-bash">git commit -m "Mensaje descriptivo del cambio"</code></pre>
+            <p>Para añadir y hacer commit en un solo paso (solo para archivos ya rastreados):</p>
+            <pre><code class="language-bash">git commit -am "Mensaje del commit"</code></pre>
+
+            <h3 id="push">git push</h3>
+            <p>Envía los commits locales a un repositorio remoto:</p>
+            <pre><code class="language-bash">git push origin main    # Envía commits a la rama main
+git push                # Si ya está configurado el upstream</code></pre>
+
+            <h3 id="pull">git pull</h3>
+            <p>Obtiene y fusiona cambios del repositorio remoto:</p>
+            <pre><code class="language-bash">git pull origin main    # Obtiene cambios de la rama main</code></pre>
+
+            <h3 id="fetch">git fetch</h3>
+            <p>Descarga cambios del repositorio remoto sin fusionarlos:</p>
+            <pre><code class="language-bash">git fetch origin        # Obtiene todos los cambios
+git fetch origin rama   # Obtiene cambios de una rama específica</code></pre>
+
+            <h2 id="ramas">Trabajando con Ramas</h2>
+
+            <h3 id="branch">git branch</h3>
+            <p>Lista, crea o elimina ramas:</p>
+            <pre><code class="language-bash">git branch                     # Lista todas las ramas locales
+git branch -a                  # Lista todas las ramas (locales y remotas)
+git branch nueva-rama          # Crea una nueva rama
+git branch -d rama-a-eliminar  # Elimina una rama
+git branch -D rama-forzar      # Elimina forzosamente una rama</code></pre>
+
+            <h3 id="checkout">git checkout</h3>
+            <p>Cambia entre ramas o restaura archivos:</p>
+            <pre><code class="language-bash">git checkout nombre-rama           # Cambia a una rama existente
+git checkout -b nueva-rama          # Crea y cambia a una nueva rama
+git checkout -- archivo.txt         # Descarta cambios en un archivo</code></pre>
+
+            <h3 id="switch">git switch</h3>
+            <p>Comando moderno para cambiar entre ramas (Git 2.23+):</p>
+            <pre><code class="language-bash">git switch nombre-rama            # Cambia a una rama existente
+git switch -c nueva-rama           # Crea y cambia a una nueva rama</code></pre>
+
+            <h3 id="merge">git merge</h3>
+            <p>Fusiona una rama con otra:</p>
+            <pre><code class="language-bash">git checkout main          # Primero, cambia a la rama destino
+git merge feature-rama     # Fusiona feature-rama en main</code></pre>
+
+            <h2 id="avanzado">Comandos Avanzados</h2>
+
+            <h3 id="rebase">git rebase</h3>
+            <p>Reorganiza los commits para crear un historial más limpio:</p>
+            <pre><code class="language-bash">git checkout feature         # Cambia a la rama feature
+git rebase main             # Reorganiza los commits de feature sobre main</code></pre>
+            <p>Rebase interactivo para modificar commits:</p>
+            <pre><code class="language-bash">git rebase -i HEAD~3        # Modo interactivo para los últimos 3 commits</code></pre>
+
+            <h3 id="reset">git reset</h3>
+            <p>Deshace cambios y manipula el historial:</p>
+            <pre><code class="language-bash">git reset --soft HEAD~1     # Deshace el último commit manteniendo cambios en staging
+git reset --mixed HEAD~1    # Deshace el último commit y staging (default)
+git reset --hard HEAD~1     # Deshace el último commit, staging y cambios en el directorio</code></pre>
+
+            <h3 id="revert">git revert</h3>
+            <p>Crea un nuevo commit que deshace los cambios de un commit previo:</p>
+            <pre><code class="language-bash">git revert a1b2c3d        # Revierte el commit con ID a1b2c3d</code></pre>
+
+            <h3 id="stash">git stash</h3>
+            <p>Guarda temporalmente cambios sin hacer commit:</p>
+            <pre><code class="language-bash">git stash                  # Guarda cambios actuales
+git stash list              # Lista todos los stashes
+git stash apply             # Aplica el último stash sin eliminarlo
+git stash pop               # Aplica y elimina el último stash
+git stash drop              # Elimina el último stash</code></pre>
+
+            <h3 id="cherry-pick">git cherry-pick</h3>
+            <p>Aplica los cambios de un commit específico:</p>
+            <pre><code class="language-bash">git cherry-pick a1b2c3d   # Aplica los cambios del commit a1b2c3d</code></pre>
+
+            <h2 id="workflow">Flujos de Trabajo Comunes</h2>
+
+            <h3 id="gitflow">GitFlow</h3>
+            <p>Un modelo de ramificación que define roles específicos para diferentes ramas:</p>
+            <ul>
+                <li><strong>main/master</strong>: Código en producción</li>
+                <li><strong>develop</strong>: Próxima versión en desarrollo</li>
+                <li><strong>feature/</strong>: Nuevas características</li>
+                <li><strong>release/</strong>: Preparación para lanzamiento</li>
+                <li><strong>hotfix/</strong>: Correcciones urgentes</li>
+            </ul>
+            <p>Para más detalles sobre GitFlow, consulta <a href="/extra/1_gitflow/index.html">nuestra sección de GitFlow</a>.</p>
+
+            <h3 id="github-flow">GitHub Flow</h3>
+            <p>Un flujo de trabajo más simple:</p>
+            <ol>
+                <li>Crear una rama desde main</li>
+                <li>Hacer commits</li>
+                <li>Abrir un pull request</li>
+                <li>Discutir y revisar cambios</li>
+                <li>Fusionar a main</li>
+                <li>Desplegar</li>
+            </ol>
+
+            <h2 id="buenas-practicas">Buenas Prácticas</h2>
+            <ol>
+                <li><strong>Commits atómicos</strong>: Cada commit debe representar un solo cambio lógico.</li>
+                <li><strong>Mensajes descriptivos</strong>: Usa mensajes claros que expliquen por qué se hizo el cambio.</li>
+                <li><strong>Pull antes de push</strong>: Siempre haz pull antes de push para evitar conflictos.</li>
+                <li><strong>Ramas temporales</strong>: Usa ramas para nuevas características y elimínalas después de fusionar.</li>
+                <li><strong>Resuelve conflictos con cuidado</strong>: Tómate el tiempo para entender y resolver conflictos correctamente.</li>
+            </ol>
+
+            <h2 id="recursos">Recursos Adicionales</h2>
+            <ul>
+                <li><a href="https://git-scm.com/book/es/v2" target="_blank">Libro de Git (en español)</a></li>
+                <li><a href="https://learngitbranching.js.org/?locale=es_ES" target="_blank">Learn Git Branching (interactivo)</a></li>
+                <li><a href="https://ohshitgit.com/es" target="_blank">Oh Shit, Git!? (para solucionar problemas comunes)</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+</body>
+
+</html>

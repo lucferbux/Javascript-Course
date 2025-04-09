@@ -132,7 +132,6 @@ ul {
 }
 
 li::marker {
-    content: "👉  ";
     unicode-bidi: isolate;
     font-variant-numeric: tabular-nums;
     text-transform: none;

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Soluciones de Actividades del Curso de JavaScript</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/activity/activity.html">
+                < Back</a>
+                    <h1>Actividad 1</h1>
+                    <p class="caption">Actividades Sesión Principiante</p>
+                    <hr class="separator">
+
+                    <main>
+                        <section id="sesion1">
+                            <h2>Sesión 1</h2>
+
+                            <article id="s1ej1">
+                                <h3>Ejercicio 1</h3>
+                                <p>Crea un nuevo fork del proyecto del curso, crea un archivo <code>aboutme.js</code>
+                                    con variables para nombre, profesión y puesto deseado, y muestra una frase con
+                                    template literals. Importa este archivo en <code>index.js</code>.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <p><code>/activity/1_session/aboutme.js</code></p>
+                                    <pre><code class="language-javascript">
+const nombreCompleto = "Tu Nombre Completo";
+const profesion = "Tu Profesión";
+const puestoDeseado = "Puesto Deseado";
+
+const frase = `Hola, me llamo ${nombreCompleto} y me dedico a ${profesion}. Estoy cursando este Máster porque me gustaría trabajar en ${puestoDeseado}`;
+
+console.log(frase);
+                    </code></pre>
+                                    <p><code>/activity/1_session/index.js</code></p>
+                                    <pre><code class="language-javascript">
+// Ejercicio 1
+import "./aboutme.js"; // Asegúrate que esta línea esté ANTES del console.log
+console.log("Ej 1");
+// ...resto del código...
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s1ej2">
+                                <h3>Ejercicio 2</h3>
+                                <p>Usa las herramientas de desarrollador para poner breakpoints en
+                                    <code>aboutme.js</code> y en <code>console.log("Ej 1")</code> de
+                                    <code>index.js</code>. ¿Qué se ejecuta antes y por qué?</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <p>El contenido del fichero <code>aboutme.js</code> se ejecuta antes que la llamada
+                                        a <code>console.log("Ej 1")</code> en <code>index.js</code>. Esto se debe a la
+                                        forma en que funcionan los módulos de JavaScript (<code>import</code>). Cuando
+                                        se importa un módulo, su código se evalúa (ejecuta) en el momento de la
+                                        importación. Dado que la línea <code>import "./aboutme.js";</code> aparece antes
+                                        de <code>console.log("Ej 1");</code>, el script <code>aboutme.js</code> se
+                                        procesará primero.</p>
+                                </div>
+                            </article>
+
+                            <article id="s1ej3">
+                                <h3>Ejercicio 3</h3>
+                                <p>Programa un script que imprima todos los números del 1 al 100 que sean divisibles por
+                                    7.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-javascript">
+// En /activity/1_session/index.js (o un nuevo fichero)
+console.log("Ejercicio 3");
+for (let i = 1; i <= 100; i++) {
+  if (i % 7 === 0) {
+    console.log(i);
+  }
+}
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s1ej4">
+                                <h3>Ejercicio 4</h3>
+                                <p>Dado el bucle
+                                    <code>for(var i = 0; i < 101; i++) { /* ... */ } console.log(i);</code>, ¿qué valor
+                                    tendrá <code>i</code> al finalizar y por qué? ¿Cómo evitar que <code>i</code> sea
+                                    global?</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <ul>
+                                        <li><strong>Valor de <code>i</code></strong>: La variable <code>i</code> tendrá
+                                            el valor <code>101</code> al finalizar el bucle.</li>
+                                        <li><strong>Por qué</strong>: El bucle <code>for</code> se ejecuta mientras la
+                                            condición <code>i < 101</code> sea verdadera. Cuando <code>i</code> alcanza
+                                            el valor <code>100</code>, la condición <code>100 < 101</code> es verdadera,
+                                            el bloque del bucle se ejecuta, y luego <code>i</code> se incrementa a
+                                            <code>101</code>. En la siguiente iteración, la condición
+                                            <code>101 < 101</code> es falsa, y el bucle termina. Como <code>i</code> fue
+                                            declarada con <code>var</code>, su alcance es la función contenedora (o
+                                            global si no está dentro de una función), por lo que
+                                            <code>console.log(i)</code> fuera del bucle puede acceder a su último valor.
+                                        </li>
+                                        <li><strong>Evitar declaración global</strong>: Sí, usando <code>let</code> en
+                                            lugar de <code>var</code> para declarar la variable <code>i</code>.
+                                            <code>let</code> tiene un alcance de bloque (<code>{}</code>), lo que
+                                            significa que <code>i</code> solo existiría dentro del bucle
+                                            <code>for</code>.</li>
+                                    </ul>
+                                    <pre><code class="language-javascript">
+for(let i = 0; i < 101; i++) {
+    // Solución
+}
+// console.log(i); // Esto daría un error: "i is not defined"
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s1ej5">
+                                <h3>Ejercicio 5</h3>
+                                <p>¿Cuáles son las diferencias entre ejecutar un fichero JavaScript en formato
+                                    <code>&lt;script&gt;</code> y <code>&lt;script type="module"&gt;</code>?</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <table border="1" style="width:100%; border-collapse: collapse;">
+                                        <thead>
+                                            <tr>
+                                                <th>Característica</th>
+                                                <th><code>&lt;script&gt;</code> (Clásico)</th>
+                                                <th><code>&lt;script type="module"&gt;</code></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Modo Estricto</strong></td>
+                                                <td>No está en modo estricto por defecto.</td>
+                                                <td>Siempre está en modo estricto (<code>'use strict';</code>) por
+                                                    defecto.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Alcance (Scope)</strong></td>
+                                                <td>Las variables de nivel superior son globales (<code>window</code>).
+                                                </td>
+                                                <td>Las variables de nivel superior tienen alcance de módulo (local al
+                                                    módulo).</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong><code>import</code>/<code>export</code></strong></td>
+                                                <td>No se pueden usar.</td>
+                                                <td>Se pueden usar para modularizar el código.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Carga</strong></td>
+                                                <td>Síncrona por defecto. Se puede usar <code>async</code> o
+                                                    <code>defer</code>.</td>
+                                                <td>Diferida (<code>defer</code>) por defecto.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>CORS</strong></td>
+                                                <td>No requiere CORS para scripts del mismo origen.</td>
+                                                <td>Requiere CORS para scripts de diferente origen.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Comportamiento <code>this</code></strong></td>
+                                                <td><code>this</code> en el nivel superior es <code>window</code>.</td>
+                                                <td><code>this</code> en el nivel superior es <code>undefined</code>.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Duplicados</strong></td>
+                                                <td>Se ejecuta varias veces si se incluye varias veces.</td>
+                                                <td>Un módulo solo se ejecuta una vez.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </article>
+
+                            <article id="s1ej6">
+                                <h3>Ejercicio 6</h3>
+                                <p>Crea un objeto <code>formatter</code> con un atributo <code>prefix</code> y un método
+                                    <code>append</code>. Luego, añade un método <code>toLowerString</code> al objeto.
+                                </p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-javascript">
+console.log("Ejercicio 6");
+
+const formatter = {
+  prefix: "Hello ",
+  append: function(cadena) {
+    console.log(this.prefix + cadena);
+  }
+};
+formatter.append("World"); // Result: Hello World
+
+formatter.toLowerString = function(cadena) {
+  console.log(cadena.toLowerCase());
+};
+formatter.toLowerString("I’m Lucas"); // Result: i’m lucas
+
+// Solución alternativa usando prototipo de constructor:
+function FormatterConstructor(prefix) {
+  this.prefix = prefix;
+}
+FormatterConstructor.prototype.append = function(cadena) {
+  console.log(this.prefix + cadena);
+};
+FormatterConstructor.prototype.toLowerString = function(cadena) {
+  console.log(cadena.toLowerCase());
+};
+const myFormatter = new FormatterConstructor("Hi ");
+myFormatter.append("There");
+myFormatter.toLowerString("THIS IS LOUD");
+                    </code></pre>
+                                </div>
+                            </article>
+                        </section>
+
+                        <section id="sesion2">
+                            <h2>Sesión 2</h2>
+
+                            <article id="s2ej1">
+                                <h3>Ejercicio 1</h3>
+                                <p>Escribe una arrow function que tome un objeto y devuelva una lista con sus
+                                    propiedades (<code>Object.keys()</code>).</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-javascript">
+console.log("Ejercicio 1 - Sesión 2");
+
+const obtenerPropiedades = (objeto) => {
+  if (typeof objeto !== 'object' || objeto === null) {
+    console.error("La entrada debe ser un objeto.");
+    return [];
+  }
+  return Object.keys(objeto);
+};
+
+const person = {
+    name: "Lucas",
+    age: 27,
+    profession:"Developer"
+};
+console.log(obtenerPropiedades(person)); // ["name", "age", "profession"]
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s2ej2">
+                                <h3>Ejercicio 2</h3>
+                                <p>Enumera los distintos valores de "this" y las diferencias entre arrow functions y
+                                    function expressions.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <h4>Valores de <code>this</code>:</h4>
+                                    <ol>
+                                        <li><strong>Contexto Global (navegador):</strong> <code>window</code>.</li>
+                                        <li><strong>Contexto Global (Node.js):</strong> <code>{}</code> o
+                                            <code>module.exports</code>.</li>
+                                        <li><strong>Método de un Objeto:</strong> El objeto que llama al método.</li>
+                                        <li><strong>Función Simple (No estricto):</strong> <code>window</code>.</li>
+                                        <li><strong>Función Simple (Estricto):</strong> <code>undefined</code>.</li>
+                                        <li><strong>Constructor (<code>new</code>):</strong> La nueva instancia creada.
+                                        </li>
+                                        <li><strong>Arrow Functions:</strong> El <code>this</code> del contexto léxico
+                                            que las rodea.</li>
+                                        <li><strong>Event Handlers DOM:</strong> El elemento DOM que disparó el evento.
+                                        </li>
+                                        <li><strong><code>call()</code>, <code>apply()</code>,
+                                                <code>bind()</code>:</strong> El valor de <code>this</code>
+                                            explícitamente establecido.</li>
+                                    </ol>
+                                    <h4>Diferencias Arrow Functions vs Function Expressions:</h4>
+                                    <table border="1" style="width:100%; border-collapse: collapse;">
+                                        <thead>
+                                            <tr>
+                                                <th>Característica</th>
+                                                <th>Arrow Function (<code>=></code>)</th>
+                                                <th>Function Expression (<code>function() {}</code>)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong><code>this</code> binding</strong></td>
+                                                <td>Hereda <code>this</code> del scope padre.</td>
+                                                <td>Tiene su propio <code>this</code>.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong><code>arguments</code> object</strong></td>
+                                                <td>No tiene. Usar rest parameters.</td>
+                                                <td>Tiene su propio objeto <code>arguments</code>.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Uso como constructor</strong></td>
+                                                <td>No (lanza <code>TypeError</code>).</td>
+                                                <td>Sí.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong><code>prototype</code> property</strong></td>
+                                                <td>No.</td>
+                                                <td>Sí.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong><code>yield</code> keyword</strong></td>
+                                                <td>No.</td>
+                                                <td>Sí (para generadores).</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </article>
+
+                            <article id="s2ej3">
+                                <h3>Ejercicio 3</h3>
+                                <p>Crea una clase <code>InvertirCadena</code> con atributo <code>cadenaInvertir</code> y
+                                    un método arrow function <code>invertir()</code> que la invierta. Lanza error si
+                                    está vacía. Instancia y prueba.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-javascript">
+console.log("Ejercicio 3 - Sesión 2");
+
+class InvertirCadena {
+  cadenaInvertir = "";
+
+  invertir = () => {
+    if (this.cadenaInvertir === "") {
+      throw new Error("La cadena a invertir no puede estar vacía.");
+    }
+    const cadenaInvertida = this.cadenaInvertir.split("").reverse().join("");
+    console.log(cadenaInvertida);
+  };
+}
+
+const invertirCadena = new InvertirCadena();
+
+try {
+  console.log("Intentando invertir cadena vacía:");
+  invertirCadena.invertir();
+} catch (error) {
+  console.error("Error capturado:", error.message);
+}
+
+console.log("\\nCambiando valor de cadenaInvertir:");
+invertirCadena.cadenaInvertir = "Hola mundo";
+try {
+  invertirCadena.invertir(); // odnum aloH
+} catch (error) {
+  console.error("Error capturado:", error.message);
+}
+
+console.log("\\nIntentando acceder a nuevoMetodo():");
+if (typeof invertirCadena.nuevoMetodo === 'function') {
+  invertirCadena.nuevoMetodo();
+} else {
+  console.log("El método 'nuevoMetodo' no existe.");
+}
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s2ej4">
+                                <h3>Ejercicio 4</h3>
+                                <p>Crea una clase <code>Login</code> con atributos <code>username</code>,
+                                    <code>password</code> y un método <code>login()</code> que verifique credenciales
+                                    ("admin", "passwd").</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-javascript">
+console.log("Ejercicio 4 - Sesión 2");
+
+class Login {
+  constructor(username, password) {
+    this.username = username;
+    this.password = password;
+  }
+
+  login() {
+    if (this.username === "admin" && this.password === "passwd") {
+      alert("User logged in"); // En navegador
+      console.log("User logged in (consola)");
+    } else {
+      alert("User or passwd incorrect"); // En navegador
+      console.log("User or passwd incorrect (consola)");
+    }
+  }
+}
+
+// Pruebas en consola (para navegador, descomentar en HTML)
+const loginNodeOk = new Login("admin", "passwd");
+loginNodeOk.login();
+const loginNodeBad = new Login("pepe", "bad");
+loginNodeBad.login();
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s2ej5">
+                                <h3>Ejercicio 5</h3>
+                                <p>En <code>activity/2_session/index.html</code>, crea listeners para botones
+                                    <code>loginSuccess</code> y <code>loginFailure</code> que usen la clase
+                                    <code>Login</code>.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong> (Añadir al <code>index.js</code> de la Sesión 2 o en
+                                        <code>&lt;script&gt;</code> en <code>index.html</code>)</p>
+                                    <pre><code class="language-javascript">
+// ... (Clase Login del Ejercicio 4 debe estar definida aquí arriba)
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Ejercicio 5 - Sesión 2");
+  const loginSuccessButton = document.getElementById("loginSuccess");
+  const loginFailureButton = document.getElementById("loginFailure");
+
+  if (loginSuccessButton) {
+    loginSuccessButton.addEventListener("click", () => {
+      const loginCorrecto = new Login("admin", "passwd");
+      loginCorrecto.login();
+    });
+  }
+  if (loginFailureButton) {
+    loginFailureButton.addEventListener("click", () => {
+      const loginIncorrecto = new Login("pepe", "badPass");
+      loginIncorrecto.login();
+    });
+  }
+});
+                    </code></pre>
+                                    <p>Asegúrate que <code>activity/2_session/index.html</code> tiene los botones:</p>
+                                    <pre><code class="language-html">
+&lt;!-- En activity/2_session/index.html --&gt;
+&lt;button id="loginSuccess"&gt;Login Correcto (sync)&lt;/button&gt;
+&lt;button id="loginFailure"&gt;Login Incorrecto (sync)&lt;/button&gt;
+&lt;!-- &lt;script src="index.js"&gt;&lt;/script&gt; --&gt;
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s2ej6">
+                                <h3>Ejercicio 6</h3>
+                                <p>Añade asincronía a botones <code>loginSuccessAsync</code> y
+                                    <code>loginFailureAsync</code> usando <code>loginWitUsername</code> (promesa) y
+                                    <code>async/await</code>.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong> (Añadir al <code>index.js</code> de la Sesión 2)</p>
+                                    <pre><code class="language-javascript">
+// let loginWitUsername = (username, password) => { ... } // Ya provista
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ... (código del Ejercicio 5) ...
+  console.log("Ejercicio 6 - Sesión 2");
+  const loginSuccessAsyncButton = document.getElementById("loginSuccessAsync");
+  const loginFailureAsyncButton = document.getElementById("loginFailureAsync");
+
+  if (loginSuccessAsyncButton) {
+    loginSuccessAsyncButton.addEventListener("click", async () => {
+      console.log("Botón loginSuccessAsync clickeado");
+      try {
+        const resultado = await loginWitUsername("admin", "passwd");
+        alert(resultado);
+        console.log(resultado);
+      } catch (error) {
+        alert(error);
+        console.error(error);
+      }
+    });
+  }
+
+  if (loginFailureAsyncButton) {
+    loginFailureAsyncButton.addEventListener("click", async () => {
+      console.log("Botón loginFailureAsync clickeado");
+      try {
+        const resultado = await loginWitUsername("usuarioInvalido", "passInvalida");
+        alert(resultado);
+        console.log(resultado);
+      } catch (error) {
+        alert(error);
+        console.error("Error esperado:", error);
+      }
+    });
+  }
+});
+                    </code></pre>
+                                    <p>Asegúrate que <code>activity/2_session/index.html</code> tiene los botones:</p>
+                                    <pre><code class="language-html">
+&lt;!-- En activity/2_session/index.html --&gt;
+&lt;button id="loginSuccessAsync"&gt;Login Correcto (async)&lt;/button&gt;
+&lt;button id="loginFailureAsync"&gt;Login Incorrecto (async)&lt;/button&gt;
+&lt;!-- &lt;script src="index.js"&gt;&lt;/script&gt; --&gt;
+                    </code></pre>
+                                </div>
+                            </article>
+                        </section>
+
+                        <section id="proyecto-sesion4">
+                            <h2>Actividad Proyecto (Sesión 4)</h2>
+                            <article id="s4ejFinal">
+                                <h3>Ejercicio Final</h3>
+                                <p>Trabaja con el repositorio <a
+                                        href="https://github.com/lucferbux/TypescriptWeatherExample"
+                                        target="_blank">TypescriptWeatherExample</a>. Haz un fork, clona, crea una rama
+                                    <code>develop</code>, implementa las funcionalidades (basándote en la rama
+                                    <code>final</code>) y haz una Pull Request.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <p>Este ejercicio implica trabajar con un repositorio externo y desarrollar una
+                                        aplicación TypeScript. La "solución" es el propio desarrollo siguiendo las guías
+                                        del repositorio <code>TypescriptWeatherExample</code>. Los pasos principales
+                                        son:</p>
+                                    <ol>
+                                        <li><strong>Fork y Clonación:</strong>
+                                            <ul>
+                                                <li>Ir a
+                                                    <code>https://github.com/lucferbux/TypescriptWeatherExample</code> y
+                                                    hacer "Fork".</li>
+                                                <li>Clonar tu fork:
+                                                    <code>git clone https://github.com/TU_USUARIO/TypescriptWeatherExample.git</code>
+                                                </li>
+                                                <li><code>cd TypescriptWeatherExample</code></li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Crear Rama de Desarrollo:</strong>
+                                            <code>git switch -c develop</code></li>
+                                        <li><strong>Instalar Dependencias:</strong> <code>npm install</code> (o
+                                            <code>yarn install</code>)</li>
+                                        <li><strong>Desarrollo:</strong> Completa los ficheros de la rama
+                                            <code>main</code> para que funcionen como los de la rama <code>final</code>.
+                                            Esto incluye:
+                                            <ul>
+                                                <li>Lógica para obtener datos de una API del tiempo.</li>
+                                                <li>Manejo de entrada del usuario.</li>
+                                                <li>Mostrar datos en el DOM.</li>
+                                                <li>Manejo de errores y mejoras de UI.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Ejecutar el Proyecto:</strong> Usar comandos como
+                                            <code>npm start</code> o <code>npm run dev</code>.</li>
+                                        <li><strong>Commits y Pull Request:</strong> Guarda tus cambios y crea una Pull
+                                            Request desde tu rama <code>develop</code> a tu rama <code>main</code> en
+                                            GitHub.</li>
+                                    </ol>
+                                    <p>La solución detallada está en la rama <code>final</code> del repositorio
+                                        proporcionado.</p>
+                                </div>
+                            </article>
+                        </section>
+
+                        <section id="typescript-sesion3">
+                            <h2>Actividad TypeScript (Sesión 3)</h2>
+
+                            <article id="s3tsEj1">
+                                <h3>Ejercicio 1</h3>
+                                <p>Crea una interfaz <code>Person</code> (name, age, profession) y una arrow function
+                                    tipada que devuelva un array con los valores de sus propiedades.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-typescript">
+console.log("Ejercicio 1 - TypeScript");
+
+interface Person {
+  name: string;
+  age: number;
+  profession: string;
+}
+
+type PersonPropertyValues = (string | number)[];
+
+const listProperties = (person: Person): string|number[] => {
+    const objectProperties = Object.values(person) // You need to configure "target": "es2017"
+    return objectProperties
+}
+
+console.log(listProperties({name: "Lucas", age: 27, profession: "Teacher"}))
+console.log(getPersonPropertyValues(lucas)); // ["Lucas", 28, "Full Stack Developer"]
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s3tsEj2">
+                                <h3>Ejercicio 2</h3>
+                                <p>Función <code>sumOrConcatenate(a: number | string, b: number | string)</code> que
+                                    sume si ambos son números, concatene con "-" si son strings, o con "+" si son
+                                    mixtos.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-typescript">
+console.log("\\nEjercicio 2 - TypeScript");
+
+function sumOrConcatenate(a: number | string, b: number | string): number | string {
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a + b;
+  } else if (typeof a === 'string' && typeof b === 'string') {
+    return `${a}-${b}`;
+  } else {
+    return `${a}+${b}`;
+  }
+}
+
+console.log(sumOrConcatenate(4, 3)); // 7
+console.log(sumOrConcatenate(4, "hello")); // "4+hello"
+console.log(sumOrConcatenate("4", 3)); // "4+3"
+console.log(sumOrConcatenate("hello", "world")); // "hello-world"
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s3tsEj3">
+                                <h3>Ejercicio 3</h3>
+                                <p>Interfaces <code>Car</code> y <code>Motorcycle</code> con propiedades específicas.
+                                    Función que acepte <code>Car | Motorcycle</code>, llame a
+                                    <code>turnOnEngine()</code> y luego al método específico (<code>pressPedal</code> o
+                                    <code>openThrottle</code>) usando type predicates.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-typescript">
+console.log("\\nEjercicio 3 - TypeScript");
+
+interface Car {
+  tires: number;
+  turnOnEngine: () => void;
+  pressPedal: () => void;
+}
+
+interface Motorcycle {
+  tires: number;
+  turnOnEngine: () => void;
+  openThrottle: () => void;
+}
+
+function isCar(vehicle: Car | Motorcycle): vehicle is Car {
+  return (vehicle as Car).pressPedal !== undefined;
+}
+
+function operateVehicle(vehicle: Car | Motorcycle): void {
+  vehicle.turnOnEngine();
+  if (isCar(vehicle)) {
+    vehicle.pressPedal();
+  } else {
+    (vehicle as Motorcycle).openThrottle(); // Type assertion si es necesario
+  }
+}
+
+const myCar: Car = {
+  tires: 4,
+  turnOnEngine: () => console.log("Car engine ON"),
+  pressPedal: () => console.log("Car pedal pressed")
+};
+const myMotorcycle: Motorcycle = {
+  tires: 2,
+  turnOnEngine: () => console.log("Motorcycle engine ON"),
+  openThrottle: () => console.log("Motorcycle throttle opened")
+};
+
+operateVehicle(myCar);
+operateVehicle(myMotorcycle);
+                    </code></pre>
+                                </div>
+                            </article>
+
+                            <article id="s3tsEj4">
+                                <h3>Ejercicio 4</h3>
+                                <p>Función genérica que acepte un array
+                                    (<code>string[] | number[] | (string|number)[]</code>) y devuelva el mismo array sin
+                                    el primer elemento, sin usar <code>any</code>.</p>
+                                <div class="solution">
+                                    <p><strong>Solución:</strong></p>
+                                    <pre><code class="language-typescript">
+console.log("\\nEjercicio 4 - TypeScript");
+
+function removeFirstEntry&lt;T extends (string | number)&gt;(arr: T[]): T[] {
+  if (arr.length === 0) {
+    return [];
+  }
+  return arr.slice(1);
+  // Alternativa: const [, ...rest] = arr; return rest;
+}
+
+const strArray: string[] = ['Hello', 'World', 'Im', 'a', 'Full', 'Stack', 'Developer'];
+const numArray: number[] = [1, 2, 3, 4, 5, 6, 7];
+const mixedArray: Array&lt;number | string&gt; = ['Hello', 'I', 'have', 3, 'tasks'];
+
+console.log(removeFirstEntry(strArray));
+console.log(removeFirstEntry(numArray));
+console.log(removeFirstEntry(mixedArray));
+console.log(removeFirstEntry([])); // []
+                    </code></pre>
+                                </div>
+                            </article>
+                        </section>
+                    </main>
+        </div>
+    </div>
+
+
+
+    <script src="../../prism.js"></script> <!-- Para resaltado de sintaxis -->
+</body>
+
+</html>

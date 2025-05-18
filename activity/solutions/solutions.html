@@ -570,15 +570,12 @@ interface Person {
   profession: string;
 }
 
-type PersonPropertyValues = (string | number)[];
-
-const listProperties = (person: Person): string|number[] => {
+const listProperties = (person: Person): (Person[keyof Person])[] => {
     const objectProperties = Object.values(person) // You need to configure "target": "es2017"
     return objectProperties
 }
 
 console.log(listProperties({name: "Lucas", age: 27, profession: "Teacher"}))
-console.log(getPersonPropertyValues(lucas)); // ["Lucas", 28, "Full Stack Developer"]
                     </code></pre>
                                 </div>
                             </article>

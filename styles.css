@@ -399,3 +399,25 @@ strong {
 
 
 }
+
+h2 .permalink-icon {
+    visibility: hidden;
+    margin-left: 8px;
+    text-decoration: none;
+    color: #007bff; /* Example color */
+}
+
+h2:hover .permalink-icon {
+    visibility: visible;
+}
+
+h3 .permalink-icon {
+    visibility: hidden;
+    margin-left: 8px;
+    text-decoration: none;
+    color: #007bff; /* Example color */
+}
+
+h3:hover .permalink-icon {
+    visibility: visible;
+}

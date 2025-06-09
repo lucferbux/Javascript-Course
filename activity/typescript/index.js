@@ -67,6 +67,7 @@ function isMotorcycle(vehicle: Car | Motorcycle): vehicle is Motorcycle {
 function operateVehicle(vehicle: Car | Motorcycle): void {
 vehicle.turnOnEngine();
 if (isCar(vehicle)) {
+  vehicle.pressPedal();
 } else if (isMotorcycle(vehicle)) {
 vehicle.openThrottle();
   } else {

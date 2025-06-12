@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f6ff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2830" />
+    <title>Interacción con el navegador</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../prism.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <a class="back-button" href="/beginner/beginner.html">
+                < Back</a> 
+                    <h1 id="interacci-n-con-el-navegador">Interacción con el navegador</h1>
+                    <p class="caption">Métodos para interactuar con el usuario mediante el navegador</p>
+                    <hr>
+                    
+                    <h2 id="introducci-n">Introducción</h2>
+                    <p>JavaScript nos proporciona tres métodos básicos para interactuar directamente con el usuario a través del navegador. Estos métodos son útiles para mostrar información, solicitar datos y confirmar acciones. Aunque en aplicaciones modernas se suelen usar alternativas más sofisticadas, es importante conocer estos métodos fundamentales.</p>
+                    
+                    <h2 id="alert">Alert - Mostrar mensajes</h2>
+                    <p>La función <code>alert()</code> muestra una ventana emergente con un mensaje al usuario. Esta ventana bloquea la ejecución del código hasta que el usuario haga clic en "OK".</p>
+                    
+                    <h3 id="sintaxis-alert">Sintaxis</h3>
+                    <pre><code class="lang-javascript">alert(mensaje);</code></pre>
+                    
+                    <h3 id="ejemplo-alert">Ejemplo</h3>
+                    <pre><code class="lang-javascript">// Mostrar un mensaje simple
+alert("¡Hola! Bienvenido a nuestro sitio web");
+
+// Mostrar información con variables
+let nombre = "María";
+alert("Hola " + nombre + ", gracias por visitarnos");
+
+// Mostrar resultado de operaciones
+let suma = 5 + 3;
+alert("El resultado de 5 + 3 es: " + suma);</code></pre>
+                    
+                    <h2 id="prompt">Prompt - Solicitar información</h2>
+                    <p>La función <code>prompt()</code> muestra una ventana emergente que permite al usuario introducir texto. Devuelve el texto introducido como una cadena de caracteres, o <code>null</code> si el usuario cancela.</p>
+                    
+                    <h3 id="sintaxis-prompt">Sintaxis</h3>
+                    <pre><code class="lang-javascript">let resultado = prompt(mensaje, valorPorDefecto);</code></pre>
+                    
+                    <h3 id="ejemplo-prompt">Ejemplo</h3>
+                    <pre><code class="lang-javascript">// Solicitar el nombre del usuario
+let nombre = prompt("¿Cuál es tu nombre?");
+alert("Hola " + nombre + "!");
+
+// Solicitar información con valor por defecto
+let edad = prompt("¿Cuántos años tienes?", "18");
+alert("Tienes " + edad + " años");
+
+// Validar la entrada del usuario
+let email = prompt("Introduce tu email:");
+if (email !== null && email !== "") {
+    alert("Tu email es: " + email);
+} else {
+    alert("No has introducido ningún email");
+}</code></pre>
+                    
+                    <h2 id="confirm">Confirm - Confirmar acciones</h2>
+                    <p>La función <code>confirm()</code> muestra una ventana emergente con un mensaje y dos botones: "OK" y "Cancelar". Devuelve <code>true</code> si el usuario hace clic en "OK" y <code>false</code> si hace clic en "Cancelar".</p>
+                    
+                    <h3 id="sintaxis-confirm">Sintaxis</h3>
+                    <pre><code class="lang-javascript">let resultado = confirm(mensaje);</code></pre>
+                    
+                    <h3 id="ejemplo-confirm">Ejemplo</h3>
+                    <pre><code class="lang-javascript">// Confirmar una acción
+let confirmar = confirm("¿Estás seguro de que quieres eliminar este archivo?");
+if (confirmar) {
+    alert("Archivo eliminado");
+} else {
+    alert("Operación cancelada");
+}
+
+// Confirmar antes de salir de la página
+let salir = confirm("¿Quieres abandonar esta página?");
+if (salir) {
+    // Código para redirigir o cerrar
+    console.log("El usuario confirmó salir");
+} else {
+    console.log("El usuario decidió quedarse");
+}</code></pre>
+                    
+                    <h2 id="ejemplo-completo">Ejemplo completo - Calculadora simple</h2>
+                    <p>Vamos a crear una calculadora simple que utiliza los tres métodos de interacción:</p>
+                    
+                    <pre><code class="lang-javascript">// Calculadora simple usando interacción del navegador
+function calculadoraSimple() {
+    // Solicitar el primer número
+    let numero1 = prompt("Introduce el primer número:", "0");
+    
+    // Verificar si el usuario canceló
+    if (numero1 === null) {
+        alert("Operación cancelada");
+        return;
+    }
+    
+    // Solicitar el segundo número
+    let numero2 = prompt("Introduce el segundo número:", "0");
+    
+    if (numero2 === null) {
+        alert("Operación cancelada");
+        return;
+    }
+    
+    // Convertir a números
+    numero1 = parseFloat(numero1);
+    numero2 = parseFloat(numero2);
+    
+    // Verificar que sean números válidos
+    if (isNaN(numero1) || isNaN(numero2)) {
+        alert("Error: Por favor introduce números válidos");
+        return;
+    }
+    
+    // Solicitar la operación
+    let operacion = prompt("¿Qué operación quieres realizar? (+, -, *, /)", "+");
+    
+    if (operacion === null) {
+        alert("Operación cancelada");
+        return;
+    }
+    
+    let resultado;
+    
+    // Realizar la operación
+    switch (operacion) {
+        case "+":
+            resultado = numero1 + numero2;
+            break;
+        case "-":
+            resultado = numero1 - numero2;
+            break;
+        case "*":
+            resultado = numero1 * numero2;
+            break;
+        case "/":
+            if (numero2 === 0) {
+                alert("Error: No se puede dividir por cero");
+                return;
+            }
+            resultado = numero1 / numero2;
+            break;
+        default:
+            alert("Operación no válida");
+            return;
+    }
+    
+    // Mostrar el resultado
+    alert(`El resultado de ${numero1} ${operacion} ${numero2} = ${resultado}`);
+    
+    // Preguntar si quiere hacer otra operación
+    let continuar = confirm("¿Quieres realizar otra operación?");
+    if (continuar) {
+        calculadoraSimple(); // Llamada recursiva
+    } else {
+        alert("¡Gracias por usar la calculadora!");
+    }
+}
+
+// Iniciar la calculadora
+calculadoraSimple();</code></pre>
+                    
+                    <h2 id="consideraciones-importantes">Consideraciones importantes</h2>
+                    <ul>
+                        <li><strong>Experiencia de usuario:</strong> Estos métodos crean ventanas emergentes que pueden resultar intrusivas y bloquean la interfaz.</li>
+                        <li><strong>Conversión de tipos:</strong> El método <code>prompt()</code> siempre devuelve una cadena de texto, por lo que necesitas convertir a número si es necesario.</li>
+                        <li><strong>Validación:</strong> Siempre valida las entradas del usuario para evitar errores.</li>
+                        <li><strong>Alternativas modernas:</strong> En aplicaciones web modernas se prefieren modales personalizados y elementos HTML como formularios.</li>
+                        <li><strong>Bloqueo de popup:</strong> Algunos navegadores pueden bloquear estas ventanas si se considera spam.</li>
+                    </ul>
+                    
+                    <h2 id="buenas-pr-cticas">Buenas prácticas</h2>
+                    <ol>
+                        <li><strong>Usa mensajes claros:</strong> Los mensajes deben ser descriptivos y fáciles de entender.</li>
+                        <li><strong>Proporciona valores por defecto:</strong> En <code>prompt()</code>, siempre incluye valores por defecto sensatos.</li>
+                        <li><strong>Valida las entradas:</strong> Comprueba que los datos introducidos sean válidos antes de usarlos.</li>
+                        <li><strong>Maneja la cancelación:</strong> Siempre considera qué hacer si el usuario cancela una operación.</li>
+                        <li><strong>Usa con moderación:</strong> Estas funciones están bien para aprender y prototipos, pero no abuses de ellas en aplicaciones reales.</li>
+                    </ol>
+                    
+        </div>
+    </div>
+    <script src="../../prism.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
